@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Solucionario Sesión 6</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem; margin: .8rem 0; }
+    #btn-contraste { position: fixed; top: 20px; right: 20px; background: #1a3a6e; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; z-index: 1000; }
+    body.alto-contraste { background: #000 !important; color: #ffff00 !important; }
+    body.alto-contraste h1, body.alto-contraste h2 { color: #ffff00 !important; }
+    body.alto-contraste .solucion { background: #1a1a1a !important; color: #ffff00 !important; }
+    body.alto-contraste #btn-contraste { background: #ffff00 !important; color: #000 !important; }
+  </style>
+</head>
+<body>
+  <button id="btn-contraste" onclick="toggleContraste()">👁️ Alto Contraste</button>
+  <h1>✅ Solucionario Sesión 6</h1>
+  <div class="solucion">
+    <h2>Bloque 1</h2>
+    <ol>
+      <li>\( 3 \times 5 = 15 \)</li>
+      <li>\( 16 : 2 = 8 \)</li>
+      <li>\( 5 \times 4 = 20 \)</li>
+    </ol>
+  </div>
+  <div class="solucion">
+    <h2>Bloque 2</h2>
+    <ol>
+      <li>\( 2x = 10 \) → \( x = 5 \) | \( 2·5 = 10 \) ✓</li>
+      <li>\( 3x = 12 \) → \( x = 4 \) | \( 3·4 = 12 \) ✓</li>
+      <li>\( 5x = 20 \) → \( x = 4 \) | \( 5·4 = 20 \) ✓</li>
+      <li>\( x/2 = 5 \) → \( x = 10 \) | \( 10/2 = 5 \) ✓</li>
+      <li>\( x/4 = 3 \) → \( x = 12 \) | \( 12/4 = 3 \) ✓</li>
+    </ol>
+  </div>
+  <div class="solucion">
+    <h2>Bloque 3</h2>
+    <ol>
+      <li>\( x = 4 \)</li>
+      <li>\( x = 3 \)</li>
+      <li>\( x = 20 \)</li>
+      <li>\( x = 5 \)</li>
+      <li>\( x = 21 \)</li>
+    </ol>
+  </div>
+  <div class="solucion">
+    <h2>Bloque 4</h2>
+    <ol>
+      <li>\( 4x = 120 \) → \( x = 30 \) km/h</li>
+      <li>\( 5x = 15 \) → \( x = 3 \) kg</li>
+    </ol>
+  </div>
+  <script>
+    function toggleContraste() {
+      document.body.classList.toggle('alto-contraste');
+      document.getElementById('btn-contraste').textContent = 
+        document.body.classList.contains('alto-contraste') ? '👁️ Normal' : '👁️ Alto Contraste';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 16: Estimación e Intervalos de Confianza</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-consolidacion { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 90%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 16: Estimación e Intervalos de Confianza</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Distinguir estimación puntual de estimación por intervalos</li>
+      <li>Comprender el concepto de nivel de confianza</li>
+      <li>Calcular intervalos de confianza básicos</li>
+      <li>Interpretar correctamente un IC</li>
+    </ul>
+  </div>
+
+  <h2>📚 Estimación de Parámetros</h2>
+  
+  <div class="definicion">
+    <strong>PROBLEMA:</strong> Queremos conocer un parámetro poblacional (μ, σ, p) pero solo tenemos una muestra.
+    <br><br>
+    <strong>DOS ENFOQUES:</strong>
+    <table style="width: 100%; margin-top: 1rem;">
+      <tr><th>Estimación Puntual</th><th>Estimación por Intervalo</th></tr>
+      <tr>
+        <td> Valor único: x̄ = 170 cm</td>
+        <td>Rango: [167, 173] cm</td>
+      </tr>
+      <tr>
+        <td>Precisa pero incierta</td>
+        <td>Menos precisa pero con confianza</td>
+      </tr>
+      <tr>
+        <td>No indica fiabilidad</td>
+        <td>Incluye nivel de confianza</td>
+      </tr>
+    </table>
+  </div>
+
+  <img src="graficos/s16_puntual_vs_intervalo.svg" alt="Estimación puntual vs intervalo">
+
+  <div class="definicion" style="background: #e3f2fd; border-color: #2196F3;">
+    <strong>INTERVALO DE CONFIANZA:</strong>
+    <br><br>
+    Rango de valores que, con cierto nivel de confianza, contiene el parámetro poblacional.
+    <br><br>
+    <strong>Fórmula general para μ (σ conocida):</strong>
+    \[ IC = \bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \]
+    <br>
+    Donde:
+    <ul>
+      <li><strong>x̄:</strong> Media muestral</li>
+      <li><strong>z_{α/2}:</strong> Valor crítico normal (ej: 1.96 para 95%)</li>
+      <li><strong>σ/√n:</strong> Error estándar de la media</li>
+    </ul>
+  </div>
+
+  <h2>🎯 Niveles de Confianza Habituales</h2>
+  <table>
+    <tr><th>Nivel Confianza</th><th>α</th><th>α/2</th><th>z_{α/2}</th></tr>
+    <tr><td>90%</td><td>0.10</td><td>0.05</td><td>1.645</td></tr>
+    <tr><td>95%</td><td>0.05</td><td>0.025</td><td>1.96</td></tr>
+    <tr><td>99%</td><td>0.01</td><td>0.005</td><td>2.576</td></tr>
+  </table>
+
+  <div class="bloque-consolidacion">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Muestra de 40 alturas: x̄ = 172 cm. Se sabe que σ = 10 cm. Calcular IC al 95%.</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">n = 40, x̄ = 172, σ = 10, Confianza = 95% → z = 1.96</div>
+        
+        <p><strong>Error estándar:</strong></p>
+        <div class="paso">\[ SE = \frac{\sigma}{\sqrt{n}} = \frac{10}{\sqrt{40}} = \frac{10}{6.325} \approx 1.581 \text{ cm} \]</div>
+        
+        <p><strong>Margen de error:</strong></p>
+        <div class="paso">\[ E = z \cdot SE = 1.96 \times 1.581 \approx 3.10 \text{ cm} \]</div>
+        
+        <p><strong>Intervalo de confianza:</strong></p>
+        <div class="paso">IC = [x̄ - E, x̄ + E] = [172 - 3.10, 172 + 3.10]</div>
+        <div class="paso" style="font-weight: bold; font-size: 1.1em;"><strong>IC = [168.9, 175.1] cm</strong></div>
+        
+        <p><strong>Interpretación correcta:</strong></p>
+        <ul>
+          <li>"Con 95% de confianza, la media poblacional está entre 168.9 y 175.1 cm"</li>
+          <li>Si repitiéramos el proceso muchas veces, 95% de los ICs capturarían μ</li>
+        </ul>
+        
+        <p><strong>✗ Interpretación INCORRECTA:</strong></p>
+        <ul>
+          <li>"Hay 95% probabilidad de que μ esté en [168.9, 175.1]" (μ es fijo, no aleatorio)</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 2:</strong> Con los mismos datos, ¿cómo cambiaría el IC si usáramos confianza del 99%?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">Mismo SE = 1.581, pero ahora z = 2.576 (99%)</div>
+        
+        <p><strong>Nuevo margen de error:</strong></p>
+        <div class="paso">E = 2.576 × 1.581 ≈ 4.07 cm</div>
+        
+        <p><strong>Nuevo IC:</strong></p>
+        <div class="paso">IC₉₉% = [172 - 4.07, 172 + 4.07] = <strong>[167.9, 176.1]</strong></div>
+        
+        <p><strong>Comparación:</strong></p>
+        <table style="width: 100%;">
+          <tr><th>Confianza</th><th>IC</th><th>Amplitud</th></tr>
+          <tr><td>95%</td><td>[168.9, 175.1]</td><td>6.2 cm</td></tr>
+          <tr><td>99%</td><td>[167.9, 176.1]</td><td>8.2 cm</td></tr>
+        </table>
+        
+        <p><strong>Conclusión:</strong> Mayor confianza → Intervalo más amplio. Es el precio de estar más seguros.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3 (Contexto Vigo):</strong> Encuesta a 100 usuarios de Vitrasa. Tiempo medio espera: x̄ = 8.5 min, σ = 3 min. IC al 90%.</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">n = 100, x̄ = 8.5, σ = 3, z₀.₀₅ = 1.645</div>
+        
+        <p><strong>Error estándar:</strong></p>
+        <div class="paso">SE = 3/√100 = 3/10 = 0.3 min</div>
+        
+        <p><strong>Margen de error:</strong></p>
+        <div class="paso">E = 1.645 × 0.3 ≈ 0.49 min</div>
+        
+        <p><strong>IC:</strong></p>
+        <div class="paso">IC = [8.5 - 0.49, 8.5 + 0.49] = <strong>[8.01, 8.99] minutos</strong></div>
+        
+        <p><strong>Conclusión práctica:</strong> Con 90% de confianza, el tiempo medio de espera en paradas de Vitrasa está entre 8 y 9 minutos aproximadamente.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 4:</strong> Queremos IC con amplitud máxima de 2 cm (±1 cm). Si σ = 10 cm y confianza 95%, ¿qué tamaño de muestra necesitamos?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Requisito:</strong> E = 1 cm (margen de error)</p>
+        
+        <p><strong>Fórmula del tamaño muestral:</strong></p>
+        <div class="paso">\[ E = z \cdot \frac{\sigma}{\sqrt{n}} \quad \Rightarrow \quad n = \left(\frac{z \cdot \sigma}{E}\right)^2 \]</div>
+        
+        <p><strong>Sustitución:</strong></p>
+        <div class="paso">\[ n = \left(\frac{1.96 \times 10}{1}\right)^2 = (19.6)^2 \approx 384.16 \]</div>
+        
+        <p><strong>Redondeo:</strong></p>
+        <div class="paso">n ≥ 385 personas</div>
+        
+        <p><strong>Conclusión:</strong> Necesitamos casi 400 personas para lograr esa precisión. Mucha precisión requiere muestras grandes (y caras).</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Conceptos Clave</h2>
+  <ul>
+    <li><strong>Confianza ≠ Probabilidad:</strong> No decimos "95% probabilidad que μ esté en IC"</li>
+    <li><strong>Trade-off:</strong> Confianza vs Precisión (amplitud del IC)</li>
+    <li><strong>n más grande:</strong> IC más estrecho (mejor)</li>
+    <li><strong>Interpretación:</strong> El método de construcción del IC es el que tiene 95% de éxito</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

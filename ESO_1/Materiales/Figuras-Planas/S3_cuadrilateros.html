@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 3: Cuadriláteros - Del cuadrado al trapecio</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { 
+      font-family: Georgia, serif; 
+      max-width: 860px; 
+      margin: 2rem auto; 
+      padding: 0 1.2rem; 
+      line-height: 1.7; 
+      color: #222; 
+      background-color: #fff;
+    }
+    h1 { 
+      color: #1a3a6e; 
+      border-bottom: 2px solid #1a3a6e; 
+      padding-bottom: .4rem; 
+    }
+    h2 { 
+      color: #2a5298; 
+      margin-top: 2rem; 
+    }
+    h3 { 
+      color: #3a6bc4; 
+    }
+    .objetivos {
+      background: #e8f4f8;
+      border-left: 4px solid #2196F3;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .bloque-refuerzo { 
+      background: #fff9e6; 
+      border-left: 4px solid #f9a825; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-consolidacion { 
+      background: #f0f4fc; 
+      border-left: 4px solid #2a5298; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-afianzamiento { 
+      background: #e8f5e9; 
+      border-left: 4px solid #388e3c; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-ampliacion { 
+      background: #fce4ec; 
+      border-left: 4px solid #c2185b; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .ejemplo {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .importante {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    ol li, ul li { 
+      margin-bottom: .8rem; 
+    }
+    img { 
+      max-width: 100%; 
+      display: block; 
+      margin: 1rem auto; 
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f4fc;
+      color: #1a3a6e;
+      font-weight: bold;
+    }
+    .contraste-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .contraste-btn:hover {
+      background: #2a5298;
+    }
+    body.alto-contraste {
+      background-color: #000;
+      color: #ffff00;
+    }
+    body.alto-contraste h1,
+    body.alto-contraste h2,
+    body.alto-contraste h3 {
+      color: #ffff00;
+    }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .objetivos,
+    body.alto-contraste .ejemplo,
+    body.alto-contraste .importante {
+      background-color: #000;
+      color: #ffff00;
+      border-color: #ffff00;
+    }
+    body.alto-contraste th {
+      background-color: #333;
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">
+    Alto Contraste
+  </button>
+
+  <h1>Sesión 3: Cuadriláteros - Del cuadrado al trapecio</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la sesión</h3>
+    <ul>
+      <li>Identificar diferentes tipos de cuadriláteros</li>
+      <li>Reconocer las propiedades de cada tipo (lados paralelos, lados iguales, ángulos rectos)</li>
+      <li>Establecer relaciones jerárquicas entre cuadriláteros</li>
+      <li>Construir cuadriláteros con condiciones dadas usando regla, escuadra y GeoGebra</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+
+  <h3>¿Qué es un cuadrilátero?</h3>
+  <p>
+    Un <strong>cuadrilátero</strong> es un polígono de 4 lados. Tiene 4 vértices y 4 ángulos.
+  </p>
+
+  <div class="importante">
+    <h4>⭐ Conceptos importantes</h4>
+    <ul>
+      <li><strong>Lados paralelos</strong>: dos lados que nunca se cortan, por muy largo que los prolongues</li>
+      <li><strong>Lados perpendiculares</strong>: dos lados que forman un ángulo recto (90°)</li>
+      <li><strong>Lados consecutivos</strong>: lados que comparten un vértice</li>
+      <li><strong>Lados opuestos</strong>: lados que no comparten vértice</li>
+    </ul>
+  </div>
+
+  <h3>Clasificación de cuadriláteros</h3>
+
+  <h4>1. PARALELOGRAMOS (dos pares de lados paralelos)</h4>
+  <ul>
+    <li><strong>Cuadrado</strong>: 4 lados iguales + 4 ángulos rectos</li>
+    <li><strong>Rectángulo</strong>: Lados opuestos iguales + 4 ángulos rectos</li>
+    <li><strong>Rombo</strong>: 4 lados iguales (ángulos NO rectos)</li>
+    <li><strong>Romboide</strong>: Lados opuestos iguales (ángulos NO rectos)</li>
+  </ul>
+
+  <h4>2. TRAPECIOS (solo un par de lados paralelos)</h4>
+  <ul>
+    <li><strong>Trapecio isósceles</strong>: Los lados no paralelos son iguales</li>
+    <li><strong>Trapecio rectángulo</strong>: Tiene dos ángulos rectos</li>
+    <li><strong>Trapecio escaleno</strong>: Los lados no paralelos son diferentes</li>
+  </ul>
+
+  <h4>3. TRAPEZOIDES (ningún par de lados paralelos)</h4>
+  <p>Cuadriláteros sin lados paralelos.</p>
+
+  <div class="ejemplo">
+    <h4>Jerarquía: El cuadrado es especial</h4>
+    <p>
+      El <strong>cuadrado</strong> cumple las propiedades de TODOS los paralelogramos:
+    </p>
+    <ul>
+      <li>Es un rectángulo (tiene 4 ángulos rectos)</li>
+      <li>Es un rombo (tiene 4 lados iguales)</li>
+      <li>Es un romboide (lados opuestos iguales)</li>
+    </ul>
+    <p><strong>¡El cuadrado es el cuadrilátero más perfecto!</strong></p>
+  </div>
+
+  <!-- BLOQUE 1: REFUERZO -->
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (8 min)</h2>
+    <p><strong>Recordar paralelismo y perpendicularidad</strong></p>
+    
+    <h3>Ejercicio 1: Marca los lados paralelos</h3>
+    <p>En cada cuadrilátero, marca con el mismo color los pares de lados paralelos:</p>
+    
+    <ol>
+      <li>Cuadrado → Marca en rojo un par de lados paralelos y en azul el otro par</li>
+      <li>Rectángulo → Marca los lados paralelos con colores</li>
+      <li>Rombo → Marca los lados paralelos</li>
+      <li>Trapecio → Marca solo el par de lados paralelos</li>
+      <li>Trapezoide → ¿Hay lados paralelos? ______</li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 2: CONSOLIDACIÓN -->
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (17 min)</h2>
+    <p><strong>Presentación sistemática de propiedades</strong></p>
+    
+    <h3>Ejercicio 2: Tabla de propiedades</h3>
+    <p>Completa esta tabla marcando con ✓ o ✗:</p>
+    
+    <table>
+      <tr>
+        <th>Cuadrilátero</th>
+        <th>4 lados iguales</th>
+        <th>Lados opuestos iguales</th>
+        <th>4 ángulos rectos</th>
+        <th>2 pares lados paralelos</th>
+      </tr>
+      <tr>
+        <td><strong>Cuadrado</strong></td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+      </tr>
+      <tr>
+        <td><strong>Rectángulo</strong></td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+      </tr>
+      <tr>
+        <td><strong>Rombo</strong></td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+      </tr>
+      <tr>
+        <td><strong>Romboide</strong></td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+      </tr>
+      <tr>
+        <td><strong>Trapecio</strong></td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+        <td>____</td>
+      </tr>
+    </table>
+
+    <h3>Ejercicio 3: Clasifica estos cuadriláteros</h3>
+    <ol>
+      <li>4 lados iguales, 4 ángulos rectos → ___________</li>
+      <li>Lados opuestos iguales, 4 ángulos rectos, pero NO 4 lados iguales → ___________</li>
+      <li>4 lados iguales, ángulos NO rectos → ___________</li>
+      <li>Lados opuestos iguales, ángulos NO rectos → ___________</li>
+      <li>Solo un par de lados paralelos → ___________</li>
+      <li>Ningún par de lados paralelos → ___________</li>
+      <li>Trapecio con dos ángulos rectos → ___________</li>
+      <li>Trapecio con lados no paralelos iguales → ___________</li>
+      <li>Una hoja de papel A4 → ___________</li>
+      <li>Una señal de "STOP" → ___________</li>
+    </ol>
+
+    <h3>Ejercicio 4: Cuadriláteros en el plano de Vigo</h3>
+    <p>Observa un plano de calles de Vigo. ¿Qué formas tienen las manzanas de edificios?</p>
+    <ol>
+      <li>Plaza de la Constitución → Forma aproximada: ___________</li>
+      <li>Crucero de Calle Príncipe con Policarpo Sanz → Forma: ___________</li>
+      <li>Manzana entre Porta do Sol y Gran Vía → Forma: ___________</li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 3: AFIANZAMIENTO -->
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <p><strong>Construcción con regla/escuadra y GeoGebra</strong></p>
+    
+    <h3>Parte A: Construcción con instrumentos (papel)</h3>
+    <p>Usa regla y escuadra para dibujar:</p>
+    
+    <ol>
+      <li><strong>Un cuadrado de lado 4 cm</strong>
+        <br><em>Pasos: dibuja un lado, marca ángulo recto, mide 4 cm, repite...</em>
+      </li>
+      
+      <li><strong>Un rectángulo de 6 cm × 3 cm</strong>
+        <br><em>Usa la escuadra para los ángulos rectos</em>
+      </li>
+      
+      <li><strong>Un rombo</strong> (puedes usar cartabón para los ángulos)
+        <br><em>Los 4 lados iguales, pero ángulos diferentes a 90°</em>
+      </li>
+    </ol>
+
+    <h3>Parte B: Construcción con GeoGebra (parejas)</h3>
+    <p>Abre GeoGebra y usa las herramientas de polígono:</p>
+    
+    <ol>
+      <li><strong>Cuadrado</strong>: 
+        <ul>
+          <li>Opción 1: Herramienta "Polígono regular" → 4 lados</li>
+          <li>Opción 2: Dibuja 4 puntos formando ángulos rectos y conecta</li>
+          <li>Verifica: mide los 4 lados (deben ser iguales) y los 4 ángulos (deben ser 90°)</li>
+        </ul>
+      </li>
+      
+      <li><strong>Rectángulo</strong>:
+        <ul>
+          <li>Dibuja 4 puntos formando ángulos rectos con lados opuestos iguales</li>
+          <li>Verifica: ángulos = 90°, lados opuestos iguales</li>
+        </ul>
+      </li>
+      
+      <li><strong>Rombo</strong>:
+        <ul>
+          <li>Dibuja 4 puntos con todos los lados iguales pero ángulos diferentes a 90°</li>
+          <li>Verifica: mide los 4 lados (iguales) y los ángulos (NO 90°)</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="ejemplo">
+      <h4>💡 Consejo para GeoGebra</h4>
+      <p>Usa la herramienta "Distancia" para medir lados y "Ángulo" para medir ángulos. 
+      ¡GeoGebra te dirá si lo has hecho bien!</p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 4: AMPLIACIÓN -->
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <p><strong>Mosaicos y pavimentos de Vigo</strong></p>
+    
+    <h3>¿Por qué se usan cuadrados y rectángulos en suelos?</h3>
+    <div class="ejemplo">
+      <p>
+        Los cuadrados y rectángulos son las únicas figuras que "encajan perfectamente" sin dejar huecos. 
+        Por eso se usan para <strong>pavimentar</strong> (cubrir superficies).
+      </p>
+    </div>
+
+    <h3>Ejercicio 5: Analiza pavimentos de Vigo</h3>
+    
+    <ol>
+      <li><strong>Colegiata de Santa María</strong>:
+        <p>Observa el suelo del interior. ¿Qué formas de baldosas se usan?</p>
+        <ul>
+          <li>Forma principal: ___________</li>
+          <li>¿Hay algún patrón de colores? ___________</li>
+        </ul>
+      </li>
+      
+      <li><strong>Plaza de la Constitución</strong>:
+        <p>Las losas de granito del suelo, ¿qué forma tienen?</p>
+        <ul>
+          <li>Forma: ___________</li>
+          <li>¿Son cuadradas o rectangulares? ___________</li>
+        </ul>
+      </li>
+      
+      <li><strong>Aceras de Vigo</strong>:
+        <p>Las losasde las aceras de Vigo suelen ser de granito. ¿Qué forma tienen?</p>
+        <ul>
+          <li>Forma más común: ___________</li>
+          <li>Medidas aproximadas: ___________</li>
+        </ul>
+      </li>
+      
+      <li><strong>Diseña un mosaico</strong>:
+        <p>En papel cuadriculado o en GeoGebra, diseña un pequeño mosaico (patrón repetitivo) 
+        usando solo cuadrados y rombos. Combina colores.</p>
+      </li>
+    </ol>
+
+    <h3>Curiosidad: Pavimentos históricos</h3>
+    <p>
+      El <strong>granito</strong> es la roca característica de Galicia. Por eso muchísimos pavimentos 
+      de Vigo son de losas rectangulares de granito. Este material es muy resistente y dura siglos.
+    </p>
+    
+    <p>Algunos lugares de Vigo con pavimentos interesantes:</p>
+    <ul>
+      <li>Interior de la Colegiata</li>
+      <li>Plaza de la Constitución</li>
+      <li>Zona peatonal de la Calle Príncipe</li>
+      <li>Acceso al Mercado de la Piedra</li>
+      <li>Parque de Castrelos (caminos)</li>
+    </ul>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Dibuja en tu cuaderno un cuadrado, un rectángulo y un rombo. Marca sus propiedades.</li>
+    <li>Encuentra en tu casa 5 objetos con forma de cuadriláteros y clasifícalos.</li>
+    <li>Diseña en papel cuadriculado un mosaico usando solo dos tipos de cuadriláteros.</li>
+    <li>Responde: ¿Un cuadrado es también un rectángulo? ¿Por qué?</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 3 - Figuras Planas - 1º ESO - Matemáticas</small>
+  </p>
+
+</body>
+</html>

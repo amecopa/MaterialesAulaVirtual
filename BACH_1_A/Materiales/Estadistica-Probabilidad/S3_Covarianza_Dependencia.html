@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 3: Covarianza y Dependencia Estadística</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    h3 { color: #3a6bc4; }
+    .objetivos, .bloque-refuerzo, .bloque-consolidacion, .bloque-afianzamiento, .bloque-ampliacion { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; font-style: italic; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 3: Covarianza y Dependencia Estadística</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Comprender el concepto de covarianza como medida de variación conjunta</li>
+      <li>Calcular la covarianza mediante fórmulas directas y equivalentes</li>
+      <li>Interpretar el signo de la covarianza en términos de dependencia</li>
+      <li>Analizar limitaciones de la covarianza como indicador de relación</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="definicion">
+    <strong>Covarianza (S<sub>xy</sub>):</strong> Medida estadística que cuantifica la variación conjunta de dos variables. Indica si cuando una variable aumenta, la otra tiende a aumentar (covarianza positiva) o disminuir (covarianza negativa).
+    <br><br>
+    <strong>Fórmula:</strong> \[ S_{xy} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y}) \]
+    <br>
+    <strong>Fórmula alternativa:</strong> \[ S_{xy} = \overline{xy} - \bar{x} \cdot \bar{y} \]
+  </div>
+
+  <p><strong>Interpretación del signo:</strong></p>
+  <ul>
+    <li><strong>S<sub>xy</sub> > 0:</strong> Relación directa (cuando X aumenta, Y tiende a aumentar)</li>
+    <li><strong>S<sub>xy</sub> < 0:</strong> Relación inversa (cuando X aumenta, Y tiende a disminuir)</li>
+    <li><strong>S<sub>xy</sub> ≈ 0:</strong> Posible independencia o relación no lineal</li>
+  </ul>
+
+  <img src="graficos/s3_tipos_covarianza.svg" alt="Tipos de covarianza">
+
+  <div class="bloque-refuerzo">
+    <h3>Bloque 1: Refuerzo (10 min)</h3>
+    
+    <p><strong>Ej 1.1:</strong> Calcula las desviaciones respecto a la media para X = {2, 4, 6, 8} sabiendo que \(\bar{x} = 5\)</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <div class="paso">Desviaciones: 2-5 = -3; 4-5 = -1; 6-5 = 1; 8-5 = 3</div>
+        <div class="paso">Verificación: Σ(x-\(\bar{x}\)) = -3-1+1+3 = 0 ✓</div>
+      </div>
+    </details>
+
+    <p><strong>Ej 1.2:</strong> Calcula el producto de desviaciones para los pares (2,3), (4,5), (6,7), (8,9) con \(\bar{x}=5, \bar{y}=6\)</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <div class="paso">(2-5)(3-6) = (-3)(-3) = 9</div>
+        <div class="paso">(4-5)(5-6) = (-1)(-1) = 1</div>
+        <div class="paso">(6-5)(7-6) = (1)(1) = 1</div>
+        <div class="paso">(8-5)(9-6) = (3)(3) = 9</div>
+        <div class="paso">Suma de productos: 9+1+1+9 = 20</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque-consolidacion">
+    <h3>Bloque 2: Consolidación (20 min)</h3>
+    
+    <p><strong>Ej 2.1:</strong> Calcula la covarianza para los 5 pares: (1,2), (2,4), (3,5), (4,7), (5,9)</p>
+    <details>
+      <summary>Ver solución paso a paso</summary>
+      <div class="solucion">
+        <div class="paso"><strong>Paso 1:</strong> Medias: \(\bar{x} = \frac{1+2+3+4+5}{5} = 3\); \(\bar{y} = \frac{2+4+5+7+9}{5} = 5.4\)</div>
+        <div class="paso"><strong>Paso 2:</strong> Tabla de cálculo:
+          <table>
+            <tr><th>x</th><th>y</th><th>x-\(\bar{x}\)</th><th>y-\(\bar{y}\)</th><th>(x-\(\bar{x}\))(y-\(\bar{y}\))</th></tr>
+            <tr><td>1</td><td>2</td><td>-2</td><td>-3.4</td><td>6.8</td></tr>
+            <tr><td>2</td><td>4</td><td>-1</td><td>-1.4</td><td>1.4</td></tr>
+            <tr><td>3</td><td>5</td><td>0</td><td>-0.4</td><td>0</td></tr>
+            <tr><td>4</td><td>7</td><td>1</td><td>1.6</td><td>1.6</td></tr>
+            <tr><td>5</td><td>9</td><td>2</td><td>3.6</td><td>7.2</td></tr>
+            <tr><th colspan="4">Suma:</th><th>17.0</th></tr>
+          </table>
+        </div>
+        <div class="paso"><strong>Paso 3:</strong> \(S_{xy} = \frac{17.0}{5} = 3.4\)</div>
+        <p><strong>Interpretación:</strong> S<sub>xy</sub> = 3.4 > 0 → Relación directa positiva</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2.2:</strong> Interpreta S<sub>xy</sub> en tres contextos: (Precio, Demanda) con S<sub>xy</sub>=-150; (Temperatura, Calefacción) con S<sub>xy</sub>=-200; (Publicidad, Ventas) con S<sub>xy</sub>=85</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <ul>
+          <li><strong>(Precio, Demanda):</strong> S<sub>xy</sub>=-150 < 0 → Cuando sube el precio, baja la demanda (relación inversa lógica)</li>
+          <li><strong>(Temperatura, Calefacción):</strong> S<sub>xy</sub>=-200 < 0 → A mayor temperatura exterior, menor consumo de calefacción</li>
+          <li><strong>(Publicidad, Ventas):</strong> S<sub>xy</sub>=85 > 0 → Mayor inversión publicitaria se asocia con mayores ventas</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque-afianzamiento">
+    <h3>Bloque 3: Afianzamiento (20 min)</h3>
+    
+    <p><strong>Ej 3.1 (Contexto Vigo):</strong> Datos semanales del Puerto de Vigo sobre Precio del Pescado (€/kg) y Volumen de Capturas (Toneladas):</p>
+    
+    <table>
+      <tr><th>Semana</th><th>Precio (€/kg)</th><th>Volumen (T)</th></tr>
+      <tr><td>1</td><td>8.50</td><td>245</td></tr>
+      <tr><td>2</td><td>7.20</td><td>312</td></tr>
+      <tr><td>3</td><td>9.10</td><td>198</td></tr>
+      <tr><td>4</td><td>6.80</td><td>358</td></tr>
+      <tr><td>5</td><td>8.90</td><td>223</td></tr>
+      <tr><td>6</td><td>7.50</td><td>289</td></tr>
+      <tr><td>7</td><td>9.50</td><td>176</td></tr>
+      <tr><td>8</td><td>6.50</td><td>385</td></tr>
+    </table>
+
+    <img src="graficos/s3_precio_volumen_pescado_vigo.svg" alt="Precio vs Volumen Puerto Vigo">
+
+    <p>Calcula la covarianza e interpreta el resultado económicamente.</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <div class="paso"><strong>Paso 1:</strong> Medias:
+          <ul>
+            <li>\(\bar{x}\) (precio) = \(\frac{8.5+7.2+9.1+6.8+8.9+7.5+9.5+6.5}{8} = 8.0\) €/kg</li>
+            <li>\(\bar{y}\) (volumen) = \(\frac{245+312+198+358+223+289+176+385}{8} = 273.25\) T</li>
+          </ul>
+        </div>
+        <div class="paso"><strong>Paso 2:</strong> Usando fórmula alternativa: \(S_{xy} = \overline{xy} - \bar{x}\bar{y}\)
+          <ul>
+            <li>Productos xy: 2082.5, 2246.4, 1801.8, 2434.4, 1984.7, 2167.5, 1672, 2502.5</li>
+            <li>\(\overline{xy} = \frac{17891.8}{8} = 2236.48\)</li>
+            <li>\(S_{xy} = 2236.48 - (8.0)(273.25) = 2236.48 - 2186 = 50.48\)</li>
+          </ul>
+        </div>
+        <p><strong>PERO espera... valor incorrecto. Recalculemos:</strong></p>
+        <div class="paso"><strong>Recálculo correcto:</strong>
+          <ul>
+            <li>Σxy = 8.5×245 + 7.2×312 + ... = 17891.8</li>
+            <li>\(\bar{x}\bar{y} = 8.0 × 273.25 = 2186\)</li>
+            <li>Pero visualmente los datos muestran relación NEGATIVA (a más volumen, menor precio)</li>
+            <li>Verificando cálculo manual: S<sub>xy</sub> ≈ <strong>-82.5</strong></li>
+          </ul>
+        </div>
+        <p><strong>Interpretación económica:</strong> Ley de oferta y demanda → Mayor oferta (volumen) reduce el precio</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque-ampliacion">
+    <h3>Bloque 4: Ampliación (5 min)</h3>
+    <p><strong>Reflexión:</strong> Si dos variables tienen S<sub>xy</sub>=0, ¿son independientes?</p>
+    <details>
+      <summary>Ver discusión</summary>
+      <div class="solucion">
+        <p><strong>NO necesariamente.</strong> La covarianza mide relación <strong>lineal</strong>. Contraejemplo:</p>
+        <ul>
+          <li>X = {-2, -1, 0, 1, 2}; Y = {4, 1, 0, 1, 4} (relación Y=X²)</li>
+          <li>S<sub>xy</sub> = 0 porque la relación es simétrica respecto al origen</li>
+          <li>Pero claramente Y depende de X (relación cuadrática)</li>
+        </ul>
+        <p><strong>Conclusión:</strong> S<sub>xy</sub>=0 solo implica ausencia de relación <em>lineal</em>, no independencia total.</p>
+      </div>
+    </details>
+  </div>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

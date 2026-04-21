@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 6: Teorema de la Probabilidad Total</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+        h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+        h2 { color: #2a5298; margin-top: 2rem; }
+        h3 { color: #3a6bc4; }
+        header { background-color: #1a3a6e; color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        header h1 { color: white; margin: 0; border: none; }
+        .competency { font-size: 0.9em; color: #cce0ff; font-style: italic; margin-top: 0.5rem; }
+        .theory-box { background: #f9fafb; border-left: 4px solid #1a3a6e; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .ejercicios { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+        .solucion  { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+        .exercise-title { font-weight: bold; color: #d9534f; margin-bottom: 10px; }
+        .theorem-box {
+            background-color: #fff9e6;
+            border: 2px solid #ffc107;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .theorem-box strong { color: #d68000; }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+        details.solucion summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #2a8a2a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solucion summary::-webkit-details-marker { display: none; }
+        details.solucion summary::marker { display: none; }
+        details.solucion:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solucion[open] summary::before { content: "▼  Ocultar resolución"; }
+        ol li, ul li { margin-bottom: .5rem; }
+        img { max-width: 100%; display: block; margin: 1rem auto; }
+        .formula-importante {
+            background: #e8f4f8;
+            border-left: 4px solid #0277bd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 6: Teorema de la Probabilidad Total</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | CE1: Razonar matemáticamente</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Motivación: Probabilidad en "mezclas"</h3>
+        <p>En muchas situaciones reales, un suceso puede ocurrir a través de diferentes "caminos" o "hipótesis" excluyentes. Por ejemplo:</p>
+        <ul>
+            <li>Un producto defectuoso puede venir de diferentes fábricas.</li>
+            <li>Una luz puede fallar y ser LED o halógena.</li>
+            <li>Un pasajero puede llegar tarde usando diferentes rutas de transporte.</li>
+        </ul>
+        <p>El <strong>Teorema de la Probabilidad Total</strong> nos permite calcular la probabilidad total de un suceso sumando las probabilidades de todos los "caminos" posibles.</p>
+
+        <h3>Partición del espacio muestral</h3>
+        <p>Decimos que los sucesos \(A_1, A_2, \ldots, A_n\) forman una <strong>partición</strong> de \(\Omega\) si:</p>
+        <ol>
+            <li>Son <strong>mutuamente excluyentes</strong>: \(A_i \cap A_j = \emptyset\) para \(i \neq j\)</li>
+            <li>Su unión es todo el espacio: \(A_1 \cup A_2 \cup \cdots \cup A_n = \Omega\)</li>
+        </ol>
+        <p><strong>Ejemplo:</strong> Si clasificamos bombillas en LED y no-LED, estos dos tipos forman una partición.</p>
+
+        <div class="theorem-box">
+            <h3>Teorema de la Probabilidad Total</h3>
+            <p>Si \(\{A_1, A_2, \ldots, A_n\}\) es una partición de \(\Omega\) y \(B\) es un suceso cualquiera, entonces:</p>
+            $$P(B) = P(A_1 \cap B) + P(A_2 \cap B) + \cdots + P(A_n \cap B)$$
+            <p>Usando la regla del producto \(P(A_i \cap B) = P(A_i) \cdot P(B|A_i)\), podemos escribir:</p>
+            $$P(B) = P(A_1) \cdot P(B|A_1) + P(A_2) \cdot P(B|A_2) + \cdots + P(A_n) \cdot P(B|A_n)$$
+        </div>
+
+        <h3>Interpretación con diagramas de árbol</h3>
+        <p>El teorema de la probabilidad total se visualiza perfectamente en un diagrama de árbol:</p>
+        <ul>
+            <li>La primera rama representa las hipótesis \(A_1, A_2, \ldots, A_n\) (la partición).</li>
+            <li>Desde cada \(A_i\) salen ramas para \(B\) y \(B^c\).</li>
+            <li>\(P(B)\) es la <strong>suma de las probabilidades de todas las hojas que terminan en \(B\)</strong>.</li>
+        </ul>
+
+        <div class="formula-importante">
+            <strong>En dos hipótesis (caso más frecuente):</strong>
+            $$P(B) = P(A) \cdot P(B|A) + P(A^c) \cdot P(B|A^c)$$
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🔥 Bloque 1: Refuerzo — 10 min</h2>
+        
+        <p><strong>Retomamos el problema de las Luces de Navidad de Vigo (Sesión 5):</strong></p>
+        <p>El 80 % de las luces son LED. El 5 % de las luces LED fallan; el 15 % de las no-LED fallan.</p>
+        <p><strong>Pregunta:</strong> Ya calculamos la probabilidad de fallo sumando ramas del árbol. ¿Podemos generalizarlo a situaciones con más de dos orígenes?</p>
+        
+        <details class="solucion">
+            <summary></summary>
+            <strong>Reflexión:</strong><br>
+            En el problema de las luces teníamos dos tipos (LED / no-LED) que forman una partición. Calculamos:
+            $$P(\text{fallo}) = P(\text{LED}) \cdot P(\text{fallo}|\text{LED}) + P(\text{no-LED}) \cdot P(\text{fallo}|\text{no-LED})$$
+            $$P(\text{fallo}) = 0{,}80 \times 0{,}05 + 0{,}20 \times 0{,}15 = 0{,}04 + 0{,}03 = 0{,}07 = 7\%$$
+            
+            <strong>Generalización:</strong> Si tuviéramos 3, 4 o más tipos de luces, simplemente sumaríamos más términos. Cada término es \(P(\text{tipo}_i) \times P(\text{fallo}|\text{tipo}_i)\). Esto es exactamente el <strong>Teorema de la Probabilidad Total</strong>.
+        </details>
+    </section>
+
+    <section class="ejercicios">
+        <h2>📖 Bloque 2: Consolidación — 17 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra): Tres proveedores de PSA Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>PSA Citroën Vigo recibe piezas de tres proveedores:</p>
+            <ul>
+                <li>Proveedor A suministra el 50 % de las piezas, con tasa de defecto del 2 %.</li>
+                <li>Proveedor B suministra el 30 %, con tasa de defecto del 3 %.</li>
+                <li>Proveedor C suministra el 20 %, con tasa de defecto del 5 %.</li>
+            </ul>
+            <p><strong>¿Cuál es la probabilidad de que una pieza elegida al azar sea defectuosa?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Paso 1:</strong> Identificar la partición y el suceso objetivo<br>
+                — Partición: \(\{A, B, C\}\) (los tres proveedores)<br>
+                — Suceso objetivo: \(D\) = "pieza defectuosa"
+                <br><br>
+                
+                <strong>Paso 2:</strong> Recopilar los datos<br>
+                \(P(A) = 0{,}50\), &nbsp; \(P(D|A) = 0{,}02\)<br>
+                \(P(B) = 0{,}30\), &nbsp; \(P(D|B) = 0{,}03\)<br>
+                \(P(C) = 0{,}20\), &nbsp; \(P(D|C) = 0{,}05\)
+                <br><br>
+                
+                <strong>Paso 3:</strong> Aplicar el Teorema de la Probabilidad Total
+                $$P(D) = P(A) \cdot P(D|A) + P(B) \cdot P(D|B) + P(C) \cdot P(D|C)$$
+                $$P(D) = 0{,}50 \times 0{,}02 + 0{,}30 \times 0{,}03 + 0{,}20 \times 0{,}05$$
+                $$P(D) = 0{,}010 + 0{,}009 + 0{,}010 = 0{,}029 = 2{,}9\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> La probabilidad de que una pieza sea defectuosa es del 2,9 %.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Trabajo colectivo): Urna con extracción en dos etapas</div>
+            <p>Una urna contiene 5 bolas rojas y 3 azules. Se extrae una bola al azar y después se lanza un dado:</p>
+            <ul>
+                <li>Si la bola es roja, el evento favorable es que el dado muestre un número par.</li>
+                <li>Si la bola es azul, el evento favorable es que el dado muestre un número mayor que 4.</li>
+            </ul>
+            <p><strong>¿Cuál es la probabilidad de que ocurra un evento favorable?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos:</strong><br>
+                \(P(\text{roja}) = \frac{5}{8}\), &nbsp; \(P(\text{azul}) = \frac{3}{8}\)<br>
+                \(P(\text{favorable}|\text{roja}) = P(\text{par en dado}) = \frac{3}{6} = \frac{1}{2}\)<br>
+                \(P(\text{favorable}|\text{azul}) = P(>4) = \frac{2}{6} = \frac{1}{3}\)
+                <br><br>
+                
+                <strong>Aplicamos el teorema:</strong>
+                $$P(\text{favorable}) = P(\text{roja}) \cdot P(\text{fav}|\text{roja}) + P(\text{azul}) \cdot P(\text{fav}|\text{azul})$$
+                $$P(\text{favorable}) = \frac{5}{8} \times \frac{1}{2} + \frac{3}{8} \times \frac{1}{3}$$
+                $$P(\text{favorable}) = \frac{5}{16} + \frac{3}{24} = \frac{5}{16} + \frac{1}{8} = \frac{5}{16} + \frac{2}{16} = \frac{7}{16}$$
+                <br>
+                
+                <strong>Respuesta:</strong> \(P(\text{favorable}) = \frac{7}{16} \approx 0{,}4375 = 43{,}75\%\)
+            </details>
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>✏️ Bloque 3: Afianzamiento (Individual) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Dos fábricas de conservas de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Dos fábricas de conservas de Vigo (A y B) producen una remesa conjunta:</p>
+            <ul>
+                <li>Fábrica A produce el 60 % de las latas, con una tasa de defecto del 2 %.</li>
+                <li>Fábrica B produce el 40 % de las latas, con una tasa de defecto del 5 %.</li>
+            </ul>
+            <p><strong>Calcula la probabilidad de que una lata elegida al azar sea defectuosa.</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos:</strong><br>
+                \(P(A) = 0{,}60\), &nbsp; \(P(D|A) = 0{,}02\)<br>
+                \(P(B) = 0{,}40\), &nbsp; \(P(D|B) = 0{,}05\)
+                <br><br>
+                
+                <strong>Aplicamos el teorema de la probabilidad total:</strong>
+                $$P(D) = P(A) \cdot P(D|A) + P(B) \cdot P(D|B)$$
+                $$P(D) = 0{,}60 \times 0{,}02 + 0{,}40 \times 0{,}05$$
+                $$P(D) = 0{,}012 + 0{,}020 = 0{,}032 = 3{,}2\%$$
+                <br>
+                <img src="S6/arbol_conservas_vigo.png" alt="Árbol de probabilidad total" class="img-centered" />
+                <br>
+                
+                <strong>Respuesta:</strong> La probabilidad de que una lata sea defectuosa es del 3,2 %.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Tres rutas de autobús Vitrasa <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Para llegar al centro de Vigo, un estudiante puede usar tres líneas de Vitrasa:</p>
+            <ul>
+                <li>Línea C1: la usa el 50 % de los días, con puntualidad del 85 %.</li>
+                <li>Línea C2: la usa el 30 % de los días, con puntualidad del 90 %.</li>
+                <li>Línea C9A: la usa el 20 % de los días, con puntualidad del 75 %.</li>
+            </ul>
+            <p><strong>¿Cuál es la probabilidad de que llegue puntual un día cualquiera?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos:</strong><br>
+                \(P(C1) = 0{,}50\), &nbsp; \(P(\text{puntual}|C1) = 0{,}85\)<br>
+                \(P(C2) = 0{,}30\), &nbsp; \(P(\text{puntual}|C2) = 0{,}90\)<br>
+                \(P(C9A) = 0{,}20\), &nbsp; \(P(\text{puntual}|C9A) = 0{,}75\)
+                <br><br>
+                
+                $$P(\text{puntual}) = 0{,}50 \times 0{,}85 + 0{,}30 \times 0{,}90 + 0{,}20 \times 0{,}75$$
+                $$P(\text{puntual}) = 0{,}425 + 0{,}270 + 0{,}150 = 0{,}845 = 84{,}5\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> La probabilidad de llegar puntual es del 84,5 %.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Verificación de un resultado</div>
+            <p>Un estudiante calcula la probabilidad de un suceso \(B\) usando el teorema de la probabilidad total con dos hipótesis \(H_1\) y \(H_2\):</p>
+            <p>\(P(H_1) = 0{,}7\), \(P(B|H_1) = 0{,}4\)<br>
+            \(P(H_2) = 0{,}2\), \(P(B|H_2) = 0{,}5\)</p>
+            <p>Calcula \(P(B) = 0{,}7 \times 0{,}4 + 0{,}2 \times 0{,}5 = 0{,}28 + 0{,}10 = 0{,}38\)</p>
+            <p><strong>¿Es correcto? Justifica.</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Análisis:</strong><br>
+                Para que \(\{H_1, H_2\}\) sea una partición, debe cumplirse que \(P(H_1) + P(H_2) = 1\).<br>
+                Pero \(0{,}7 + 0{,}2 = 0{,}9 \neq 1\).
+                <br><br>
+                
+                <strong>Conclusión:</strong> ❌ <strong>NO es correcto.</strong> Las hipótesis no forman una partición completa del espacio muestral. Falta información (probablemente una tercera hipótesis \(H_3\) con \(P(H_3) = 0{,}1\)) o los datos están mal planteados.
+                <br><br>
+                
+                El teorema de la probabilidad total solo se puede aplicar cuando las hipótesis forman una partición completa de \(\Omega\).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4: Composición libre</div>
+            <p><strong>Inventa un enunciado con estructura de probabilidad total (con 2 o 3 hipótesis) y resuélvelo.</strong></p>
+            <p><em>Sugerencia: Puedes usar contextos como transporte, producción, clima, deporte, etc.</em></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Ejemplo de solución:</strong><br>
+                <em>(Ejercicio de creatividad del alumnado. El docente valida la coherencia lógica y matemática del planteamiento y la solución.)</em>
+                <br><br>
+                
+                <strong>Ejemplo posible:</strong><br>
+                "En el IES Teis, el 40 % del alumnado va en autobús, el 35 % andando y el 25 % en coche. Las probabilidades de llegar tarde son: 10 % (autobús), 5 % (andando), 15 % (coche). Calcular P(tarde)."
+                <br><br>
+                
+                $$P(\text{tarde}) = 0{,}40 \times 0{,}10 + 0{,}35 \times 0{,}05 + 0{,}25 \times 0{,}15$$
+                $$= 0{,}040 + 0{,}0175 + 0{,}0375 = 0{,}095 = 9{,}5\%$$
+            </details>
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🚀 Bloque 4: Ampliación — 8 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Puerto de Vigo — Control de contenedores <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En el Puerto de Vigo, los contenedores llegan en tres tipos de barco:</p>
+            <ul>
+                <li>Portacontenedores: 50 % de los contenedores, probabilidad de error en etiquetado = 1 %.</li>
+                <li>Cargueros mixtos: 30 % de los contenedores, probabilidad de error = 4 %.</li>
+                <li>Ferris: 20 % de los contenedores, probabilidad de error = 8 %.</li>
+            </ul>
+            <p><strong>¿Cuál es la probabilidad de que un contenedor elegido al azar tenga error de etiquetado?</strong></p>
+            <p><strong>Construye el diagrama de árbol correspondiente.</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Diagrama de árbol:</strong>
+                <pre>
+                            0,01 → Error
+                  0,50 → Portacontenedores
+                            0,99 → Sin error
+                            
+                            0,04 → Error
+    Origen →      0,30 → Cargueros
+                            0,96 → Sin error
+                            
+                            0,08 → Error
+                  0,20 → Ferris
+                            0,92 → Sin error
+                </pre>
+                
+                <strong>Cálculo:</strong>
+                $$P(\text{error}) = 0{,}50 \times 0{,}01 + 0{,}30 \times 0{,}04 + 0{,}20 \times 0{,}08$$
+                $$P(\text{error}) = 0{,}005 + 0{,}012 + 0{,}016 = 0{,}033 = 3{,}3\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> La probabilidad de error en el etiquetado es del 3,3 %.
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Teorema de Bayes e interpretación</p>
+    </footer>
+
+</body>
+</html>

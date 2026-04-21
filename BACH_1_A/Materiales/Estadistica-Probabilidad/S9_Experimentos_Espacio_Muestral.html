@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 9: Experimentos Aleatorios y Espacio Muestral</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-refuerzo { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 9: Experimentos Aleatorios y Espacio Muestral</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Distinguir experimentos deterministas de aleatorios</li>
+      <li>Identificar y describir el espacio muestral de un experimento</li>
+      <li>Definir sucesos y clasificarlos (elemental, compuesto, seguro, imposible)</li>
+      <li>Comprender la notación básica de la teoría de probabilidad</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="definicion">
+    <strong>Experimento Aleatorio:</strong> Proceso que, repitiéndose bajo las mismas condiciones, puede dar resultados diferentes.
+    <br><br>
+    <strong>Características:</strong>
+    <ul>
+      <li>Se conocen todos los resultados posibles</li>
+      <li>No se puede predecir con certeza el resultado</li>
+      <li>Puede repetirse en condiciones similares</li>
+    </ul>
+  </div>
+
+  <p><strong>Ejemplos:</strong></p>
+  <table>
+    <tr><th>Experimento</th><th>¿Aleatorio?</th><th>Justificación</th></tr>
+    <tr><td>Lanzar dado</td><td>✓ SÍ</td><td>No sabemos qué cara saldrá</td></tr>
+    <tr><td>Soltar piedra</td><td>✗ NO</td><td>Siempre cae (determinista)</td></tr>
+    <tr><td>Extraer bola urna</td><td>✓ SÍ</td><td>Depende del azar</td></tr>
+    <tr><td>Calentar agua a 100°C</td><td>✗ NO</td><td>Siempre hierve</td></tr>
+  </table>
+
+  <div class="definicion">
+    <strong>Espacio Muestral (Ω):</strong> Conjunto de TODOS los resultados posibles de un experimento aleatorio.
+    <br><br>
+    <strong>Suceso:</strong> Subconjunto del espacio muestral.
+  </div>
+
+  <p><strong>Tipos de sucesos:</strong></p>
+  <ul>
+    <li><strong>Elemental:</strong> Un único resultado (ej: {4} al lanzar dado)</li>
+    <li><strong>Compuesto:</strong> Varios resultados (ej: {2,4,6} = "par")</li>
+    <li><strong>Seguro:</strong> Siempre ocurre (Ω)</li>
+    <li><strong>Imposible:</strong> Nunca ocurre (∅)</li>
+  </ul>
+
+  <img src="graficos/s9_diagrama_venn.svg" alt="Diagrama Venn: Espacio muestral y sucesos">
+
+  <h2>📝 Notación</h2>
+  <table>
+    <tr><th>Símbolo</th><th>Significado</th><th>Ejemplo</th></tr>
+    <tr><td>Ω</td><td>Espacio muestral</td><td>Ω = {1,2,3,4,5,6}</td></tr>
+    <tr><td>A, B, C...</td><td>Sucesos</td><td>A = {2,4,6}</td></tr>
+    <tr><td>∅</td><td>Suceso imposible</td><td>∅ = "sacar 7 en dado"</td></tr>
+    <tr><td>∈</td><td>Pertenece</td><td>3 ∈ Ω</td></tr>
+    <tr><td>⊂</td><td>Contenido en</td><td>A ⊂ Ω</td></tr>
+  </table>
+
+  <div class="bloque-refuerzo">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Lanzar una moneda dos veces. Describe Ω y los sucesos:</p>
+    <ul>
+      <li>A = "Obtener exactamente una cara"</li>
+      <li>B = "Obtener dos caras"</li>
+    </ul>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Espacio muestral:</strong></p>
+        <div class="paso">Ω = {CC, CX, XC, XX}</div>
+        <p>Donde C=cara, X=cruz. Hay 4 resultados posibles.</p>
+        
+        <p><strong>Suceso A = "Exactamente una cara":</strong></p>
+        <div class="paso">A = {CX, XC}</div>
+        <p>Dos resultados favorables (es suceso compuesto).</p>
+        
+        <p><strong>Suceso B = "Dos caras":</strong></p>
+        <div class="paso">B = {CC}</div>
+        <p>Un solo resultado (es suceso elemental).</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2 (Contexto Vigo):</strong> Experimento: elegir aleatoriamente un estudiante de 1º Bach del IES Teis y observar su medio de transporte al instituto.</p>
+    <ul>
+      <li>a) ¿Es experimento aleatorio?</li>
+      <li>b) Describe un espacio muestral razonable</li>
+      <li>c) Define el suceso A = "Llega en transporte público"</li>
+    </ul>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>a) ¿Es aleatorio?</strong></p>
+        <div class= "paso">✓ SÍ, porque no sabemos de antemano qué medio usa cada estudiante hasta preguntarle.</div>
+        
+        <p><strong>b) Espacio muestral:</strong></p>
+        <div class="paso">Ω = {Vitrasa, A pie, Coche particular, Bicicleta, Moto, Otros}</div>
+        <p>Consideramos todas las opciones de transporte razonables en Vigo.</p>
+        
+        <p><strong>c) Suceso A:</strong></p>
+        <div class="paso">A = {Vitrasa}</div>
+        <p>En Vigo, el transporte público urbano es principalmente autobuses de Vitrasa.</p>
+        <p><em>Nota:</em> Si incluyéramos tren (desde zonas más alejadas), A = {Vitrasa, Renfe}</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3:</strong> Lanzar un dado y anotar el resultado. Define:</p>
+    <ul>
+      <li>Ω</li>
+      <li>Suceso A = "Múltiplo de 3"</li>
+      <li>Suceso B = "Mayor que 4"</li>
+      <li>¿Es elemental o compuesto A? ¿Y B?</li>
+    </ul>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Espacio muestral:</strong></p>
+        <div class="paso">Ω = {1, 2, 3, 4, 5, 6}</div>
+        
+        <p><strong>Suceso A = "Múltiplo de 3":</strong></p>
+        <div class="paso">A = {3, 6}</div>
+        <p>Es <strong>suceso compuesto</strong> (contiene 2 resultados).</p>
+        
+        <p><strong>Suceso B = "Mayor que 4":</strong></p>
+        <div class="paso">B = {5, 6}</div>
+        <p>Es <strong>suceso compuesto</strong> (contiene 2 resultados).</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 4:</strong> Extraer dos cartas de una baraja española (40 cartas). ¿Cuántos elementos tiene Ω?</p>
+    <details>
+      <summary>Ver razonamiento</summary>
+      <div class="solucion">
+        <p><strong>Análisis:</strong></p>
+        <ul>
+          <li>Primera carta: 40 opciones</li>
+          <li>Segunda carta: 39 opciones (ya no está la primera)</li>
+          <li>PERO: Si el orden no importa (solo nos importa QUÉ cartas, no en qué orden salen)...</li>
+        </ul>
+        
+        <p><strong>Si importa orden:</strong></p>
+        <div class="paso">|Ω| = 40 × 39 = 1560</div>
+        <p>(Variaciones sin repetición)</p>
+        
+        <p><strong>Si NO importa orden:</strong></p>
+        <div class="paso">\[ |Ω| = \binom{40}{2} = \frac{40 \cdot 39}{2} = 780 \]</div>
+        <p>(Combinaciones - lo más habitual en cartas)</p>
+        
+        <p><strong>Conclusión:</strong> Normalmente, <strong>780 resultados posibles</strong> (consideramos no ordenadas).</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Conceptos Clave</h2>
+  <ul>
+    <li><strong>Experimento aleatorio ≠ caótico:</strong> Tiene estructura (conocemos posibilidades), pero resultado impredecible</li>
+    <li><strong>Espacio muestral:</strong> Debe incluir TODOS los resultados posibles, sin omitir ni duplicar</li>
+    <li><strong>Sucesos:</strong> Permiten agrupar resultados que nos interesan conjuntamente</li>
+    <li><strong>Notación conjuntista:</strong> La probabilidad se construye sobre teoría de conjuntos</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo | Bloque II: PROBABILIDAD</p>
+  </footer>
+</body>
+</html>

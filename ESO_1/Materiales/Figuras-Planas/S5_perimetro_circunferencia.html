@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 5: Perímetro de la circunferencia</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { 
+      font-family: Georgia, serif; 
+      max-width: 860px; 
+      margin: 2rem auto; 
+      padding: 0 1.2rem; 
+      line-height: 1.7; 
+      color: #222; 
+      background-color: #fff;
+    }
+    h1 { 
+      color: #1a3a6e; 
+      border-bottom: 2px solid #1a3a6e; 
+      padding-bottom: .4rem; 
+    }
+    h2 { 
+      color: #2a5298; 
+      margin-top: 2rem; 
+    }
+    h3 { 
+      color: #3a6bc4; 
+    }
+    .objetivos {
+      background: #e8f4f8;
+      border-left: 4px solid #2196F3;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .bloque-refuerzo { 
+      background: #fff9e6; 
+      border-left: 4px solid #f9a825; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-consolidacion { 
+      background: #f0f4fc; 
+      border-left: 4px solid #2a5298; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-afianzamiento { 
+      background: #e8f5e9; 
+      border-left: 4px solid #388e3c; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-ampliacion { 
+      background: #fce4ec; 
+      border-left: 4px solid #c2185b; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .ejemplo {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .importante {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .formula {
+      background: #e8f4f8;
+      border: 2px solid #2196F3;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    ol li, ul li { 
+      margin-bottom: . 8rem; 
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f4fc;
+      color: #1a3a6e;
+    }
+    .contraste-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .contraste-btn:hover {
+      background: #2a5298;
+    }
+    body.alto-contraste {
+      background-color: #000;
+      color: #ffff00;
+    }
+    body.alto-contraste h1,
+    body.alto-contraste h2,
+    body.alto-contraste h3 {
+      color: #ffff00;
+    }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .objetivos,
+    body.alto-contraste .ejemplo,
+    body.alto-contraste .importante,
+    body.alto-contraste .formula {
+      background-color: #000;
+      color: #ffff00;
+      border-color: #ffff00;
+    }
+    body.alto-contraste th {
+      background-color: #333;
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">
+    Alto Contraste
+  </button>
+
+  <h1>Sesión 5: Perímetro de la circunferencia</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la sesión</h3>
+    <ul>
+      <li>Distinguir entre circunferencia (línea) y círculo (superficie)</li>
+      <li>Identificar los elementos de la circunferencia (radio, diámetro, arco)</li>
+      <li>Deducir experimentalmente el valor de π (pi)</li>
+      <li>Calcular la longitud de la circunferencia con la fórmula \( L = 2\pi r \)</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+
+  <h3>Circunferencia vs Círculo</h3>
+  <div class="importante">
+    <p><strong>¡No son lo mismo!</strong></p>
+    <ul>
+      <li><strong>Circunferencia</strong>: Es la LÍNEA curva cerrada. Solo el borde.</li>
+      <li><strong>Círculo</strong>: Es la SUPERFICIE completa incluido el borde.</li>
+    </ul>
+  </div>
+
+  <div class="ejemplo">
+    <p>Piensa en una pizza:</p>
+    <ul>
+      <li>El <strong>borde</strong> de la pizza es la circunferencia</li>
+      <li>La pizza <strong>entera</strong> (borde + interior) es el círculo</li>
+    </ul>
+  </div>
+
+  <h3>Elementos de la circunferencia</h3>
+  <ul>
+    <li><strong>Centro (O)</strong>: El punto central</li>
+    <li><strong>Radio (r)</strong>: Distancia del centro a cualquier punto de la circunferencia</li>
+    <li><strong>Diámetro (d)</strong>: Segmento que pasa por el centro y une dos puntos opuestos. \( d = 2r \)</li>
+    <li><strong>Arco</strong>: Cualquier porción de la circunferencia</li>
+  </ul>
+
+  <h3>El número π (pi)</h3>
+  <p>
+    El número <strong>π</strong> (pi) es un número muy especial que aparece cuando estudiamos circunferencias.
+  </p>
+
+  <div class="importante">
+    <h4>⭐ Descubrimiento de π</h4>
+    <p>
+      Si mides la <strong>longitud de cualquier circunferencia</strong> y la divides por su <strong>diámetro</strong>, 
+      siempre obtienes el mismo número: <strong>π ≈ 3,14159...</strong>
+    </p>
+    <p style="text-align: center;">
+      \[ \pi = \frac{\text{Longitud circunferencia}}{\text{Diámetro}} \]
+    </p>
+  </div>
+
+  <p>
+    El número π es <strong>infinito</strong> (nunca se acaba) e <strong>irracional</strong> (no se puede expresar como fracción exacta). 
+    Para cálculos usamos: <strong>π ≈ 3,14</strong>
+  </p>
+
+  <h3>Fórmulas para la longitud de la circunferencia</h3>
+
+  <div class="formula">
+    \[ L = 2\pi r \]
+    <p style="font-size: 0.9em; margin-top: 0.5rem;">
+      (r = radio)
+    </p>
+  </div>
+
+  <div class="formula">
+    \[ L = \pi d \]
+    <p style="font-size: 0.9em; margin-top: 0.5rem;">
+      (d = diámetro)
+    </p>
+  </div>
+
+  <div class="ejemplo">
+    <h4>¿Por qué funcionan estas fórmulas?</h4>
+    <p>
+      De la definición de π sabemos que:<br>
+      \( \pi = \frac{L}{d} \)<br>
+      Por tanto: \( L = \pi \times d \)<br>
+      Y como \( d = 2r \), también: \( L = \pi \times 2r = 2\pi r \)
+    </p>
+  </div>
+
+  <!-- BLOQUE 1: REFUERZO -->
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (10 min)</h2>
+    <p><strong>Distinguir circunferencia y círculo</strong></p>
+    
+    <h3>Ejercicio 1: Colorea correctamente</h3>
+    <p>En cada dibujo:</p>
+    <ol>
+      <li>Colorea en ROJO solo la circunferencia (el borde)</li>
+      <li>Colorea en AZUL todo el círculo (borde + interior)</li>
+      <li>Dibuja 4 figuras: 2 circunferencias y 2 círculos</li>
+    </ol>
+
+    <h3>Ejercicio 2: Marca los elementos</h3>
+    <p>En 3 circunferencias dibujadas, marca con colores:</p>
+    <ol>
+      <li>El <strong>centro</strong> (punto O) → con un punto gordo</li>
+      <li>Un <strong>radio</strong> (del centro al borde) → en rojo</li>
+      <li>Un <strong>diámetro</strong> (de borde a borde pasando por el centro) → en azul</li>
+      <li>Mide el radio: ________ cm</li>
+      <li>Mide el diámetro: ________ cm</li>
+      <li>¿El diámetro es el doble del radio? ________ </li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 2: CONSOLIDACIÓN -->
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (15 min)</h2>
+    <p><strong>Experimento: Descubrimos π</strong></p>
+    
+    <h3>🔬 Experimento en grupos (4 alumnos por grupo)</h3>
+    
+    <p><strong>Materiales</strong>: 4 objetos circulares diferentes (vaso, plato, lata, rueda de juguete), cuerda, regla</p>
+    
+    <p><strong>Procedimiento</strong>:</p>
+    <ol>
+      <li>Rodea cada objeto con la cuerda siguiendo exactamente su borde</li>
+      <li>Marca en la cuerda donde se completa la vuelta</li>
+      <li>Estira la cuerda y mide su longitud con la regla (esa es la <strong>longitud de la circunferencia</strong>)</li>
+      <li>Mide el <strong>diámetro</strong> del objeto con la regla</li>
+      <li>Calcula el cociente: Longitud ÷ Diámetro</li>
+    </ol>
+
+    <h3>Tabla de resultados del experimento</h3>
+    <table>
+      <tr>
+        <th>Objeto</th>
+        <th>Longitud (L)</th>
+        <th>Diámetro (d)</th>
+        <th>L ÷ d</th>
+      </tr>
+      <tr>
+        <td>1. Vaso</td>
+        <td>________ cm</td>
+        <td>________ cm</td>
+        <td>________</td>
+      </tr>
+      <tr>
+        <td>2. Plato</td>
+        <td>________ cm</td>
+        <td>________ cm</td>
+        <td>________</td>
+      </tr>
+      <tr>
+        <td>3. Lata</td>
+        <td>________ cm</td>
+        <td>________ cm</td>
+        <td>________</td>
+      </tr>
+      <tr>
+        <td>4. Rueda</td>
+        <td>________ cm</td>
+        <td>________ cm</td>
+        <td>________</td>
+      </tr>
+    </table>
+
+    <div class="importante">
+      <h4>🎯 Conclusión del experimento</h4>
+      <p>¿Qué hemos descubierto?</p>
+      <ul>
+        <li>Para TODOS los objetos, el cociente Longitud ÷ Diámetro da aproximadamente: <strong>3,14</strong></li>
+        <li>Este número especial se llama <strong>π</strong> (pi)</li>
+        <li>Por tanto: <strong>L = π × d</strong></li>
+        <li>O también: <strong>L = 2π r</strong> (porque d = 2r)</li>
+      </ul>
+    </div>
+
+    <h3>Ejercicio 3: Primeros cálculos con π</h3>
+    <p>Usa π = 3,14 y calcula:</p>
+    <ol>
+      <li>Circunferencia con radio 5 cm
+        <br>L = 2 × 3,14 × 5 = ________ cm
+      </li>
+      <li>Circunferencia con diámetro 10 cm
+        <br>L = 3,14 × 10 = ________ cm
+      </li>
+      <li>Circunferencia con radio 3 cm
+        <br>L = ________ cm
+      </li>
+      <li>Circunferencia con diámetro 8 cm
+        <br>L = ________ cm
+      </li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 3: AFIANZAMIENTO -->
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <p><strong>Cálculos con fórmula</strong></p>
+    
+    <h3>Ejercicio 4: Calcula longitudes de circunferencias</h3>
+    <p>Usa la fórmula \( L = 2\pi r \) con π = 3,14</p>
+    
+    <ol>
+      <li>r = 3 cm → L = 2 × 3,14 × 3 = ________ cm</li>
+      <li>r = 5 cm → L = ________ cm</li>
+      <li>r = 7,5 cm → L = ________ cm</li>
+      <li>r = 10 cm → L = ________ cm</li>
+      <li>r = 2,5 cm → L = ________ cm</li>
+      <li>r = 6 cm → L = ________ cm</li>
+    </ol>
+
+    <h3>Ejercicio 5: Calcula el radio conociendo la longitud</h3>
+    <p>Si \( L = 2\pi r \), entonces \( r = \frac{L}{2\pi} \)</p>
+    
+    <ol>
+      <li>L = 31,4 cm → r = 31,4 ÷ (2 × 3,14) = ________ cm</li>
+      <li>L = 62,8 cm → r = ________ cm</li>
+      <li>L = 18,84 cm → r = ________ cm</li>
+    </ol>
+
+    <h3>Ejercicio 6: Problemas</h3>
+    <ol>
+      <li><strong>Rueda de bicicleta</strong>:
+        <p>Una rueda de bicicleta tiene 26 pulgadas de diámetro (66 cm). ¿Cuánto mide la circunferencia de la rueda?</p>
+        <p>Solución: L = 3,14 × 66 = ________ cm</p>
+      </li>
+      
+      <li><strong>Pizza</strong>:
+        <p>Una pizza tiene 30 cm de diámetro. ¿Cuánto mide el borde (circunferencia)?</p>
+        <p>Solución: L = ________ cm</p>
+      </li>
+      
+      <li><strong>Reloj</strong>:
+        <p>Un reloj de pared tiene un radio de 15 cm. ¿Cuánto mide su circunferencia?</p>
+        <p>Solución: L = ________ cm</p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 4: AMPLIACIÓN -->
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <p><strong>Aplicaciones circulares en Vigo</strong></p>
+    
+    <h3>Ejercicio 7: Círculos y circunferencias en Vigo</h3>
+    
+    <ol>
+      <li><strong>Fuente del Parque de Castrelos</strong>:
+        <p>La fuente circular del Parque de Castrelos tiene aproximadamente 8 metros de diámetro.</p>
+        <ul>
+          <li>Radio: ________ m</li>
+          <li>Longitud de la circunferencia: L = 3,14 × 8 = ________ m</li>
+          <li>Si caminas alrededor de la fuente, ¿cuántos metros recorres? ________ m</li>
+        </ul>
+      </li>
+      
+      <li><strong>Rotonda circular de Teis</strong>:
+        <p>Una rotonda cerca del barrio de Teis tiene un radio aproximado de 12 metros.</p>
+        <ul>
+          <li>Longitud de la circunferencia: L = 2 × 3,14 × 12 = ________ m</li>
+          <li>Un autobús de Vitrasa que rodea la rotonda, ¿cuántos metros recorre? ________ m</li>
+        </ul>
+      </li>
+      
+      <li><strong>Reloj del Ayuntamiento de Vigo</strong>:
+        <p>El reloj de la torre del Ayuntamiento tiene un diámetro aproximado de 2 metros.</p>
+        <ul>
+          <li>Radio: ________ m = ________ cm</li>
+          <li>Longitud de la circunferencia: L = ________ cm</li>
+        </ul>
+      </li>
+      
+      <li><strong>Plaza circular (Plaza de la Estrella)</strong>:
+        <p>Imagina una plaza circular con radio de 15 m. Si quieren poner bancos alrededor, 
+        ¿qué longitud tiene el perímetro?</p>
+        <p>Solución: L = ________ m</p>
+      </li>
+    </ol>
+
+    <h3>Problema de pensamiento</h3>
+    <div class="ejemplo">
+      <h4>Pregunta:</h4>
+      <p>
+        Una rueda de autobús da 500 vueltas para recorrer 1 km. 
+        ¿Puedes calcular el diámetro de la rueda?
+      </p>
+      <p><strong>Pista</strong>: 1 km = 1000 m. Cada vuelta recorre una distancia igual a la circunferencia de la rueda.</p>
+      <p>Solución:<br>
+        Distancia por vuelta = 1000 m ÷ 500 = ________ m<br>
+        Esta distancia es L = π × d<br>
+        Por tanto: d = ________ m = ________ cm
+      </p>
+    </div>
+
+    <h3>Curiosidad histórica</h3>
+    <p>
+      El número π fue descubierto hace más de 4000 años por civilizaciones antiguas (babilonios, egipcios). 
+      Los griegos lo estudiaron en profundidad. Arquímedes lo calculó con gran precisión hace 2200 años.
+    </p>
+    <p>
+      Hoy en día, con ordenadores, conocemos π con <strong>más de 100 billones de decimales</strong>. 
+      Pero para casi todo basta con π ≈ 3,14.
+    </p>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Busca en casa 3 objetos circulares, mide su diámetro y calcula la longitud de su circunferencia</li>
+    <li>Calcula cuántas vueltas da una rueda de bicicleta de 70 cm de diámetro en un recorrido de 500 m</li>
+    <li>Investiga: ¿Cuántos decimales de π te sabes de memoria? Intenta aprender los primeros 10: 3,1415926535...</li>
+    <li>Dibuja una circunferencia de radio 4 cm y calcula su longitud</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 5 - Figuras Planas - 1º ESO - Matemáticas</small>
+  </p>
+
+</body>
+</html>

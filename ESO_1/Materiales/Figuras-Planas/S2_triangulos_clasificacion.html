@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 2: Triángulos - Clasificación y propiedades</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { 
+      font-family: Georgia, serif; 
+      max-width: 860px; 
+      margin: 2rem auto; 
+      padding: 0 1.2rem; 
+      line-height: 1.7; 
+      color: #222; 
+      background-color: #fff;
+    }
+    h1 { 
+      color: #1a3a6e; 
+      border-bottom: 2px solid #1a3a6e; 
+      padding-bottom: .4rem; 
+    }
+    h2 { 
+      color: #2a5298; 
+      margin-top: 2rem; 
+    }
+    h3 { 
+      color: #3a6bc4; 
+    }
+    .objetivos {
+      background: #e8f4f8;
+      border-left: 4px solid #2196F3;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .bloque-refuerzo { 
+      background: #fff9e6; 
+      border-left: 4px solid #f9a825; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-consolidacion { 
+      background: #f0f4fc; 
+      border-left: 4px solid #2a5298; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-afianzamiento { 
+      background: #e8f5e9; 
+      border-left: 4px solid #388e3c; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-ampliacion { 
+      background: #fce4ec; 
+      border-left: 4px solid #c2185b; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .ejemplo {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .importante {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    ol li, ul li { 
+      margin-bottom: .8rem; 
+    }
+    img { 
+      max-width: 100%; 
+      display: block; 
+      margin: 1rem auto; 
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f4fc;
+      color: #1a3a6e;
+    }
+    .contraste-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .contraste-btn:hover {
+      background: #2a5298;
+    }
+    body.alto-contraste {
+      background-color: #000;
+      color: #ffff00;
+    }
+    body.alto-contraste h1,
+    body.alto-contraste h2,
+    body.alto-contraste h3 {
+      color: #ffff00;
+    }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .objetivos,
+    body.alto-contraste .ejemplo,
+    body.alto-contraste .importante {
+      background-color: #000;
+      color: #ffff00;
+      border-color: #ffff00;
+    }
+    body.alto-contraste th {
+      background-color: #333;
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">
+    Alto Contraste
+  </button>
+
+  <h1>Sesión 2: Triángulos - Clasificación y propiedades</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la sesión</h3>
+    <ul>
+      <li>Clasificar triángulos según sus lados y sus ángulos</li>
+      <li>Identificar las propiedades fundamentales de los triángulos</li>
+      <li>Reconocer que la suma de ángulos internos es 180°</li>
+      <li>Usar vocabulario preciso (equilátero, isósceles, escaleno, acutángulo, rectángulo, obtusángulo)</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+
+  <h3>El triángulo: el polígono más sencillo</h3>
+  <p>
+    El <strong>triángulo</strong> es el polígono con menor número de lados posible: tres. 
+    Tiene 3 lados, 3 vértices y 3 ángulos.
+  </p>
+
+  <div class="importante">
+    <h4>⭐ Propiedad fundamental de los triángulos</h4>
+    <p>
+      La suma de los tres ángulos interiores de cualquier triángulo siempre es <strong>180°</strong>.
+    </p>
+    <p style="text-align: center; font-size: 1.3em;">
+      \[ \alpha + \beta + \gamma = 180° \]
+    </p>
+  </div>
+
+  <h3>Clasificación de triángulos según sus LADOS</h3>
+  <ul>
+    <li><strong>Triángulo Equilátero</strong>: Los tres lados iguales</li>
+    <li><strong>Triángulo Isósceles</strong>: Dos lados iguales</li>
+    <li><strong>Triángulo Escaleno</strong>: Los tres lados diferentes</li>
+  </ul>
+
+  <h3>Clasificación de triángulos según sus ÁNGULOS</h3>
+  <ul>
+    <li><strong>Triángulo Acutángulo</strong>: Los tres ángulos son agudos (menores de 90°)</li>
+    <li><strong>Triángulo Rectángulo</strong>: Tiene un ángulo recto (exactamente 90°)</li>
+    <li><strong>Triángulo Obtusángulo</strong>: Tiene un ángulo obtuso (mayor de 90°)</li>
+  </ul>
+
+  <div class="ejemplo">
+    <h4>Repaso de tipos de ángulos:</h4>
+    <ul>
+      <li><strong>Ángulo agudo</strong>: mide menos de 90°</li>
+      <li><strong>Ángulo recto</strong>: mide exactamente 90°</li>
+      <li><strong>Ángulo obtuso</strong>: mide más de 90° pero menos de 180°</li>
+    </ul>
+  </div>
+
+  <h3>Doble clasificación</h3>
+  <p>
+    Un triángulo se puede clasificar simultáneamente por sus lados Y por sus ángulos. 
+    Por ejemplo: "triángulo isósceles rectángulo" (dos lados iguales y un ángulo recto).
+  </p>
+
+  <!-- BLOQUE 1: REFUERZO -->
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (10 min)</h2>
+    <p><strong>Repaso de elementos y suma de ángulos</strong></p>
+    
+    <h3>Ejercicio 1: Medir y sumar ángulos</h3>
+    <p>Mide los ángulos de estos triángulos con el transportador y comprueba que suman 180°:</p>
+    
+    <ol>
+      <li><strong>Triángulo A</strong>:
+        <ul>
+          <li>Ángulo 1 = ______°</li>
+          <li>Ángulo 2 = ______°</li>
+          <li>Ángulo 3 = ______°</li>
+          <li>SUMA = ______° (debe dar 180°)</li>
+        </ul>
+      </li>
+      
+      <li><strong>Triángulo B</strong>:
+        <ul>
+          <li>Ángulo 1 = ______°</li>
+          <li>Ángulo 2 = ______°</li>
+          <li>Ángulo 3 = ______°</li>
+          <li>SUMA = ______° (debe dar 180°)</li>
+        </ul>
+      </li>
+      
+      <li><strong>Triángulo C</strong>:
+        <ul>
+          <li>Ángulo 1 = ______°</li>
+          <li>Ángulo 2 = ______°</li>
+          <li>Ángulo 3 = ______°</li>
+          <li>SUMA = ______° (debe dar 180°)</li>
+        </ul>
+      </li>
+      
+      <li><strong>Triángulo D</strong>:
+        <ul>
+          <li>Ángulo 1 = ______°</li>
+          <li>Ángulo 2 = ______°</li>
+          <li>Ángulo 3 = ______°</li>
+          <li>SUMA = ______° (debe dar 180°)</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><em>Nota: Dibuja 4 triángulos diferentes en tu cuaderno o usa plantillas del profesor.</em></p>
+  </div>
+
+  <!-- BLOQUE 2: CONSOLIDACIÓN -->
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (15 min)</h2>
+    <p><strong>Clasificación con doble criterio</strong></p>
+    
+    <h3>Ejercicio 2: Tabla de clasificación</h3>
+    <p>Clasifica estos 8 triángulos usando los DOS criterios (lados Y ángulos):</p>
+    
+    <table>
+      <tr>
+        <th>Triángulo</th>
+        <th>Según LADOS</th>
+        <th>Según ÁNGULOS</th>
+      </tr>
+      <tr>
+        <td>1. Lados: 5cm, 5cm, 5cm<br>Ángulos: 60°, 60°, 60°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>2. Lados: 3cm, 4cm, 5cm<br>Ángulos: 37°, 53°, 90°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>3. Lados: 6cm, 6cm, 8cm<br>Ángulos: 70°, 70°, 40°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>4. Lados: 4cm, 7cm, 9cm<br>Ángulos: 25°, 55°, 100°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>5. Lados: 5cm, 5cm, 7cm<br>Ángulos: 45°, 45°, 90°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>6. Lados: 8cm, 8cm, 11cm<br>Ángulos: 45°, 45°, 90°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>7. Lados: 6cm, 8cm, 10cm<br>Ángulos: 37°, 53°, 90°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+      <tr>
+        <td>8. Lados: 7cm, 9cm, 11cm<br>Ángulos: 50°, 60°, 70°</td>
+        <td>___________</td>
+        <td>___________</td>
+      </tr>
+    </table>
+
+    <h3>Ejercicio 3: Triángulos en construcciones</h3>
+    <p>Observa fotografías de estructuras triangulares (grúas, torres, pasarelas). ¿Qué tipos de triángulos identificas?</p>
+    <ol>
+      <li>Estructura de una grúa del puerto de Vigo → ___________</li>
+      <li>Torre eléctrica → ___________</li>
+      <li>Pasarela peatonal → ___________</li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 3: AFIANZAMIENTO -->
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <p><strong>Práctica autónoma: dibujar y clasificar</strong></p>
+    
+    <h3>Ejercicio 4: Dibuja triángulos con características dadas</h3>
+    <p>Usa regla y transportador para dibujar:</p>
+    
+    <ol>
+      <li><strong>Un triángulo equilátero</strong> de lado 5 cm
+        <br><em>Ayuda: Los tres ángulos deben medir 60°</em>
+      </li>
+      
+      <li><strong>Un triángulo isósceles rectángulo</strong> con los lados iguales de 4 cm
+        <br><em>Ayuda: El ángulo recto va entre los dos lados iguales</em>
+      </li>
+      
+      <li><strong>Un triángulo escaleno obtusángulo</strong> 
+        <br><em>Ayuda: Los tres lados diferentes, y un ángulo mayor de 90°</em>
+      </li>
+    </ol>
+
+    <h3>Ejercicio 5: Clasifica estos triángulos</h3>
+    <p>(Imagina o mira los dibujos que te proporcione el profesor)</p>
+    
+    <table>
+      <tr>
+        <th>Triángulo</th>
+        <th>Según lados</th>
+        <th>Según ángulos</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>G</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>H</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+      <tr>
+        <td>J</td>
+        <td>____________</td>
+        <td>____________</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- BLOQUE 4: AMPLIACIÓN -->
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <p><strong>Estructuras triangulares en Vigo: ¿Por qué son tan resistentes?</strong></p>
+    
+    <h3>Investigación: El triángulo en la ingeniería</h3>
+    
+    <div class="ejemplo">
+      <h4>¿Por qué tantas estructuras usan triángulos?</h4>
+      <p>
+        El triángulo es la única forma geométrica que NO se deforma cuando se le aplica presión en sus vértices. 
+        Es la estructura más rígida y resistente posible.
+      </p>
+    </div>
+
+    <h3>Ejercicio 6: Analiza estas estructuras de Vigo</h3>
+    
+    <ol>
+      <li><strong>Grúas de los astilleros de Vigo</strong>:
+        <ul>
+          <li>Observa la fotografía. ¿Cuántas estructuras triangulares ves?</li>
+          <li>¿Qué tipo de triángulos se usan más? (equiláteros, isósceles, escalenos)</li>
+          <li>¿Por qué crees que se repite tanto el triángulo?</li>
+        </ul>
+      </li>
+      
+      <li><strong>Estructura del puente de Rande</strong>:
+        <ul>
+          <li>Los cables forman triángulos con la estructura. ¿Los ves?</li>
+          <li>¿Por qué es importante esta configuración triangular?</li>
+        </ul>
+      </li>
+      
+      <li><strong>Torres de electricidad</strong>:
+        <ul>
+          <li>Las torres que llevan cables de alta tensión están llenas de triángulos</li>
+          <li>¿Qué pasaría si usaran cuadrados en lugar de triángulos?</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Miniproyecto: Construye una estructura triangular</h3>
+    <p><strong>Materiales</strong>: Palillos de dientes y plastilina (o gominolas)</p>
+    
+    <p><strong>Tarea</strong>:</p>
+    <ol>
+      <li>Construye un triángulo con 3 palillos unidos con plastilina en los vértices</li>
+      <li>Construye un cuadrado con 4 palillos</li>
+      <li>Presiona suavemente cada estructura. ¿Cuál es más resistente?</li>
+      <li>Intenta deformar el triángulo. ¿Puedes sin romper los palillos?</li>
+      <li>Intenta deformar el cuadrado. ¿Es más fácil?</li>
+    </ol>
+
+    <div class="ejemplo">
+      <h4>Conclusión</h4>
+      <p>
+        El triángulo es <strong>indeformable</strong>: una vez construido, no cambia de forma a menos que rompas alguno de sus lados. 
+        El cuadrado, en cambio, se puede deformar en un rombo sin romper nada.
+      </p>
+      <p>
+        Por eso <strong>puentes, grúas y torres</strong> usan triángulos: son estructuras que NUNCA se deforman.
+      </p>
+    </div>
+
+    <h3>Estructuras triangulares en Vigo</h3>
+    <ul>
+      <li>Astilleros Barreras y Freire</li>
+      <li>Grúas portuarias del Puerto de Vigo</li>
+      <li>Puente de Rande</li>
+      <li>Torres eléctricas alrededor de la ciudad</li>
+      <li>Andamios de construcción</li>
+    </ul>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Calcula el ángulo que falta en estos triángulos:
+      <ul>
+        <li>Triángulo con ángulos 40° y 60°. El tercero mide: _____°</li>
+        <li>Triángulo con ángulos 90° y 35°. El tercero mide: _____°</li>
+        <li>Triángulo con ángulos 55° y 55°. El tercero mide: _____°</li>
+      </ul>
+    </li>
+    <li>Busca 3 objetos de tu casa con forma triangular y clasifícalos según lados y ángulos</li>
+    <li>Haz un pequeño croquis de una grúa usando solo triángulos</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 2 - Figuras Planas - 1º ESO - Matemáticas</small>
+  </p>
+
+</body>
+</html>

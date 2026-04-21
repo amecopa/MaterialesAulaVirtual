@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 2: Distribuciones Marginales y Condicionadas</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    h3 { color: #3a6bc4; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .solucion  { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .ejemplo { background: #f9f9f9; border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; font-style: italic; }
+    ol li, ul li { margin-bottom: .5rem; }
+    img { max-width: 100%; display: block; margin: 1rem auto; border: 1px solid #ddd; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; font-weight: bold; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    summary:hover { background: #e0e8f4; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Sesión 2: Distribuciones Marginales y Condicionadas</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la Sesión</h3>
+    <ul>
+      <li>Obtener distribuciones marginales a partir de una distribución conjunta</li>
+      <li>Calcular distribuciones condicionadas para valores específicos de una variable</li>
+      <li>Calcular parámetros estadísticos de distribuciones marginales y condicionadas</li>
+      <li>Comparar medias y desviaciones típicas condicionadas</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos Teóricos</h2>
+  
+  <h3>1. Distribución Conjunta</h3>
+  
+  <p>Cuando trabajamos con variables bidimensionales \((X, Y)\), la <strong>distribución conjunta</strong> muestra todas las combinaciones posibles de valores de ambas variables junto con sus frecuencias.</p>
+  
+  <div class="definicion">
+    <strong>Distribución Conjunta:</strong> Tabla que muestra la frecuencia de cada par de valores \((x_i, y_j)\) en una variable bidimensional. Incluye todas las frecuencias absolutas \(n_{ij}\) o relativas \(f_{ij}\).
+  </div>
+
+  <h3>2. Distribuciones Marginales</h3>
+  
+  <p>A partir de una distribución conjunta, podemos obtener las <strong>distribuciones marginales</strong> de cada variable por separado, "ignorando" temporalmente la otra variable.</p>
+  
+  <div class="definicion">
+    <strong>Distribución Marginal de X:</strong> Se obtiene sumando las frecuencias de cada valor de X sobre todos los valores de Y:<br>
+    \[n_{i\cdot} = \sum_{j} n_{ij}\]
+    <br>
+    <strong>Distribución Marginal de Y:</strong> Se obtiene sumando las frecuencias de cada valor de Y sobre todos los valores de X:<br>
+    \[n_{\cdot j} = \sum_{i} n_{ij}\]
+  </div>
+
+  <div class="ejemplo">
+    <strong>Ejemplo:</strong> Tabla de contingencia de 100 trabajadores clasificados por Salario (X: Bajo/Medio/Alto) y Nivel Educativo (Y: Básico/Medio/Superior):
+    
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Salario (X)</th>
+          <th colspan="3">Nivel Educativo (Y)</th>
+          <th rowspan="2">Marginal X</th>
+        </tr>
+        <tr>
+          <th>Básico</th>
+          <th>Medio</th>
+          <th>Superior</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Bajo</th>
+          <td>20</td>
+          <td>15</td>
+          <td>5</td>
+          <th style="background: #f9a825;">40</th>
+        </tr>
+        <tr>
+          <th>Medio</th>
+          <td>10</td>
+          <td>20</td>
+          <td>15</td>
+          <th style="background: #f9a825;">45</th>
+        </tr>
+        <tr>
+          <th>Alto</th>
+          <td>2</td>
+          <td>5</td>
+          <td>8</td>
+          <th style="background: #f9a825;">15</th>
+        </tr>
+        <tr>
+          <th>Marginal Y</th>
+          <th style="background: #f9a825;">32</th>
+          <th style="background: #f9a825;">40</th>
+          <th style="background: #f9a825;">28</th>
+          <th style="background: #c2185b;">100</th>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p><strong>Interpretación:</strong></p>
+    <ul>
+      <li><strong>Marginal de Salario:</strong> 40 personas con salario bajo, 45 con medio, 15 con alto</li>
+      <li><strong>Marginal de Educación:</strong> 32 con nivel básico, 40 con medio, 28 con superior</li>
+    </ul>
+  </div>
+
+  <img src="graficos/s2_marginal_vs_condicionada.svg" alt="Distribuciones marginales vs condicionadas">
+
+  <h3>3. Distribuciones Condicionadas</h3>
+  
+  <p>Las <strong>distribuciones condicionadas</strong> nos permiten estudiar el comportamiento de una variable <strong>cuando fijamos un valor específico de la otra</strong>.</p>
+  
+  <div class="definicion">
+    <strong>Distribución de Y condicionada a X = x<sub>i</sub>:</strong><br>
+    Distribución de la variable Y cuando sabemos que X toma el valor x<sub>i</sub>. Las frecuencias son:<br>
+    \[f_{j|i} = \frac{n_{ij}}{n_{i\cdot}}\]
+    <br>
+    <strong>Distribución de X condicionada a Y = y<sub>j</sub>:</strong><br>
+    \[f_{i|j} = \frac{n_{ij}}{n_{\cdot j}}\]
+  </div>
+
+  <div class="ejemplo">
+    <strong>Ejemplo (continuación):</strong> Distribución de Nivel Educativo condicionada a Salario Bajo:
+    
+    <p>Para los 40 trabajadores con salario bajo:</p>
+    <ul>
+      <li>Básico: \( \frac{20}{40} = 0.50 \) → 50%</li>
+      <li>Medio: \( \frac{15}{40} = 0.375 \) → 37.5%</li>
+      <li>Superior: \( \frac{5}{40} = 0.125 \) → 12.5%</li>
+    </ul>
+    
+    <p><strong>Interpretación:</strong> Entre los trabajadores con salario bajo, el 50% tiene nivel educativo básico.</p>
+  </div>
+
+  <img src="graficos/s2_distribuciones_condicionadas_apiladas.svg" alt="Distribuciones condicionadas por grupos">
+
+  <h3>4. Parámetros de Distribuciones Condicionadas</h3>
+  
+  <p>Podemos calcular la <strong>media condicionada</strong>, <strong>varianza condicionada</strong> y otros parámetros para distribuciones condicionadas, lo que permite comparar el comportamiento de una variable bajo diferentes condiciones de la otra.</p>
+  
+  <p><strong>Media de Y condicionada a X = x<sub>i</sub>:</strong></p>
+  \[\bar{y}_{|x_i} = \frac{\sum_j y_j \cdot n_{ij}}{n_{i\cdot}}\]
+
+  <img src="graficos/s2_medias_condicionadas_salario.svg" alt="Comparación de medias condicionadas">
+
+  <hr style="margin: 2rem 0;">
+
+  <h2>💪 Bloque 1: Refuerzo (8 min)</h2>
+  
+  <div class="bloque-refuerzo">
+    <h3>Recordatorio de Frecuencias</h3>
+    
+    <p><strong>Ejercicio 1.1:</strong> Dada la siguiente distribución de frecuencias: 5, 8, 5, 12, 5, 8, 10, 5. Calcula las frecuencias absolutas y relativas.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Identificar valores distintos: 5, 8, 10, 12
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Contar frecuencias absolutas:
+          <table>
+            <tr><th>Valor (x<sub>i</sub>)</th><th>Frecuencia Absoluta (n<sub>i</sub>)</th></tr>
+            <tr><td>5</td><td>4</td></tr>
+            <tr><td>8</td><td>2</td></tr>
+            <tr><td>10</td><td>1</td></tr>
+            <tr><td>12</td><td>1</td></tr>
+            <tr><th>Total</th><th>8</th></tr>
+          </table>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Calcular frecuencias relativas (f<sub>i</sub> = n<sub>i</sub>/n):
+          <ul>
+            <li>f(5) = 4/8 = 0.50 (50%)</li>
+            <li>f(8) = 2/8 = 0.25 (25%)</li>
+            <li>f(10) = 1/8 = 0.125 (12.5%)</li>
+            <li>f(12) = 1/8 = 0.125 (12.5%)</li>
+          </ul>
+        </div>
+        <p><strong>Verificación:</strong> \(\sum f_i = 0.50 + 0.25 + 0.125 + 0.125 = 1\) ✓</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 1.2:</strong> Calcula la media de la distribución anterior.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Aplicar fórmula con frecuencias absolutas:<br>
+          \(\bar{x} = \frac{\sum x_i \cdot n_i}{n}\)
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Calcular productos:
+          <ul>
+            <li>5 × 4 = 20</li>
+            <li>8 × 2 = 16</li>
+            <li>10 × 1 = 10</li>
+            <li>12 × 1 = 12</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Sumar y dividir:<br>
+          \(\bar{x} = \frac{20 + 16 + 10 + 12}{8} = \frac{58}{8} = 7.25\)
+        </div>
+        <p><strong>Resultado:</strong> \(\bar{x} = 7.25\)</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>📖 Bloque 2: Consolidación (22 min)</h2>
+  
+  <div class="bloque-consolidacion">
+    <h3>Trabajo Guiado con Tabla de Doble Entrada</h3>
+    
+    <p><strong>Contexto:</strong> Estudio de 100 trabajadores clasificados por Salario Anual (miles €) y Nivel Educativo.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Salario (miles €)</th>
+          <th colspan="3">Nivel Educativo</th>
+          <th rowspan="2">Total</th>
+        </tr>
+        <tr>
+          <th>Básico</th>
+          <th>Medio</th>
+          <th>Superior</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>18-24</th>
+          <td>15</td>
+          <td>8</td>
+          <td>2</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <th>25-32</th>
+          <td>10</td>
+          <td>20</td>
+          <td>8</td>
+          <td>38</td>
+        </tr>
+        <tr>
+          <th>33-40</th>
+          <td>3</td>
+          <td>12</td>
+          <td>12</td>
+          <td>27</td>
+        </tr>
+        <tr>
+          <th>>40</th>
+          <td>0</td>
+          <td>2</td>
+          <td>8</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th>28</th>
+          <th>42</th>
+          <th>30</th>
+          <th>100</th>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p><strong>Ejercicio 2.1:</strong> Calcula la distribución marginal de Salario.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Distribución Marginal de Salario:</strong></p>
+        <table>
+          <tr><th>Salario (miles €)</th><th>Frecuencia Absoluta</th><th>Frecuencia Relativa</th></tr>
+          <tr><td>18-24</td><td>25</td><td>0.25 (25%)</td></tr>
+          <tr><td>25-32</td><td>38</td><td>0.38 (38%)</td></tr>
+          <tr><td>33-40</td><td>27</td><td>0.27 (27%)</td></tr>
+          <tr><td>>40</td><td>10</td><td>0.10 (10%)</td></tr>
+          <tr><th>Total</th><th>100</th><th>1.00</th></tr>
+        </table>
+        <p><strong>Interpretación:</strong> El 38% de los trabajadores tienen salarios entre 25-32 mil euros, siendo el rango más frecuente.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.2:</strong> Calcula la distribución marginal de Nivel Educativo.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Distribución Marginal de Nivel Educativo:</strong></p>
+        <table>
+          <tr><th>Nivel Educativo</th><th>Frecuencia Absoluta</th><th>Frecuencia Relativa</th></tr>
+          <tr><td>Básico</td><td>28</td><td>0.28 (28%)</td></tr>
+          <tr><td>Medio</td><td>42</td><td>0.42 (42%)</td></tr>
+          <tr><td>Superior</td><td>30</td><td>0.30 (30%)</td></tr>
+          <tr><th>Total</th><th>100</th><th>1.00</th></tr>
+        </table>
+        <p><strong>Interpretación:</strong> El 42% de los trabajadores tiene nivel educativo medio, siendo la categoría más numerosa.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.3:</strong> Obtén la distribución condicionada del Salario para el nivel educativo "Superior".</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Identificar el total de trabajadores con nivel Superior: 30 personas
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Calcular frecuencias condicionadas para cada rango salarial:
+          <ul>
+            <li>P(18-24 | Superior) = 2/30 = 0.067 (6.7%)</li>
+            <li>P(25-32 | Superior) = 8/30 = 0.267 (26.7%)</li>
+            <li>P(33-40 | Superior) = 12/30 = 0.40 (40%)</li>
+            <li>P(>40 | Superior) = 8/30 = 0.267 (26.7%)</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Tabla de la distribución condicionada:
+          <table>
+            <tr><th>Salario (miles €)</th><th>Frecuencia Condicionada</th><th>Porcentaje</th></tr>
+            <tr><td>18-24</td><td>0.067</td><td>6.7%</td></tr>
+            <tr><td>25-32</td><td>0.267</td><td>26.7%</td></tr>
+            <tr><td>33-40</td><td>0.40</td><td>40%</td></tr>
+            <tr><td>>40</td><td>0.267</td><td>26.7%</td></tr>
+            <tr><th>Total</th><th>1.00</th><th>100%</th></tr>
+          </table>
+        </div>
+        <p><strong>Interpretación:</strong> Entre los trabajadores con nivel educativo superior, el 40% gana entre 33-40 mil euros, y el 26.7% supera los 40 mil euros.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.4:</strong> Calcula la media salarial condicionada al nivel "Básico" (usar marcas de clase: 21, 28.5, 36.5, 45 para cada intervalo).</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Datos para nivel Básico (28 trabajadores):
+          <ul>
+            <li>18-24 (marca: 21): 15 personas</li>
+            <li>25-32 (marca: 28.5): 10 personas</li>
+            <li>33-40 (marca: 36.5): 3 personas</li>
+            <li>>40 (marca: 45): 0 personas</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Calcular productos (marca × frecuencia):
+          <ul>
+            <li>21 × 15 = 315</li>
+            <li>28.5 × 10 = 285</li>
+            <li>36.5 × 3 = 109.5</li>
+            <li>45 × 0 = 0</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Aplicar fórmula de la media condicionada:<br>
+          \(\bar{x}_{|Básico} = \frac{315 + 285 + 109.5 + 0}{28} = \frac{709.5}{28} = 25.34\) mil €
+        </div>
+        <p><strong>Resultado:</strong> La media salarial de los trabajadores con nivel educativo básico es <strong>25,340 €/año</strong>.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.5:</strong> Compara las medias condicionadas y extrae conclusiones.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Cálculo de medias condicionadas para cada nivel educativo:</strong></p>
+        
+        <div class="paso">
+          <strong>Media | Básico:</strong> 25.34 mil € (ya calculada)
+        </div>
+        
+        <div class="paso">
+          <strong>Media | Medio:</strong><br>
+          Datos: (21×8) + (28.5×20) + (36.5×12) + (45×2) = 168 + 570 + 438 + 90 = 1266<br>
+          \(\bar{x}_{|Medio} = \frac{1266}{42} = 30.14\) mil €
+        </div>
+        
+        <div class="paso">
+          <strong>Media | Superior:</strong><br>
+          Datos: (21×2) + (28.5×8) + (36.5×12) + (45×8) = 42 + 228 + 438 + 360 = 1068<br>
+          \(\bar{x}_{|Superior} = \frac{1068}{30} = 35.60\) mil €
+        </div>
+        
+        <table>
+          <tr><th>Nivel Educativo</th><th>Salario Medio (miles €)</th></tr>
+          <tr><td>Básico</td><td>25.34</td></tr>
+          <tr><td>Medio</td><td>30.14</td></tr>
+          <tr><td>Superior</td><td>35.60</td></tr>
+        </table>
+        
+        <p><strong>Conclusiones:</strong></p>
+        <ul>
+          <li>Existe una relación clara: <strong>a mayor nivel educativo, mayor salario medio</strong></li>
+          <li>Diferencia Superior-Básico: 35.60 - 25.34 = <strong>10.26 mil € (+40.5%)</strong></li>
+          <li>El nivel educativo es un factor determinante en el salario</li>
+          <li>La progresión es consistente: cada nivel educativo superior incrementa el salario en ~5 mil €</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <h2>🔬 Bloque 3: Afianzamiento (20 min)</h2>
+  
+  <div class="bloque-afianzamiento">
+    <h3>Trabajo Individual con Tabla de Contingencia</h3>
+    
+    <p><strong>Contexto:</strong> Muestra de 200 personas clasificadas por Grupo de Edad y Tipo de Vi vienda.</p>
+    
+    <img src="graficos/s2_tabla_contingencia_edad_vivienda.svg" alt="Tabla de contingencia Edad-Vivienda">
+    
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Tipo de Vivienda</th>
+          <th colspan="4">Grupo de Edad</th>
+          <th rowspan="2">Total</th>
+        </tr>
+        <tr>
+          <th>&lt;25</th>
+          <th>25-40</th>
+          <th>40-60</th>
+          <th>&gt;60</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Propiedad</th>
+          <td>15</td>
+          <td>35</td>
+          <td>55</td>
+          <td>40</td>
+          <td>145</td>
+        </tr>
+        <tr>
+          <th>Alquiler</th>
+          <td>45</td>
+          <td>50</td>
+          <td>20</td>
+          <td>5</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <th>Otros</th>
+          <td>10</td>
+          <td>15</td>
+          <td>10</td>
+          <td>5</td>
+          <td>40</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th>70</th>
+          <th>100</th>
+          <th>85</th>
+          <th>50</th>
+          <th>200</th>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p><strong>Ejercicio 3.1:</strong> Calcula ambas distribuciones marginales.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Distribución Marginal de Tipo de Vivienda:</strong></p>
+        <table>
+          <tr><th>Tipo</th><th>Frecuencia</th><th>Porcentaje</th></tr>
+          <tr><td>Propiedad</td><td>145</td><td>72.5%</td></tr>
+          <tr><td>Alquiler</td><td>120</td><td>30.0%</td></tr>
+          <tr><td>Otros</td><td>40</td><td>20.0%</td></tr>
+        </table>
+        
+        <p><strong>Distribución Marginal de Grupo de Edad:</strong></p>
+        <table>
+          <tr><th>Edad</th><th>Frecuencia</th><th>Porcentaje</th></tr>
+          <tr><td>&lt;25</td><td>70</td><td>35.0%</td></tr>
+          <tr><td>25-40</td><td>100</td><td>50.0%</td></tr>
+          <tr><td>40-60</td><td>85</td><td>42.5%</td></tr>
+          <tr><td>&gt;60</td><td>50</td><td>25.0%</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 3.2:</strong> Obtén la distribución condicionada del tipo de vivienda para el grupo 25-40 años.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Distribución de Tipo de Vivienda | Edad 25-40:</strong></p>
+        <div class="paso">
+          <strong>Total en grupo 25-40:</strong> 100 personas
+        </div>
+        <div class="paso">
+          <strong>Frecuencias condicionadas:</strong>
+          <ul>
+            <li>P(Propiedad | 25-40) = 35/100 = 0.35 (35%)</li>
+            <li>P(Alquiler | 25-40) = 50/100 = 0.50 (50%)</li>
+            <li>P(Otros | 25-40) = 15/100 = 0.15 (15%)</li>
+          </ul>
+        </div>
+        <p><strong>Interpretación:</strong> En el grupo de 25-40 años, el 50% vive de alquiler, siendo la opción mayoritaria en este rango de edad.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 3.3:</strong> Calcula el porcentaje de personas en alquiler para cada grupo de edad.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Porcentaje en alquiler por grupo de edad:</strong></p>
+        <table>
+          <tr><th>Grupo de Edad</th><th>% en Alquiler</th><th>Cálculo</th></tr>
+          <tr><td>&lt;25</td><td>64.3%</td><td>45/70 = 0.643</td></tr>
+          <tr><td>25-40</td><td>50.0%</td><td>50/100 = 0.50</td></tr>
+          <tr><td>40-60</td><td>23.5%</td><td>20/85 = 0.235</td></tr>
+          <tr><td>&gt;60</td><td>10.0%</td><td>5/50 = 0.10</td></tr>
+        </table>
+        
+        <p><strong>Conclusión:</strong> El porcentaje de personas que viven de alquiler <strong>disminuye significativamente con la edad</strong>. Mientras que el 64.3% de los menores de 25 años alquilan, solo el 10% de los mayores de 60 lo hacen.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 3.4:</strong> Interpreta los resultados desde una perspectiva socioeconómica.</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Análisis Socioeconómico:</strong></p>
+        <ul>
+          <li><strong>Jóvenes (&lt;25):</strong> Alta dependencia del alquiler (64.3%) debido a:
+            <ul>
+              <li>Menor capacidad económica para comprar vivienda</li>
+              <li>Inestabilidad laboral (contratos temporales)</li>
+              <li>Falta de ahorro acumulado para entrada de hipoteca</li>
+            </ul>
+          </li>
+          <li><strong>Adultos jóvenes (25-40):</strong> Periodo de transición (50% alquiler, 35% propiedad):
+            <ul>
+              <li>Estabilización laboral y económica</li>
+              <li>Acceso progresivo a hipotecas</li>
+              <li>Formación de familias incentiva compra</li>
+            </ul>
+          </li>
+          <li><strong>Adultos (40-60) y Mayores (&gt;60):</strong> Mayoría en propiedad:
+            <ul>
+              <li>Acumulación de patrimonio a lo largo de la vida</li>
+              <li>Mayor estabilidad económica</li>
+              <li>Posibles herencias familiares</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>Implicaciones:</strong> Los datos reflejan la problemática del acceso a la vivienda en España, donde los jóvenes enfrentan barreras significativas para la compra de vivienda.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>🚀 Bloque 4: Ampliación (5 min)</h2>
+  
+  <div class="bloque-ampliacion">
+    <h3>Problema Aplicado: Análisis de Uso de Transporte Público en Vigo</h3>
+    
+    <p><strong>Contexto:</strong> Encuesta sobre uso de transporte público (Vitrasa) según barrio de residencia en Vigo. Se observan patrones de uso condicionados a la zona.</p>
+    
+    <p><strong>Pregunta de reflexión:</strong> Si el 80% de los residentes del Casco Vello usan transporte público, pero solo el 30% de los residentes de Samil lo hacen, ¿qué factores podrían explicar esta diferencia? ¿Es solo una cuestión de acceso o hay otros factores?</p>
+    
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Factores Explicativos:</strong></p>
+        <ul>
+          <li><strong>Accesibilidad:</strong> Casco Vello tiene alta densidad de líneas y frecuencias; Samil está más alejado con menos opciones</li>
+          <li><strong>Disponibilidad de aparcamiento:</strong> En el centro es limitado y costoso; en zonas periféricas es más accesible</li>
+          <li><strong>Distancias:</strong> En el centro, muchos destinos son accesibles a pie o en bus; en zonas alejadas el coche es más práctico</li>
+          <li><strong>Nivel socioeconómico:</strong> Posible correlación entre zona de residencia y poder adquisitivo (acceso a vehículo propio)</li>
+          <li><strong>Perfil demográfico:</strong> Centro urbano más joven y estudiantil vs zonas residenciales familiares</li>
+        </ul>
+        
+        <p><strong>Conclusión:</strong> Las distribuciones condicionadas revelan que <strong>el contexto geográfico y social condiciona fuertemente los comportamientos</strong>. Un análisis puramente marginal (uso global de transporte público) ocultaría estas diferencias importantes.</p>
+      </div>
+    </details>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+
+  <h2>📊 Resumen de la Sesión</h2>
+  
+  <ul>
+    <li>✅ Sabemos obtener distribuciones marginales sumando filas/columnas</li>
+    <li>✅ Calculamos distribuciones condicionadas fijando un valor de una variable</li>
+    <li>✅ Interpretamos parámetros condicionados (medias, porcentajes)</li>
+    <li>✅ Comparamos distribuciones condicionadas para extraer conclusiones</li>
+    <li>✅ Aplicamos estos conceptos a contextos sociales y económicos reales</li>
+  </ul>
+
+  <h2>📝 Para la Próxima Sesión</h2>
+  
+  <p>En la <strong>Sesión 3</strong> estudiaremos:</p>
+  <ul>
+    <li>Covarianza como medida de variación conjunta</li>
+    <li>Interpretación del signo de la covarianza</li>
+    <li>Limitaciones de la covarianza</li>
+    <li>Análisis de dependencia estadística</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p><strong>1º Bachillerato - Matemáticas Aplicadas a las Ciencias Sociales I</strong></p>
+    <p>Bloque 4: Sentido Estocástico | Estadística y Probabilidad</p>
+    <p>IES Teis - Vigo | Curso 2025-2026</p>
+  </footer>
+
+</body>
+</html>

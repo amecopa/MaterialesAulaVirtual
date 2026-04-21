@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 4: Independencia de Sucesos</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .formula-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 4: Independencia de Sucesos y Regla del Producto</h1>
+        <p class="competency">CE6: Interpretar modelos probabilísticos | CE1: Precisión en el lenguaje matemático</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Independencia de Sucesos</h3>
+        <p>Dos sucesos \(A\) y \(B\) son <strong>independientes</strong> si la ocurrencia de uno no afecta a la probabilidad del otro.</p>
+
+        <div class="formula-box">
+            <strong>Definición formal (tres formas equivalentes):</strong>
+            $$P(A \cap B) = P(A) \cdot P(B)$$
+            $$P(A|B) = P(A)$$
+            $$P(B|A) = P(B)$$
+        </div>
+
+        <p><strong>Interpretación:</strong> Saber que ocurre \(B\) no cambia la probabilidad de \(A\).</p>
+
+        <div class="warning-box">
+            <strong>⚠️ CUIDADO:</strong> Independencia ≠ Incompatibilidad
+            <ul style="margin-top:8px;">
+                <li><strong>Incompatibles:</strong> \(A \cap B = \emptyset\) (no pueden ocurrir a la vez)</li>
+                <li><strong>Independientes:</strong> \(P(A \cap B) = P(A) \cdot P(B)\) (ocurrir uno no afecta al otro)</li>
+            </ul>
+            <em>De hecho, si \(A\) y \(B\) son incompatibles y ambos tienen probabilidad > 0, entonces NO son independientes.</em>
+        </div>
+
+        <h3>Regla del Producto</h3>
+        <p><strong>Para sucesos independientes:</strong></p>
+        $$P(A \cap B) = P(A) \cdot P(B)$$
+
+        <p><strong>Para sucesos dependientes:</strong></p>
+        $$P(A \cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)$$
+
+        <h3>Extensión a más de dos sucesos</h3>
+        <p>Si \(A_1, A_2, ..., A_n\) son independientes dos a dos:</p>
+        $$P(A_1 \cap A_2 \cap ... \cap A_n) = P(A_1) \cdot P(A_2) \cdot ... \cdot P(A_n)$$
+    </section>
+
+    <section class="exercise-box">
+        <h2>🔥 Bloque 1: Refuerzo — 10 min</h2>
+        
+        <p><strong>Retomar el problema de las Cíes de la sesión anterior:</strong></p>
+        <p>¿Depende el avistamiento de delfines de si el día es soleado? ¿Cómo lo comprobarías formalmente?</p>
+    </section>
+
+    <section class="exercise-box">
+        <h2>📖 Bloque 2: Consolidación — 15 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra): Moneda dos veces</div>
+            <p>Se lanza una moneda dos veces. Sea \(A\) = "cara en el primer lanzamiento" y \(B\) = "cara en el segundo".</p>
+            <p><strong>a)</strong> ¿Son \(A\) y \(B\) independientes?</p>
+            <p><strong>b)</strong> Calcula \(P(A \cap B)\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> <strong>SÍ son independientes.</strong> El resultado del primer lanzamiento no afecta al segundo.
+                $$P(A) = 0,5 \quad P(B) = 0,5$$
+                $$P(A|B) = 0,5 = P(A) \quad \checkmark$$
+                <br>
+                
+                <strong>b)</strong> Como son independientes:
+                $$P(A \cap B) = P(A) \cdot P(B) = 0,5 \cdot 0,5 = 0,25 = 25\%$$
+                <em>También se puede calcular directamente: \(\Omega = \{CC, CX, XC XX\}\), luego \(P(CC) = \frac{1}{4}\)</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Trabajo colectivo): Extracción con/sin reposición</div>
+            <p>Una urna tiene 3 bolas rojas y 2 azules. Se extraen 2 bolas.</p>
+            <p><strong>a)</strong> CON reposición: ¿son independientes los sucesos \(R_1\) = "roja en la 1ª" y \(R_2\) = "roja en la 2ª"?</p>
+            <p><strong>b)</strong> SIN reposición: ¿son independientes?</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a) CON reposición:</strong> <strong>SÍ son independientes</strong>
+                $$P(R_1) = \frac{3}{5} \quad P(R_2) = \frac{3}{5}$$
+                $$P(R_2|R_1) = \frac{3}{5} = P(R_2) \quad \checkmark$$
+                <br>
+                
+                <strong>b) SIN reposición:</strong> <strong>NO son independientes</strong>
+                $$P(R_1) = \frac{3}{5}$$
+                $$P(R_2|R_1) = \frac{2}{4} = 0,5 \neq P(R_2)$$
+                <em>Saber que la primera fue roja cambia el espacio muestral para la segunda extracción.</em>
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>✏️ Bloque 3: Afianzamiento (Individual) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Verificar independencia (2 casos)</div>
+            <p>Determina si los siguientes pares de sucesos son independientes:</p>
+            <p><strong>Caso 1:</strong> \(P(A) = 0,4\), \(P(B) = 0,5\), \(P(A \cap B) = 0,2\)</p>
+            <p><strong>Caso 2:</strong> \(P(C) = 0,3\), \(P(D) = 0,6\), \(P(C \cap D) = 0,15\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Caso 1:</strong>
+                $$P(A) \cdot P(B) = 0,4 \cdot 0,5 = 0,2 = P(A \cap B) \quad \checkmark$$
+                → <strong>SÍ son independientes</strong>
+                <br><br>
+                
+                <strong>Caso 2:</strong>
+                $$P(C) \cdot P(D) = 0,3 \cdot 0,6 = 0,18 \neq 0,15 = P(C \cap D)$$
+                → <strong>NO son independientes</strong>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Independientes ≠ Incompatibles</div>
+            <p>¿Son los sucesos "independientes" e "incompatibles" sinónimos? Proporciona un ejemplo que lo demuestre.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>NO</strong> son sinónimos. De hecho, son conceptos diferentes:
+                <br><br>
+                <strong>Ejemplo:</strong> Lanzamiento de un dado.
+                <ul>
+                    <li>\(A\) = sacar par → \(P(A) = 0,5\)</li>
+                    <li>\(B\) = sacar impar → \(P(B) = 0,5\)</li>
+                </ul>
+                <strong>Incompatibles:</strong> \(A \cap B = \emptyset\) ✓ (no pueden ocurrir a la vez)
+                <br>
+                <strong>¿Independientes?</strong> 
+                $$P(A) \cdot P(B) = 0,5 \cdot 0,5 = 0,25$$
+                $$P(A \cap B) = 0 \neq 0,25$$
+                → <strong>NO son independientes</strong>
+                <br><br>
+                <em>De hecho, si \(A\) y \(B\) son incompatibles con \(P(A), P(B) > 0\), entonces nunca son independientes, porque saber que ocurre uno garantiza que no ocurre el otro.</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: FEVE Vigo–Pontevedra <span class="badge">CONTEXTO VIGO</span></div>
+            <p>La línea FEVE Vigo–Pontevedra tiene 3 tramos. La probabilidad de retraso en cada tramo es 0,1. Supón que los retrasos son independientes entre sí.</p>
+            <p><strong>¿Cuál es la probabilidad de llegar puntual al destino (sin retrasos en ningún tramo)?</strong></p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Solución paso a paso:</strong>
+                <br><br>
+                Sea \(R_i\) = retraso en el tramo \(i\). Entonces \(P(R_i) = 0,1\) y \(P(R_i^c) = 0,9\) (puntual en el tramo \(i\)).
+                <br><br>
+                Llegar puntual = puntual en los 3 tramos:
+                $$P(R_1^c \cap R_2^c \cap R_3^c) = P(R_1^c) \cdot P(R_2^c) \cdot P(R_3^c)$$
+                $$= 0,9 \cdot 0,9 \cdot 0,9 = 0,729 = 72,9\%$$
+                <br>
+                <strong>Interpretación:</strong> Hay un 72,9 % de probabilidad de llegar puntual al destino.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4: Extracción sin reposición (dependencia)</div>
+            <p>Una urna tiene 5 bolas: 3 blancas y 2 negras. Se extraen 2 bolas sin reposición.</p>
+            <p>Calcula \(P(\text{ambas blancas})\) usando la regla del producto para sucesos dependientes.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Solución paso a paso:</strong>
+                <br><br>
+                Sea \(B_1\) = "blanca en la 1ª extracción" y \(B_2\) = "blanca en la 2ª".
+                <br>
+                $$P(B_1) = \frac{3}{5}$$
+                $$P(B_2|B_1) = \frac{2}{4} = \frac{1}{2} \text{ (quedan 2 blancas de 4 bolas)}$$
+                <br>
+                Regla del producto:
+                $$P(B_1 \cap B_2) = P(B_1) \cdot P(B_2|B_1) = \frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10} = 0,3 = 30\%$$
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🚀 Bloque 4: Ampliación — 10 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Astillero de Barreras <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En el astillero de Barreras (Vigo) se ensamblan 3 componentes de forma independiente. Las probabilidades de fallo son 0,05, 0,03 y 0,07 respectivamente.</p>
+            <p><strong>a)</strong> ¿Cuál es la probabilidad de que el barco salga sin ningún fallo?</p>
+            <p><strong>b)</strong> ¿Y de que tenga al menos un fallo?</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong> 
+                $$P(F_1) = 0,05 \implies P(F_1^c) = 0,95$$
+                $$P(F_2) = 0,03 \implies P(F_2^c) = 0,97$$
+                $$P(F_3) = 0,07 \implies P(F_3^c) = 0,93$$
+                <br>
+                
+                <strong>a)</strong> Sin ningún fallo (todos correctos):
+                $$P(F_1^c \cap F_2^c \cap F_3^c) = 0,95 \cdot 0,97 \cdot 0,93 = 0,857 = 85,7\%$$
+                <br>
+                
+                <strong>b)</strong> Al menos un fallo = complementario de "ningún fallo":
+                $$P(\text{al menos 1 fallo}) = 1 - 0,857 = 0,143 = 14,3\%$$
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Diagramas de árbol y tablas de contingencia</p>
+    </footer>
+
+</body>
+</html>

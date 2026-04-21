@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 3: La Estrategia de la Doble Observación</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 { color: var(--primary-color); }
+        header h1 { color: white; margin: 0; }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .error-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin-top: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .step { margin: 8px 0; }
+        .step strong { color: #0056b3; }
+        .previo {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            font-size: 0.78em;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .exercise-img {
+            display: block;
+            max-width: 100%;
+            width: 700px;
+            margin: 14px auto 6px auto;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 3: La Estrategia de la Doble Observación</h1>
+        <p class="competency">
+            <span>CE 2.1: Formular conjeturas y explorar estrategias para resolver problemas complejos.</span><br>
+            <span>CE 4.2: Representar conceptos matemáticos de forma gráfica y algebraica.</span>
+        </p>
+    </header>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE TEÓRICO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Apuntes Teóricos</h2>
+
+        <div class="previo">
+            <strong>Conocimientos previos necesarios:</strong> Resolución de sistemas de ecuaciones lineales y razones trigonométricas.
+        </div>
+
+        <h3>1. La técnica de la doble observación</h3>
+        <p>
+            Cuando un objeto es <strong>inaccesible</strong> (no podemos llegar hasta su base), se realizan
+            <strong>dos medidas de ángulo</strong> desde dos puntos distintos a distancia conocida.
+            Esto genera un <strong>sistema de dos ecuaciones</strong> con dos incógnitas: la altura \(h\) y
+            la distancia horizontal al objeto desde el segundo punto \(x\).
+        </p>
+        <p>Si observamos desde el primer punto (más cercano) con ángulo \(\alpha\) y desde el segundo
+           (alejado \(d\) metros) con ángulo \(\beta &lt; \alpha\):</p>
+        <p>
+            $$\begin{cases} \tan(\alpha) = \dfrac{h}{x} \\[8pt] \tan(\beta) = \dfrac{h}{x + d} \end{cases}$$
+        </p>
+        <p><strong>Método de resolución (igualación):</strong></p>
+        <ol>
+            <li>Despejar \(h\) en ambas ecuaciones: \(h = x \cdot \tan(\alpha)\) y \(h = (x+d) \cdot \tan(\beta)\).</li>
+            <li>Igualar: \(x \cdot \tan(\alpha) = (x+d) \cdot \tan(\beta)\).</li>
+            <li>Despejar \(x\), luego sustituir para hallar \(h\).</li>
+        </ol>
+
+        <h3>2. Relación Fundamental de la Trigonometría</h3>
+        <p>
+            Para cualquier ángulo \(\alpha\):
+            $$\sin^2(\alpha) + \cos^2(\alpha) = 1$$
+        </p>
+        <p>
+            Permite hallar cualquiera de las tres razones si se conoce una:
+            $$\cos(\alpha) = \sqrt{1 - \sin^2(\alpha)} \qquad \tan(\alpha) = \frac{\sin(\alpha)}{\cos(\alpha)}$$
+        </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE PRÁCTICO
+    ══════════════════════════════════════════════ -->
+    <section class="exercise-box">
+        <h2>Bloque Práctico: Medidas Inaccesibles en Vigo</h2>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 1 – Puente de Rande
+        ────────────────────────────── -->
+        <div class="exercise">
+            <div class="exercise-title">
+                <span class="badge">Modelado</span>
+                Ejercicio 1 – El Puente de Rande
+            </div>
+            <p>
+                Queremos medir la altura de uno de los pilares del Puente de Rande.
+                Desde un punto en la costa, el ángulo de elevación a la cima es de <strong>30°</strong>.
+                Nos alejamos <strong>100 metros</strong> en la misma dirección y el nuevo ángulo es de <strong>20°</strong>.
+                Calcula la altura del pilar.
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S3_Ej1_Puente_Rande.png" alt="Diagrama Ejercicio 1 – Puente de Rande" class="exercise-img">
+                <strong>Resolución paso a paso:</strong>
+
+                <div class="step">
+                    <strong>Paso 1 – Definir las incógnitas.</strong><br>
+                    Sea \(h\) = altura del pilar y \(x\) = distancia horizontal desde el punto más cercano hasta la base del pilar.
+                </div>
+                <div class="step">
+                    <strong>Paso 2 – Plantear el sistema.</strong>
+                    $$\begin{cases} \tan(30°) = \dfrac{h}{x} \\ \tan(20°) = \dfrac{h}{x + 100} \end{cases}$$
+                </div>
+                <div class="step">
+                    <strong>Paso 3 – Despejar \(h\) en ambas ecuaciones.</strong>
+                    $$h = x \cdot \tan(30°) = x \cdot 0{,}577 \qquad h = (x+100) \cdot \tan(20°) = (x+100) \cdot 0{,}364$$
+                </div>
+                <div class="step">
+                    <strong>Paso 4 – Igualar y resolver.</strong>
+                    $$x \cdot 0{,}577 = (x + 100) \cdot 0{,}364$$
+                    $$0{,}577x = 0{,}364x + 36{,}4$$
+                    $$0{,}213x = 36{,}4 \implies x = \frac{36{,}4}{0{,}213} \approx 170{,}8 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Paso 5 – Calcular \(h\).</strong>
+                    $$h = 170{,}8 \cdot 0{,}577 \approx \mathbf{98{,}5 \text{ m}}$$
+                </div>
+                <div class="error-box">
+                    ⚠️ <strong>Error común:</strong> En el segundo triángulo la base horizontal es \((x + 100)\),
+                    no solo 100. El 100 es la distancia <em>entre los dos puntos</em>, no la distancia al pilar.
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 2 – Monte del Castro
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 2 – Monte del Castro desde la Ría de Vigo
+            </div>
+            <p>
+                Desde un barco en la Ría de Vigo se ve el monte del Castro.
+                El ángulo de elevación al castillo es de <strong>15°</strong>.
+                Tras navegar <strong>500 metros</strong> hacia la costa, el ángulo aumenta a <strong>25°</strong>.
+                ¿Qué altura tiene el monte respecto al mar?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S3_Ej2_Monte_Castro.png" alt="Diagrama Ejercicio 2 – Monte del Castro" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Sistema de ecuaciones:</strong>
+                    $$h = x \cdot \tan(25°) = x \cdot 0{,}466$$
+                    $$h = (x + 500) \cdot \tan(15°) = (x + 500) \cdot 0{,}268$$
+                </div>
+                <div class="step">
+                    <strong>Igualación:</strong>
+                    $$0{,}466x = 0{,}268x + 134 \implies 0{,}198x = 134 \implies x \approx 676{,}7 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Altura:</strong>
+                    $$h = 676{,}7 \cdot 0{,}466 \approx \mathbf{315{,}3 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 3 – Relación Fundamental
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 3 – Relación Fundamental de la Trigonometría
+            </div>
+            <p>
+                Sabiendo que \(\sin(\alpha) = 0{,}6\) y que \(\alpha\) es un ángulo agudo,
+                calcula \(\cos(\alpha)\) y \(\tan(\alpha)\) usando la identidad
+                \(\sin^2\alpha + \cos^2\alpha = 1\).
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S3_Ej3_Relacion_Fundamental.png" alt="Diagrama Ejercicio 3 – Triángulo con sen=0,6" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Calcular \(\cos(\alpha)\):</strong>
+                    $$0{,}6^2 + \cos^2\alpha = 1 \implies 0{,}36 + \cos^2\alpha = 1 \implies \cos^2\alpha = 0{,}64 \implies \cos\alpha = 0{,}8$$
+                </div>
+                <div class="step">
+                    <strong>Calcular \(\tan(\alpha)\):</strong>
+                    $$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = \frac{0{,}6}{0{,}8} = \mathbf{0{,}75}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 4 – Helicóptero en Samil
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica independiente</span>
+                Ejercicio 4 – Helicóptero de Salvamento en la playa de Samil
+            </div>
+            <p>
+                Dos observadores están situados a <strong>2 km</strong> de distancia en la playa de Samil.
+                Ven un helicóptero de Salvamento Marítimo justo sobre la línea que los une.
+                Los ángulos de elevación son de <strong>45°</strong> y <strong>60°</strong> respectivamente.
+                ¿A qué altura vuela el helicóptero?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S3_Ej4_Helicoptero_Samil.png" alt="Diagrama Ejercicio 4 – Helicóptero Samil" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Sistema (distancia total = 2 000 m):</strong>
+                    $$h = x \cdot \tan(45°) = x \cdot 1$$
+                    $$h = (2000 - x) \cdot \tan(60°) = (2000 - x) \cdot 1{,}732$$
+                </div>
+                <div class="step">
+                    <strong>Igualar:</strong>
+                    $$x = (2000 - x) \cdot 1{,}732 \implies x = 3464 - 1{,}732x \implies 2{,}732x = 3464 \implies x \approx 1267{,}9 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Altura:</strong>
+                    $$h = 1267{,}9 \cdot 1 \approx \mathbf{1267{,}9 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SOLUCIONARIO RÁPIDO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Solucionario – Resultados finales</h2>
+        <ol>
+            <li>\(x \cdot 0{,}577 = (x+100) \cdot 0{,}364 \rightarrow x = 170{,}8 \text{ m};\; h \approx \mathbf{98{,}5 \text{ m}}\)</li>
+            <li>\(x \cdot 0{,}466 = (x+500) \cdot 0{,}268 \rightarrow x = 676{,}7 \text{ m};\; h \approx \mathbf{315{,}3 \text{ m}}\)</li>
+            <li>\(\cos\alpha = 0{,}8;\; \tan\alpha = \mathbf{0{,}75}\)</li>
+            <li>\(x = 1267{,}9 \text{ m};\; h \approx \mathbf{1267{,}9 \text{ m}}\)</li>
+        </ol>
+    </section>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det) {
+            det.addEventListener('toggle', function() {
+                if (det.open && window.MathJax) {
+                    MathJax.typesetPromise([det]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

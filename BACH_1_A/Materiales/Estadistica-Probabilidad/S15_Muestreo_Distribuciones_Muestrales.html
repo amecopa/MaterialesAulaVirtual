@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 15: Muestreo y Distribuciones Muestrales</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-refuerzo { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 90%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 15: Muestreo y Distribuciones Muestrales</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Distinguir población de muestra</li>
+      <li>Comprender el concepto de distribución muestral</li>
+      <li>Aplicar el Teorema Central del Límite</li>
+      <li>Calcular probabilidades sobre medias muestrales</li>
+    </ul>
+  </div>
+
+  <h2>📚 Conceptos Básicos</h2>
+  
+  <div class="definicion">
+    <strong>POBLACIÓN (N):</strong> Conjunto completo de elementos que queremos estudiar.
+    <br><br>
+    <strong>MUESTRA (n):</strong> Subconjunto de la población seleccionado para estudio.
+    <br><br>
+    <strong>¿Por qué muestrear?</strong>
+    <ul>
+      <li>La población puede ser infinita o inaccesible</li>
+      <li>Es más económico y rápido</li>
+      <li>A veces es destructivo (pruebas de calidad)</li>
+    </ul>
+  </def inicion>
+
+  <table>
+    <tr><th>Concepto</th><th>Parámetro (Población)</th><th>Estadístico (Muestra)</th></tr>
+    <tr><td>Media</td><td>μ (mu)</td><td>x̄ (x barra)</td></tr>
+    <tr><td>Desviación típica</td><td>σ (sigma)</td><td>s</td></tr>
+    <tr><td>Proporción</td><td>p</td><td>p̂ (p gorro)</td></tr>
+    <tr><td>Tamaño</td><td>N (mayúscula)</td><td>n (minúscula)</td></tr>
+  </table>
+
+  <img src="graficos/s15_poblacion_muestra.svg" alt="Población vs Muestra">
+
+  <div class="definicion">
+    <strong>DISTRIBUCIÓN MUESTRAL:</strong> Distribución de probabilidad de un estadístico (ej: x̄) calculado en TODAS las posibles muestras del mismo tamaño.
+  </div>
+
+  <h2>⭐ Teorema Central del Límite (TCL)</h2>
+  
+  <div class="definicion" style="background: #e3f2fd; border-color: #2196F3;">
+    <strong>TEOREMA CENTRAL DEL LÍMITE:</strong>
+    <br><br>
+    Si tomamos muestras de tamaño n de una población con media μ y desviación σ, la distribución de las medias muestrales x̄ tiende a una normal cuando n es grande:
+    <br><br>
+    \[ \bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) \]
+    <br>
+    <strong>Condiciones:</strong>
+    <ul>
+      <li>n ≥ 30 (regla práctica) O población ya normal</li>
+      <li>Muestreo aleatorio</li>
+    </ul>
+    <br>
+    <strong>Implicación:</strong> La media x̄ se distribuye normalmente AUNQUE la población NO sea normal.
+  </div>
+
+  <img src="graficos/s15_teorema_central_limite.svg" alt="Teorema Central del Límite visual">
+
+  <div class="bloque-refuerzo">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Población: alturas en Vigo con μ = 170 cm, σ = 10 cm. Tomamos muestras de n=36 personas. ¿Cómo se distribuye x̄?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Aplicación del TCL:</strong></p>
+        <div class="paso">n = 36 ≥ 30 → Podemos aplicar TCL</div>
+        
+        <p><strong>Distribución de x̄:</strong></p>
+        <div class="paso">\[ \bar{X} \sim N\left(170, \frac{10}{\sqrt{36}}\right) = N(170, 1.667) \]</div>
+        
+        <p><strong>Interpretación:</strong></p>
+        <ul>
+          <li><strong>Media de x̄:</strong> E(x̄) = μ = 170 cm</li>
+          <li><strong>Desviación típica de x̄:</strong> σ_x̄ = σ/√n = 10/6 ≈ 1.667 cm</li>
+          <li>La media muestral se concentra mucho más alrededor de μ que los datos individuales</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 2:</strong> Con los datos anteriores, calcular P(168 < x̄ < 172).</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong> x̄ ~ N(170, 1.667)</p>
+        
+        <p><strong>Tipificación (estandarización):</strong></p>
+        <div class="paso">\[ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} = \frac{\bar{X} - 170}{1.667} \]</div>
+        
+        <p><strong>Límite inferior (x̄ = 168):</strong></p>
+        <div class="paso">\[ Z_1 = \frac{168 - 170}{1.667} = \frac{-2}{1.667} \approx -1.20 \]</div>
+        
+        <p><strong>Límite superior (x̄ = 172):</strong></p>
+        <div class="paso">\[ Z_2 = \frac{172 - 170}{1.667} = \frac{2}{1.667} \approx 1.20 \]</div>
+        
+        <p><strong>Probabilidad:</strong></p>
+        <div class="paso">P(168 < x̄ < 172) = P(-1.20 < Z < 1.20)</div>
+        <div class="paso">= P(Z < 1.20) - P(Z < -1.20)</div>
+        <div class="paso">= 0.8849 - 0.1151 = <strong>0.7698 ≈ 77%</strong></div>
+        
+        <p><strong>Interpretación:</strong> Hay 77% de probabilidad de que la media de una muestra de 36 personas esté entre 168 y 172 cm.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3 (Contexto Vigo):</strong> Gasto mensual en transporte público (Vitrasa) de estudiantes: μ = 45€, σ = 12€. Muestra de 50 estudiantes. ¿Probabilidad de que x̄ > 48€?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Distribución de x̄:</strong></p>
+        <div class="paso">\[ \bar{X} \sim N\left(45, \frac{12}{\sqrt{50}}\right) = N(45, 1.697) \]</div>
+        
+        <p><strong>Tipificación:</strong></p>
+        <div class="paso">\[ Z = \frac{48 - 45}{1.697} = \frac{3}{1.697} \approx 1.77 \]</div>
+        
+        <p><strong>Probabilidad:</strong></p>
+        <div class="paso">P(x̄ > 48) = P(Z > 1.77) = 1 - P(Z ≤ 1.77)</div>
+        <div class="paso">= 1 - 0.9616 = <strong>0.0384 ≈ 3.8%</strong></div>
+        
+        <p><strong>Interpretación:</strong> Solo 3.8% de probabilidad de que una muestra de 50 estudiantes tenga gasto medio superior a 48€. Sería un resultado poco común si μ realmente es 45€.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 4:</strong> Si duplicamos el tamaño muestral (de n=36 a n=72), ¿cómo afecta a σ_x̄?</p>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Situación original (n=36):</strong></p>
+        <div class="paso">σ_x̄₁ = 10/√36 = 10/6 ≈ 1.667 cm</div>
+        
+        <p><strong>Duplicando muestra (n=72):</strong></p>
+        <div class="paso">σ_x̄₂ = 10/√72 = 10/8.485 ≈ 1.179 cm</div>
+        
+        <p><strong>Comparación:</strong></p>
+        <div class="paso">Reducción = 1.667/1.179 ≈ 1.41 veces</div>
+        
+        <p><strong>Conclusión:</strong></p>
+        <ul>
+          <li>Duplicar n NO duplica la precisión</li>
+          <li>Reduce el error por factor √2 ≈ 1.41</li>
+          <li><strong>Ley de rendimientos decrecientes:</strong> Cada vez cuesta más mejorar precisión</li>
+          <li>Para reducir error a la mitad, necesitamos n × 4</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Conceptos Clave</h2>
+  <ul>
+    <li><strong>x̄ es variable aleatoria:</strong> Varía entre muestras</li>
+    <li><strong>TCL es potentísimo:</strong> Funciona SIEMPRE si n es grande, sin importar la distribución poblacional</li>
+    <li><strong>Mayor n → menor variabilidad de x̄:</strong> Muestras grandes son más fiables</li>
+    <li><strong>Error estándar:</strong> σ/√n mide dispersión de x̄</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo | Bloque III: INFERENCIA ESTADÍSTICA</p>
+  </footer>
+</body>
+</html>

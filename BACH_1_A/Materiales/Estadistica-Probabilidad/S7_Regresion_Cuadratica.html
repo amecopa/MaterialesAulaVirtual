@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 7: Regresión Cuadrática (Parabólica)</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-afianzamiento { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    .advertencia { background: #ffe8e8; border-left: 3px solid #d32f2f; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+    table { border-collapse: collapse; margin: 1rem auto; }
+    th, td { border: 1px solid #333; padding: 0.5rem; text-align: center; }
+    th { background-color: #388e3c; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 7: Regresión Cuadrática (Parabólica)</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Reconocer situaciones donde el ajuste lineal es insuficiente</li>
+      <li>Comprender el modelo cuadrático y = ax² + bx + c</li>
+      <li>Comparar modelos lineal vs cuadrático mediante R²</li>
+      <li>Interpretar parámetros de la parábola (vértice, concavidad)</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="definicion">
+    <strong>Regresión Cuadrática:</strong> Ajuste de una parábola a los datos
+    <br><br>
+    \[ y = ax^2 + bx + c \]
+    <br>
+    <strong>Parámetros:</strong>
+    <ul>
+      <li><strong>a:</strong> Concavidad (a > 0 → ∪, a < 0 → ∩)</li>
+      <li><strong>b, c:</strong> Ajustan posición del vértice</li>
+      <li><strong>Vértice:</strong> \(x_v = -\frac{b}{2a}\)</li>
+    </ul>
+  </div>
+
+  <p><strong>¿Cuándo usar regresión cuadrática?</strong></p>
+  <ul>
+    <li>Datos muestran patrón curvo (no monotónico)</li>
+    <li>Existe un máximo o mínimo en el rango observado</li>
+    <li>Fenómenos cíclicos: temperatura anual, tráfico diario, etc.</li>
+    <li>R² del modelo lineal es bajo pero visualmente hay patrón</li>
+  </ul>
+
+  <div class="advertencia">
+    <strong>⚠️ Cuidado con la extrapolación:</strong> Las parábolas crecen/decrecen rápidamente fuera del rango observado. Predictiones fuera del intervalo pueden ser absurdas.
+  </div>
+
+  <img src="graficos/s7_lineal_vs_cuadratica.svg" alt="Comparación ajuste lineal vs cuadrático">
+
+  <div class="bloque-afianzamiento">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1 (Contexto Vigo):</strong> Pasajeros mensuales Puerto de Vigo (cruceros + barcos Cíes) 2024-2025. Comparar R²:</p>
+    <ul>
+      <li><strong>Modelo Lineal:</strong> R² = 0.12 (muy pobre)</li>
+      <li><strong>Modelo Cuadrático:</strong> R² = 0.89 (excelente)</li>
+    </ul>
+    <p>¿Por qué la diferencia? ¿Cuál usar?</p>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Explicación del fenómeno:</strong></p>
+        <ul>
+          <li>Los pasajeros tienen patrón <strong>estacional</strong>: máximo en verano (julio-agosto), mínimo en invierno</li>
+          <li>Una recta no puede capturar este patrón cíclico → R² muy bajo</li>
+          <li>La parábola sí describe el "pico" de verano → R² alto</li>
+        </ul>
+        <p><strong>Decisión:</strong> Usar <strong>modelo cuadrático</strong> para predicciones dentro del año observado.</p>
+        <p><strong>Limitación:</strong> No usar para predictos a 2-3 años vista sin ajustar, porque la parábola no captureará múltiples ciclos (para eso necesitaríamos modelos sinusoidales).</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2:</strong> Parábola ajustada: \(y = -0.5x^2 + 6x + 2\)</p>
+    <p>a) ¿Es una parábola cóncava o convexa?<br>
+    b) Calcular el vértice (valor x donde alcanza máximo/mínimo)<br>
+    c) ¿En qué valor de x alcanza el extremo?</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>a) Concavidad:</strong></p>
+        <div class="paso">a = -0.5 < 0 → Parábola <strong>cóncava</strong> (∩) → tiene un <strong>máximo</strong></div>
+        
+        <p><strong>b) Vértice (coordenada x):</strong></p>
+        <div class="paso">\[ x_v = -\frac{b}{2a} = -\frac{6}{2 \cdot (-0.5)} = -\frac{6}{-1} = 6 \]</div>
+        
+        <p><strong>c) Valor máximo:</strong></p>
+        <div class="paso">\[ y_v = -0.5(6)^2 + 6(6) + 2 = -0.5(36) + 36 + 2 = -18 + 36 + 2 = 20 \]</div>
+        
+        <p><strong>Interpretación:</strong> La función alcanza su <strong>máximo de 20</strong> cuando <strong>x = 6</strong>.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3 (Comparativa):</strong> Para datos de temperatura vs ventas helados:</p>
+    <table>
+      <tr><th>Modelo</th><th>Ecuación</th><th>R²</th></tr>
+      <tr><td>Lineal</td><td>y = 12x + 50</td><td>0.78</td></tr>
+      <tr><td>Cuadrático</td><td>y = -0.3x² + 18x + 10</td><td>0.94</td></tr>
+    </table>
+    <p>¿Cuál elegir y por qué? ¿Qué indica el coeficiente negativo de x² en el modelo cuadrático?</p>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Elección:</strong> Modelo <strong>cuadrático</strong> (R² = 0.94 vs 0.78)</p>
+        
+        <p><strong>Interpretación del coeficiente -0.3:</strong></p>
+        <ul>
+          <li>La parábola es cóncava → tiene un <strong>máximo</strong></li>
+          <li><strong>Significado práctico:</strong> Las ventas aumentan con temperatura hasta cierto punto, luego empiezan a bajar</li>
+          <li><strong>Posibles razones:</strong>
+            <ul>
+              <li>Con calor extremo (>35°C) la gente se queda en casa con aire acondicionado</li>
+              <li>O hay saturación de mercado</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <p><strong>Vértice (temperatura óptima):</strong></p>
+        <div class="paso">\[ x_v = -\frac{18}{2(-0.3)} = -\frac{18}{-0.6} = 30°C \]</div>
+        <p>Las ventas máximas ocurren alrededor de <strong>30°C</strong>.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Síntesis</h2>
+  <ul>
+    <li><strong>Lineal:</strong> Relaciones monótonas (siempre creciente o decreciente)</li>
+    <li><strong>Cuadrático:</strong> Cuando hay un máximo/mínimo o patrón curvo</li>
+    <li><strong>Criterio numérico:</strong> Comparar R² de ambos modelos</li>
+    <li><strong>Criterio gráfico:</strong> Visualizar nube de puntos + ambas curvas</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

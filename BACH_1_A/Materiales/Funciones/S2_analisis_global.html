@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2 · Análisis global y continuidad</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 2 · Análisis global de funciones y continuidad</h1>
+        <p class="meta">CE 5.2 y 5.3 · Continuidad, monotonía y extremos</p>
+    </header>
+
+    <section class="box">
+        <h2>Saberes y conceptos previos</h2>
+        <ul>
+            <li>Continuidad y tipos de discontinuidad.</li>
+            <li>Crecimiento/decrecimiento y extremos relativos.</li>
+            <li>Previos: intervalos, lectura de gráficas y variación.</li>
+        </ul>
+        <img src="imgs/s2_continuidad_monotonia.png" alt="Gráfica para continuidad y monotonía">
+    </section>
+
+    <section class="box">
+        <h2>Resumen de teoría utilizada</h2>
+        <ul>
+            <li><strong>Continuidad en un punto:</strong> una función es continua en \(x=a\) si existe \(f(a)\), existe el límite en \(a\), y ambos coinciden.</li>
+            <li><strong>Discontinuidad evitable:</strong> aparece un hueco cuando el límite existe pero la función no está definida o no toma ese valor.</li>
+            <li><strong>Monotonía:</strong> una función crece si al aumentar \(x\) aumentan sus valores; decrece si al aumentar \(x\) disminuyen.</li>
+            <li><strong>Extremos relativos:</strong> hay máximo relativo cuando se pasa de crecer a decrecer, y mínimo relativo cuando se pasa de decrecer a crecer.</li>
+            <li><strong>Cuadráticas:</strong> el vértice divide los intervalos de decrecimiento y crecimiento; en \(f(x)=ax^2+bx+c\), su abscisa es \(x=\frac{-b}{2a}\).</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>Bloque práctico</h2>
+
+        <p class="exercise-title">Ejercicio 1 (Modelado)</p>
+        <p>Dada una gráfica de evolución del precio de una acción en una jornada, identifica crecimiento, decrecimiento, máximos relativos y posibles discontinuidades.</p>
+        <details class="solution"><summary></summary><div>
+            <p>Crecimiento donde la pendiente es positiva, decrecimiento donde es negativa. Máximos relativos en los picos. Las discontinuidades se detectan por saltos o huecos.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2 (Práctica)</p>
+        <p>Analiza la continuidad de \(f(x)=\frac{x^2-1}{x-1}\). ¿Qué ocurre en \(x=1\)?</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(f(x)=\frac{(x-1)(x+1)}{x-1}=x+1\), salvo en \(x=1\). Hay discontinuidad evitable en \(x=1\) porque \(\lim_{x\to1}f(x)=2\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3 (Práctica)</p>
+        <p>Estudia crecimiento/decrecimiento de \(f(x)=x^2-6x+8\) usando su vértice.</p>
+        <details class="solution"><summary></summary><div>
+            <p>Vértice en \(x=3\). Como \(a>0\), decrece en \(( -\infty,3)\) y crece en \((3,+\infty)\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 4 (Práctica)</p>
+        <p>Si una población crece en \([0,5]\) y decrece en \([5,10]\), ¿qué ocurre en \(x=5\)?</p>
+        <details class="solution"><summary></summary><div>
+            <p>En \(x=5\) se alcanza un máximo relativo porque la función cambia de creciente a decreciente.</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>Uso en GeoGebra (copiar/pegar)</h2>
+        <ul>
+            <li>Ejemplo de discontinuidad evitable: <code>f(x)=(x^2-1)/(x-1)</code></li>
+            <li>Cuadrática para monotonía: <code>q(x)=x^2-6x+8</code></li>
+            <li>Punto crítico visual: <code>Extremum(q)</code></li>
+            <li>Intervalos en la vista gráfica: usar zoom y leer crecimiento/decrecimiento de izquierda a derecha.</li>
+        </ul>
+    </section>
+
+    <p><a href="index.html">← Volver al índice</a></p>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det){
+            det.addEventListener('toggle', function(){ if(det.open && window.MathJax){ MathJax.typesetPromise([det]); } });
+        });
+    </script>
+</body>
+</html>

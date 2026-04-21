@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1 · El ritmo del cambio en la Ría</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        h2,h3 { color:var(--primary); }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .solution { background:#eef7e9; border-left:4px solid #5cb85c; padding:12px; border-radius:0 8px 8px 0; margin-top:10px; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        .objetivo { background:#fff3cd; border-left:4px solid #ffc107; padding:12px; border-radius:0 8px 8px 0; margin-bottom:20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 1 · El ritmo del cambio en la Ría</h1>
+        <p class="meta">CE 1.3 y 1.4 · Matemáticas Aplicadas a las CCSS I · Análisis: Derivadas</p>
+    </header>
+
+    <div class="objetivo">
+        <strong>Objetivo de la sesión:</strong> Comprender la Tasa de Variación Media (TVM) e Instantánea (TVI) a través de situaciones reales del entorno de Vigo.
+    </div>
+
+    <section class="box">
+        <h2>📚 Saberes previos</h2>
+        <ul>
+            <li><strong>Pendiente de una recta:</strong> La pendiente \(m\) mide la inclinación de una recta. Se calcula como \(m = \frac{\Delta y}{\Delta x} = \frac{y_2-y_1}{x_2-x_1}\).</li>
+            <li><strong>Interpretación geométrica:</strong> La pendiente indica cuánto sube o baja \(y\) cuando \(x\) aumenta una unidad.</li>
+            <li><strong>Diferencia entre datos lineales y curvos:</strong> En datos lineales, la pendiente es constante. En datos curvos, la pendiente cambia en cada punto.</li>
+            <li><strong>Límites básicos:</strong> Noción intuitiva de aproximación a un valor.</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>📖 Teoría: Tasa de Variación Media e Instantánea</h2>
+        
+        <h3>Tasa de Variación Media (TVM)</h3>
+        <p>Sea \(f(x)\) una función y dos puntos \(a\) y \(b\) en su dominio. La <strong>tasa de variación media</strong> de \(f\) en el intervalo \([a,b]\) es:</p>
+        \[
+        TVM_{[a,b]} = \frac{f(b) - f(a)}{b - a}
+        \]
+        <p><strong>Interpretación geométrica:</strong> Es la pendiente de la recta secante que pasa por los puntos \((a, f(a))\) y \((b, f(b))\).</p>
+        <p><strong>Interpretación física:</strong> Representa la velocidad media en un intervalo de tiempo.</p>
+
+        <h3>Tasa de Variación Instantánea (TVI)</h3>
+        <p>La <strong>tasa de variación instantánea</strong> de \(f\) en un punto \(a\) es el límite de la TVM cuando el intervalo se hace infinitesimalmente pequeño:</p>
+        \[
+        TVI_a = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}
+        \]
+        <p><strong>Interpretación geométrica:</strong> Es la pendiente de la recta tangente a la curva en el punto \((a, f(a))\).</p>
+        <p><strong>Interpretación física:</strong> Representa la velocidad instantánea en un momento concreto.</p>
+        <p><strong>Nota importante:</strong> Esta TVI se denomina <strong>derivada de \(f\) en el punto \(a\)</strong>, y se denota \(f'(a)\).</p>
+
+        <img src="imgs/s1_tvm_tvi.png" alt="Representación gráfica de TVM y TVI">
+    </section>
+
+    <section class="box">
+        <h2>🔧 Bloque de Refuerzo (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 1: Repaso de pendiente</p>
+        <p>Calcula la pendiente de la recta que pasa por los puntos \(A(2, 5)\) y \(B(6, 13)\). ¿Qué significa ese valor?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(m = \frac{13-5}{6-2} = \frac{8}{4} = 2\)</p>
+            <p><strong>Interpretación:</strong> Por cada unidad que aumenta \(x\), \(y\) aumenta 2 unidades.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2: Exportaciones del Puerto de Vigo</p>
+        <p>El valor de las exportaciones del Puerto de Vigo (en millones de euros) en los últimos 5 años ha sido:</p>
+        <ul>
+            <li>Año 0: 420 M€</li>
+            <li>Año 5: 520 M€</li>
+        </ul>
+        <p>a) Calcula la tasa de variación media de las exportaciones en ese período.<br>
+        b) Si el crecimiento fuera lineal, ¿qué ecuación representaría las exportaciones \(E(t)\) en función del tiempo?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(TVM = \frac{520-420}{5-0} = \frac{100}{5} = 20\) millones de €/año</p>
+            <p><strong>Interpretación:</strong> Las exportaciones crecen a un ritmo medio de 20 millones de euros por año.</p>
+            <p>b) \(E(t) = 20t + 420\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3: Análisis gráfico de datos curvos</p>
+        <p>Observa la gráfica de evolución de pasajeros del aeropuerto de Peinador. ¿En qué períodos la pendiente de la recta secante es mayor? ¿Qué significa esto en términos de crecimiento?</p>
+        <img src="imgs/s1_peinador.png" alt="Gráfica evolución pasajeros Peinador">
+        <details class="solution"><summary></summary><div class="solution">
+            <p>La pendiente es mayor donde la curva es más inclinada. Esto indica períodos de crecimiento más acelerado en el número de pasajeros (por ejemplo, en los meses de verano o tras una campaña de nuevas rutas).</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>💪 Bloque de Consolidación (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 4: Precio del gasoil para la flota de O Berbés</p>
+        <p>El precio del gasoil (en €/litro) para la flota pesquera viene dado por la función \(P(t) = 0{,}02t^2 + 0{,}10t + 1{,}20\), donde \(t\) es el tiempo en meses desde enero.</p>
+        <p>a) Calcula la TVM del precio entre enero (\(t=0\)) y marzo (\(t=2\)).<br>
+        b) Calcula la TVM entre marzo (\(t=2\)) y junio (\(t=5\)).<br>
+        c) ¿En qué período creció más rápidamente el precio?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(P(0) = 1{,}20\), \(P(2) = 0{,}02(4) + 0{,}10(2) + 1{,}20 = 1{,}48\)</p>
+            <p>\(TVM_{[0,2]} = \frac{1{,}48 - 1{,}20}{2} = \frac{0{,}28}{2} = 0{,}14\) €/litro por mes</p>
+            
+            <p>b) \(P(5) = 0{,}02(25) + 0{,}10(5) + 1{,}20 = 2{,}20\)</p>
+            <p>\(TVM_{[2,5]} = \frac{2{,}20 - 1{,}48}{3} = \frac{0{,}72}{3} = 0{,}24\) €/litro por mes</p>
+            
+            <p>c) Entre marzo y junio, ya que la TVM es mayor (0,24 frente a 0,14).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 5: TVM en diferentes intervalos</p>
+        <p>Dada la función \(f(x) = x^2 - 3x + 2\), calcula la TVM en los intervalos:</p>
+        <p>a) \([1, 3]\)<br>
+        b) \([1, 2]\)<br>
+        c) \([1, 1{,}5]\)</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(f(1) = 0\), \(f(3) = 2 \Rightarrow TVM_{[1,3]} = \frac{2-0}{2} = 1\)</p>
+            <p>b) \(f(2) = -1 \Rightarrow TVM_{[1,2]} = \frac{-1-0}{1} = -1\)</p>
+            <p>c) \(f(1{,}5) = -0{,}25 \Rightarrow TVM_{[1,1.5]} = \frac{-0{,}25-0}{0{,}5} = -0{,}5\)</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>🚀 Bloque de Ampliación (20 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 6: Introducción a la TVI</p>
+        <p>El número de pasajeros en el aeropuerto de Peinador (en miles) viene dado por \(N(t) = 2t^2 + 5t + 100\), donde \(t\) es el tiempo en meses desde el inicio del año.</p>
+        <p>a) Calcula la TVM de pasajeros entre \(t=3\) (marzo) y \(t=3{,}1\).<br>
+        b) Calcula la TVM entre \(t=3\) y \(t=3{,}01\).<br>
+        c) ¿A qué valor se aproxima la TVM cuando el intervalo es cada vez más pequeño? ¿Qué representa ese valor?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(N(3) = 18 + 15 + 100 = 133\)</p>
+            <p>\(N(3{,}1) = 2(9{,}61) + 5(3{,}1) + 100 = 134{,}72\)</p>
+            <p>\(TVM_{[3, 3.1]} = \frac{134{,}72 - 133}{0{,}1} = 17{,}2\) miles de pasajeros/mes</p>
+            
+            <p>b) \(N(3{,}01) = 2(9{,}0601) + 5(3{,}01) + 100 = 133{,}1702\)</p>
+            <p>\(TVM_{[3, 3.01]} = \frac{133{,}1702 - 133}{0{,}01} = 17{,}02\) miles de pasajeros/mes</p>
+            
+            <p>c) El valor se aproxima a 17. Este es el <strong>ritmo de crecimiento instantáneo</strong> (TVI) en \(t=3\), es decir, la derivada \(N'(3)\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 7: Cálculo de TVI mediante límite</p>
+        <p>Para la función \(f(x) = x^2\), calcula la TVI en el punto \(x=2\) usando la definición:</p>
+        \[
+        f'(2) = \lim_{h \to 0} \frac{f(2+h) - f(2)}{h}
+        \]
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(f(2) = 4\), \(f(2+h) = (2+h)^2 = 4 + 4h + h^2\)</p>
+            <p>\(f'(2) = \lim_{h \to 0} \frac{4 + 4h + h^2 - 4}{h} = \lim_{h \to 0} \frac{4h + h^2}{h}\)</p>
+            <p>\(= \lim_{h \to 0} (4 + h) = 4\)</p>
+            <p><strong>Interpretación:</strong> La pendiente de la recta tangente a \(y=x^2\) en el punto \((2,4)\) es 4.</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>⚙️ Trabajo Activo: El velocímetro de Stellantis</h2>
+        <p><strong>Contexto:</strong> En la línea de montaje de Stellantis en Vigo, un vehículo se desplaza según la función de posición \(s(t) = 0{,}5t^2 + 2t\) (en metros), donde \(t\) es el tiempo en segundos.</p>
+        
+        <p class="exercise-title">Tarea 1: Velocidad media</p>
+        <p>Calcula la velocidad media del vehículo entre \(t=1\) y \(t=4\) segundos.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(s(1) = 2{,}5\), \(s(4) = 16\)</p>
+            <p>\(v_{media} = \frac{16 - 2{,}5}{4-1} = \frac{13{,}5}{3} = 4{,}5\) m/s</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 2: Velocidad instantánea</p>
+        <p>Calcula la velocidad instantánea en \(t=3\) segundos calculando la TVM en intervalos cada vez más pequeños: \([3, 3{,}1]\), \([3, 3{,}01]\), \([3, 3{,}001]\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(s(3) = 10{,}5\)</p>
+            <p>\(TVM_{[3,3.1]} = \frac{s(3{,}1)-s(3)}{0{,}1} = \frac{11{,}005-10{,}5}{0{,}1} = 5{,}05\) m/s</p>
+            <p>\(TVM_{[3,3.01]} = \frac{s(3{,}01)-s(3)}{0{,}01} = \frac{10{,}55005-10{,}5}{0{,}01} = 5{,}005\) m/s</p>
+            <p>\(TVM_{[3,3.001]} \approx 5{,}0005\) m/s</p>
+            <p><strong>Conclusión:</strong> La velocidad instantánea en \(t=3\) es \(v(3) = 5\) m/s.</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 3: Interpretación física</p>
+        <p>¿Qué indica el signo positivo de la velocidad? Si la velocidad instantánea fuera 0 en algún momento, ¿qué estaría ocurriendo con el vehículo?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>El signo positivo indica que el vehículo avanza (la posición aumenta con el tiempo). Si \(v=0\), el vehículo estaría momentáneamente detenido.</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>📝 Ejercicios para casa</h2>
+        
+        <p class="exercise-title">Ejercicio 8</p>
+        <p>La temperatura (en °C) en las instalaciones de una conservera de Vigo viene dada por \(T(t) = -t^2 + 8t + 5\), donde \(t\) es el tiempo en horas desde las 8:00.</p>
+        <p>a) Calcula la TVM de temperatura entre las 10:00 (\(t=2\)) y las 14:00 (\(t=6\)).<br>
+        b) ¿Cuándo la temperatura deja de subir? (Pista: cuando la TVM se hace negativa)</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(T(2) = -4 + 16 + 5 = 17\), \(T(6) = -36 + 48 + 5 = 17\)</p>
+            <p>\(TVM_{[2,6]} = \frac{17-17}{4} = 0\)</p>
+            <p><strong>Interpretación:</strong> La temperatura media no varía entre las 10:00 y las 14:00, aunque puede haber subido y bajado en ese intervalo.</p>
+            
+            <p>b) El vértice de la parábola está en \(t = \frac{-8}{2(-1)} = 4\) (las 12:00). A partir de ahí, la temperatura empieza a descender.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 9</p>
+        <p>Dada \(f(x) = 3x^2 - 5x + 1\), calcula la TVI en \(x=1\) usando la definición con límite.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(f(1) = -1\), \(f(1+h) = 3(1+2h+h^2) - 5(1+h) + 1 = 3 + 6h + 3h^2 - 5 - 5h + 1 = -1 + h + 3h^2\)</p>
+            <p>\(f'(1) = \lim_{h \to 0} \frac{-1+h+3h^2-(-1)}{h} = \lim_{h \to 0} \frac{h+3h^2}{h} = \lim_{h \to 0} (1+3h) = 1\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 10</p>
+        <p>El beneficio mensual (en miles de euros) de una empresa de transporte marítimo es \(B(x) = -2x^2 + 16x - 10\), donde \(x\) es el número de rutas activas.</p>
+        <p>a) Calcula la TVM del beneficio entre 2 y 5 rutas.<br>
+        b) ¿Qué indica el signo de esta TVM?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(B(2) = -8 + 32 - 10 = 14\), \(B(5) = -50 + 80 - 10 = 20\)</p>
+            <p>\(TVM_{[2,5]} = \frac{20-14}{3} = 2\) miles de €/ruta</p>
+            <p>b) El signo positivo indica que el beneficio aumenta cuando se incrementa el número de rutas (en ese intervalo).</p>
+        </div></details>
+    </section>
+
+    <footer style="text-align:center; margin-top:40px; padding:20px; color:#777; font-size:0.9em;">
+        <p>Matemáticas Aplicadas a las CCSS I · 1º Bachillerato LOMLOE · IES de Teis</p>
+    </footer>
+</body>
+</html>

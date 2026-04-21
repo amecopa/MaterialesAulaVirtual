@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 4 · Funciones a trozos</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 4 · Funciones definidas a trozos y aplicaciones reales</h1>
+        <p class="meta">CE 5.2 y 5.3 · Tarifas por tramos y continuidad</p>
+    </header>
+
+    <section class="box">
+        <h2>Saberes y conceptos previos</h2>
+        <ul>
+            <li>Funciones definidas por intervalos.</li>
+            <li>Continuidad en puntos de unión y posibles saltos.</li>
+            <li>Modelización de tarifas e impuestos por tramos.</li>
+        </ul>
+        <img src="imgs/s4_funcion_trozos_tarifa.png" alt="Gráfica de tarifa por tramos">
+    </section>
+
+    <section class="box">
+        <h2>Resumen de teoría utilizada</h2>
+        <ul>
+            <li><strong>Función a trozos:</strong> una misma magnitud se describe con expresiones distintas según intervalos de \(x\).</li>
+            <li><strong>Lectura de intervalos:</strong> los símbolos \(&lt;,\le,\ge,&gt;\) determinan si un extremo pertenece o no al tramo.</li>
+            <li><strong>Continuidad en un punto de unión:</strong> se compara el valor por la izquierda y por la derecha; si coinciden (y con el valor de la función), no hay salto.</li>
+            <li><strong>Condición de continuidad con parámetro:</strong> se igualan ambas expresiones en el punto de cambio para hallar el valor del parámetro.</li>
+            <li><strong>Modelización por tramos:</strong> en tarifas reales suele haber parte fija y parte variable a partir de un umbral.</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>Bloque práctico</h2>
+
+        <p class="exercise-title">Ejercicio 1 (Modelado)</p>
+        <p>Tarifa eléctrica: 10€ fijos hasta 100 kWh; si se supera, cada kWh extra cuesta 0,15€.</p>
+        <details class="solution"><summary></summary><div>
+            <p>
+                \[
+                C(x)=\begin{cases}
+                10, & 0\le x\le 100\\
+                10+0{,}15(x-100), & x>100
+                \end{cases}
+                \]
+                Es continua en \(x=100\) porque ambas expresiones valen 10.
+            </p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2 (Práctica)</p>
+        <p>Representa \(f(x)=\begin{cases}x+2,&x&lt;0\\x^2,&x\ge0\end{cases}\).</p>
+        <details class="solution"><summary></summary><div>
+            <p>Para \(x&lt;0\): recta de pendiente 1 con límite izquierdo \(2\) en 0. Para \(x\ge0\): parábola con \(f(0)=0\). Hay salto en \(x=0\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3 (Práctica)</p>
+        <p>Halla \(k\) para continuidad en \(x=2\): \(g(x)=\begin{cases}kx-1,&x\le2\\2x+3,&x&gt;2\end{cases}\).</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(2k-1=2\cdot2+3=7\Rightarrow2k=8\Rightarrow k=4\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 4 (Práctica)</p>
+        <p>Mensajería: 5€ hasta 2kg; para más peso, 5€ + 2€ por kg adicional. Calcula coste para 5kg.</p>
+        <details class="solution"><summary></summary><div>
+            <p>
+                \[
+                f(x)=\begin{cases}
+                5, & 0&lt;x\le2\\
+                5+2(x-2), & x&gt;2
+                \end{cases}
+                \]
+                \(f(5)=5+2(3)=11€\).
+            </p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>Uso en GeoGebra (copiar/pegar)</h2>
+        <ul>
+            <li>Ejemplo básico a trozos: <code>f(x)=If[x&lt;0, x+2, x^2]</code></li>
+            <li>Tarifa eléctrica: <code>C(x)=If[x&lt;=100, 10, 10+0.15*(x-100)]</code></li>
+            <li>Mensajería: <code>M(x)=If[x&lt;=2, 5, 5+2*(x-2)]</code></li>
+            <li>Con parámetro: <code>g(x)=If[x&lt;=2, k*x-1, 2*x+3]</code> y mover <code>k</code> con deslizador.</li>
+        </ul>
+    </section>
+
+    <p><a href="index.html">← Volver al índice</a></p>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det){
+            det.addEventListener('toggle', function(){ if(det.open && window.MathJax){ MathJax.typesetPromise([det]); } });
+        });
+    </script>
+</body>
+</html>

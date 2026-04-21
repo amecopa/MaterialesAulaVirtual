@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 17: Intervalos de Confianza para la Media</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-afianzamiento { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 90%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #388e3c; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 17: Intervalos de Confianza para la Media</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Aplicar fórmulas de IC según si σ es conocida o no</li>
+      <li>Usar distribución t de Student cuando n < 30 y σ desconocida</li>
+      <li>Interpretar correctamente IC en contextos reales</li>
+      <li>Decidir tamaño muestral según precisión deseada</li>
+    </ul>
+  </div>
+
+  <h2>📚 Casos para IC de μ</h2>
+  
+  <table>
+    <tr><th>Situación</th><th>Condiciones</th><th>Distribución</th><th>Fórmula IC</th></tr>
+    <tr>
+      <td>Caso 1</td>
+      <td>σ conocida<br>n ≥ 30</td>
+      <td>Normal (Z)</td>
+      <td>\\(\\bar{x} \\pm z_{\\alpha/2} \\cdot \\frac{\\sigma}{\\sqrt{n}}\\)</td>
+    </tr>
+    <tr>
+      <td>Caso 2</td>
+      <td>σ desconocida<br>n ≥ 30</td>
+      <td>Normal (Z)<br>(aprox.)</td>
+      <td>\\(\\bar{x} \\pm z_{\\alpha/2} \\cdot \\frac{s}{\\sqrt{n}}\\)</td>
+    </tr>
+    <tr>
+      <td>Caso 3</td>
+      <td>σ desconocida<br>n < 30<br>Pob. normal</td>
+      <td>t-Student<br>(n-1 gl)</td>
+      <td>\\(\\bar{x} \\pm t_{\\alpha/2,n-1} \\cdot \\frac{s}{\\sqrt{n}}\\)</td>
+    </tr>
+  </table>
+
+  <div class="definicion">
+    <strong>Distribución t de Student:</strong>
+    <ul>
+      <li>Similar a la normal pero con colas más pesadas</li>
+      <li>Depende de <strong>grados de libertad (gl) = n - 1</strong></li>
+      <li>Cuando n → ∞, t → Z (converge a normal)</li>
+      <li>Más conservadora que Z (ICs más amplios)</li>
+    </ul>
+    <br>
+    <strong>Valores críticos t (algunos ejemplos):</strong>
+    <table style="width: 70%; margin: 1rem auto;">
+      <tr><th>gl</th><th>t₀.₀₂₅ (95%)</th><th>Comparación z₀.₀₂₅</th></tr>
+      <tr><td>5</td><td>2.571</td><td rowspan="4" style="vertical-align: middle;">1.96</td></tr>
+      <tr><td>10</td><td>2.228</td></tr>
+      <tr><td>20</td><td>2.086</td></tr>
+      <tr><td>30</td><td>2.042</td></tr>
+    </table>
+  </div>
+
+  <img src="graficos/s17_interpretacion_ic.svg" alt="Interpretación de intervalos de confianza">
+  <img src="graficos/s17_confianza_amplitud.svg" alt="Relación confianza-amplitud">
+
+  <div class="bloque-afianzamiento">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Muestra de 15 notas de Matemáticas: x̄ = 6.8, s = 1.5. Población normal. IC al 95%.</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Identificación del caso:</strong></p>
+        <ul>
+          <li>n = 15 < 30 → Muestra pequeña</li>
+          <li>σ desconocida (usamos s)</li>
+          <li>Población normal (dato clave)</li>
+          <li><strong>→ Usar distribución t</strong></li>
+        </ul>
+        
+        <p><strong>Grados de libertad:</strong></p>
+        <div class="paso">gl = n - 1 = 15 - 1 = 14</div>
+        
+        <p><strong>Valor crítico t:</strong></p>
+        <div class="paso">t₀.₀₂₅,₁₄ ≈ 2.145 (tabla t-Student)</div>
+        
+        <p><strong>Error estándar:</strong></p>
+        <div class="paso">SE = s/√n = 1.5/√15 = 1.5/3.873 ≈ 0.387</div>
+        
+        <p><strong>Margen de error:</strong></p>
+        <div class="paso">E = t · SE = 2.145 × 0.387 ≈ 0.830</div>
+        
+        <p><strong>IC:</strong></p>
+        <div class="paso">IC = [6.8 - 0.830, 6.8 + 0.830] = <strong>[5.97, 7.63]</strong></div>
+        
+        <p><strong>Interpretación:</strong> Con 95% de confianza, la nota media poblacional está entre 5.97 y 7.63.</p>
+        
+        <p><strong>Nota:</strong> Si hubiéramos usado erróneamente Z = 1.96:</p>
+        <div class="paso">E_incorrecto = 1.96 × 0.387 ≈ 0.759</div>
+        <p>IC sería [6.04, 7.56] → Más estrecho pero MENOS fiable (error metodológico).</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2 (Contexto Vigo):</strong> Tiempo de viaje Vigo-Santiago en Renfe. Muestra de 50 trayectos: x̄ = 52.3 min, s = 4.8 min. IC al 99%.</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Identificación:</strong></p>
+        <ul>
+          <li>n = 50 ≥ 30 → Muestra grande</li>
+          <li>σ desconocida pero n grande</li>
+          <li><strong>→ Podemos usar Z (aproximación normal)</strong></li>
+        </ul>
+        
+        <p><strong>Datos:</strong></p>
+        <div class="paso">n = 50, x̄ = 52.3, s = 4.8, z₀.₀₀₅ = 2.576 (99%)</div>
+        
+        <p><strong>Cálculos:</strong></p>
+        <div class="paso">SE = 4.8/√50 = 4.8/7.071 ≈ 0.679 min</div>
+        <div class="paso">E = 2.576 × 0.679 ≈ 1.75 min</div>
+        
+        <p><strong>IC:</strong></p>
+        <div class="paso">IC = [52.3 - 1.75, 52.3 + 1.75] = <strong>[50.55, 54.05] minutos</strong></div>
+        
+        <p><strong>Conclusión práctica:</strong> Con altísima confianza (99%), el tiempo medio de viaje está entre 50.5 y 54 minutos.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3:</strong> Peso de naranjas. Muestra de 8: datos = {180, 175, 190, 185, 172, 195, 188, 182} gramos. IC al 90%.</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Paso 1: Calcular estadísticos muestrales</strong></p>
+        <div class="paso">n = 8</div>
+        <div class="paso">Σx = 180+175+190+185+172+195+188+182 = 1467</div>
+        <div class="paso">x̄ = 1467/8 = 183.375 g</div>
+        
+        <p>Varianza muestral:</p>
+        <div class="paso">s² = [Σ(x - x̄)²]/(n-1)</div>
+        <div class="paso">= [(180-183.375)² + (175-183.375)² + ... + (182-183.375)²]/7</div>
+        <div class="paso">= [11.39 + 70.14 + 43.89 + 2.64 + 129.39 + 135.14 + 21.39 + 1.89]/7</div>
+        <div class="paso">= 415.875/7 ≈ 59.41</div>
+        <div class="paso">s = √59.41 ≈ 7.71 g</div>
+        
+        <p><strong>Paso 2: Identificar caso</strong></p>
+        <ul>
+          <li>n = 8 < 30</li>
+          <li>σ desconocida</li>
+          <li>Asumimos población normal</li>
+          <li><strong>→ Distribución t con gl = 7</strong></li>
+        </ul>
+        
+        <p><strong>Paso 3: Valor crítico</strong></p>
+        <div class="paso">t₀.₀₅,₇ ≈ 1.895 (90% confianza)</div>
+        
+        <p><strong>Paso 4: IC</strong></p>
+        <div class="paso">SE = 7.71/√8 = 7.71/2.828 ≈ 2.73</div>
+        <div class="paso">E = 1.895 × 2.73 ≈ 5.17</div>
+        <div class="paso">IC = [183.375 - 5.17, 183.375 + 5.17]</div>
+        <div class="paso"><strong>IC = [178.2, 188.5] gramos</strong></div>
+      </div>
+    </details>
+
+    <p><strong>Ej 4 (Decisión):</strong> Dos ICs para la misma media: A=[45.2, 54.8], B=[42.1, 57.9]. Sin más información, ¿cuál tiene mayor nivel de confianza?</p>
+    <details>
+      <summary>Ver razonamiento</summary>
+      <div class="solucion">
+        <p><strong>Análisis de amplitudes:</strong></p>
+        <div class="paso">Amplitud IC_A = 54.8 - 45.2 = 9.6</div>
+        <div class="paso">Amplitud IC_B = 57.9 - 42.1 = 15.8</div>
+        
+        <p><strong>IC_B es MÁS AMPLIO</strong></p>
+        
+        <p><strong>Razonamiento:</strong></p>
+        <ul>
+          <li>Mayor confianza requiere "echar una red más amplia"</li>
+          <li>IC más amplio → más seguridad de capturar μ</li>
+          <li><strong>Conclusión: IC_B tiene MAYOR nivel de confianza</strong></li>
+        </ul>
+        
+        <p><strong>Ejemplo numérico:</strong></p>
+        <p>Si ambos vienen de la misma muestra:</p>
+        <ul>
+          <li>IC_A podría ser 90% (z=1.645)</li>
+          <li>IC_B podría ser 99% (z=2.576)</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Guía de Decisión</h2>
+  <div class="definicion" style="background: #e8f5e9; border-color: #388e3c;">
+    <strong>¿Qué distribución uso?</strong>
+    <ol>
+      <li><strong>¿Conozco σ?</strong> SÍ → Z</li>
+      <li><strong>¿n ≥ 30?</strong> SÍ → Z (aunque σ desconocida, usar s)</li>
+      <li><strong>¿n < 30 Y población normal?</strong> SÍ → t-Student</li>
+      <li><strong>¿n < 30 Y población NO normal?</strong> Problema: necesitamos más datos o técnicas avanzadas</li>
+    </ol>
+  </div>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

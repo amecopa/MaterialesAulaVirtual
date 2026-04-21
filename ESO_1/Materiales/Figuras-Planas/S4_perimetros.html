@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 4: Introducción a perímetros</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { 
+      font-family: Georgia, serif; 
+      max-width: 860px; 
+      margin: 2rem auto; 
+      padding: 0 1.2rem; 
+      line-height: 1.7; 
+      color: #222; 
+      background-color: #fff;
+    }
+    h1 { 
+      color: #1a3a6e; 
+      border-bottom: 2px solid #1a3a6e; 
+      padding-bottom: .4rem; 
+    }
+    h2 { 
+      color: #2a5298; 
+      margin-top: 2rem; 
+    }
+    h3 { 
+      color: #3a6bc4; 
+    }
+    .objetivos {
+      background: #e8f4f8;
+      border-left: 4px solid #2196F3;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .bloque-refuerzo { 
+      background: #fff9e6; 
+      border-left: 4px solid #f9a825; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-consolidacion { 
+      background: #f0f4fc; 
+      border-left: 4px solid #2a5298; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-afianzamiento { 
+      background: #e8f5e9; 
+      border-left: 4px solid #388e3c; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-ampliacion { 
+      background: #fce4ec; 
+      border-left: 4px solid #c2185b; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .ejemplo {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .importante {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .formula {
+      background: #e8f4f8;
+      border: 2px solid #2196F3;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    ol li, ul li { 
+      margin-bottom: .8rem; 
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f4fc;
+      color: #1a3a6e;
+    }
+    .contraste-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .contraste-btn:hover {
+      background: #2a5298;
+    }
+    body.alto-contraste {
+      background-color: #000;
+      color: #ffff00;
+    }
+    body.alto-contraste h1,
+    body.alto-contraste h2,
+    body.alto-contraste h3 {
+      color: #ffff00;
+    }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .objetivos,
+    body.alto-contraste .ejemplo,
+    body.alto-contraste .importante,
+    body.alto-contraste .formula {
+      background-color: #000;
+      color: #ffff00;
+      border-color: #ffff00;
+    }
+    body.alto-contraste th {
+      background-color: #333;
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">
+    Alto Contraste
+  </button>
+
+  <h1>Sesión 4: Introducción a perímetros</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la sesión</h3>
+    <ul>
+      <li>Comprender el concepto de perímetro como longitud del contorno</li>
+      <li>Calcular perímetros de polígonos regulares e irregulares</li>
+      <li>Aplicar unidades de medida adecuadas y realizar conversiones</li>
+      <li>Resolver problemas contextualizados de perímetros</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+
+  <h3>¿Qué es el perímetro?</h3>
+  <p>
+    El <strong>perímetro</strong> de una figura plana es la <strong>longitud total de su contorno</strong>. 
+    Es decir, la distancia que recorrerías si caminaras alreded or completo de la figura.
+  </p>
+
+  <div class="ejemplo">
+    <h4>Ejemplo visual:</h4>
+    <p>
+      Imagina que quieres poner una valla alrededor de un jardín rectangular. 
+      La cantidad de valla que necesitas es exactamente el <strong>perímetro</strong> del jardín.
+    </p>
+  </div>
+
+  <div class="importante">
+    <h4>⭐ Cómo calcular el perímetro</h4>
+    <p>
+      Para calcular el perímetro de cualquier polígono:
+    </p>
+    <p style="text-align: center; font-size: 1.2em;">
+      <strong>Suma las longitudes de todos los lados</strong>
+    </p>
+  </div>
+
+  <h3>Unidades de longitud</h3>
+  <p>El perímetro se mide en unidades de <strong>longitud</strong>:</p>
+  <ul>
+    <li>Milímetros (mm)</li>
+    <li>Centímetros (cm)</li>
+    <li>Decímetros (dm)</li>
+    <li>Metros (m)</li>
+    <li>Kilómetros (km)</li>
+  </ul>
+
+  <div class="ejemplo">
+    <h4>Conversiones básicas:</h4>
+    <ul>
+      <li>1 m = 100 cm</li>
+      <li>1 cm = 10 mm</li>
+      <li>1 km = 1000 m</li>
+      <li>1 m = 10 dm</li>
+    </ul>
+  </div>
+
+  <h3>Fórmulas para polígonos regulares</h3>
+  <p>
+    Un <strong>polígono regular</strong> tiene todos los lados iguales. 
+    En ese caso, podemos usar una fórmula más rápida:
+  </p>
+
+  <div class="formula">
+    \[ P = n \times \text{lado} \]
+    <p style="font-size: 0.9em; margin-top: 0.5rem;">
+      donde \( n \) es el número de lados
+    </p>
+  </div>
+
+  <div class="ejemplo">
+    <h4>Ejemplos:</h4>
+    <ul>
+      <li><strong>Triángulo equilátero</strong> de lado \( l \): \( P = 3 \times l \)</li>
+      <li><strong>Cuadrado</strong> de lado \( l \): \( P = 4 \times l \)</li>
+      <li><strong>Pentágono regular</strong> de lado \( l \): \( P = 5 \times l \)</li>
+      <li><strong>Hexágono regular</strong> de lado \( l \): \( P = 6 \times l \)</li>
+    </ul>
+  </div>
+
+  <!-- BLOQUE 1: REFUERZO -->
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (10 min)</h2>
+    <p><strong>Repaso de unidades y conversiones</strong></p>
+    
+    <h3>Ejercicio 1: Conversiones de unidades</h3>
+    <ol>
+      <li>3 m = ________ cm</li>
+      <li>250 cm = ________ m</li>
+      <li>5 m = ________ mm</li>
+      <li>4500 mm = ________ m</li>
+      <li>2,5 km = ________ m</li>
+      <li>750 m = ________ km</li>
+    </ol>
+
+    <h3>Ejercicio 2: Mide objetos del aula</h3>
+    <p>Usa la regla para medir:</p>
+    <ol>
+      <li>El largo de tu lápiz: ________ cm</li>
+      <li>El ancho de tu libro de matemáticas: ________ cm</li>
+      <li>El largo de tu mesa: ________ cm (o ________ m)</li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 2: CONSOLIDACIÓN -->
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (15 min)</h2>
+    <p><strong>Cálculo de perímetros paso a paso</strong></p>
+    
+    <h3>Ejercicio 3: Perímetros de polígonos irregulares</h3>
+    <p>Calcula el perímetro sumando todos los lados:</p>
+    
+    <ol>
+      <li>Triángulo con lados 5 cm, 7 cm y 8 cm
+        <br>P = 5 + 7 + 8 = ________ cm
+      </li>
+      
+      <li>Cuadrilátero con lados 6 cm, 4 cm, 6 cm y 4 cm
+        <br>P = 6 + 4 + 6 + 4 = ________ cm
+      </li>
+      
+      <li>Pentágono con lados 3 cm, 4 cm, 5 cm, 6 cm y 7 cm
+        <br>P = ________ cm
+      </li>
+      
+      <li>Hexágono con lados 2 cm, 3 cm, 2 cm, 3 cm, 2 cm y 3 cm
+        <br>P = ________ cm
+      </li>
+      
+      <li>Rectángulo con lados 10 cm y 5 cm (cuatro lados en total)
+        <br>P = 10 + 5 + 10 + 5 = ________ cm
+      </li>
+      
+      <li>Triángulo con lados 12 cm, 9 cm y 15 cm
+        <br>P = ________ cm
+      </li>
+    </ol>
+
+    <h3>Ejercicio 4: Perímetros de polígonos regulares (con fórmula)</h3>
+    <p>Usa la fórmula \( P = n \times \text{lado} \)</p>
+    
+    <ol>
+      <li>Triángulo equilátero de lado 6 cm
+        <br>P = 3 × 6 = ________ cm
+      </li>
+      
+      <li>Cuadrado de lado 8 cm
+        <br>P = 4 × 8 = ________ cm
+      </li>
+      
+      <li>Pentágono regular de lado 5 cm
+        <br>P = 5 × 5 = ________ cm
+      </li>
+      
+      <li>Hexágono regular de lado 4 cm
+        <br>P = ________ cm
+      </li>
+    </ol>
+
+    <div class="ejemplo">
+      <h4>💡 Consejo</h4>
+      <p>
+        Para figuras regulares, multiplica es más rápido que sumar. 
+        Pero ¡el resultado es el mismo!
+      </p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 3: AFIANZAMIENTO -->
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <p><strong>Problemas contextualizados</strong></p>
+    
+    <h3>Ejercicio 5: Problemas de la vida real</h3>
+    
+    <ol>
+      <li><strong>Huerto rectangular</strong>:
+        <p>María quiere vallar su huerto rectangular que mide 8 m de largo y 5 m de ancho. 
+        ¿Cuántos metros de valla necesita?</p>
+        <p>Solución:<br>
+        P = 8 + 5 + 8 + 5 = ________ m<br>
+        Necesita ________ metros de valla.
+        </p>
+      </li>
+      
+      <li><strong>Campo de Balaídos</strong>:
+        <p>El campo de fútbol del RC Celta (Balaídos) tiene forma rectangular de 105 m de largo 
+        y 68 m de ancho. ¿Cuánto mide su perímetro?</p>
+        <p>Solución:<br>
+        P = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Parque triangular</strong>:
+        <p>Un parque tiene forma triangular con lados de 45 m, 52 m y 38 m. 
+        ¿Cuánta valla se necesita para rodearlo completamente?</p>
+        <p>Solución:<br>
+        P = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Pasar el balón</strong>:
+        <p>En educación física, los alumnos forman un cuadrado de lado 12 m. 
+        Van a pasar un balón siguiendo el perímetro del cuadrado. ¿Cuántos metros recorre el balón?</p>
+        <p>Solución:<br>
+        P = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Marco de fotos</strong>:
+        <p>Ana quiere poner un marco a una foto rectangular de 20 cm de largo y 15 cm de ancho. 
+        ¿Cuántos centímetros de marco necesita?</p>
+        <p>Solución:<br>
+        P = ________ cm
+        </p>
+      </li>
+      
+      <li><strong>Pista de atletismo</strong>:
+        <p>La zona recta de una pista de atletismo mide 100 m. Si la pista tiene dos rectas iguales 
+        y dos curvas que suman 214 m, ¿cuánto mide el perímetro total?</p>
+        <p>Solución:<br>
+        P = 100 + 100 + 214 = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Jardín del instituto</strong>:
+        <p>El jardín del IES Teis tiene forma de pentágono regular con lados de 8 metros cada uno. 
+        ¿Cuántos metros mide el contorno del jardín?</p>
+        <p>Solución:<br>
+        P = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Señal de STOP</strong>:
+        <p>Una señal de "STOP" es un octógono regular con lados de 18 cm. 
+        ¿Cuánto mide su perímetro?</p>
+        <p>Solución:<br>
+        P = ________ cm
+        </p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 4: AMPLIACIÓN -->
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <p><strong>Perímetros en Vigo: mapas y medidas reales</strong></p>
+    
+    <h3>Proyecto: Calcula perímetros de lugares de Vigo</h3>
+    
+    <ol>
+      <li><strong>Plaza de España</strong>:
+        <p>Usando Google Maps o un plano, estima las medidas aproximadas de la Plaza de España.</p>
+        <ul>
+          <li>Forma aproximada: ____________</li>
+          <li>Medidas estimadas: ____________</li>
+          <li>Perímetro aproximado: ____________ m</li>
+        </ul>
+      </li>
+      
+      <li><strong>Pista deportiva del instituto</strong>:
+        <p>Sal con la clase (o usa medidas proporcionadas) y calcula el perímetro de la pista del IES Teis.</p>
+        <ul>
+          <li>Largo: ________ m</li>
+          <li>Ancho: ________ m</li>
+          <li>Perímetro: ________ m</li>
+          <li>Si das 10 vueltas corriendo, ¿cuántos metros recorres? ________ m</li>
+        </ul>
+      </li>
+      
+      <li><strong>Parque de Castrelos</strong>:
+        <p>El estanque central del Parque de Castrelos tiene forma aproximadamente rectangular 
+        de 50 m × 30 m. ¿Cuánto mide su perímetro?</p>
+        <p>Solución:<br>
+        P = ________ m
+        </p>
+      </li>
+      
+      <li><strong>Manzana de edificios</strong>:
+        <p>Elige una manzana de edificios cerca del instituto usando Google Maps. 
+        Mide los lados y calcula su perímetro.</p>
+        <ul>
+          <li>Lados: ________, ________, ________, ________</li>
+          <li>Perímetro: ________ m</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Ejercicio de pensamiento crítico</h3>
+    <div class="ejemplo">
+      <h4>Pregunta:</h4>
+      <p>
+        Dos parques tienen el mismo perímetro (400 m). Uno es cuadrado y otro es rectangular. 
+        ¿Tienen la misma forma? ¿Ocupan el mismo espacio?
+      </p>
+      <p><em>Piensa y discute con tus compañeros.</em></p>
+    </div>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Mide tu habitación y calcula su perímetro (aproximando a forma rectangular)</li>
+    <li>Calcula el perímetro de la pantalla de tu móvil o tablet</li>
+    <li>Resuelve: Un campo rectangular mide 80 m de largo. Si su perímetro es 220 m, ¿cuánto mide de ancho?</li>
+    <li>Busca en casa 3 objetos diferentes y calcula sus perímetros</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 4 - Figuras Planas - 1º ESO - Matemáticas</small>
+  </p>
+
+</body>
+</html>

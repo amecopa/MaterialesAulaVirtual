@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 6: Áreas de triángulos y cuadriláteros</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    h3 { color: #3a6bc4; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2196F3; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .ejemplo { background: #f9f9f9; border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+    .importante { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem 1.5rem; margin: 1rem 0; }
+    .formula { background: #e8f4f8; border: 2px solid #2196F3; padding: 1rem; margin: 1rem 0; border-radius: 6px; text-align: center; font-size: 1.2em; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.8rem; }
+    th { background-color: #f0f4fc; color: #1a3a6e; }
+    .contraste-btn { position: fixed; top: 20px; right: 20px; padding: 10px 15px; background: #1a3a6e; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
+    body.alto-contraste { background-color: #000; color: #ffff00; }
+    body.alto-contraste h1, body.alto-contraste h2, body.alto-contraste h3 { color: #ffff00; }
+    body.alto-contraste .bloque-refuerzo, body.alto-contraste .bloque-consolidacion, body.alto-contraste .bloque-afianzamiento, body.alto-contraste .bloque-ampliacion, body.alto-contraste .objetivos, body.alto-contraste .ejemplo, body.alto-contraste .importante, body.alto-contraste .formula { background-color: #000; color: #ffff00; border-color: #ffff00; }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">Alto Contraste</button>
+
+  <h1>Sesión 6: Áreas de triángulos y cuadriláteros</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Comprender el área como superficie ocupada</li>
+      <li>Deducir fórmulas de áreas (rectángulo, cuadrado, triángulo, paralelogramo)</li>
+      <li>Calcular áreas con unidades cuadradas</li>
+      <li>Distinguir claramente entre perímetro y área</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+  <h3>¿Qué es el área?</h3>
+  <p>El <strong>área</strong> es la <strong>medida de la superficie</strong> que ocupa una figura plana.</p>
+
+  <div class="importante">
+    <p><strong>⚠️ IMPORTANTE: Perímetro vs Área</strong></p>
+    <ul>
+      <li><strong>Perímetro</strong>: Longitud del contorno (se mide en m, cm...)</li>
+      <li><strong>Área</strong>: Superficie interior (se mide en m², cm²...)</li>
+    </ul>
+  </div>
+
+  <h3>Unidades de área</h3>
+  <p>Las unidades de área son <strong>cuadradas</strong>: mm², cm², dm², m², km²</p>
+  <div class="ejemplo">
+    <p>1 m² = 100 cm × 100 cm = 10.000 cm²</p>
+  </div>
+
+  <h3>Fórmulas de áreas</h3>
+  <div class="formula">\[ \text{Rectángulo: } A = \text{base} \times \text{altura} \]</div>
+  <div class="formula">\[ \text{Cuadrado: } A = \text{lado}^2 \]</div>
+  <div class="formula">\[ \text{Triángulo: } A = \frac{\text{base} \times \text{altura}}{2} \]</div>
+  <div class="formula">\[ \text{Paralelogramo: } A = \text{base} \times \text{altura} \]</div>
+
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (8 min)</h2>
+    <h3>Ejercicio 1: Contar cuadrados</h3>
+    <p>En papel cuadriculado, cuenta cuántos cuadrados unitarios caben:</p>
+    <ol>
+      <li>Rectángulo de 5×3 cuadrados → Área = _____ cuadrados</li>
+      <li>Cuadrado de 4×4 cuadrados → Área = _____ cuadrados</li>
+      <li>Triángulo que ocupa 6 cuadrados → Área = 6 cuadrados</li>
+      <li>Figura irregular que cubre 12 cuadrados → Área = 12 cuadrados</li>
+    </ol>
+    <h3>Ejercicio 2: Conversiones</h3>
+    <ol>
+      <li>2 m² = ________ cm²</li>
+      <li>500 cm² = ________ dm²</li>
+      <li>3 dm² = ________ cm²</li>
+    </ol>
+  </div>
+
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (17 min)</h2>
+    <h3>Deducción manipulativa de fórmulas</h3>
+    
+    <h4>Rectángulo</h4>
+    <p>En papel cuadriculado: Si tiene 6 cuadrados de base y 4 de altura → 6 × 4 = 24 cuadrados</p>
+    <div class="formula">\[ A_{\text{rectángulo}} = \text{base} \times \text{altura} \]</div>
+
+    <h4>Cuadrado</h4>
+    <p>Es un rectángulo especial donde base = altura = lado</p>
+    <div class="formula">\[ A_{\text{cuadrado}} = \text{lado} \times \text{lado} = \text{lado}^2 \]</div>
+
+    <h4>Triángulo</h4>
+    <p>Dibuja un rectángulo y traza una diagonal. Cada mitad es un triángulo = mitad del rectángulo</p>
+    <div class="formula">\[ A_{\text{triángulo}} = \frac{\text{base} \times \text{altura}}{2} \]</div>
+
+    <h4>Paralelogramo</h4>
+    <p>Corta un triángulo lateral y pégalo al otro lado → se transforma en rectángulo</p>
+    <div class="formula">\[ A_{\text{paralelogramo}} = \text{base} \times \text{altura} \]</div>
+
+    <h3>Ejercicio 3: Calcula áreas</h3>
+    <ol>
+      <li>Rectángulo 8 cm × 5 cm → A = 8 × 5 = _____ cm²</li>
+      <li>Cuadrado lado 6 cm → A = 6² = _____ cm²</li>
+      <li>Triángulo base 10 cm, altura 6 cm → A = (10 × 6) / 2 = _____ cm²</li>
+      <li>Paralelogramo base 7 cm, altura 4 cm → A = 7 × 4 = _____ cm²</li>
+      <li>Rectángulo 12 cm × 3 cm → A = _____ cm²</li>
+      <li>Triángulo base 8 cm, altura 5 cm → A = _____ cm²</li>
+    </ol>
+  </div>
+
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <h3>Problemas contextualizados</h3>
+    <ol>
+      <li><strong>Terreno rectangular</strong>: 25 m × 18 m. ¿Área? A = _____ m²</li>
+      <li><strong>Campo de baloncesto</strong>: 28 m × 15 m. ¿Área? A = _____ m²</li>
+      <li><strong>Vela triangular</strong>: base 3 m, altura 4 m. ¿Área? A = _____ m²</li>
+      <li><strong>Azulejo cuadrado</strong>: lado 20 cm. ¿Área? A = _____ cm²</li>
+      <li><strong>Señal triangular</strong>: base 60 cm, altura 52 cm. ¿Área? A = _____ cm²</li>
+      <li><strong>Pizarra rectangular</strong>: 120 cm × 80 cm. ¿Área? A = _____ cm² = _____ m²</li>
+      <li><strong>Jardín</strong>: 12 m × 8 m. ¿Área? A = _____ m². Si cuesta 5€/m² sembrar césped, ¿coste total?</li>
+      <li><strong>Hoja A4</strong>: 29,7 cm × 21 cm. ¿Área? A ≈ _____ cm²</li>
+    </ol>
+
+    <h3>Perímetro Y área del mismo cuadrado</h3>
+    <p>Cuadrado de lado 6 cm:</p>
+    <ul>
+      <li>Perímetro = 4 × 6 = _____ cm</li>
+      <li>Área = 6² = _____ cm²</li>
+      <li>¿Son iguales? No, porque miden cosas diferentes</li>
+    </ul>
+  </div>
+
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <h3>Áreas en Vigo</h3>
+    <ol>
+      <li><strong>Plaza de la Constitución</strong> (aprox. 80 m × 40 m): A ≈ _____ m²</li>
+      <li><strong>Solar triangular</strong> (base 30 m, altura 25 m): A = _____ m²</li>
+      <li><strong>Césped en Castrelos</strong> (zona rectangular 40 m × 25 m): A = _____ m². Si cuesta 3€/m² mantener, ¿coste anual?</li>
+      <li><strong>Pista de paddle del IES</strong> (20 m × 10 m): A = _____ m²</li>
+    </ol>
+
+    <h3>Problema abierto</h3>
+    <div class="ejemplo">
+      <p>Un parque rectangular de 50 m × 30 m tiene un camino triangular (base 20 m, altura 10 m). ¿Área de césped restante?</p>
+      <p>Área total = 50 × 30 = 1500 m²<br>
+      Área camino = (20 × 10) / 2 = 100 m²<br>
+      Área césped = 1500 - 100 = _____ m²</p>
+    </div>
+  </div>
+
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Mide tu habitación y calcula el área del suelo</li>
+    <li>Calcula el área de 3 objetos rectangulares de tu casa</li>
+    <li>Dibuja un triángulo de base 6 cm y altura 4 cm. Calcula su área</li>
+    <li>Explica con tus palabras la diferencia entre perímetro y área</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 6 - Figuras Planas - 1º ESO</small>
+  </p>
+</body>
+</html>

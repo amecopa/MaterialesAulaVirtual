@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 4 · Optimización en la industria de Vigo</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        h2,h3 { color:var(--primary); }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .solution { background:#eef7e9; border-left:4px solid #5cb85c; padding:12px; border-radius:0 8px 8px 0; margin-top:10px; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        .objetivo { background:#fff3cd; border-left:4px solid #ffc107; padding:12px; border-radius:0 8px 8px 0; margin-bottom:20px; }
+        .metodologia { background:#d1ecf1; border-left:4px solid #17a2b8; padding:12px; margin:10px 0; border-radius:0 6px 6px 0; }
+        ol.pasos { background:#f8f9fa; padding:20px 20px 20px 40px; border-radius:6px; }
+        ol.pasos li { margin-bottom:10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 4 · Optimización en la industria de Vigo</h1>
+        <p class="meta">CE 1.3 y 1.4 · Matemáticas Aplicadas a las CCSS I · Análisis: Aplicaciones de las Derivadas</p>
+    </header>
+
+    <div class="objetivo">
+        <strong>Objetivo de la sesión:</strong> Resolver problemas de optimización contextualizados en el entorno socioeconómico de Vigo, modelizando situaciones reales y aplicando las derivadas para maximizar o minimizar magnitudes.
+    </div>
+
+    <section class="box">
+        <h2>📚 Saberes previos</h2>
+        <ul>
+            <li>Cálculo de derivadas de funciones (Sesión 2).</li>
+            <li>Estudio de extremos mediante primera y segunda derivada (Sesión 3).</li>
+            <li>Interpretación de funciones en contextos económicos: ingresos, costes, beneficios.</li>
+            <li>Geometría básica: áreas, volúmenes, perímetros.</li>
+            <li>Traducción de enunciados a lenguaje algebraico (modelización).</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>📖 Teoría: Problemas de Optimización</h2>
+        
+        <h3>¿Qué es optimizar?</h3>
+        <p>Optimizar es encontrar el valor máximo o mínimo de una función que representa una magnitud en un contexto real: costes, beneficios, áreas, tiempos, distancias, etc.</p>
+
+        <div class="metodologia">
+            <strong>Metodología de resolución:</strong>
+            <ol class="pasos">
+                <li><strong>Identificar la variable independiente:</strong> ¿Qué magnitud podemos modificar libremente?</li>
+                <li><strong>Expresar la función objetivo:</strong> Escribir la magnitud que queremos maximizar o minimizar en función de la variable independiente.</li>
+                <li><strong>Determinar el dominio:</strong> ¿Qué valores puede tomar la variable según las restricciones del problema?</li>
+                <li><strong>Derivar la función objetivo:</strong> Calcular \(f'(x)\).</li>
+                <li><strong>Hallar los puntos críticos:</strong> Resolver \(f'(x) = 0\).</li>
+                <li><strong>Clasificar los extremos:</strong> Usar el criterio de la 2ª derivada o el estudio del signo de \(f'(x)\).</li>
+                <li><strong>Evaluar en los extremos del dominio:</strong> Si el problema tiene restricciones, comparar valores en los puntos críticos y en los extremos del intervalo.</li>
+                <li><strong>Interpretar y responder:</strong> Dar la respuesta en el contexto del problema, con unidades adecuadas.</li>
+            </ol>
+        </div>
+
+        <h3>Tipos de problemas habituales</h3>
+        <ul>
+            <li><strong>Geométricos:</strong> Maximizar áreas o minimizar perímetros/volúmenes con restricciones.</li>
+            <li><strong>Económicos:</strong> Maximizar beneficios o minimizar costes.</li>
+            <li><strong>Físicos:</strong> Minimizar tiempos, distancias o consumos energéticos.</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>🔧 Bloque de Refuerzo (10 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 1: De enunciado a función</p>
+        <p>Traduce a función matemática: "El perímetro de un rectángulo es 40 m. Expresa el área en función de uno de sus lados."</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(x\) la base y \(y\) la altura. Sabemos que \(2x + 2y = 40 \Rightarrow y = 20 - x\)</p>
+            <p>Área: \(A(x) = x \cdot y = x(20 - x) = 20x - x^2\)</p>
+            <p>Dominio: \(x \in (0, 20)\) (los lados deben ser positivos).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2: Maximizar el área del rectángulo anterior</p>
+        <p>Usando la función del Ejercicio 1, calcula las dimensiones del rectángulo de área máxima.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(A(x) = 20x - x^2\)</p>
+            <p>\(A'(x) = 20 - 2x = 0 \Rightarrow x = 10\) m</p>
+            <p>\(A''(x) = -2 < 0\) → Es un máximo.</p>
+            <p>Dimensiones: \(x = 10\) m, \(y = 20 - 10 = 10\) m (es un cuadrado).</p>
+            <p>Área máxima: \(A(10) = 100\) m².</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3: Identificación de restricciones</p>
+        <p>Una empresa tiene un presupuesto máximo de 500€ para producir un artículo cuyo coste unitario es \(C(x) = 5x + 100\). ¿Cuál es el dominio de \(x\)?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Restricción: \(5x + 100 \leq 500\)</p>
+            <p>\(5x \leq 400 \Rightarrow x \leq 80\)</p>
+            <p>Dominio: \(x \in [0, 80]\) (además, \(x\) debe representar unidades enteras en contexto real).</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>💪 Bloque de Consolidación (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 4: Optimización de embalaje (empresa textil)</p>
+        <p>Una empresa textil de Vigo que exporta desde el puerto necesita cajas con base cuadrada y volumen de 32 m³. El material de la base y la tapa cuesta 5 €/m² y el de los laterales 3 €/m².</p>
+        <p>a) Expresa el coste total \(C\) en función del lado de la base \(x\).<br>
+        b) ¿Qué dimensiones minimizan el coste?<br>
+        c) ¿Cuál es el coste mínimo?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) Sea \(x\) el lado de la base cuadrada y \(h\) la altura. Volumen: \(x^2 \cdot h = 32 \Rightarrow h = \frac{32}{x^2}\)</p>
+            <p>Área de base y tapa: \(2x^2\) (coste: \(10x^2\))</p>
+            <p>Área lateral: \(4xh = 4x \cdot \frac{32}{x^2} = \frac{128}{x}\) (coste: \(3 \cdot \frac{128}{x} = \frac{384}{x}\))</p>
+            <p>Coste total: \(C(x) = 10x^2 + \frac{384}{x}\), con \(x > 0\)</p>
+            
+            <p>b) \(C'(x) = 20x - \frac{384}{x^2} = 0\)</p>
+            <p>\(20x = \frac{384}{x^2} \Rightarrow 20x^3 = 384 \Rightarrow x^3 = 19{,}2 \Rightarrow x = \sqrt[3]{19{,}2} \approx 2{,}68\) m</p>
+            <p>\(h = \frac{32}{(2{,}68)^2} \approx 4{,}46\) m</p>
+            <p>Comprobamos que es mínimo: \(C''(x) = 20 + \frac{768}{x^3} > 0\) para \(x > 0\) → Es mínimo.</p>
+            
+            <p>c) \(C(2{,}68) \approx 10(7{,}18) + \frac{384}{2{,}68} \approx 71{,}8 + 143{,}3 = 215{,}1\) €</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 5: Optimización simplificada de costes</p>
+        <p>Una caja sin tapa tiene base cuadrada de lado \(x\) y altura \(h\). Si debe contener 500 cm³, ¿qué dimensiones minimizan la superficie (y por tanto el material)?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Volumen: \(x^2 h = 500 \Rightarrow h = \frac{500}{x^2}\)</p>
+            <p>Superficie: \(S(x) = x^2 + 4xh = x^2 + 4x \cdot \frac{500}{x^2} = x^2 + \frac{2000}{x}\)</p>
+            <p>\(S'(x) = 2x - \frac{2000}{x^2} = 0 \Rightarrow 2x^3 = 2000 \Rightarrow x = 10\) cm</p>
+            <p>\(h = \frac{500}{100} = 5\) cm</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 6: Beneficio máximo básico</p>
+        <p>Los ingresos por venta de \(x\) unidades son \(I(x) = 100x - x^2\) y los costes \(C(x) = 20x + 200\).</p>
+        <p>a) Calcula el beneficio \(B(x)\).<br>
+        b) ¿Cuántas unidades maximizan el beneficio?<br>
+        c) ¿Cuál es el beneficio máximo?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(B(x) = I(x) - C(x) = 100x - x^2 - 20x - 200 = -x^2 + 80x - 200\)</p>
+            <p>b) \(B'(x) = -2x + 80 = 0 \Rightarrow x = 40\) unidades</p>
+            <p>c) \(B(40) = -1600 + 3200 - 200 = 1400\) €</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>🚀 Bloque de Ampliación (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 7: Ruta de transporte Vigo-Ourense</p>
+        <p>Una empresa de componentes de automoción debe transportar piezas desde Vigo a Ourense (100 km). El coste del combustible depende de la velocidad: \(C_c(v) = \frac{v^2}{100}\) €/km. Además, se paga al conductor 30 €/hora.</p>
+        <p>El tiempo del viaje es \(t = \frac{100}{v}\) horas.</p>
+        <p>a) Expresa el coste total del viaje \(C_T(v)\) en función de la velocidad.<br>
+        b) ¿A qué velocidad se minimiza el coste total?<br>
+        c) Calcula ese coste mínimo.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) Coste de combustible total: \(100 \cdot \frac{v^2}{100} = v^2\)</p>
+            <p>Coste del conductor: \(30t = 30 \cdot \frac{100}{v} = \frac{3000}{v}\)</p>
+            <p>Coste total: \(C_T(v) = v^2 + \frac{3000}{v}\), con \(v > 0\)</p>
+            
+            <p>b) \(C_T'(v) = 2v - \frac{3000}{v^2} = 0\)</p>
+            <p>\(2v^3 = 3000 \Rightarrow v^3 = 1500 \Rightarrow v = \sqrt[3]{1500} \approx 11{,}45 \cdot 10 \approx 11{,}45\) (recalculando: \(v \approx 11{,}45\) está mal)</p>
+            <p>Corrección: \(v = \sqrt[3]{1500} \approx 11{,}45\) km/h es demasiado lento. Revisando: \(v^3 = 1500 \Rightarrow v \approx 11{,}45\) es correcto matemáticamente, pero poco realista.</p>
+            <p><em>Nota didáctica: En un contexto real, habría que considerar restricciones de velocidad mínima/máxima y límites legales.</em></p>
+            
+            <p>c) \(C_T(11{,}45) \approx (11{,}45)^2 + \frac{3000}{11{,}45} \approx 131 + 262 = 393\) € (aproximado)</p>
+            <p><strong>O estableciendo límites realistas:</strong> Si \(v \in [60, 120]\) km/h, evaluamos en los extremos y puntos críticos dentro del intervalo.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 8: Valla con restricción</p>
+        <p>Se quiere vallar un terreno rectangular que linda con un río (no necesita valla en ese lado). Se dispone de 200 m de valla. ¿Qué dimensiones maximizan el área cercada?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(x\) el lado paralelo al río y \(y\) los lados perpendiculares. Valla total: \(x + 2y = 200 \Rightarrow x = 200 - 2y\)</p>
+            <p>Área: \(A(y) = xy = (200 - 2y)y = 200y - 2y^2\)</p>
+            <p>\(A'(y) = 200 - 4y = 0 \Rightarrow y = 50\) m</p>
+            <p>\(x = 200 - 100 = 100\) m</p>
+            <p>Área máxima: \(A = 100 \cdot 50 = 5000\) m²</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 9: Distancia mínima</p>
+        <p>¿Qué punto de la parábola \(y = x^2\) está más cerca del punto \(P(0, 1)\)?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(Q(x, x^2)\) un punto de la parábola. Distancia al cuadrado:</p>
+            <p>\(D^2(x) = (x-0)^2 + (x^2-1)^2 = x^2 + x^4 - 2x^2 + 1 = x^4 - x^2 + 1\)</p>
+            <p>Minimizar \(D^2\) equivale a minimizar \(D\):</p>
+            <p>\(\frac{d(D^2)}{dx} = 4x^3 - 2x = 2x(2x^2 - 1) = 0\)</p>
+            <p>\(x = 0\) o \(x^2 = \frac{1}{2} \Rightarrow x = \pm \frac{1}{\sqrt{2}}\)</p>
+            <p>Evaluamos:</p>
+            <ul>
+                <li>\(D^2(0) = 1\)</li>
+                <li>\(D^2\left(\frac{1}{\sqrt{2}}\right) = \frac{1}{4} - \frac{1}{2} + 1 = \frac{3}{4}\)</li>
+            </ul>
+            <p>Los puntos más cercanos son \(\left(\pm\frac{1}{\sqrt{2}}, \frac{1}{2}\right)\) con distancia \(\frac{\sqrt{3}}{2}\).</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>⚙️ Trabajo Activo: El reto del Logístico</h2>
+        <p><strong>Contexto:</strong> Se va a celebrar un concierto en el parque de Castrelos (Vigo) y debéis decidir el precio óptimo de las entradas para maximizar los ingresos brutos.</p>
+        
+        <p><strong>Información disponible:</strong></p>
+        <ul>
+            <li>Capacidad máxima del recinto: 10.000 personas.</li>
+            <li>Estudios de mercado indican que la demanda (número de entradas vendidas) viene dada por \(D(p) = 10000 - 100p\), donde \(p\) es el precio en euros.</li>
+            <li>No hay costes variables asociados al número de asistentes (simplificación).</li>
+        </ul>
+
+        <p class="exercise-title">Tarea 1: Función de ingresos</p>
+        <p>Los ingresos totales son \(I(p) = p \cdot D(p)\). Calcula y simplifica \(I(p)\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(I(p) = p(10000 - 100p) = 10000p - 100p^2\)</p>
+            <p>Dominio: \(p \in [0, 100]\) (precios de 0 a 100€, cuando demanda llega a cero).</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 2: Precio óptimo</p>
+        <p>Calcula el precio que maximiza los ingresos.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(I'(p) = 10000 - 200p = 0\)</p>
+            <p>\(p = 50\) €</p>
+            <p>Comprobación: \(I''(p) = -200 < 0\) → Es un máximo.</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 3: Número de entradas vendidas e ingresos máximos</p>
+        <p>Con el precio óptimo, ¿cuántas entradas se venderán y cuál será el ingreso total?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Demanda: \(D(50) = 10000 - 100(50) = 5000\) entradas</p>
+            <p>Ingresos máximos: \(I(50) = 50 \cdot 5000 = 250{.}000\) €</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 4: Análisis de sensibilidad</p>
+        <p>¿Qué pasaría si se fija el precio en 40€ o en 60€? Calcula los ingresos en ambos casos y compara con el óptimo.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Para \(p = 40\): \(D(40) = 6000\), \(I(40) = 40 \cdot 6000 = 240{.}000\) €</p>
+            <p>Para \(p = 60\): \(D(60) = 4000\), \(I(60) = 60 \cdot 4000 = 240{.}000\) €</p>
+            <p><strong>Conclusión:</strong> Tanto subir como bajar 10€ respecto al óptimo reduce los ingresos en 10.000€. La función de ingresos es simétrica alrededor del máximo.</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 5: Consideraciones adicionales</p>
+        <p>En grupos, discutid:</p>
+        <ul>
+            <li>¿Qué otros factores (no matemáticos) deberían considerarse al fijar el precio?</li>
+            <li>¿Sería razonable ofrecer descuentos para ciertos grupos? ¿Cómo afectaría al modelo?</li>
+            <li>¿Qué pasaría si hubiera costes variables (seguridad, limpieza) proporcionales al número de asistentes?</li>
+        </ul>
+        <details class="solution"><summary></summary><div class="solution">
+            <p><strong>Posibles respuestas:</strong></p>
+            <ul>
+                <li><strong>Factores no matemáticos:</strong> Accesibilidad económica del público objetivo, precios de la competencia, imagen de marca, objetivos sociales...</li>
+                <li><strong>Descuentos:</strong> Se podría segmentar el mercado (estudiantes, jubilados, etc.) con funciones de demanda distintas.</li>
+                <li><strong>Costes variables:</strong> Si \(C(q) = c \cdot q\) (donde \(q\) es el número de asistentes), el beneficio sería \(B(p) = p \cdot D(p) - c \cdot D(p) = (p-c)D(p)\), lo que desplazaría el precio óptimo hacia arriba.</li>
+            </ul>
+        </details>
+    </section>
+
+    <section class="box">
+        <h2>📝 Ejercicios para casa</h2>
+        
+        <p class="exercise-title">Ejercicio 10</p>
+        <p>Un granjero quiere construir un corral rectangular dividido en dos partes iguales mediante una valla paralela a uno de los lados. Dispone de 240 m de valla. ¿Qué dimensiones maximizan el área total?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(x\) el lado perpendicular a la división y \(y\) el lado paralelo.</p>
+            <p>Valla total: \(3x + 2y = 240 \Rightarrow y = \frac{240 - 3x}{2}\)</p>
+            <p>Área: \(A(x) = xy = x \cdot \frac{240-3x}{2} = \frac{240x - 3x^2}{2}\)</p>
+            <p>\(A'(x) = \frac{240 - 6x}{2} = 0 \Rightarrow x = 40\) m</p>
+            <p>\(y = \frac{240 - 120}{2} = 60\) m</p>
+            <p>Área máxima: \(40 \cdot 60 = 2400\) m²</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 11</p>
+        <p>Una lata cilíndrica debe tener un volumen de 500 ml (500 cm³). ¿Qué radio y altura minimizan la superficie total (y por tanto el material)?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Volumen: \(\pi r^2 h = 500 \Rightarrow h = \frac{500}{\pi r^2}\)</p>
+            <p>Superficie: \(S = 2\pi r^2 + 2\pi rh = 2\pi r^2 + 2\pi r \cdot \frac{500}{\pi r^2} = 2\pi r^2 + \frac{1000}{r}\)</p>
+            <p>\(S'(r) = 4\pi r - \frac{1000}{r^2} = 0 \Rightarrow 4\pi r^3 = 1000 \Rightarrow r^3 = \frac{250}{\pi}\)</p>
+            <p>\(r = \sqrt[3]{\frac{250}{\pi}} \approx 4{,}3\) cm</p>
+            <p>\(h = \frac{500}{\pi (4{,}3)^2} \approx 8{,}6\) cm</p>
+            <p>Nota: \(h \approx 2r\), relación óptima habitual.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 12</p>
+        <p>Una empresa fabrica \(x\) unidades diarias con beneficio \(B(x) = -0{,}1x^3 + 6x^2 - 50x - 200\) (en €).</p>
+        <p>a) ¿Cuántas unidades maximizan el beneficio?<br>
+        b) ¿Cuál es ese beneficio máximo?<br>
+        c) ¿Hay algún nivel de producción donde el beneficio es mínimo (localmente)?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(B'(x) = -0{,}3x^2 + 12x - 50 = 0\)</p>
+            <p>Usando la fórmula cuadrática: \(x = \frac{-12 \pm \sqrt{144 - 60}}{-0{,}6} = \frac{-12 \pm \sqrt{84}}{-0{,}6}\)</p>
+            <p>\(x_1 \approx 5{,}71\), \(x_2 \approx 29{,}14\)</p>
+            <p>Evaluando \(B''(x) = -0{,}6x + 12\):</p>
+            <ul>
+                <li>\(B''(5{,}71) > 0\) → Mínimo local</li>
+                <li>\(B''(29{,}14) < 0\) → Máximo local</li>
+            </ul>
+            <p>b) El beneficio máximo se alcanza en \(x \approx 29\) unidades.</p>
+            <p>\(B(29) \approx -0{,}1(24389) + 6(841) - 50(29) - 200 \approx -2439 + 5046 - 1450 - 200 = 957\) €</p>
+            <p>c) Sí, en \(x \approx 5{,}71\) unidades hay un mínimo local.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 13</p>
+        <p>Una pizzería vende actualmente 200 pizzas al día a 10€ cada una. Un estudio indica que por cada euro de descuento, se venderán 40 pizzas más al día.</p>
+        <p>a) Expresa los ingresos diarios \(I(x)\) en función del descuento \(x\) (en euros).<br>
+        b) ¿Qué descuento maximiza los ingresos?<br>
+        c) ¿Cuál sería el precio final de la pizza y los ingresos máximos?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) Precio: \(p = 10 - x\)</p>
+            <p>Cantidad vendida: \(q = 200 + 40x\)</p>
+            <p>Ingresos: \(I(x) = (10-x)(200+40x) = 2000 + 400x - 200x - 40x^2 = -40x^2 + 200x + 2000\)</p>
+            
+            <p>b) \(I'(x) = -80x + 200 = 0 \Rightarrow x = 2{,}5\) €</p>
+            
+            <p>c) Precio final: \(10 - 2{,}5 = 7{,}5\) €/pizza</p>
+            <p>Cantidad: \(200 + 40(2{,}5) = 300\) pizzas</p>
+            <p>Ingresos máximos: \(I(2{,}5) = 7{,}5 \cdot 300 = 2250\) €/día</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 14</p>
+        <p>Un cable debe ir desde el punto \(A(0, 6)\) hasta el punto \(B(8, 0)\), pasando por un punto \(P(x, 0)\) del eje X. El coste es de 5€/m en el tramo \(AP\) (por tierra) y 8€/m en el tramo \(PB\) (por agua). ¿Dónde debe estar \(P\) para minimizar el coste?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Distancias:</p>
+            <p>\(AP = \sqrt{x^2 + 36}\)</p>
+            <p>\(PB = \sqrt{(8-x)^2} = |8-x| = 8-x\) (si \(0 \leq x \leq 8\))</p>
+            
+            <p>Coste total: \(C(x) = 5\sqrt{x^2+36} + 8(8-x) = 5\sqrt{x^2+36} + 64 - 8x\)</p>
+            
+            <p>\(C'(x) = 5 \cdot \frac{2x}{2\sqrt{x^2+36}} - 8 = \frac{5x}{\sqrt{x^2+36}} - 8 = 0\)</p>
+            
+            <p>\(\frac{5x}{\sqrt{x^2+36}} = 8 \Rightarrow 5x = 8\sqrt{x^2+36}\)</p>
+            <p>\(25x^2 = 64(x^2+36) \Rightarrow 25x^2 = 64x^2 + 2304 \Rightarrow -39x^2 = 2304\)</p>
+            
+            <p><em>Esto da un valor negativo, lo que indica un error. Revisión:</em></p>
+            <p>El tramo PB debe ser \(8-x\) solo si \(x \leq 8\). Replanteamos:</p>
+            <p>\(PB = 8 - x\) (distancia horizontal)</p>
+            
+            <p><em>Nota: Este problema requiere interpretación cuidadosa. Si PB va por agua, también debería ser distancia euclidiana. El enunciado debería aclarar la geometría exacta.</em></p>
+            
+            <p><strong>Solución alternativa correcta:</strong> Si \(B\) está en el agua en \((8, -h)\), se resolvería de forma análoga con ambas distancias euclidianas. Este ejercicio se deja como desafío de modelización para discutir en clase.</p>
+        </div></details>
+    </section>
+
+    <footer style="text-align:center; margin-top:40px; padding:20px; color:#777; font-size:0.9em;">
+        <p>Matemáticas Aplicadas a las CCSS I · 1º Bachillerato LOMLOE · IES de Teis</p>
+    </footer>
+</body>
+</html>

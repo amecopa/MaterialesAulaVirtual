@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 7: Área del círculo y figuras compuestas</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; }
+    h2 { color: #2a5298; }
+    .objetivos, .bloque-refuerzo, .bloque-consolidacion, .bloque-afianzamiento, .bloque-ampliacion, .ejemplo, .importante, .formula { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 6px; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2196F3; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; }
+    .ejemplo { background: #f9f9f9; border: 1px solid #ddd; }
+    .formula { background: #e8f4f8; border: 2px solid #2196F3; text-align: center; font-size: 1.2em; }
+    .contraste-btn { position: fixed; top: 20px; right: 20px; padding: 10px 15px; background: #1a3a6e; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
+    body.alto-contraste { background-color: #000; color: #ffff00; }
+    body.alto-contraste h1, body.alto-contraste h2 { color: #ffff00; }
+    body.alto-contraste .objetivos, body.alto-contraste .bloque-refuerzo, body.alto-contraste .bloque-consolidacion, body.alto-contraste .bloque-afianzamiento, body.alto-contraste .bloque-ampliacion, body.alto-contraste .ejemplo, body.alto-contraste .formula { background-color: #000; color: #ffff00; border-color: #ffff00; }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">Alto Contraste</button>
+
+  <h1>Sesión 7: Área del círculo y figuras compuestas</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Deducir y aplicar la fórmula del área del círculo</li>
+      <li>Resolver problemas con figuras compuestas</li>
+      <li>Estrategias de descomposición (suma y resta de áreas)</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos</h2>
+  <h3>Área del círculo</h3>
+  <div class="formula">\[ A_{\text{círculo}} = \pi r^2 \]</div>
+  <p>Usamos π ≈ 3,14</p>
+
+  <h3>Figuras compuestas</h3>
+  <p>Son figuras formadas por varias figuras simples. Para calcular su área:</p>
+  <ol>
+    <li>Identifica las figuras básicas que la componen</li>
+    <li>Calcula el área de cada una por separado</li>
+    <li>SUMA las áreas (si están juntas) o RESTA (si una está dentro de otra)</li>
+  </ol>
+
+  <div class="bloque-refuerzo">
+    <h2>🔄 Refuerzo (8 min)</h2>
+    <h3>Recordar: Circunferencia vs Círculo</h3>
+    <ol>
+      <li>Longitud circunferencia r=3 cm: L = 2 × 3,14 × 3 = _____ cm</li>
+      <li>Longitud circunferencia r=5 cm: L = _____ cm</li>
+      <li>Longitud circunferencia r=4 cm: L = _____ cm</li>
+    </ol>
+    <h3>Identificar si piden perímetro o área</h3>
+    <ol>
+      <li>¿Cuánta tela necesito para hacer un mantel circular? → <strong>Área</strong></li>
+      <li>¿Cuánto mide el borde de una mesa redonda? → <strong>Perímetro</strong></li>
+      <li>¿Cuánta pintura para pintar un círculo? → <strong>Área</strong></li>
+      <li>¿Cuánto hilo para rodear un plato? → <strong>Perímetro</strong></li>
+    </ol>
+  </div>
+
+  <div class="bloque-consolidacion">
+    <h2>📖 Consolidación (17 min)</h2>
+    <h3>Deducción del área del círculo</h3>
+    <div class="ejemplo">
+      <p><strong>Método:</strong> Dividir el círculo en muchos sectores (como gajos de naranja) y reorganizarlos formando un paralelogramo aproximado.</p>
+      <p>Base del paralelogramo ≈ mitad de la circunferencia = πr<br>
+      Altura del paralelogramo ≈ radio = r<br>
+      Área paralelogramo = base × altura = πr × r = πr²</p>
+    </div>
+
+    <h3>Ejercicio: Calcula áreas de círculos</h3>
+    <p>Usa A = πr² con π = 3,14</p>
+    <ol>
+      <li>r = 2 cm → A = 3,14 × 2² = 3,14 × 4 = _____ cm²</li>
+      <li>r = 5 cm → A = 3,14 × 5² = _____ cm²</li>
+      <li>r = 8 cm → A = _____ cm²</li>
+      <li>r = 3,5 cm → A = _____ cm²</li>
+      <li>d = 10 cm (r = 5 cm) → A = _____ cm²</li>
+      <li>d = 12 cm (r = 6 cm) → A = _____ cm²</li>
+    </ol>
+
+    <h3>Calcular radio conociendo el área</h3>
+    <p>Si A = πr², entonces r = √(A/π)</p>
+    <ol>
+      <li>A = 78,5 cm² → r = √(78,5 / 3,14) = √25 = _____ cm</li>
+      <li>A = 50,24 cm² → r ≈ _____ cm</li>
+    </ol>
+  </div>
+
+  <div class="bloque-afianzamiento">
+    <h2>💪 Afianzamiento (15 min)</h2>
+    <h3>Figuras compuestas</h3>
+
+    <h4>Tipo 1: SUMA de áreas</h4>
+    <ol>
+      <li><strong>Rectángulo + Triángulo</strong>: Casa simple
+        <p>Rectángulo 6m × 4m + Triángulo base 6m, altura 2m</p>
+        <p>A₁ = 6 × 4 = 24 m²<br>
+        A₂ = (6 × 2) / 2 = 6 m²<br>
+        A_total = 24 + 6 = _____ m²</p>
+      </li>
+
+      <li><strong>Dos rectángulos</strong>: Forma de L
+        <p>Rectángulo 8×3 + Rectángulo 5×2</p>
+        <p>A_total = _____ cm²</p>
+      </li>
+    </ol>
+
+    <h4>Tipo 2: RESTA de áreas</h4>
+    <ol start="3">
+      <li><strong>Rectángulo con círculo inscrito</strong>
+        <p>Rectángulo 10×6 cm con círculo r=2 cm en el centro</p>
+        <p>A_rectángulo = 10 × 6 = 60 cm²<br>
+        A_círculo = 3,14 × 2² = 12,56 cm²<br>
+        A_restante = 60 - 12,56 = _____ cm²</p>
+      </li>
+
+      <li><strong>Ventana con semicírculo</strong>
+        <p>Rectángulo 1,5m × 2m + Semicírculo radio 0,75m arriba</p>
+        <p>A_rect = 1,5 × 2 = 3 m²<br>
+        A_círculo_completo = 3,14 × (0,75)² = 1,77 m²<br>
+        A_semicírculo = 1,77 / 2 = 0,885 m²<br>
+        A_total = 3 + 0,885 = _____ m²</p>
+      </li>
+
+      <li><strong>Pista de atletismo</strong>: Rectángulo 100m × 64m + 2 semicírculos r=32m
+        <p>A_rectángulo = 100 × 64 = _____ m²<br>
+        A_2_semicírculos = A_1_círculo = 3,14 × 32² = _____ m²<br>
+        A_total = _____ m²</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="bloque-ampliacion">
+    <h2>🚀 Ampliación (10 min)</h2>
+    <h3>Áreas circulares en Vigo</h3>
+    <ol>
+      <li><strong>Rotonda de Teis</strong> (r ≈ 12 m)
+        <p>A = 3,14 × 12² = _____ m²<br>
+        ¿Cuántos m² de césped si se planta en la rotonda?</p>
+      </li>
+
+      <li><strong>Fuente de Castrelos</strong> (r ≈ 4 m)
+        <p>A = _____ m²</p>
+      </li>
+
+      <li><strong>Plaza circular</strong> (d = 20 m, r = 10 m)
+        <p>Área total = 3,14 × 10² = 314 m²<br>
+        Si el centro es un círculo de 3m de radio con fuente, ¿área transitable?<br>
+        A_fuente = 3,14 × 3² = 28,26 m²<br>
+        A_transitable = 314 - 28,26 = _____ m²</p>
+      </li>
+
+      <li><strong>Logo del RC Celta</strong>: Incluye figuras circulares y rectangulares. Investiga y estima áreas aproximadas.</li>
+    </ol>
+
+    <h3>Problema complejo</h3>
+    <div class="ejemplo">
+      <p><strong>Jardín con camino</strong>: Jardín cuadrado 20m × 20m con camino circular inscrito r=8m</p>
+      <p>A_jardín = 20 × 20 = 400 m²<br>
+      A_camino = 3,14 × 8² = 200,96 m²<br>
+      A_césped = 400 - 200,96 = _____ m²<br>
+      Si plantar césped cuesta 4€/m², ¿coste total?</p>
+    </div>
+  </div>
+
+  <h2>📝 Para casa</h2>
+  <ol>
+    <li>Calcula el área de un plato circular de 24 cm de diámetro</li>
+    <li>Dibuja una figura compuesta (rectángulo + triángulo) y calcula su área</li>
+    <li>Una pizza de 30 cm de diámetro. Si una porción es 1/8, ¿área de cada porción?</li>
+    <li>Investiga el área de una señal de STOP (octógono)</li>
+  </ol>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 7 - Figuras Planas - 1º ESO</small>
+  </p>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 1: Explorando las figuras planas que nos rodean</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { 
+      font-family: Georgia, serif; 
+      max-width: 860px; 
+      margin: 2rem auto; 
+      padding: 0 1.2rem; 
+      line-height: 1.7; 
+      color: #222; 
+      background-color: #fff;
+    }
+    h1 { 
+      color: #1a3a6e; 
+      border-bottom: 2px solid #1a3a6e; 
+      padding-bottom: .4rem; 
+    }
+    h2 { 
+      color: #2a5298; 
+      margin-top: 2rem; 
+    }
+    h3 { 
+      color: #3a6bc4; 
+    }
+    .objetivos {
+      background: #e8f4f8;
+      border-left: 4px solid #2196F3;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .bloque-refuerzo { 
+      background: #fff9e6; 
+      border-left: 4px solid #f9a825; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-consolidacion { 
+      background: #f0f4fc; 
+      border-left: 4px solid #2a5298; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-afianzamiento { 
+      background: #e8f5e9; 
+      border-left: 4px solid #388e3c; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .bloque-ampliacion { 
+      background: #fce4ec; 
+      border-left: 4px solid #c2185b; 
+      padding: 1rem 1.5rem; 
+      margin: 1.5rem 0; 
+      border-radius: 0 6px 6px 0; 
+    }
+    .ejemplo {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    ol li, ul li { 
+      margin-bottom: .8rem; 
+    }
+    img { 
+      max-width: 100%; 
+      display: block; 
+      margin: 1rem auto; 
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f4fc;
+      color: #1a3a6e;
+    }
+    .contraste-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .contraste-btn:hover {
+      background: #2a5298;
+    }
+    body.alto-contraste {
+      background-color: #000;
+      color: #ffff00;
+    }
+    body.alto-contraste h1,
+    body.alto-contraste h2,
+    body.alto-contraste h3 {
+      color: #ffff00;
+    }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .objetivos,
+    body.alto-contraste .ejemplo {
+      background-color: #000;
+      color: #ffff00;
+      border-color: #ffff00;
+    }
+    body.alto-contraste th {
+      background-color: #333;
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">
+    Alto Contraste
+  </button>
+
+  <h1>Sesión 1: Explorando las figuras planas que nos rodean</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la sesión</h3>
+    <ul>
+      <li>Identificar figuras planas en el entorno cotidiano</li>
+      <li>Reconocer los elementos básicos de las figuras planas (lados, vértices, ángulos)</li>
+      <li>Clasificar figuras según el número de lados</li>
+      <li>Distinguir entre polígonos y figuras curvas</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos teóricos</h2>
+
+  <h3>¿Qué es una figura plana?</h3>
+  <p>
+    Una <strong>figura plana</strong> es una superficie que está completamente contenida en un plano. 
+    Tiene dos dimensiones: largo y ancho, pero no tiene grosor o altura.
+  </p>
+
+  <h3>Polígonos</h3>
+  <p>
+    Un <strong>polígono</strong> es una figura plana formada por una línea poligonal cerrada. 
+    Esta línea está formada por segmentos consecutivos que no están alineados.
+  </p>
+
+  <div class="ejemplo">
+    <h4>Elementos de un polígono:</h4>
+    <ul>
+      <li><strong>Lados</strong>: Los segmentos que forman el polígono</li>
+      <li><strong>Vértices</strong>: Los puntos donde se unen dos lados</li>
+      <li><strong>Ángulos</strong>: El espacio comprendido entre dos lados consecutivos</li>
+    </ul>
+  </div>
+
+  <h3>Clasificación de polígonos según el número de lados</h3>
+  <table>
+    <tr>
+      <th>Número de lados</th>
+      <th>Nombre del polígono</th>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Triángulo</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Cuadrilátero</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Pentágono</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Hexágono</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Heptágono</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Octógono</td>
+    </tr>
+  </table>
+
+  <h3>Polígonos vs Figuras curvas</h3>
+  <p>
+    No todas las figuras planas son polígonos. Algunas figuras tienen líneas curvas, como el 
+    <strong>círculo</strong> o la <strong>circunferencia</strong>. Estas figuras NO son polígonos.
+  </p>
+
+  <!-- BLOQUE 1: REFUERZO -->
+  <div class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo (10 min)</h2>
+    <p><strong>Activación de conocimientos previos</strong></p>
+    
+    <h3>Identificación oral colectiva</h3>
+    <p>Observa tu entorno (aula, instituto) e identifica las siguientes figuras:</p>
+    
+    <ol>
+      <li>Encuentra 3 objetos rectangulares en el aula (puertas, ventanas, pizarra...)</li>
+      <li>Encuentra 2 objetos cuadrados</li>
+      <li>Encuentra 1 objeto circular</li>
+      <li>Encuentra alguna señal triangular en el instituto</li>
+      <li>¿Hay algún objeto con forma de pentágono o hexágono cerca?</li>
+    </ol>
+
+    <p><em>Comparte tus respuestas con la clase. ¿Qué figuras son más comunes? ¿Por qué crees que es así?</em></p>
+  </div>
+
+  <!-- BLOQUE 2: CONSOLIDACIÓN -->
+  <div class="bloque-consolidacion">
+    <h2>📖 Bloque 2: Consolidación (15 min)</h2>
+    <p><strong>Trabajo guiado sobre elementos y clasificación</strong></p>
+    
+    <h3>Ejercicio 1: Cuenta los elementos</h3>
+    <p>Para cada figura, indica cuántos lados, vértices y ángulos tiene:</p>
+    <ol>
+      <li>Un triángulo tiene ____ lados, ____ vértices y ____ ángulos</li>
+      <li>Un cuadrado tiene ____ lados, ____ vértices y ____ ángulos</li>
+      <li>Un pentágono tiene ____ lados, ____ vértices y ____ ángulos</li>
+      <li>Un hexágono tiene ____ lados, ____ vértices y ____ ángulos</li>
+      <li>Un octógono tiene ____ lados, ____ vértices y ____ ángulos</li>
+    </ol>
+
+    <h3>Ejercicio 2: Completa la tabla de clasificación</h3>
+    <p>Completa esta tabla:</p>
+    <table>
+      <tr>
+        <th>Nº de lados</th>
+        <th>Nombre del polígono</th>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>_____________</td>
+      </tr>
+      <tr>
+        <td>____</td>
+        <td>Cuadrilátero</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>_____________</td>
+      </tr>
+      <tr>
+        <td>____</td>
+        <td>Hexágono</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>_____________</td>
+      </tr>
+    </table>
+
+    <h3>Ejercicio 3: ¿Polígono o no?</h3>
+    <p>Indica si las siguientes figuras son polígonos o no:</p>
+    <ol>
+      <li>Un círculo → ___________</li>
+      <li>Un triángulo → ___________</li>
+      <li>Una circunferencia → ___________</li>
+      <li>Un rectángulo → ___________</li>
+      <li>Una figura con 5 lados rectos → ___________</li>
+      <li>Una figura con un lado curvo → ___________</li>
+    </ol>
+  </div>
+
+  <!-- BLOQUE 3: AFIANZAMIENTO -->
+  <div class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento (15 min)</h2>
+    <p><strong>Práctica individual/parejas</strong></p>
+    
+    <h3>Ejercicio 4: Clasificación de figuras</h3>
+    <p>Clasifica las siguientes figuras según su número de lados (imagina o dibuja las figuras):</p>
+    <ol>
+      <li>Una señal de "STOP" → __________ (¿cuántos lados?)</li>
+      <li>Una mesa rectangular → __________</li>
+      <li>Una señal de "CEDA EL PASO" → __________</li>
+      <li>Un dado común → __________ (cada cara)</li>
+      <li>Una baldosa hexagonal (de panal) → __________</li>
+      <li>Un reloj de pared redondo → ¿Es polí gono? __________</li>
+      <li>La pizarra del aula → __________</li>
+      <li>Un billete de euro → __________</li>
+      <li>Una moneda de euro → ¿Es polígono? __________</li>
+      <li>Una hoja de papel → __________</li>
+      <li>El logo del Real Madrid (pentágono) → __________</li>
+      <li>La ventana de tu clase → __________</li>
+    </ol>
+
+    <h3>Ejercicio 5: Dibuja con regla</h3>
+    <p>Usando regla, dibuja:</p>
+    <ol>
+      <li>Un triángulo cualquiera</li>
+      <li>Un cuadrilátero (no necesariamente regular)</li>
+      <li>Un pentágono</li>
+      <li>Un hexágono</li>
+    </ol>
+    <p><em>Cuenta y verifica que cada figura tiene el número correcto de lados.</em></p>
+  </div>
+
+  <!-- BLOQUE 4: AMPLIACIÓN -->
+  <div class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación (10 min)</h2>
+    <p><strong>Polígonos en Vigo: contexto local</strong></p>
+    
+    <h3>Ejercicio 6: Geometría en Vigo</h3>
+    <p>Identifica los polígonos en estos contextos de Vigo:</p>
+    
+    <ol>
+      <li><strong>Señales de tráfico</strong>: 
+        <ul>
+          <li>Las señales de peligro (amarillas) → ¿Qué forma tienen?</li>
+          <li>Las señales de "STOP" → ¿Cuántos lados?</li>
+          <li>Las señales circulares (prohibido aparcar) → ¿Son polígonos?</li>
+        </ul>
+      </li>
+      
+      <li><strong>Logo de Vitrasa</strong>: 
+        <p>El logotipo del transporte urbano de Vigo tiene formas geométricas. ¿Qué figuras identificas?</p>
+      </li>
+      
+      <li><strong>Puerto de Vigo</strong>: 
+        <p>Los contenedores tienen forma de prisma rectangular. ¿Qué forma tienen sus caras?</p>
+      </li>
+      
+      <li><strong>Pavimento de la zona peatonal</strong>: 
+        <p>Las losas del suelo de la Calle Príncipe, ¿qué forma tienen principalmente?</p>
+      </li>
+      
+      <li><strong>Logo de PSA Citroën</strong>: 
+        <p>La fábrica de automóviles de Vigo tiene un logo geométrico. ¿Qué figuras ves?</p>
+      </li>
+    </ol>
+
+    <h3>Investigación: ¿Por qué estas formas?</h3>
+    <p>
+      Reflexiona: ¿Por qué crees que las señales de tráfico usan triángulos, octógonos y círculos? 
+      ¿Qué ventajas tiene cada forma?
+    </p>
+    
+    <div class="ejemplo">
+      <p><strong>Pista</strong>: Piensa en la visibilidad, la facilidad de fabricación y el significado psicológico de cada forma.</p>
+    </div>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📝 Para casa</h2>
+  <p>
+    Haz un recorrido por tu barrio o tu casa y encuentra al menos 5 objetos con diferentes 
+    formas de polígonos. Haz una lista indicando:
+  </p>
+  <ul>
+    <li>Nombre del objeto</li>
+    <li>Forma geométrica (triángulo, cuadrilátero, pentágono...)</li>
+    <li>Número de lados</li>
+    <li>Un pequeño dibujo o foto</li>
+  </ul>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 1 - Figuras Planas - 1º ESO - Matemáticas</small>
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 3: Monomios y expresiones algebraicas simples</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; background: #fff; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    h3 { color: #3a6bc4; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    ol li, ul li { margin-bottom: .5rem; }
+    .ejemplo { background: #f5f5f5; padding: .8rem; border-radius: 4px; margin: 1rem 0; border-left: 3px solid #666; }
+    .nota { background: #e3f2fd; padding: .8rem; border-radius: 4px; margin: 1rem 0; font-size: .95em; }
+    .importante { background: #fff3cd; padding: .8rem; border-radius: 4px; margin: 1rem 0; border-left: 3px solid #f9a825; }
+    
+    #btn-contraste {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #1a3a6e;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    #btn-contraste:hover { background: #0d1f3a; transform: scale(1.05); }
+    
+    body.alto-contraste { background: #000 !important; color: #ffff00 !important; }
+    body.alto-contraste h1, body.alto-contraste h2, body.alto-contraste h3 { color: #ffff00 !important; border-color: #ffff00 !important; }
+    body.alto-contraste .bloque-refuerzo,
+    body.alto-contraste .bloque-consolidacion,
+    body.alto-contraste .bloque-afianzamiento,
+    body.alto-contraste .bloque-ampliacion,
+    body.alto-contraste .ejemplo,
+    body.alto-contraste .nota,
+    body.alto-contraste .importante { background: #1a1a1a !important; border-color: #ffff00 !important; color: #ffff00 !important; }
+    body.alto-contraste #btn-contraste { background: #ffff00 !important; color: #000 !important; }
+  </style>
+</head>
+<body>
+  <button id="btn-contraste" onclick="toggleContraste()">👁️ Alto Contraste</button>
+
+  <h1>Sesión 3: Monomios y expresiones algebraicas simples</h1>
+  
+  <p><strong>Nombre:</strong> _______________________________  <strong>Fecha:</strong> ___/___/______</p>
+
+  <section>
+    <h2>📚 ¿Qué vamos a aprender hoy?</h2>
+    <p>Hoy vamos a aprender qué es un <strong>monomio</strong> y cómo sumar y restar expresiones algebraicas sencillas. Es como aprender a ordenar y simplificar nuestros "ingredientes matemáticos".</p>
+    
+    <div class="nota">
+      <strong>💡 Idea clave:</strong> Un <strong>monomio</strong> es una expresión como \( 5x \) o \( -3y^2 \). Tiene un número (coeficiente) y una letra con exponente (parte literal).
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Teoría básica</h2>
+    
+    <h3>¿Qué es un monomio?</h3>
+    <p>Un <strong>monomio</strong> es una expresión algebraica formada por:</p>
+    <ul>
+      <li><strong>Coeficiente:</strong> el número que multiplica a la letra. Ejemplo: en \( 5x \), el coeficiente es 5</li>
+      <li><strong>Parte literal:</strong> la letra con su exponente. Ejemplo: en \( 5x \), la parte literal es \( x \)</li>
+      <li><strong>Grado:</strong> el exponente de la letra. Ejemplo: \( 5x^2 \) tiene grado 2</li>
+    </ul>
+
+    <div class="ejemplo">
+      <strong>Ejemplo 1:</strong> En el monomio \( 7x \)<br>
+      • Coeficiente: 7<br>
+      • Parte literal: \( x \)<br>
+      • Grado: 1 (cuando no vemos exponente, es 1)
+    </div>
+
+    <div class="ejemplo">
+      <strong>Ejemplo 2:</strong> En el monomio \( -3y^2 \)<br>
+      • Coeficiente: -3<br>
+      • Parte literal: \( y^2 \)<br>
+      • Grado: 2
+    </div>
+
+    <h3>Monomios semejantes</h3>
+    <p>Dos monomios son <strong>semejantes</strong> cuando tienen la misma parte literal (misma letra y mismo exponente).</p>
+    
+    <div class="importante">
+      <strong>⚠️ Regla importante:</strong> Solo podemos sumar o restar monomios <strong>semejantes</strong>. Sumamos o restamos los coeficientes y mantenemos la parte literal.
+    </div>
+
+    <div class="ejemplo">
+      <strong>Ejemplo de suma:</strong> \( 3x + 5x = 8x \)<br>
+      <em>Explicación:</em> Ambos tienen \( x \), así que sumamos 3 + 5 = 8
+    </div>
+
+    <div class="ejemplo">
+      <strong>Ejemplo de resta:</strong> \( 7y - 2y = 5y \)<br>
+      <em>Explicación:</em> Ambos tienen \( y \), así que restamos 7 - 2 = 5
+    </div>
+
+    <div class="ejemplo">
+      <strong>¡CUIDADO!</strong> \( 3x + 2y \) NO se puede simplificar<br>
+      <em>Explicación:</em> \( x \) e \( y \) son diferentes, no son semejantes
+    </div>
+  </section>
+
+  <section class="bloque-refuerzo">
+    <h2>🔄 Bloque 1: Refuerzo - Productos y potencias</h2>
+    <p><em>Tiempo: 10 minutos</em></p>
+    
+    <p><strong>Objetivo:</strong> Repasar operaciones básicas antes de trabajar con monomios.</p>
+
+    <ol>
+      <li>\( 3 \times 5 = \) _____</li>
+      <li>\( 2^2 = 2 \times 2 = \) _____</li>
+      <li>\( 2^3 = 2 \times 2 \times 2 = \) _____</li>
+      <li>\( x \times x = x^{\_\_\_} \)</li>
+      <li>\( y \times y \times y = y^{\_\_\_} \)</li>
+      <li>Completa: \( 4 + 4 + 4 = 3 \times \_\_\_ = \_\_\_ \)</li>
+    </ol>
+  </section>
+
+  <section class="bloque-consolidacion">
+    <h2>🎯 Bloque 2: Consolidación - Identificar monomios y sumarlos</h2>
+    <p><em>Tiempo: 20 minutos</em></p>
+    
+    <p><strong>Parte A: Identifica las partes</strong></p>
+    <p>Completa la tabla:</p>
+
+    <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+      <tr style="background: #f0f4fc;">
+        <th style="border: 1px solid #ccc; padding: 8px;">Monomio</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Coeficiente</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Parte literal</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Grado</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">\( 5x \)</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">5</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">\( x \)</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">\( 8y \)</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">\( -3x \)</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">\( 4y^2 \)</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">_____</td>
+      </tr>
+    </table>
+
+    <p><strong>Parte B: Suma y resta de monomios semejantes</strong></p>
+    <ol>
+      <li>\( 3x + 5x = 8x \) <em>(ejemplo resuelto)</em></li>
+      <li>\( 2x + 7x = \) _____</li>
+      <li>\( 10y - 3y = \) _____</li>
+      <li>\( 4x + x = \) _____ <em>(Recuerda: \( x = 1x \))</em></li>
+      <li>\( 6y - 2y = \) _____</li>
+      <li>\( -2x + 5x = \) _____</li>
+      <li>\( 8x - 3x + 2x = \) _____</li>
+      <li>\( 5y + 3y - 2y = \) _____</li>
+      <li>\( 7x^2 + 2x^2 = \) _____</li>
+      <li>\( 10y^2 - 4y^2 = \) _____</li>
+    </ol>
+  </section>
+
+  <section class="bloque-afianzamiento">
+    <h2>💪 Bloque 3: Afianzamiento - Práctica autónoma</h2>
+    <p><em>Tiempo: 15 minutos - Trabajo individual</em></p>
+    
+    <p><strong>Objetivo:</strong> Practicar la simplificación de expresiones.</p>
+
+    <p>Simplifica las siguientes expresiones sumando/restando monomios semejantes:</p>
+
+    <ol>
+      <li>\( 7x - 2x + 5x = \) _____</li>
+      <li>\( 4y^2 - y^2 + 3y^2 = \) _____</li>
+      <li>\( 9x + 3x - 5x = \) _____</li>
+      <li>\( -3y + 8y - 2y = \) _____</li>
+      <li>\( 6x^2 + 2x^2 - 4x^2 = \) _____</li>
+      <li>\( 10a - 7a + 3a = \) _____</li>
+      <li>\( 5b + b - 2b = \) _____ <em>(Recuerda: \( b = 1b \))</em></li>
+      <li>\( -x + 4x + 2x = \) _____</li>
+      <li>\( 8y - 8y = \) _____</li>
+      <li>\( 12x - 5x + x - 3x = \) _____</li>
+    </ol>
+
+    <p><strong>Corrección:</strong> Al final revisaremos las respuestas en la pizarra.</p>
+  </section>
+
+  <section class="bloque-ampliacion">
+    <h2>🚀 Bloque 4: Ampliación - Problemas con contexto de Vigo</h2>
+    <p><em>Tiempo: 10 minutos - En equipos de 3</em></p>
+    
+    <p><strong>Objetivo:</strong> Aplicar monomios a situaciones reales del entorno.</p>
+
+    <ol>
+      <li><strong>Barcos pesqueros:</strong> Un barco del puerto de Vigo captura \( x \) kg de merluza y otro barco captura \( 2x \) kg de merluza. ¿Cuántos kg capturan entre los dos?<br><br>
+      Expresión algebraica: _____________________<br>
+      Simplifica: _____________________
+      </li>
+
+      <li><strong>Astilleros de Vigo:</strong> En un astillero trabajan \( x \) soldadores en el turno de mañana, \( 3x \) en el de tarde y \( x \) en el de noche. ¿Cuántos soldadores trabajan en total?<br><br>
+      Expresión algebraica: _____________________<br>
+      Simplifica: _____________________
+      </li>
+
+      <li><strong>Compras en el mercado:</strong> Compro \( y \) kg de naranjas el lunes, \( 2y \) kg el miércoles y devuelvo \( y \) kg el viernes (estaban en mal estado). ¿Cuántos kg de naranjas tengo al final?<br><br>
+      Expresión algebraica: _____________________<br>
+      Simplifica: _____________________
+      </li>
+
+      <li><strong>Inventa un problema:</strong> Crea un problema de tu vida cotidiana que se resuelva sumando o restando monomios.<br>
+      <div style="border: 1px solid #ccc; padding: 1rem; margin-top: 0.5rem; min-height: 4rem;"></div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📝 Resumen de la sesión</h2>
+    <ul>
+      <li>Un <strong>monomio</strong> tiene coeficiente, parte literal y grado</li>
+      <li>Monomios <strong>semejantes</strong>: tienen la misma parte literal</li>
+      <li>Para sumar/restar: sumamos/restamos los <strong>coeficientes</strong> y mantenemos la parte literal</li>
+      <li><strong>No podemos</strong> sumar monomios con diferentes letras o exponentes</li>
+    </ul>
+  </section>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ccc; font-size: 0.9em; color: #666;">
+    <p>📁 ESO 1 - Bloque 4: Sentido Algebraico | Sesión 3/8 | IES Teis - Vigo</p>
+  </footer>
+
+  <script>
+    function toggleContraste() {
+      document.body.classList.toggle('alto-contraste');
+      const btn = document.getElementById('btn-contraste');
+      if (document.body.classList.contains('alto-contraste')) {
+        btn.textContent = '👁️ Contraste Normal';
+      } else {
+        btn.textContent = '👁️ Alto Contraste';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 3 · Exponenciales y logarítmicas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 3 · Modelos exponenciales y logarítmicos en economía</h1>
+        <p class="meta">CE 5.1 y 5.4 · Interés compuesto y logaritmos</p>
+    </header>
+
+    <section class="box">
+        <h2>Saberes y conceptos previos</h2>
+        <ul>
+            <li>Función exponencial \(f(x)=a\cdot b^x\) e interés compuesto.</li>
+            <li>Función logarítmica como inversa de la exponencial.</li>
+            <li>Previos: potencias, raíces y definición básica de logaritmo.</li>
+        </ul>
+        <img src="imgs/s3_exponencial_logaritmica.png" alt="Gráfica exponencial y logarítmica">
+    </section>
+
+    <section class="box">
+        <h2>Resumen de teoría utilizada</h2>
+        <ul>
+            <li><strong>Modelo exponencial:</strong> \(f(t)=a\cdot b^t\), donde \(a\) es el valor inicial y \(b\) el factor de cambio por periodo.</li>
+            <li><strong>Crecimiento y decrecimiento:</strong> si \(b&gt;1\), hay crecimiento; si \(0&lt;b&lt;1\), hay decrecimiento (depreciación).</li>
+            <li><strong>Interés compuesto:</strong> \(C(t)=C_0(1+r)^t\), con \(C_0\) capital inicial y \(r\) tasa en forma decimal.</li>
+            <li><strong>Logaritmos:</strong> permiten despejar el exponente cuando la incógnita está en la potencia, por ejemplo en ecuaciones del tipo \(a\cdot b^t=N\).</li>
+            <li><strong>Función logarítmica:</strong> en \(\log(x-c)\), el dominio exige \(x-c&gt;0\) y la asíntota vertical está en \(x=c\).</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>Bloque práctico</h2>
+
+        <p class="exercise-title">Ejercicio 1 (Modelado)</p>
+        <p>Depósito de 2.000€ al 3% anual compuesto.</p>
+        <p>a) Escribe la función del capital tras \(t\) años.<br>b) Capital a 10 años.</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(C(t)=2000(1{,}03)^t\).<br>\(C(10)=2000\cdot1{,}3439\approx2687{,}83€\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2 (Práctica)</p>
+        <p>Un coche de 24.000€ se deprecia un 15% anual. Hallar \(V(t)\) y \(V(5)\).</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(V(t)=24000(0{,}85)^t\).<br>\(V(5)=24000\cdot0{,}4437\approx10648{,}80€\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3 (Práctica)</p>
+        <p>\(P(t)=100\cdot2^t\). ¿Cuánto tarda en llegar a 1600?</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(1600=100\cdot2^t\Rightarrow16=2^t\Rightarrow t=4\) horas.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 4 (Práctica)</p>
+        <p>Dominio y asíntota vertical de \(f(x)=\log(x-3)\).</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(x-3>0\Rightarrow Dom=(3,+\infty)\). Asíntota vertical en \(x=3\).</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>Uso en GeoGebra (copiar/pegar)</h2>
+        <ul>
+            <li>Interés compuesto: <code>C(t)=2000*(1.03)^t</code></li>
+            <li>Depreciación: <code>V(t)=24000*(0.85)^t</code></li>
+            <li>Crecimiento bacterias: <code>P(t)=100*2^t</code></li>
+            <li>Logarítmica desplazada: <code>L(x)=log(x-3)</code></li>
+        </ul>
+    </section>
+
+    <p><a href="index.html">← Volver al índice</a></p>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det){
+            det.addEventListener('toggle', function(){ if(det.open && window.MathJax){ MathJax.typesetPromise([det]); } });
+        });
+    </script>
+</body>
+</html>

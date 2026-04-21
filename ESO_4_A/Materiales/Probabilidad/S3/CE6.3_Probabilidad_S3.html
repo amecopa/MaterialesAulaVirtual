@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 3: Probabilidad Condicionada</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .formula-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+        table.contingencia {
+            border-collapse: collapse;
+            margin: 15px auto;
+            background: white;
+        }
+        table.contingencia th, table.contingencia td {
+            border: 2px solid #0056b3;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        table.contingencia th {
+            background-color: #0056b3;
+            color: white;
+        }
+        table.contingencia td.total {
+            background-color: #e8f0fe;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 3: Probabilidad Condicionada</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | CE1: Comunicar procesos matemáticos</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Concepto de Probabilidad Condicionada</h3>
+        <p>La <strong>probabilidad condicionada</strong> \(P(A|B)\) es la probabilidad de que ocurra el suceso \(A\) <strong>sabiendo que ya ha ocurrido</strong> el suceso \(B\).</p>
+        <p>Se lee: "Probabilidad de A dado B" o "Probabilidad de A condicionada a B".</p>
+
+        <div class="formula-box">
+            <strong>Definición formal:</strong>
+            $$P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \text{si } P(B) > 0$$
+        </div>
+
+        <p><strong>Interpretación:</strong> Al saber que \(B\) ha ocurrido, el espacio muestral se "reduce" a \(B\). Solo nos interesan los casos de \(B\) en los que también ocurre \(A\).</p>
+
+        <h3>Regla del Producto</h3>
+        <p>Despejando de la definición anterior:</p>
+        $$P(A \cap B) = P(B) \cdot P(A|B) = P(A) \cdot P(B|A)$$
+        <p>Esta fórmula es fundamental para calcular probabilidades de intersección cuando conocemos las condicionadas.</p>
+
+        <h3>Propiedades</h3>
+        <ul>
+            <li>Si \(A\) y \(B\) son independientes, entonces \(P(A|B) = P(A)\) (saber que ocurre \(B\) no afecta a \(A\))</li>
+            <li>\(P(A|A) = 1\) (si \(A\) ha ocurrido, la probabilidad de que ocurra \(A\) es 1)</li>
+            <li>\(P(A|B) + P(A^c|B) = 1\)</li>
+        </ul>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🔥 Bloque 1: Refuerzo — 10 min</h2>
+        
+        <div class="formula-box">
+            <strong>Situación disparadora (debate):</strong><br>
+            En Samil, un estudio muestra que el 60 % de los bañistas usa crema solar y el 40 % de todos los bañistas se quema. Pero el 20 % usa crema Y se quema. 
+            <br><br>
+            ❓ <strong>¿Cambia la probabilidad de quemarse si ya sabemos que usa crema?</strong>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>📖 Bloque 2: Consolidación — 17 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra): Resolución del disparador — Samil <span class="badge">CONTEXTO VIGO</span></div>
+            <p><strong>Datos:</strong></p>
+            <ul>
+                <li>\(P(C) = 0,6\) (usa crema)</li>
+                <li>\(P(Q) = 0,4\) (se quema)</li>
+                <li>\(P(C \cap Q) = 0,2\) (usa crema Y se quema)</li>
+            </ul>
+            <p><strong>Pregunta:</strong> Calcula \(P(Q|C)\) (probabilidad de quemarse dado que usa crema)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución paso a paso:</strong><br><br>
+                Aplicamos la definición:
+                $$P(Q|C) = \frac{P(Q \cap C)}{P(C)} = \frac{0,2}{0,6} = \frac{1}{3} \approx 0,333 = 33,3\%$$
+                <br>
+                <strong>Interpretación:</strong> De las personas que usan crema, aproximadamente 1 de cada 3 se quema. <br>
+                <strong>Comparación:</strong> \(P(Q) = 0,4 = 40\%\) en general, pero \(P(Q|C) = 33,3\%\) si usa crema. 
+                <br>→ Usar crema <em>reduce</em> la probabilidad de quemarse.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Trabajo colectivo): Tabla de doble entrada</div>
+            <p>En una encuesta a 100 personas:</p>
+            <ul>
+                <li>60 son hombres, 40 son mujeres</li>
+                <li>De los hombres, 45 practican deporte</li>
+                <li>De las mujeres, 25 practican deporte</li>
+            </ul>
+            <p>Construye la tabla de contingencia y calcula:</p>
+            <p><strong>a)</strong> \(P(\text{deporte} | \text{hombre})\)</p>
+            <p><strong>b)</strong> \(P(\text{mujer} | \text{deporte})\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Tabla de contingencia:</strong>
+                <table class="contingencia">
+                    <tr>
+                        <th></th>
+                        <th>Deporte Sí</th>
+                        <th>Deporte No</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <th>Hombre</th>
+                        <td>45</td>
+                        <td>15</td>
+                        <td class="total">60</td>
+                    </tr>
+                    <tr>
+                        <th>Mujer</th>
+                        <td>25</td>
+                        <td>15</td>
+                        <td class="total">40</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td class="total">70</td>
+                        <td class="total">30</td>
+                        <td class="total">100</td>
+                    </tr>
+                </table>
+                
+                <strong>a)</strong> 
+                $$P(\text{deporte}|\text{hombre}) = \frac{45}{60} = 0,75 = 75\%$$
+                <em>De los hombres, el 75 % practica deporte.</em>
+                <br><br>
+                
+                <strong>b)</strong> 
+                $$P(\text{mujer}|\text{deporte}) = \frac{25}{70} = \frac{5}{14} \approx 0,357 = 35,7\%$$
+                <em>De las personas que practican deporte, el 35,7 % son mujeres.</em>
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>✏️ Bloque 3: Afianzamiento (Parejas) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Diagrama de Venn</div>
+            <p>Dado el siguiente diagrama de Venn con probabilidades:</p>
+            <ul>
+                <li>\(P(A \cap B) = 0,1\)</li>
+                <li>\(P(A \cap B^c) = 0,3\) (solo A)</li>
+                <li>\(P(A^c \cap B) = 0,2\) (solo B)</li>
+                <li>\(P(A^c \cap B^c) = 0,4\) (ninguno)</li>
+            </ul>
+            <p>Calcula: <strong>a)</strong> \(P(A|B)\) &nbsp; <strong>b)</strong> \(P(B|A)\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Paso 1:</strong> Calcular probabilidades marginales:
+                $$P(A) = 0,3 + 0,1 = 0,4$$
+                $$P(B) = 0,2 + 0,1 = 0,3$$
+                <br>
+                
+                <strong>a)</strong> 
+                $$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{0,1}{0,3} = \frac{1}{3} \approx 0,333$$
+                
+                <strong>b)</strong> 
+                $$P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{0,1}{0,4} = 0,25$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Astilleros de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>200 trabajadores de los astilleros de Vigo se clasifican así:</p>
+            <table class="contingencia">
+                <tr>
+                    <th></th>
+                    <th>Formación soldadura</th>
+                    <th>Sin formación soldadura</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <th>Hombre</th>
+                    <td>90</td>
+                    <td>30</td>
+                    <td class="total">120</td>
+                </tr>
+                <tr>
+                    <th>Mujer</th>
+                    <td>50</td>
+                    <td>30</td>
+                    <td class="total">80</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td class="total">140</td>
+                    <td class="total">60</td>
+                    <td class="total">200</td>
+                </tr>
+            </table>
+            <p>Calcula:</p>
+            <p><strong>a)</strong> \(P(\text{soldadura}|\text{mujer})\)</p>
+            <p><strong>b)</strong> \(P(\text{mujer}|\text{soldadura})\)</p>
+            <p><strong>c)</strong> ¿Son lo mismo las dos probabilidades anteriores? Explica.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> 
+                $$P(\text{soldadura}|\text{mujer}) = \frac{50}{80} = 0,625 = 62,5\%$$
+                <em>De las mujeres, el 62,5 % tiene formación en soldadura.</em>
+                <br><br>
+                
+                <strong>b)</strong> 
+                $$P(\text{mujer}|\text{soldadura}) = \frac{50}{140} = \frac{5}{14} \approx 0,357 = 35,7\%$$
+                <em>De las personas con formación en soldadura, el 35,7 % son mujeres.</em>
+                <br><br>
+                
+                <strong>c)</strong> <strong>NO son lo mismo.</strong> \(P(A|B) \neq P(B|A)\) en general.
+                <ul style="margin-top:8px;">
+                    <li>\(P(\text{soldadura}|\text{mujer})\) → Proporción dentro del grupo de mujeres</li>
+                    <li>\(P(\text{mujer}|\text{soldadura})\) → Proporción dentro del grupo con formación</li>
+                </ul>
+                <em>⚠️ Confundir ambas es un error muy frecuente (falacia de la condición transpuesta).</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Reflexión conceptual</div>
+            <p>¿Es \(P(A|B)\) siempre mayor que \(P(A)\)? Razona con un contraejemplo.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>NO.</strong> \(P(A|B)\) puede ser mayor, igual o menor que \(P(A)\).
+                <br><br>
+                <strong>Contraejemplo:</strong> Lanzamiento de un dado.
+                <ul>
+                    <li>\(A\) = sacar un número par → \(P(A) = 0,5\)</li>
+                    <li>\(B\) = sacar un número mayor que 4 → \(B = \{5, 6\}\)</li>
+                </ul>
+                $$A \cap B = \{6\}$$
+                $$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/6}{2/6} = \frac{1}{2} = 0,5$$
+                <br>
+                En este caso \(P(A|B) = P(A)\). Pero si \(B = \{1, 3, 5\}\) (impares), entonces \(P(A|B) = 0 < P(A)\).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4: Regla del producto</div>
+            <p>Se sabe que \(P(A) = 0,6\) y \(P(B|A) = 0,4\). Calcula \(P(A \cap B)\).</p>
+            
+            <details class="solution">
+                <summary></summary>
+                Aplicamos la regla del producto:
+                $$P(A \cap B) = P(A) \cdot P(B|A) = 0,6 \cdot 0,4 = 0,24$$
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🚀 Bloque 4: Ampliación — 8 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Islas Cíes — Avistamiento de delfines <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En las Islas Cíes (Parque Nacional de las Islas Atlánticas), el 70 % de los días de julio son soleados. En un día soleado, la probabilidad de ver delfines es 0,4; en uno nublado, 0,15.</p>
+            <p><strong>Pregunta:</strong> ¿Cuál es la probabilidad de que en un día concreto sea soleado Y se vean delfines?</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong>
+                <ul>
+                    <li>\(P(S) = 0,7\) (soleado)</li>
+                    <li>\(P(D|S) = 0,4\) (delfines dado soleado)</li>
+                    <li>\(P(D|N) = 0,15\) (delfines dado nublado)</li>
+                </ul>
+                <br>
+                Aplicamos la regla del producto:
+                $$P(S \cap D) = P(S) \cdot P(D|S) = 0,7 \cdot 0,4 = 0,28 = 28\%$$
+                <br>
+                <strong>Interpretación:</strong> Hay un 28 % de probabilidad de que un día de julio sea soleado y se vean delfines.
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Independencia de sucesos y regla del producto</p>
+    </footer>
+
+</body>
+</html>

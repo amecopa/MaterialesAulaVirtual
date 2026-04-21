@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 14: Teorema de Bayes</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-ampliacion { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    .importante { background: #e3f2fd; border-left: 3px solid #2196F3; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 90%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; }
+    th { background-color: #c2185b; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 14: Teorema de Bayes</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Comprender el Teorema de Bayes como inversión del condicionamiento</li>
+      <li>Aplicar el teorema a problemas de diagnóstico médico, clasificación, etc.</li>
+      <li>Distinguir probabilidad "a priori" de "a posteriori"</li>
+      <li>Interpretar resultados bayesianos en contexto real</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="importante">
+    <strong>EL PROBLEMA QUE RESUELVE BAYES:</strong>
+    <br><br>
+    Conocemos P(B|A), pero queremos P(A|B) (la probabilidad "inversa").
+    <br><br>
+    <strong>Ejemplo:</strong> Conocemos P(síntomas|enfermedad), queremos P(enfermedad|síntomas).
+  </div>
+
+  <div class="definicion">
+    <strong>TEOREMA DE LA PROBABILIDAD TOTAL:</strong>
+    <br>
+    Si {A₁, A₂, ..., Aₙ} es una partición de Ω (disjuntos y cubren todo el espacio):
+    \[ P(B) = \sum_{i=1}^{n} P(A_i) \cdot P(B|A_i) \]
+  </div>
+
+  <div class="definicion">
+    <strong>TEOREMA DE BAYES:</strong>
+    \[ P(A_i|B) = \frac{P(A_i) \cdot P(B|A_i)}{P(B)} = \frac{P(A_i) \cdot P(B|A_i)}{\sum_{j=1}^{n} P(A_j) \cdot P(B|A_j)} \]
+    <br>
+    Donde:
+    <ul>
+      <li><strong>P(A_{i}):</strong> Probabilidad "a priori" (antes de observar B)</li>
+      <li><strong>P(A_{i}|B):</strong> Probabilidad "a posteriori" (después de observar B)</li>
+      <li><strong>P(B|A_{i}):</strong> Verosimilitud (likelihood)</li>
+    </ul>
+  </div>
+
+  <img src="graficos/s14_teorema_bayes.svg" alt="Visualización Teorema de Bayes">
+
+  <h2>🔄 Interpretación</h2>
+  <p>Bayes permite <strong>"dar la vuelta" al condicionamiento</strong>:</p>
+  <table>
+    <tr><th>Tenemos</th><th>Queremos</th><th>Ejemplo</th></tr>
+    <tr>
+      <td>P(Test+|Enfermo)</td>
+      <td>P(Enfermo|Test+)</td>
+      <td>Diagnóstico médico</td>
+    </tr>
+    <tr>
+      <td>P(Palabra|Spam)</td>
+      <td>P(Spam|Palabra)</td>
+      <td>Filtro correo</td>
+    </tr>
+    <tr>
+      <td>P(Dato|Hipótesis)</td>
+      <td>P(Hipótesis|Dato)</td>
+      <td>Inferencia científica</td>
+    </tr>
+  </table>
+
+  <div class="bloque-ampliacion">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Tres máquinas (A, B, C) producen tornillos. Producción diaria:</p>
+    <ul>
+      <li>Máquina A: 50% del total, 2% defectuosos</li>
+      <li>Máquina B: 30% del total, 3% defectuosos</li>
+      <li>Máquina C: 20% del total, 5% defectuosos</li>
+    </ul>
+    <p>Si seleccionamos un tornillo aleatorio y resulta <strong>defectuoso</strong>, ¿cuál es la probabilidad de que venga de la máquina A?</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Datos (probabilidades a priori):</strong></p>
+        <div class="paso">P(A) = 0.50, P(B) = 0.30, P(C) = 0.20</div>
+        
+        <p><strong>Probabilidades condicionadas (verosimilitudes):</strong></p>
+        <div class="paso">P(D|A) = 0.02, P(D|B) = 0.03, P(D|C) = 0.05</div>
+        
+        <p><strong>Queremos:</strong> P(A|D) usando Bayes</p>
+        
+        <p><strong>Paso 1: Probabilidad total de defectuoso</strong></p>
+        <div class="paso">\[ P(D) = P(A) \cdot P(D|A) + P(B) \cdot P(D|B) + P(C) \cdot P(D|C) \]</div>
+        <div class="paso">\[ P(D) = 0.50 \cdot 0.02 + 0.30 \cdot 0.03 + 0.20 \cdot 0.05 \]</div>
+        <div class="paso">\[ P(D) = 0.010 + 0.009 + 0.010 = 0.029 = 2.9\% \]</div>
+        
+        <p><strong>Paso 2: Teorema de Bayes para máquina A</strong></p>
+        <div class="paso">\[ P(A|D) = \frac{P(A) \cdot P(D|A)}{P(D)} = \frac{0.50 \cdot 0.02}{0.029} = \frac{0.010}{0.029} \approx 0.345 \]</div>
+        
+        <p><strong>Resultado:</strong> 34.5% de probabilidad de que el tornillo defectuoso venga de A.</p>
+        
+        <p><strong>Interpretación:</strong></p>
+        <ul>
+          <li>A priori, A producía 50% de todos los tornillos</li>
+          <li>A posteriori (sabiendo que es defectuoso), la probabilidad baja a 34.5%</li>
+          <li><strong>Razón:</strong> A tiene MENOR tasa de defectos que B y C</li>
+        </ul>
+        
+        <p><strong>Verificación:</strong> Calculemos también P(B|D) y P(C|D):</p>
+        <div class="paso">P(B|D) = 0.30·0.03/0.029 ≈ 0.310 (31.0%)</div>
+        <div class="paso">P(C|D) = 0.20·0.05/0.029 ≈ 0.345 (34.5%)</div>
+        <div class="paso">Suma: 0.345 + 0.310 + 0.345 = 1.00 ✓</div>
+      </div>
+    </details>
+
+    <p><strong>Ej 2 (Contexto Vigo - Análisis Meteorológico):</strong></p>
+    <p>En Vigo, los días se clasifican en:</p>
+    <ul>
+      <li><strong>Nublados (N):</strong> 60% de los días</li>
+      <li><strong>Despejados (D):</strong> 40% de los días</li>
+    </ul>
+    <p>Probabilidad de lluvia según el cielo:</p>
+    <ul>
+      <li>P(Lluvia|Nublado) = 0.50</li>
+      <li>P(Lluvia|Despejado) = 0.10</li>
+    </ul>
+    <p>Si HOY llovió en Vigo, ¿cuál es la probabilidad de que el día estuviera nublado?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">P(N) = 0.60, P(D) = 0.40</div>
+        <div class="paso">P(L|N) = 0.50, P(L|D) = 0.10</div>
+        
+        <p><strong>Queremos:</strong> P(N|L)</p>
+        
+        <p><strong>Paso 1: P(Lluvia) - Probabilidad total</strong></p>
+        <div class="paso">\[ P(L) = P(N) \cdot P(L|N) + P(D) \cdot P(L|D) \]</div>
+        <div class="paso">\[ P(L) = 0.60 \cdot 0.50 + 0.40 \cdot 0.10 = 0.30 + 0.04 = 0.34 \]</div>
+        
+        <p><strong>Paso 2: Bayes</strong></p>
+        <div class="paso">\[ P(N|L) = \frac{P(N) \cdot P(L|N)}{P(L)} = \frac{0.60 \cdot 0.50}{0.34} = \frac{0.30}{0.34} \approx 0.882 \]</div>
+        
+        <p><strong>Conclusión:</strong> Si llovió, hay <strong>88.2% de probabilidad</strong> de que estuviera nublado.</p>
+        
+        <p><strong>Tiene sentido:</strong></p>
+        <ul>
+          <li>La mayoría de días ya son nublados (60%)</li>
+          <li>Además, llueve mucho más en días nublados</li>
+          <li>Por tanto, al observar lluvia, aumenta aún más la certeza de nubosidad</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 3 (Diagnóstico con dos enfermedades):</strong></p>
+    <p>Un síntoma puede deberse a 3 causas:</p>
+    <table style="width: 80%;">
+      <tr><th>Causa</th><th>Prevalencia</th><th>P(Síntoma|Causa)</th></tr>
+      <tr><td>Enfermedad A</td><td>1%</td><td>90%</td></tr>
+      <tr><td>Enfermedad B</td><td>4%</td><td>60%</td></tr>
+      <tr><td>Sano</td><td>95%</td><td>5%</td></tr>
+    </table>
+    <p>Si un paciente presenta el síntoma, ¿qué probabilidad hay de cada causa?</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">P(A) = 0.01, P(B) = 0.04, P(S) = 0.95</div>
+        <div class="paso">P(+|A) = 0.90, P(+|B) = 0.60, P(+|S) = 0.05</div>
+        
+        <p><strong>Paso 1: Probabilidad total del síntoma</strong></p>
+        <div class="paso">\[ P(+) = 0.01(0.90) + 0.04(0.60) + 0.95(0.05) \]</div>
+        <div class="paso">\[ P(+) = 0.009 + 0.024 + 0.0475 = 0.0805 = 8.05\% \]</div>
+        
+        <p><strong>Paso 2: Bayes para cada causa</strong></p>
+        
+        <p><strong>P(A|+) - Enfermedad A:</strong></p>
+        <div class="paso">\[ P(A|+) = \frac{0.01 \cdot 0.90}{0.0805} = \frac{0.009}{0.0805} \approx 0.112 = 11.2\% \]</div>
+        
+        <p><strong>P(B|+) - Enfermedad B:</strong></p>
+        <div class="paso">\[ P(B|+) = \frac{0.04 \cdot 0.60}{0.0805} = \frac{0.024}{0.0805} \approx 0.298 = 29.8\% \]</div>
+        
+        <p><strong>P(S|+) - Sano (falsa alarma):</strong></p>
+        <div class="paso">\[ P(S|+) = \frac{0.95 \cdot 0.05}{0.0805} = \frac{0.0475}{0.0805} \approx 0.590 = 59.0\% \]</div>
+        
+        <p><strong>Verificación:</strong> 11.2% + 29.8% + 59.0% = 100% ✓</p>
+        
+        <p><strong>Conclusión clínica:</strong></p>
+        <table style="width: 100%; margin-top: 1rem;">
+          <tr><th>Diagnóstico</th><th>A priori</th><th>A posteriori</th><th>Variación</th></tr>
+          <tr><td>Enfermedad A</td><td>1%</td><td>11.2%</td><td>×11.2</td></tr>
+          <tr><td>Enfermedad B</td><td>4%</td><td>29.8%</td><td>×7.5</td></tr>
+          <tr><td>Sano</td><td>95%</td><td>59.0%</td><td>×0.62</td></tr>
+        </table>
+        
+        <ul>
+          <li>Pese al síntoma, todavía hay <strong>59% de probabilidad de estar sano</strong></li>
+          <li>La probabilidad de B (29.8%) es mayor que la de A (11.2%), pese a que A tiene mayor sensibilidad</li>
+          <li><strong>Razón:</strong> B es 4 veces más frecuente que A en la población</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 4 (Aplicación informática):</strong> Filtro antispam. El 30% de correos son spam. Una palabra aparece en:</p>
+    <ul>
+      <li>80% de correos spam</li>
+      <li>10% de correos legítimos</li>
+    </ul>
+    <p>Si un correo contiene esa palabra, ¿probabilidad de que sea spam?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">P(Spam) = 0.30 → P(Legítimo) = 0.70</div>
+        <div class="paso">P(Palabra|Spam) = 0.80</div>
+        <div class="paso">P(Palabra|Legítimo) = 0.10</div>
+        
+        <p><strong>Probabilidad total de la palabra:</strong></p>
+        <div class="paso">\[ P(Pal) = 0.30(0.80) + 0.70(0.10) = 0.24 + 0.07 = 0.31 \]</div>
+        
+        <p><strong>Bayes:</strong></p>
+        <div class="paso">\[ P(Spam|Pal) = \frac{0.30 \cdot 0.80}{0.31} = \frac{0.24}{0.31} \approx 0.774 = 77.4\% \]</div>
+        
+        <p><strong>Decisión del filtro:</strong> Si probabilidad > 50%, marcar como spam → Este correo SÍ se marcaría.</p>
+        <p><strong>Nota:</strong> Filtros reales usan <strong>múltiples palabras simultáneamente</strong> para mayor precisión (Naïve Bayes Classifier).</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Aplicaciones Reales de Bayes</h2>
+  <ul>
+    <li><strong>Medicina:</strong> Diagnóstico basado en síntomas y tests</li>
+    <li><strong>Justicia:</strong> Actualizar probabilidad de culpabilidad con nuevas pruebas</li>
+    <li><strong>Inteligencia Artificial:</strong> Clasificadores bayesianos (spam, reconocimiento patrones)</li>
+    <li><strong>Ciencia:</strong> Inferencia estadística, actualización de hipótesis</li>
+    <li><strong>Finanzas:</strong> Actualizar riesgo de inversión con nueva información</li>
+  </ul>
+
+  <h2>⚠️ Paradoja de la Base Rate</h2>
+  <p>La gente tiende a ignorar P(A) (prevalencia) y sobreestimar P(A|B) basándose solo en P(B|A). <strong>Bayes corrige esta intuición errónea.</strong></p>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo | FIN BLOQUE II: PROBABILIDAD</p>
+  </footer>
+</body>
+</html>

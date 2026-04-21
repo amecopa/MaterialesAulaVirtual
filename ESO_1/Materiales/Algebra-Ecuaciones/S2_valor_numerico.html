@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 2: Valor numérico de expresiones algebraicas</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --color-primary: #16a34a;
+      --color-primary-soft: rgba(22, 163, 74, 0.1);
+      --color-secondary: #0891b2;
+      --color-secondary-soft: rgba(8, 145, 178, 0.1);
+      --color-accent: #dc2626;
+      --color-accent-soft: rgba(220, 38, 38, 0.1);
+      --color-text: #1f2937;
+      --color-text-light: #6b7280;
+      --color-bg: #ffffff;
+      --color-bg-alt: #f9fafb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --spacing-unit: 4px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Xunta Sans', 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      padding: calc(var(--spacing-unit) * 5);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #15803d 100%);
+      color: white;
+      padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 8);
+      border-radius: var(--radius-lg);
+      margin-bottom: calc(var(--spacing-unit) * 10);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-container {
+      background: var(--color-bg-alt);
+      border-radius: 999px;
+      height: 8px;
+      margin-bottom: calc(var(--spacing-unit) * 10);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 999px;
+    }
+
+    /* Section Base */
+    section {
+      margin-bottom: calc(var(--spacing-unit) * 12);
+      padding: calc(var(--spacing-unit) * 8);
+      border: 2px solid var(--color-bg-alt);
+      border-radius: var(--radius-md);
+      background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-tag {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      display: inline-block;
+    }
+
+    section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--color-text);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      font-weight: 600;
+    }
+
+    section p, section li {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .panel {
+      padding: calc(var(--spacing-unit) * 6);
+      border-radius: var(--radius-md);
+      margin: calc(var(--spacing-unit) * 4) 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-formula {
+      background: var(--color-primary-soft);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .panel-example {
+      background: var(--color-secondary-soft);
+      border-left: 4px solid var(--color-secondary);
+    }
+
+    .panel-checkpoint {
+      background: var(--color-accent-soft);
+      border-left: 4px solid var(--color-accent);
+    }
+
+    .panel-interactive {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 4px solid #6366f1;
+    }
+
+    /* Listas dentro de paneles */
+    .panel ol,
+    .panel ul {
+      padding-left: calc(var(--spacing-unit) * 8);
+    }
+
+    .panel ol li,
+    .panel ul li {
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: calc(var(--spacing-unit) * 5);
+      margin: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .card {
+      background: var(--color-bg);
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-md);
+      padding: calc(var(--spacing-unit) * 6);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card h3 {
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .steps {
+      counter-reset: step-counter;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 12);
+      margin-bottom: calc(var(--spacing-unit) * 6);
+    }
+
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .interactive-tool {
+      background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+      color: white;
+      padding: calc(var(--spacing-unit) * 8);
+      border-radius: var(--radius-lg);
+      margin: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .tool-input-group {
+      margin: calc(var(--spacing-unit) * 4) 0;
+    }
+
+    .tool-input-group label {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      font-weight: 600;
+    }
+
+    .tool-input {
+      width: 100%;
+      padding: calc(var(--spacing-unit) * 3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-text);
+    }
+
+    .tool-button {
+      background: white;
+      color: #16a34a;
+      border: none;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 6);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 1rem;
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
+    .tool-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-result {
+      margin-top: calc(var(--spacing-unit) * 4);
+      padding: calc(var(--spacing-unit) * 4);
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #btn-contrast {
+      position: fixed;
+      top: calc(var(--spacing-unit) * 5);
+      right: calc(var(--spacing-unit) * 5);
+      background: var(--color-text);
+      color: white;
+      border: none;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 5);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    #btn-contrast:hover { transform: scale(1.05); }
+
+    body.high-contrast {
+      --color-bg: #000000;
+      --color-text: #ffff00;
+      --color-text-light: #ffff00;
+      --color-bg-alt: #1a1a1a;
+    }
+
+    body.high-contrast .hero {
+      background: #1a1a1a;
+      border: 2px solid #ffff00;
+    }
+
+    body.high-contrast .panel,
+    body.high-contrast .card,
+    body.high-contrast .interactive-tool {
+      background: #1a1a1a;
+      border: 2px solid #ffff00;
+      color: #ffff00;
+    }
+
+    body.high-contrast h1,
+    body.high-contrast h2,
+    body.high-contrast h3 {
+      color: #ffff00;
+    }
+
+    body.high-contrast .steps li::before {
+      background: #ffff00;
+      color: #000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: var(--color-primary-soft);
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    tr:hover {
+      background: var(--color-bg-alt);
+    }
+
+    /* Desplegables para ejemplos resueltos */
+    details.ejemplo-resuelto {
+      margin: calc(var(--spacing-unit) * 6) 0;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-md);
+      padding: calc(var(--spacing-unit) * 6);
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    details.ejemplo-resuelto[open] {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      box-shadow: var(--shadow-lg);
+    }
+
+    details.ejemplo-resuelto summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0369a1;
+      padding: calc(var(--spacing-unit) * 3);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    details.ejemplo-resuelto summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.ejemplo-resuelto summary::before {
+      content: '▶';
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 0.9rem;
+    }
+
+    details.ejemplo-resuelto[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.ejemplo-resuelto summary:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(4px);
+    }
+
+    .ejemplo-contenido {
+      margin-top: calc(var(--spacing-unit) * 4);
+      padding: calc(var(--spacing-unit) * 4);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius-sm);
+    }
+
+    .ejemplo-contenido h4 {
+      color: #0369a1;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      font-size: 1.15rem;
+    }
+
+    ol.pasos-ejemplo {
+      counter-reset: paso-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ol.pasos-ejemplo li {
+      counter-increment: paso-counter;
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 18);
+      margin-bottom: calc(var(--spacing-unit) * 5);
+      line-height: 1.6;
+    }
+
+    ol.pasos-ejemplo li::before {
+      content: "Paso " counter(paso-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #0ea5e9;
+      color: white;
+      padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 3);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    ol.pasos-ejemplo li strong {
+      color: #0369a1;
+    }
+
+    body.high-contrast details.ejemplo-resuelto {
+      background: #1a1a1a;
+      border-color: #ffff00;
+    }
+
+    body.high-contrast details.ejemplo-resuelto summary {
+      color: #ffff00;
+      background: #000;
+    }
+
+    body.high-contrast .ejemplo-contenido {
+      background: #000;
+      color: #ffff00;
+    }
+
+    body.high-contrast .ejemplo-contenido h4 {
+      color: #ffff00;
+    }
+
+    body.high-contrast ol.pasos-ejemplo li::before {
+      background: #ffff00;
+      color: #000;
+    }
+
+    /* Acordeones para respuestas de ejercicios */
+    details.respuesta {
+      margin: calc(var(--spacing-unit) * 4) 0;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-sm);
+      padding: calc(var(--spacing-unit) * 4);
+      transition: all 0.3s ease;
+    }
+
+    details.respuesta[open] {
+      background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    details.respuesta summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #92400e;
+      padding: calc(var(--spacing-unit) * 2);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.2s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    details.respuesta summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.respuesta summary::before {
+      content: '🔒';
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    details.respuesta[open] summary::before {
+      content: '🔓';
+    }
+
+    details.respuesta summary:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateX(4px);
+    }
+
+    .respuesta-contenido {
+      margin-top: calc(var(--spacing-unit) * 3);
+      padding-top: calc(var(--spacing-unit) * 3);
+      border-top: 2px dashed #f59e0b;
+    }
+
+    body.high-contrast details.respuesta {
+      background: #1a1a1a;
+      border-color: #ffff00;
+    }
+
+    body.high-contrast details.respuesta summary {
+      color: #ffff00;
+      background: #000;
+    }
+
+    /* Autoevaluación Interactiva */
+    .pregunta-autoevaluacion {
+      margin-bottom: calc(var(--spacing-unit) * 6);
+      padding: calc(var(--spacing-unit) * 4);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .pregunta-texto {
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .opciones-radio {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 4);
+      flex-wrap: wrap;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+      cursor: pointer;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+      border-radius: var(--radius-sm);
+      background: white;
+      border: 2px solid #e5e7eb;
+      transition: all 0.2s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .radio-label:hover {
+      background: var(--color-bg-alt);
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .radio-label input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"]:checked {
+      accent-color: var(--color-accent);
+    }
+
+    .btn-autoevaluacion {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #ea580c 100%);
+      color: white;
+      border: none;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 8);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: var(--shadow-md);
+      display: block;
+      margin: calc(var(--spacing-unit) * 6) auto 0;
+    }
+
+    .btn-autoevaluacion:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-autoevaluacion:active {
+      transform: translateY(-1px);
+    }
+
+    #feedback-autoevaluacion {
+      margin-top: calc(var(--spacing-unit) * 6);
+      padding: calc(var(--spacing-unit) * 6);
+      border-radius: var(--radius-md);
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feedback-excelente {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 3px solid #10b981;
+    }
+
+    .feedback-bien {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border: 3px solid #3b82f6;
+    }
+
+    .feedback-mejorar {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 3px solid #f59e0b;
+    }
+
+    .feedback-titulo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      text-align: center;
+    }
+
+    .feedback-puntuacion {
+      font-size: 3rem;
+      font-weight: 900;
+      text-align: center;
+      margin: calc(var(--spacing-unit) * 4) 0;
+    }
+
+    .feedback-mensaje {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .feedback-consejo {
+      background: rgba(255, 255, 255, 0.7);
+      padding: calc(var(--spacing-unit) * 4);
+      border-radius: var(--radius-sm);
+      border-left: 4px solid currentColor;
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
+    .feedback-consejo strong {
+      display: block;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      font-size: 1.05rem;
+    }
+
+    body.high-contrast .radio-label {
+      background: #000;
+      border-color: #ffff00;
+      color: #ffff00;
+    }
+
+    body.high-contrast .btn-autoevaluacion {
+      background: #ffff00;
+      color: #000;
+    }
+
+    body.high-contrast #feedback-autoevaluacion {
+      background: #1a1a1a !important;
+      border-color: #ffff00 !important;
+      color: #ffff00;
+    }
+
+
+
+
+
+
+
+    @media (max-width: 900px) {
+      body { padding: calc(var(--spacing-unit) * 3); }
+      .hero { padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 5); }
+      .panel, .card { padding: calc(var(--spacing-unit) * 4); }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <button id="btn-contrast" onclick="toggleContrast()" aria-label="Activar modo alto contraste">
+    👁️ Alto Contraste
+  </button>
+
+  <div class="container">
+    <header class="hero">
+      <h1 lang="es">Valor numérico de expresiones algebraicas</h1>
+      <div class="hero-meta">
+        Sesión 2: Valor Numérico | IES Teis - Vigo
+      </div>
+    </header>
+
+    <div class="progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sección 1: Idea Central -->
+    <section>
+      <span class="section-tag">01 • Idea Central</span>
+      <h2>💡 El concepto clave</h2>
+      <p>Una expresión algebraica como \( 2x + 5 \) tiene un valor diferente según qué número pongamos en lugar de \( x \). Calcular el <strong>valor numérico</strong> significa sustituir la variable por un número concreto y hacer las cuentas.</p>
+      
+      <div class="panel panel-formula">
+        <p style="margin: 0; font-size: 1.2rem; text-align: center;">
+          <strong>Fórmula del valor numérico</strong>
+          <br><br>
+          Sustituir la variable → Calcular → Obtener resultado numérico
+        </p>
+      </div>
+    
+
+      <details class="ejemplo-resuelto">
+        <summary>📝 Ver ejemplo resuelto paso a paso</summary>
+        <div class="ejemplo-contenido">
+          <h4>Ejemplo: Calcular \( 2x + 3 \) cuando \( x = 5 \)</h4>
+          <ol class="pasos-ejemplo">
+            <li>
+              <strong>Escribo la expresión original:</strong> \( 2x + 3 \)
+            </li>
+            <li>
+              <strong>Sustituyo \( x \) por 5:</strong>
+              <br>\( 2(5) + 3 \)
+            </li>
+            <li>
+              <strong>Realizo la multiplicación primero:</strong>
+              <br>\( 2 \times 5 = 10 \)
+              <br>Queda: \( 10 + 3 \)
+            </li>
+            <li>
+              <strong>Sumo:</strong>
+              <br>\( 10 + 3 = 13 \)
+              <br><strong>Resultado final: 13</strong>
+            </li>
+          </ol>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- Sección 2: Casos Simples -->
+    <section>
+      <span class="section-tag">02 • Casos Simples</span>
+      <h2>🎯 Atajos mentales</h2>
+      
+      <div class="panel panel-example">
+        <h3>Expresiones muy sencillas:</h3>
+        <ul style="list-style: none;">
+          <li>✓ Si \( x = 5 \), entonces \( 2x = 2 \times 5 = 10 \)</li>
+          <li>✓ Si \( x = 3 \), entonces \( x + 4 = 3 + 4 = 7 \)</li>
+          <li>✓ Si \( x = 10 \), entonces \( \frac{x}{2} = \frac{10}{2} = 5 \)</li>
+        </ul>
+      </div>
+
+      <p><strong>Truco mental:</strong> Piensa en la variable como un hueco que rellenas con el número que te dan. ¡Luego calcula como siempre!</p>
+    </section>
+
+    <!-- Sección 3: Método General -->
+    <section>
+      <span class="section-tag">03 • Método General</span>
+      <h2>📋 Pasos para calcular el valor numérico</h2>
+      
+      <ol class="steps">
+        <li>
+          <strong>Lee la expresión y el valor de la variable</strong>
+          <br>Ej: "Calcula \( 3x + 7 \) cuando \( x = 4 \)"
+        </li>
+        <li>
+          <strong>Sustituye cada aparición de la variable</strong>
+          <br>Cambia \( x \) por 4: \( 3(4) + 7 \)
+        </li>
+        <li>
+          <strong>Respeta la jerarquía de operaciones</strong>
+          <br>Paréntesis → Multiplicaciones/Divisiones → Sumas/Restas
+        </li>
+        <li>
+          <strong>Calcula paso a paso</strong>
+          <br>\( 3(4) + 7 = 12 + 7 = 19 \)
+        </li>
+      </ol>
+    </section>
+
+    <!-- Sección 4: Cálculo Avanzado -->
+    <section>
+      <span class="section-tag">04 • Cálculo Avanzado</span>
+      <h2>🔢 Jerarquía de operaciones</h2>
+      
+      <div class="panel panel-formula">
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+          <strong>Orden de prioridad:</strong>
+        </p>
+        <ol>
+          <li><strong>Paréntesis:</strong> se calculan primero</li>
+          <li><strong>Potencias:</strong> como \( x^2 \) (significa \( x \times x \))</li>
+          <li><strong>Multiplicaciones y divisiones:</strong> de izquierda a derecha</li>
+          <li><strong>Sumas y restas:</strong> de izquierda a derecha</li>
+        </ol>
+      </div>
+
+      <div class="panel panel-example">
+        <h3>Ejemplo complejo:</h3>
+        <p><strong>Calcula \( 2x^2 - 3x + 5 \) cuando \( x = 3 \)</strong></p>
+        <ul style="list-style: none;">
+          <li>→ Sustituir: \( 2(3)^2 - 3(3) + 5 \)</li>
+          <li>→ Potencias primero: \( 2(9) - 3(3) + 5 \)</li>
+          <li>→ Multiplicaciones: \( 18 - 9 + 5 \)</li>
+          <li>→ Sumas y restas: \( 9 + 5 = 14 \)</li>
+        </ul>
+        <p><strong>Resultado:</strong> \( 14 \)</p>
+      </div>
+    </section>
+
+    <!-- Sección 5: Contextos Reales -->
+    <section>
+      <span class="section-tag">05 • Contextos Reales</span>
+      <h2>🌍 Aplicaciones prácticas</h2>
+      
+      <div class="cards-grid">
+        <article class="card">
+          <h3>🚌 Billetes Vitrasa</h3>
+          <p>Cada billete cuesta 1,30 €. Si viajas <em>x</em> veces, gastas \( 1,30x \) euros.</p>
+          <p><strong>Si \( x = 20 \) viajes:</strong></p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            \( 1,30 \times 20 = 26 \) €
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>🍊 Mercado de Teis</h3>
+          <p>Las naranjas cuestan 2 € el kilo. Compras <em>x</em> kilos, pagas \( 2x \) euros.</p>
+          <p><strong>Si \( x = 5 \) kg:</strong></p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            \( 2 \times 5 = 10 \) €
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>💰 Ahorro mensual</h3>
+          <p>Ahorras <em>x</em> euros por semana. En 4 semanas ahorras \( 4x \) euros.</p>
+          <p><strong>Si \( x = 12 \) € /semana:</strong></p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            \( 4 \times 12 = 48 \) €
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>📏 Perímetro cuadrado</h3>
+          <p>Un cuadrado de lado <em>x</em> tiene perímetro \( 4x \).</p>
+          <p><strong>Si \( x = 7 \) cm:</strong></p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            \( 4 \times 7 = 28 \) cm
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección 6: Problemas Complejos -->
+    <section>
+      <span class="section-tag">06 • Problemas Complejos</span>
+      <h2>🧩 Desafíos de razonamiento</h2>
+      
+      <div class="panel panel-checkpoint">
+        <h3>Problema 1: Tabla de valores</h3>
+        <p>Completa la tabla calculando \( 5x - 3 \) para cada valor de \( x \):</p>
+        <table>
+          <thead>
+            <tr>
+              <th>\( x \)</th>
+              <th>\( 5x - 3 \)</th>
+              <th>Cálculo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>-3</td>
+              <td>\( 5(0) - 3 = 0 - 3 = -3 \)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>___</td>
+              <td>___</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>___</td>
+              <td>___</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>___</td>
+              <td>___</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel panel-checkpoint">
+        <h3>Problema 2: Detecta el error</h3>
+        <p>Un estudiante calcula el valor de \( 2x + 10 \) cuando \( x = 4 \):</p>
+        <p style="background: rgba(220,38,38,0.1); padding: 1rem; border-radius: 8px; font-family: monospace;">
+          \( 2x + 10 = 2 \times 4 + 10 = 2 \times 14 = 28 \) ❌
+        </p>
+        <p><strong>¿Qué error cometió?</strong> ___</p>
+        <p><strong>¿Cuál es el resultado correcto?</strong> ___</p>
+      </div>
+    </section>
+
+    <!-- Sección 7: Comparación Crítica -->
+    <section>
+      <span class="section-tag">07 • Comparación Crítica</span>
+      <h2>⚖️ Diferencias importantes</h2>
+      
+      <div class="panel panel-example">
+        <h3>🔍 Mismo \( x \), expresiones diferentes</h3>
+        <p>Calcula cada expresión cuando \( x = 5 \):</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Expresión</th>
+              <th>Cálculo</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>\( 2x \)</td>
+              <td>\( 2 \times 5 \)</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>\( x + 2 \)</td>
+              <td>\( 5 + 2 \)</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>\( x^2 \)</td>
+              <td>\( 5 \times 5 \)</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td>\( 2x + 2 \)</td>
+              <td>\( 2(5) + 2 = 10 + 2 \)</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> Aunque usemos el mismo valor de \( x \), expresiones diferentes dan resultados diferentes.</p>
+      </div>
+    </section>
+
+    <!-- Sección 8: Práctica Interactiva -->
+    <section>
+      <span class="section-tag">08 • Práctica Interactiva</span>
+      <h2>🎮 Calculadora de valor numérico</h2>
+      
+      <div class="interactive-tool">
+        <h3 style="margin-bottom: 1.5rem;">Herramienta automática</h3>
+        
+        <div class="tool-input-group">
+          <label for="expression">Selecciona una expresión:</label>
+          <select id="expression" class="tool-input">
+            <option value="2x">2x</option>
+            <option value="3x+5">3x + 5</option>
+            <option value="x^2">x²</option>
+            <option value="4x-7">4x - 7</option>
+            <option value="x/2+3">x/2 + 3</option>
+          </select>
+        </div>
+
+        <div class="tool-input-group">
+          <label for="xValue">Valor de x:</label>
+          <input type="number" id="xValue" class="tool-input" placeholder="Ej: 5" value="5">
+        </div>
+
+        <button class="tool-button" onclick="calculateValue()">
+          Calcular valor numérico
+        </button>
+
+        <div class="tool-result" id="result" role="status" aria-live="polite">
+          Introduce un valor y haz clic en "Calcular"
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 9: Cierre Metacognitivo -->
+    <section>
+      <span class="section-tag">09 • Cierre Metacognitivo</span>
+      <h2>🎓 Reflexiona sobre tu aprendizaje</h2>
+      
+            <div class="panel panel-checkpoint">
+        <h3>Autoevaluación Interactiva</h3>
+        <p style="margin-bottom: calc(var(--spacing-unit) * 6);">Responde honestamente (esto es solo para ti, no se guarda ningún dato):</p>
+        
+        <form id="autoevaluacion-form" style="margin-bottom: calc(var(--spacing-unit) * 4);">
+
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>1.</strong> ¿Sabes calcular el valor numérico de \( 2x + 3 \) cuando \( x = 5 \)?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q1" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q1" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q1" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>2.</strong> ¿Distingues entre \( x^2 \) cuando x=3 (que es 9) y \( 2x \) cuando x=3 (que es 6)?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q2" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q2" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q2" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>3.</strong> ¿Puedes verificar si un valor es solución de una expresión?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q3" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q3" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q3" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>4.</strong> ¿Respetas el orden de operaciones (paréntesis, potencias, productos, sumas)?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q4" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q4" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q4" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-autoevaluacion">📊 Ver mi resultado</button>
+        </form>
+
+        <div id="feedback-autoevaluacion" style="display: none;"></div>
+      </div>
+
+      <div class="panel panel-example">
+        <h3>📝 Resumen de la sesión</h3>
+        <ul style="list-style: none;">
+          <li>✓ El <strong>valor numérico</strong> se calcula sustituyendo la variable por un número</li>
+          <li>✓ Siempre debemos respetar la <strong>jerarquía de operaciones</strong></li>
+          <li>✓ Una misma expresión tiene diferentes valores según el valor de \( x \)</li>
+          <li>✓ Expresiones diferentes con el mismo \( x \) dan resultados diferentes</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-interactive">
+        <h3>🚀 Próximos pasos</h3>
+        <p>En la próxima sesión trabajaremos con <strong>monomios</strong>, aprenderemos a sumar y restar expresiones algebraicas semejantes.</p>
+      </div>
+    </section>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--color-bg-alt); text-align: center; color: var(--color-text-light); font-size: 0.9rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+      <p>📚 Bloque 4: Sentido Algebraico | Material didáctico interactivo | IES Teis</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleContrast() {
+      document.body.classList.toggle('high-contrast');
+      const btn = document.getElementById('btn-contrast');
+      btn.textContent = document.body.classList.contains('high-contrast') 
+        ? '👁️ Contraste Normal' 
+        : '👁️ Alto Contraste';
+    }
+
+    window.addEventListener('scroll', () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / documentHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    });
+
+    function calculateValue() {
+      const expr = document.getElementById('expression').value;
+      const x = parseFloat(document.getElementById('xValue').value);
+      const resultDiv = document.getElementById('result');
+      
+      if (isNaN(x)) {
+        resultDiv.textContent = 'Por favor, introduce un valor numérico válido';
+        return;
+      }
+      
+      let result;
+      let calculation = '';
+      
+      switch(expr) {
+        case '2x':
+          result = 2 * x;
+          calculation = `2 × ${x} = ${result}`;
+          break;
+        case '3x+5':
+          result = 3 * x + 5;
+          calculation = `3 × ${x} + 5 = ${3*x} + 5 = ${result}`;
+          break;
+        case 'x^2':
+          result = x * x;
+          calculation = `${x} × ${x} = ${result}`;
+          break;
+        case '4x-7':
+          result = 4 * x - 7;
+          calculation = `4 × ${x} - 7 = ${4*x} - 7 = ${result}`;
+          break;
+        case 'x/2+3':
+          result = x / 2 + 3;
+          calculation = `${x} ÷ 2 + 3 = ${x/2} + 3 = ${result}`;
+          break;
+      }
+      
+      resultDiv.innerHTML = `
+        <div style="margin-bottom: 0.5rem;"><strong>Cálculo:</strong> ${calculation}</div>
+        <div style="font-size: 1.5rem; color: white;"><strong>Resultado: ${result}</strong></div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+  </script>
+</body>
+</html>

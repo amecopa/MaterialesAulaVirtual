@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 3: Monomios y expresiones algebraicas simples</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --color-primary: #10b981;
+      --color-primary-soft: rgba(16, 185, 129, 0.1);
+      --color-secondary: #6366f1;
+      --color-secondary-soft: rgba(99, 102, 241, 0.1);
+      --color-accent: #f59e0b;
+      --color-accent-soft: rgba(245, 158, 11, 0.1);
+      --color-text: #1f2937;
+      --color-text-light: #6b7280;
+      --color-bg: #ffffff;
+      --color-bg-alt: #f9fafb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --spacing-unit: 4px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Xunta Sans', 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      padding: calc(var(--spacing-unit) * 5);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #059669 100%);
+      color: white;
+      padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 8);
+      border-radius: var(--radius-lg);
+      margin-bottom: calc(var(--spacing-unit) * 10);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-container {
+      background: var(--color-bg-alt);
+      border-radius: 999px;
+      height: 8px;
+      margin-bottom: calc(var(--spacing-unit) * 10);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 999px;
+    }
+
+    section {
+      margin-bottom: calc(var(--spacing-unit) * 12);
+    }
+
+    .section-tag {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      display: inline-block;
+    }
+
+    section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--color-text);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      font-weight: 600;
+    }
+
+    section p, section li {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .panel {
+      padding: calc(var(--spacing-unit) * 6);
+      border-radius: var(--radius-md);
+      margin: calc(var(--spacing-unit) * 4) 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-formula {
+      background: var(--color-primary-soft);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .panel-example {
+      background: var(--color-secondary-soft);
+      border-left: 4px solid var(--color-secondary);
+    }
+
+    .panel-checkpoint {
+      background: var(--color-accent-soft);
+      border-left: 4px solid var(--color-accent);
+    }
+
+    .panel-interactive {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 4px solid #6366f1;
+    }
+
+    /* Listas dentro de paneles */
+    .panel ol,
+    .panel ul {
+      padding-left: calc(var(--spacing-unit) * 8);
+    }
+
+    .panel ol li,
+    .panel ul li {
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: calc(var(--spacing-unit) * 5);
+      margin: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .card {
+      background: var(--color-bg);
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-md);
+      padding: calc(var(--spacing-unit) * 6);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card h3 {
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .steps {
+      counter-reset: step-counter;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 12);
+      margin-bottom: calc(var(--spacing-unit) * 6);
+    }
+
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .interactive-tool {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      padding: calc(var(--spacing-unit) * 8);
+      border-radius: var(--radius-lg);
+      margin: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .tool-input-group {
+      margin: calc(var(--spacing-unit) * 4) 0;
+    }
+
+    .tool-input-group label {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      font-weight: 600;
+    }
+
+    .tool-input {
+      width: 100%;
+      padding: calc(var(--spacing-unit) * 3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-text);
+    }
+
+    .tool-button {
+      background: white;
+      color: #6366f1;
+      border: none;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 6);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 1rem;
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
+    .tool-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-result {
+      margin-top: calc(var(--spacing-unit) * 4);
+      padding: calc(var(--spacing-unit) * 4);
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #btn-contrast {
+      position: fixed;
+      top: calc(var(--spacing-unit) * 5);
+      right: calc(var(--spacing-unit) * 5);
+      background: var(--color-text);
+      color: white;
+      border: none;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 5);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    #btn-contrast:hover {
+      transform: scale(1.05);
+    }
+
+    body.high-contrast {
+      --color-bg: #000000;
+      --color-text: #ffff00;
+      --color-text-light: #ffff00;
+      --color-bg-alt: #1a1a1a;
+    }
+
+    body.high-contrast .hero {
+      background: #1a1a1a;
+      border: 2px solid #ffff00;
+    }
+
+    body.high-contrast .panel,
+    body.high-contrast .card,
+    body.high-contrast .interactive-tool {
+      background: #1a1a1a;
+      border: 2px solid #ffff00;
+      color: #ffff00;
+    }
+
+    body.high-contrast h1,
+    body.high-contrast h2,
+    body.high-contrast h3 {
+      color: #ffff00;
+    }
+
+    body.high-contrast .steps li::before {
+      background: #ffff00;
+      color: #000;
+    }
+
+    /* Desplegables para ejemplos resueltos */
+    details.ejemplo-resuelto {
+      margin: calc(var(--spacing-unit) * 6) 0;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-md);
+      padding: calc(var(--spacing-unit) * 6);
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    details.ejemplo-resuelto[open] {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      box-shadow: var(--shadow-lg);
+    }
+
+    details.ejemplo-resuelto summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0369a1;
+      padding: calc(var(--spacing-unit) * 3);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    details.ejemplo-resuelto summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.ejemplo-resuelto summary::before {
+      content: '▶';
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 0.9rem;
+    }
+
+    details.ejemplo-resuelto[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.ejemplo-resuelto summary:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(4px);
+    }
+
+    .ejemplo-contenido {
+      margin-top: calc(var(--spacing-unit) * 4);
+      padding: calc(var(--spacing-unit) * 4);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius-sm);
+    }
+
+    .ejemplo-contenido h4 {
+      color: #0369a1;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      font-size: 1.15rem;
+    }
+
+    ol.pasos-ejemplo {
+      counter-reset: paso-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ol.pasos-ejemplo li {
+      counter-increment: paso-counter;
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 18);
+      margin-bottom: calc(var(--spacing-unit) * 5);
+      line-height: 1.6;
+    }
+
+    ol.pasos-ejemplo li::before {
+      content: "Paso " counter(paso-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #0ea5e9;
+      color: white;
+      padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 3);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    ol.pasos-ejemplo li strong {
+      color: #0369a1;
+    }
+
+    body.high-contrast details.ejemplo-resuelto {
+      background: #1a1a1a;
+      border-color: #ffff00;
+    }
+
+    body.high-contrast details.ejemplo-resuelto summary {
+      color: #ffff00;
+      background: #000;
+    }
+
+    body.high-contrast .ejemplo-contenido {
+      background: #000;
+      color: #ffff00;
+    }
+
+    body.high-contrast .ejemplo-contenido h4 {
+      color: #ffff00;
+    }
+
+    body.high-contrast ol.pasos-ejemplo li::before {
+      background: #ffff00;
+      color: #000;
+    }
+
+    /* Acordeones para respuestas de ejercicios */
+    details.respuesta {
+      margin: calc(var(--spacing-unit) * 4) 0;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-sm);
+      padding: calc(var(--spacing-unit) * 4);
+      transition: all 0.3s ease;
+    }
+
+    details.respuesta[open] {
+      background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    details.respuesta summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #92400e;
+      padding: calc(var(--spacing-unit) * 2);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.2s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    details.respuesta summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.respuesta summary::before {
+      content: '🔒';
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    details.respuesta[open] summary::before {
+      content: '🔓';
+    }
+
+    details.respuesta summary:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateX(4px);
+    }
+
+    .respuesta-contenido {
+      margin-top: calc(var(--spacing-unit) * 3);
+      padding-top: calc(var(--spacing-unit) * 3);
+      border-top: 2px dashed #f59e0b;
+    }
+
+    body.high-contrast details.respuesta {
+      background: #1a1a1a;
+      border-color: #ffff00;
+    }
+
+    body.high-contrast details.respuesta summary {
+      color: #ffff00;
+      background: #000;
+    }
+
+
+
+
+
+
+    @media (max-width: 900px) {
+      body {
+        padding: calc(var(--spacing-unit) * 3);
+      }
+
+      .hero {
+        padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 5);
+      }
+
+      .panel,
+      .card {
+        padding: calc(var(--spacing-unit) * 4);
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === ESTILOS AUTOEVALUACIÓN INTERACTIVA === */
+    .pregunta-autoevaluacion {
+      margin-bottom: calc(var(--spacing-unit) * 8);
+      padding: calc(var(--spacing-unit) * 5);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: calc(var(--spacing-unit) * 2);
+      border-left: 4px solid var(--color-primary);
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .pregunta-texto {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      line-height: 1.6;
+    }
+
+    .opciones-radio {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing-unit) * 3);
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+      background: white;
+      border: 2px solid #dee2e6;
+      border-radius: calc(var(--spacing-unit) * 2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .radio-label:hover {
+      background: #f1f3f5;
+      border-color: var(--color-primary);
+      transform: translateX(4px);
+    }
+
+    .radio-label input[type="radio"] {
+      margin-right: calc(var(--spacing-unit) * 3);
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"]:checked + span {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .btn-autoevaluacion {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: calc(var(--spacing-unit) * 6) auto 0;
+      padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 8);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #0056b3 100%);
+      border: none;
+      border-radius: calc(var(--spacing-unit) * 2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-autoevaluacion:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #0056b3 0%, var(--color-primary) 100%);
+    }
+
+    .btn-autoevaluacion:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Feedback Styles */
+    #feedback-autoevaluacion {
+      margin-top: calc(var(--spacing-unit) * 6);
+      padding: calc(var(--spacing-unit) * 6);
+      border-radius: calc(var(--spacing-unit) * 3);
+      animation: slideIn 0.4s ease-out;
+    }
+
+    .feedback-excelente {
+      background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+      border: 3px solid #28a745;
+    }
+
+    .feedback-bien {
+      background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+      border: 3px solid #17a2b8;
+    }
+
+    .feedback-mejorar {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+      border: 3px solid #ffc107;
+    }
+
+    .feedback-titulo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .feedback-puntuacion {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .feedback-mensaje {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      text-align: center;
+      margin-bottom: calc(var(--spacing-unit) * 5);
+      font-weight: 500;
+    }
+
+    .feedback-consejo {
+      background: rgba(255, 255, 255, 0.7);
+      padding: calc(var(--spacing-unit) * 4);
+      border-radius: calc(var(--spacing-unit) * 2);
+      border-left: 4px solid #28a745;
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
+    .feedback-consejo strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      color: var(--color-primary);
+    }
+
+    .feedback-consejo ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feedback-consejo li {
+      padding: calc(var(--spacing-unit) * 2) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .feedback-consejo li:last-child {
+      border-bottom: none;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      .radio-label {
+        border-width: 3px;
+      }
+      
+      .btn-autoevaluacion {
+        border: 3px solid white;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .pregunta-autoevaluacion {
+        padding: calc(var(--spacing-unit) * 4);
+      }
+      
+      .pregunta-texto {
+        font-size: 1rem;
+      }
+      
+      .radio-label {
+        padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 3);
+        font-size: 0.95rem;
+      }
+      
+      .btn-autoevaluacion {
+        font-size: 1.1rem;
+        padding: calc(var(--spacing-unit) * 3.5) calc(var(--spacing-unit) * 6);
+      }
+      
+      .feedback-titulo {
+        font-size: 1.5rem;
+      }
+      
+      .feedback-puntuacion {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <button id="btn-contrast" onclick="toggleContrast()">👁️ Alto Contraste</button>
+
+  <div class="container">
+    <header class="hero">
+      <h1>Monomios y expresiones algebraicas simples</h1>
+      <div class="hero-meta">
+        Sesión 3: Monomios | IES Teis - Vigo
+      </div>
+    </header>
+
+    <div class="progress-container" role="progressbar">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <section>
+      <span class="section-tag">01 • Idea Central</span>
+      <h2>💡 El concepto clave</h2>
+      <p>Un <strong>monomio</strong> es como un "ladrillo" del álgebra: un bloque básico formado por números y letras multiplicados. Solo podemos "unir" monomios semejantes, igual que solo podemos apilar ladrillos del mismo tamaño.</p>
+      
+      <div class="panel panel-formula">
+        <p style="margin: 0; font-size: 1.3rem; text-align: center;">
+          <strong>Estructura de un monomio</strong>
+          <br><br>
+          \( \underbrace{5}_{\text{coeficiente}} \times \underbrace{x^2}_{\text{parte literal}} = 5x^2 \)
+        </p>
+      </div>
+
+      <p>Los monomios son la forma más simple de expresión algebraica. Entenderlos es fundamental para trabajar con ecuaciones.</p>
+    
+
+      <details class="ejemplo-resuelto">
+        <summary>📝 Ver ejemplo resuelto paso a paso</summary>
+        <div class="ejemplo-contenido">
+          <h4>Ejemplo: Sumar \( 3x^2 + 5x^2 \)</h4>
+          <ol class="pasos-ejemplo">
+            <li>
+              <strong>Verifico que sean semejantes:</strong>
+              <br>Ambos tienen \( x^2 \) (misma variable, mismo exponente). ✓
+            </li>
+            <li>
+              <strong>Sumo solo los coeficientes:</strong>
+              <br>\( 3 + 5 = 8 \)
+            </li>
+            <li>
+              <strong>Mantengo la parte literal:</strong>
+              <br>\( 8x^2 \)
+            </li>
+            <li>
+              <strong>Resultado final:</strong> \( 3x^2 + 5x^2 = 8x^2 \)
+              <br><em>Es como sumar 3 manzanas + 5 manzanas = 8 manzanas</em>
+            </li>
+          </ol>
+        </div>
+      </details>
+
+    </section>
+
+    <section>
+      <span class="section-tag">02 • Casos Simples</span>
+      <h2>🎯 Atajos mentales para empezar</h2>
+      
+      <div class="panel panel-example">
+        <h3>Identificación rápida de monomios semejantes:</h3>
+        <ul style="list-style: none;">
+          <li>✓ <strong>\( 3x \)</strong> y <strong>\( 7x \)</strong> → Semejantes (ambos tienen \( x \))</li>
+          <li>✓ <strong>\( 5y \)</strong> y <strong>\( -2y \)</strong> → Semejantes (ambos tienen \( y \))</li>
+          <li>✓ <strong>\( 4x^2 \)</strong> y <strong>\( 6x^2 \)</strong> → Semejantes (ambos tienen \( x^2 \))</li>
+          <li>✗ <strong>\( 3x \)</strong> y <strong>\( 3y \)</strong> → NO semejantes (letras diferentes)</li>
+          <li>✗ <strong>\( 2x \)</strong> y <strong>\( 2x^2 \)</strong> → NO semejantes (exponentes diferentes)</li>
+        </ul>
+      </div>
+
+      <p><strong>Truco mental:</strong> Para sumar/restar monomios, pregúntate: "¿Tienen exactamente la misma parte literal?". Si la respuesta es sí, suma/resta solo los coeficientes.</p>
+    </section>
+
+    <section>
+      <span class="section-tag">03 • Método General</span>
+      <h2>📋 Pasos para sumar y restar monomios</h2>
+      
+      <ol class="steps">
+        <li>
+          <strong>Identifica la parte literal de cada monomio</strong>
+          <br>Mira la letra y el exponente. Ejemplo: en \( 5x^2 \), la parte literal es \( x^2 \).
+        </li>
+        <li>
+          <strong>Comprueba si son semejantes</strong>
+          <br>¿Tienen la misma parte literal? Si no, no se pueden sumar/restar.
+        </li>
+        <li>
+          <strong>Suma o resta los coeficientes</strong>
+          <br>Mantén la parte literal sin cambios.
+        </li>
+        <li>
+          <strong>Escribe el resultado</strong>
+          <br>Coeficiente + parte literal. Ejemplo: \( 3x + 5x = 8x \)
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <span class="section-tag">04 • Cálculo Avanzado</span>
+      <h2>🔢 Operaciones con varios monomios</h2>
+      
+      <div class="panel panel-formula">
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+          <strong>Fórmula general para suma de monomios semejantes:</strong>
+        </p>
+        <p style="text-align: center; font-size: 1.4rem; margin: 1.5rem 0;">
+          \( ax + bx + cx = (a + b + c)x \)
+        </p>
+        <p style="margin: 0;">
+          donde \( a, b, c \) son los coeficientes y \( x \) es la parte literal común
+        </p>
+      </div>
+
+      <div class="panel panel-example">
+        <h3>Ejemplo complejo:</h3>
+        <p><strong>\( 3x + 5y - 2x + 4y \)</strong></p>
+        <ul style="list-style: none;">
+          <li>→ Agrupo monomios con \( x \): \( 3x - 2x = 1x = x \)</li>
+          <li>→ Agrupo monomios con \( y \): \( 5y + 4y = 9y \)</li>
+          <li>→ Resultado final: \( x + 9y \)</li>
+        </ul>
+        <p><strong>Nota:</strong> Los monomios \( x \) y \( 9y \) no se pueden sumar porque no son semejantes.</p>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-tag">05 • Contextos Reales</span>
+      <h2>🌍 Aplicaciones prácticas</h2>
+      
+      <div class="cards-grid">
+        <article class="card">
+          <h3>🚢 Puerto de Vigo</h3>
+          <p>Un barco descarga <em>x</em> toneladas de pescado el lunes y <em>3x</em> el martes. Total descargado:</p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            <strong>\( x + 3x = 4x \) toneladas</strong>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>🏫 Aulas del IES Teis</h3>
+          <p>En 1º ESO A hay <em>y</em> alumnos, en 1º ESO B hay <em>y</em> alumnos. Total en 1º ESO:</p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            <strong>\( y + y = 2y \) alumnos</strong>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>⚽ RC Celta</h3>
+          <p>El Celta vende <em>2m</em> entradas el sábado y <em>m</em> entradas el domingo. Total vendido:</p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            <strong>\( 2m + m = 3m \) entradas</strong>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>🏝️ Islas Cíes</h3>
+          <p>Un grupo de <em>n</em> personas visita las Cíes. Llegan <em>2n</em> más en ferry. Total visitantes:</p>
+          <p style="text-align: center; font-size: 1.3rem; color: var(--color-primary);">
+            <strong>\( n + 2n = 3n \) personas</strong>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-tag">06 • Problemas Complejos</span>
+      <h2>🧩 Desafíos de razonamiento</h2>
+      
+      <div class="panel panel-checkpoint">
+        <h3>Problema 1: Simplificar expresión</h3>
+        <p>Simplifica: \( 5a + 3b - 2a + b \)</p>
+        <p><strong>Paso 1:</strong> Identifico monomios con \( a \): \( 5a \) y \( -2a \)</p>
+        <p><strong>Paso 2:</strong> Sumo: \( 5a - 2a = 3a \)</p>
+        <p><strong>Paso 3:</strong> Identifico monomios con \( b \): \( 3b \) y \( b \)</p>
+        <p><strong>Paso 4:</strong> Sumo: \( 3b + b = 4b \)</p>
+        <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
+          <strong>Respuesta:</strong> \( 3a + 4b \)
+        </p>
+      </div>
+
+      <div class="panel panel-checkpoint">
+        <h3>Problema 2: Expresión con paréntesis</h3>
+        <p>Simplifica: \( 2(3x) + 4x \)</p>
+        <p><strong>Razonamiento:</strong> Primero calculo \( 2 \times 3x = 6x \), luego sumo \( 6x + 4x \)</p>
+        <p><strong>Desarrollo:</strong> \( 6x + 4x = 10x \)</p>
+        <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
+          <strong>Respuesta:</strong> \( 10x \)
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-tag">07 • Comparación Crítica</span>
+      <h2>⚖️ Diferencias que debes conocer</h2>
+      
+      <div class="panel panel-example">
+        <h3>🔍 ¿Cuándo se pueden sumar?</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+          <thead>
+            <tr style="background: var(--color-bg-alt);">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--color-primary);">Expresión</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--color-primary);">¿Se pueden sumar?</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--color-primary);">Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 3x + 5x \)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">Sí (misma letra)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 8x \)</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 2y + 7y \)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">Sí (misma letra)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 9y \)</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 3x + 2y \)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">No (letras diferentes)</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">\( 3x + 2y \) (sin cambios)</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">\( 4x + 5x^2 \)</td>
+              <td style="padding: 12px;">No (exponentes diferentes)</td>
+              <td style="padding: 12px;">\( 4x + 5x^2 \) (sin cambios)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel panel-checkpoint">
+        <p><strong>⚠️ Error común:</strong> Intentar sumar \( 3x + 2y \) para obtener \( 5xy \)</p>
+        <ul>
+          <li>❌ INCORRECTO: \( 3x + 2y = 5xy \)</li>
+          <li>✅ CORRECTO: \( 3x + 2y \) no se puede simplificar</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-tag">08 • Práctica Interactiva</span>
+      <h2>🎮 Calculadora de monomios</h2>
+      
+      <div class="interactive-tool">
+        <h3 style="margin-bottom: 1.5rem;">Suma y resta monomios semejantes</h3>
+        
+        <div class="tool-input-group">
+          <label for="coef1">Coeficiente del primer monomio:</label>
+          <input type="number" id="coef1" class="tool-input" placeholder="Ej: 3">
+        </div>
+
+        <div class="tool-input-group">
+          <label for="literal">Parte literal común (sin coeficiente):</label>
+          <input type="text" id="literal" class="tool-input" placeholder="Ej: x">
+        </div>
+
+        <div class="tool-input-group">
+          <label for="coef2">Coeficiente del segundo monomio:</label>
+          <input type="number" id="coef2" class="tool-input" placeholder="Ej: 5">
+        </div>
+
+        <button class="tool-button" onclick="sumMonomials()">
+          Sumar monomios
+        </button>
+
+        <div class="tool-result" id="result">
+          Introduce los coeficientes y la parte literal
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 0.9rem;">
+          <strong>💡 Ejemplo:</strong> Para sumar \(3x + 5x\), introduce coef1=3, literal=x, coef2=5
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="section-tag">09 • Cierre Metacognitivo</span>
+      <h2>🎓 Reflexiona sobre tu aprendizaje</h2>
+      
+      <div class="panel panel-checkpoint">
+        <h3>Autoevaluación Interactiva</h3>
+        <p style="margin-bottom: calc(var(--spacing-unit) * 6);">Responde honestamente (esto es solo para ti, no se guarda ningún dato):</p>
+        
+        <form id="autoevaluacion-form" style="margin-bottom: calc(var(--spacing-unit) * 4);">
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>1.</strong> ¿Identificas correctamente el coeficiente y la parte literal de un monomio?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q1" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q1" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q1" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>2.</strong> ¿Sabes cuándo dos monomios son semejantes?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q2" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q2" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q2" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>3.</strong> ¿Puedes sumar y restar monomios semejantes?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q3" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q3" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q3" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pregunta-autoevaluacion">
+            <p class="pregunta-texto"><strong>4.</strong> ¿Multiplicas correctamente monomios?</p>
+            <div class="opciones-radio">
+              <label class="radio-label">
+                <input type="radio" name="q4" value="si" required>
+                <span>✓ Sí</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q4" value="no">
+                <span>✗ No</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="q4" value="duda">
+                <span>? Tengo dudas</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-autoevaluacion">📊 Ver mi resultado</button>
+        </form>
+
+        <div id="feedback-autoevaluacion" style="display: none;"></div>
+      </div>
+
+      <div class="panel panel-example">
+        <h3>📝 Resumen de la sesión</h3>
+        <ul style="list-style: none;">
+          <li>✓ Un <strong>monomio</strong> tiene un coeficiente y una parte literal</li>
+          <li>✓ Dos monomios son <strong>semejantes</strong> si tienen la misma parte literal</li>
+          <li>✓ Para sumar/restar monomios semejantes: sumo/resto coeficientes, mantengo parte literal</li>
+          <li>✓ Ejemplo: \( 3x + 5x = 8x \), pero \( 3x + 2y \) no se puede simplificar</li>
+          <li>✓ El grado de un monomio es el exponente de su variable</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-interactive">
+        <h3>🚀 Próximos pasos</h3>
+        <p>En la próxima sesión descubriremos qué es una <strong>ecuación</strong>: una igualdad donde debemos encontrar el valor de la incógnita.</p>
+        <p><strong>Tarea recomendada:</strong> Escribe 5 pares de monomios semejantes y 5 pares de monomios NO semejantes en tu cuaderno.</p>
+      </div>
+    </section>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--color-bg-alt); text-align: center; color: var(--color-text-light); font-size: 0.9rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+      <p>📚 Bloque 4: Sentido Algebraico | Material didáctico interactivo | IES Teis</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleContrast() {
+      document.body.classList.toggle('high-contrast');
+      const btn = document.getElementById('btn-contrast');
+      btn.textContent = document.body.classList.contains('high-contrast') 
+        ? '👁️ Contraste Normal' 
+        : '👁️ Alto Contraste';
+    }
+
+    window.addEventListener('scroll', () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / documentHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    });
+
+    function sumMonomials() {
+      const coef1 = parseFloat(document.getElementById('coef1').value);
+      const coef2 = parseFloat(document.getElementById('coef2').value);
+      const literal = document.getElementById('literal').value.trim();
+      const resultDiv = document.getElementById('result');
+      
+      if (isNaN(coef1) || isNaN(coef2) || !literal) {
+        resultDiv.textContent = 'Por favor, completa todos los campos';
+        return;
+      }
+      
+      const sumCoef = coef1 + coef2;
+      const coefDisplay = sumCoef === 1 ? '' : (sumCoef === -1 ? '-' : sumCoef);
+      
+      resultDiv.innerHTML = `<strong>\\( ${coef1}${literal} + ${coef2}${literal} = ${coefDisplay}${literal} \\)</strong>`;
+      
+      if (typeof MathJax !== 'undefined') {
+        MathJax.typesetPromise([resultDiv]);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    // Autoevaluación Interactiva - S3 Monomios
+    const feedbackData = {
+      q1: {
+        si: { correcto: true, mensaje: "¡Perfecto! En \\(5x^2\\), el coeficiente es 5 y la parte literal es \\(x^2\\)." },
+        no: { correcto: false, mensaje: "El coeficiente es el número, la parte literal son las letras con sus exponentes. Revisa sección 01." },
+        duda: { correcto: false, mensaje: "Ejemplo: en \\(-3xy^2\\), coeficiente = -3, parte lateral = \\(xy^2\\). Practica en sección 03." }
+      },
+      q2: {
+        si: { correcto: true, mensaje: "¡Excelente! Son semejantes si tienen la misma parte literal (mismas letras con mismos exponentes)." },
+        no: { correcto: false, mensaje: "Monomios semejantes = misma parte literal. \\(3x^2\\) y \\(5x^2\\) SÍ. \\(3x^2\\) y \\(3x\\) NO. Revisa sección 02." },
+        duda: { correcto: false, mensaje: "¿Son semejantes \\(2xy\\) y \\(5xy\\)? SÍ (misma parte literal). ¿Y \\(2xy\\) y \\(2x^2\\)? NO." }
+      },
+      q3: {
+        si: { correcto: true, mensaje: "¡Muy bien! Sumas/restas los coeficientes y mantienes la parte literal: \\(3x + 5x = 8x\\)." },
+        no: { correcto: false, mensaje: "Solo se pueden sumar/restar monomios semejantes. Suma coeficientes. Revisa sección 05." },
+        duda: { correcto: false, mensaje: "Ejemplo: \\(7x^2 - 3x^2 = 4x^2\\) (restas 7-3=4). La parte literal no cambia." }
+      },
+      q4: {
+        si: { correcto: true, mensaje: "¡Genial! Multiplicas coeficientes y sumas exponentes: \\(2x \\cdot 3x^2 = 6x^3\\)." },
+        no: { correcto: false, mensaje: "Multiplica coeficientes, suma exponentes de la misma letra. Revisa sección 06." },
+        duda: { correcto: false, mensaje: "Ejemplo: \\(4x \\cdot 2x = (4 \\cdot 2)(x \\cdot x) = 8x^2\\). Coeficientes: 4×2=8, exponentes: 1+1=2." }
+      }
+    };
+
+    const autoevalForm = document.getElementById('autoevaluacion-form');
+    if (autoevalForm) {
+      autoevalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const respuestas = {
+          q1: document.querySelector('input[name="q1"]:checked')?.value,
+          q2: document.querySelector('input[name="q2"]:checked')?.value,
+          q3: document.querySelector('input[name="q3"]:checked')?.value,
+          q4: document.querySelector('input[name="q4"]:checked')?.value
+        };
+
+        if (!respuestas.q1 || !respuestas.q2 || !respuestas.q3 || !respuestas.q4) {
+          alert('⚠️ Por favor, responde todas las preguntas antes de enviar.');
+          return;
+        }
+
+        let correctas = 0;
+        let mensajes = [];
+        
+        for (let pregunta in respuestas) {
+          const respuesta = respuestas[pregunta];
+          const feedback = feedbackData[pregunta][respuesta];
+          
+          if (feedback.correcto) {
+            correctas++;
+          }
+          mensajes.push(`<li><strong>Pregunta ${pregunta.slice(1)}:</strong> ${feedback.mensaje}</li>`);
+        }
+
+        const feedbackDiv = document.getElementById('feedback-autoevaluacion');
+        let claseEstilo, titulo, emoji, mensaje;
+
+        if (correctas === 4) {
+          claseEstilo = 'feedback-excelente';
+          titulo = '🎉 ¡EXCELENTE TRABAJO!';
+          emoji = '⭐⭐⭐⭐';
+          mensaje = '<p class="feedback-mensaje">¡Felicidades! Has comprendido todos los conceptos clave de esta sesión. Estás listo para avanzar al siguiente tema.</p>';
+        } else if (correctas >= 2) {
+          claseEstilo = 'feedback-bien';
+          titulo = '👍 ¡BUEN TRABAJO!';
+          emoji = '⭐⭐⭐';
+          mensaje = '<p class="feedback-mensaje">Vas por buen camino. Hay algunas áreas que necesitan refuerzo. Revisa las secciones indicadas abajo y vuelve a intentarlo.</p>';
+        } else {
+          claseEstilo = 'feedback-mejorar';
+          titulo = '💪 ¡SIGUE INTENTÁNDOLO!';
+          emoji = '⭐⭐';
+          mensaje = '<p class="feedback-mensaje">No te desanimes. El álgebra requiere práctica. Lee de nuevo el material, especialmente las secciones indicadas, y vuelve a hacer la autoevaluación.</p>';
+        }
+
+        feedbackDiv.className = claseEstilo;
+        feedbackDiv.innerHTML = `
+          <div class="feedback-titulo">${titulo}</div>
+          <div class="feedback-puntuacion">${emoji}</div>
+          <div style="text-align: center; font-size: 1.3rem; font-weight: 700; margin-bottom: calc(var(--spacing-unit) * 4);">
+            ${correctas} de 4 respuestas positivas
+          </div>
+          ${mensaje}
+          <div class="feedback-consejo">
+            <strong>📋 Detalles de tu autoevaluación:</strong>
+            <ul style="margin-top: calc(var(--spacing-unit) * 3);">
+              ${mensajes.join('')}
+            </ul>
+          </div>
+          ${correctas < 4 ? `
+            <div class="feedback-consejo" style="margin-top: calc(var(--spacing-unit) * 4); border-left-color: #3b82f6;">
+              <strong>💡 Consejo:</strong>
+              <p style="margin-top: calc(var(--spacing-unit) * 2);">
+                Revisa las secciones indicadas arriba. No hay prisa: el aprendizaje toma tiempo. 
+                Cuando te sientas preparado, vuelve a hacer esta autoevaluación.
+              </p>
+            </div>
+          ` : ''}}
+        `;
+        
+        feedbackDiv.style.display = 'block';
+        
+        if (typeof Math Jax !== 'undefined') {
+          MathJax.typesetPromise([feedbackDiv]).catch((err) => console.log('MathJax error:', err));
+        }
+
+        feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+  </script>
+</body>
+</html>

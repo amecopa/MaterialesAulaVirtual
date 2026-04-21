@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesión 1: Introducción a las Variables Bidimensionales</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    h3 { color: #3a6bc4; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .solucion  { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .ejemplo { background: #f9f9f9; border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; font-style: italic; }
+    ol li, ul li { margin-bottom: .5rem; }
+    img { max-width: 100%; display: block; margin: 1rem auto; border: 1px solid #ddd; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; font-weight: bold; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    summary:hover { background: #e0e8f4; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Sesión 1: Introducción a las Variables Bidimensionales</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos de la Sesión</h3>
+    <ul>
+      <li>Comprender el concepto de variable bidimensional y su utilidad en ciencias sociales</li>
+      <li>Identificar y clasificar variables estadísticas bidimensionales</li>
+      <li>Organizar datos bivariantes en tablas de doble entrada</li>
+      <li>Representar gráficamente datos bidimensionales mediante diagramas de dispersión</li>
+    </ul>
+  </div>
+
+  <h2>📚 Contenidos Teóricos</h2>
+  
+  <h3>1. ¿Qué es una Variable Bidimensional?</h3>
+  
+  <p>En estadística unidimensional estudiamos una sola variable en cada individuo de la población (por ejemplo, la altura de los estudiantes de una clase). Sin embargo, en muchas situaciones reales queremos analizar <strong>dos características simultáneamente</strong> para ver si existe alguna relación entre ellas.</p>
+  
+  <div class="definicion">
+    <strong>Variable Bidimensional:</strong> Es aquella que asocia a cada individuo de una población un <strong>par ordenado de valores</strong> \((x, y)\), donde \(x\) e \(y\) son dos características diferentes que se miden simultáneamente.
+  </div>
+  
+  <div class="ejemplo">
+    <strong>Ejemplos de variables bidimensionales en ciencias sociales:</strong>
+    <ul>
+      <li><strong>Economía:</strong> (Renta disponible, Gasto en consumo)</li>
+      <li><strong>Sociología:</strong> (Nivel educativo, Salario anual)</li>
+      <li><strong>Psicología:</strong> (Horas de estudio, Rendimiento académico)</li>
+      <li><strong>Marketing:</strong> (Inversión en publicidad, Volumen de ventas)</li>
+      <li><strong>Demografía:</strong> (Edad de la población, Esperanza de vida)</li>
+    </ul>
+  </div>
+
+  <h3>2. Clasificación de Variables Bidimensionales</h3>
+  
+  <p>Según la naturaleza de las variables que forman el par, podemos clasificarlas en:</p>
+  
+  <ul>
+    <li><strong>Cuantitativa-Cuantitativa:</strong> Ambas variables son numéricas (ej: altura-peso, edad-salario)</li>
+    <li><strong>Cuantitativa-Cualitativa:</strong> Una es numérica y otra categórica (ej: salario-género, edad-nivel educativo)</li>
+    <li><strong>Cualitativa-Cualitativa:</strong> Ambas son categóricas (ej: género-preferencia política, distrito-medio de transporte)</li>
+  </ul>
+  
+  <p class="nota" style="background: #fff3cd; padding: 0.8rem; border-left: 3px solid #ffc107;">
+    <strong>Nota:</strong> En este curso nos centraremos principalmente en variables <strong>cuantitativas-cuantitativas</strong>, ya que permiten aplicar técnicas de regresión y correlación.
+  </p>
+
+  <h3>3. Tablas de Doble Entrada</h3>
+  
+  <p>Para organizar los datos de una variable bidimensional, utilizamos <strong>tablas de doble entrada</strong> (también llamadas tablas de contingencia o tablas bivariantes). Cada fila representa un individuo y las columnas representan las dos variables medidas:</p>
+  
+  <div class="ejemplo">
+    <strong>Ejemplo:</strong> Relación entre años de experiencia laboral (X) y salario anual en miles de € (Y) de 8 trabajadores:
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Trabajador</th>
+          <th>Experiencia (años) - X</th>
+          <th>Salario (miles €) - Y</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>2</td><td>22</td></tr>
+        <tr><td>2</td><td>5</td><td>28</td></tr>
+        <tr><td>3</td><td>3</td><td>24</td></tr>
+        <tr><td>4</td><td>8</td><td>35</td></tr>
+        <tr><td>5</td><td>6</td><td>30</td></tr>
+        <tr><td>6</td><td>10</td><td>40</td></tr>
+        <tr><td>7</td><td>4</td><td>26</td></tr>
+        <tr><td>8</td><td>7</td><td>33</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4. Diagramas de Dispersión (Nube de Puntos)</h3>
+  
+  <p>La representación gráfica más importante para variables bidimensionales es el <strong>diagrama de dispersión</strong>. Consiste en un plano cartesiano donde:</p>
+  
+  <ul>
+    <li>En el eje horizontal (X) representamos la primera variable</li>
+    <li>En el eje vertical (Y) representamos la segunda variable</li>
+    <li>Cada par de valores \((x_i, y_i)\) se representa como un punto en el plano</li>
+  </ul>
+  
+  <p><strong>¿Qué nos permite observar?</strong></p>
+  <ul>
+    <li>Si existe relación entre las variables (tendencia visible)</li>
+    <li>El tipo de relación: positiva, negativa o ausencia de relación</li>
+    <li>La intensidad de la relación: fuerte (puntos agrupados) o débil (puntos dispersos)</li>
+    <li>Valores atípicos (outliers) que se alejan del patrón general</li>
+  </ul>
+
+  <img src="graficos/s1_tipos_correlacion.svg" alt="Tipos de correlación en diagramas de dispersión">
+  
+  <p><strong>Interpretación visual:</strong></p>
+  <ul>
+    <li><strong>Correlación positiva:</strong> Cuando X aumenta, Y tiende a aumentar (nube ascendente)</li>
+    <li><strong>Correlación negativa:</strong> Cuando X aumenta, Y tiende a disminuir (nube descendente)</li>
+    <li><strong>Sin correlación:</strong> No se observa patrón claro, puntos dispersos aleatoriamente</li>
+    <li><strong>Relación no lineal:</strong> Existe relación pero no es una línea recta (curva, parábola, etc.)</li>
+  </ul>
+
+  <hr style="margin: 2rem 0;">
+
+  <h2>💪 Bloque 1: Refuerzo (10 min)</h2>
+  
+  <div class="bloque-refuerzo">
+    <h3>Activación de Conocimientos Previos - Estadística Unidimensional</h3>
+    
+    <p><strong>Ejercicio 1.1:</strong> Calcula la media aritmética de los siguientes datos: 15, 18, 12, 20, 16, 14, 19</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Identificar el número de datos: \(n = 7\)
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Sumar todos los valores:<br>
+          \(\sum x_i = 15 + 18 + 12 + 20 + 16 + 14 + 19 = 114\)
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Aplicar la fórmula de la media:<br>
+          \(\bar{x} = \frac{\sum x_i}{n} = \frac{114}{7} = 16.29\)
+        </div>
+        <p><strong>Resultado:</strong> \(\bar{x} = 16.29\)</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 1.2:</strong> Calcula la varianza de los datos: 5, 8, 10, 12, 15 (sabiendo que \(\bar{x} = 10\))</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Calcular las desviaciones respecto a la media:
+          <ul>
+            <li>\(x_1 - \bar{x} = 5 - 10 = -5\)</li>
+            <li>\(x_2 - \bar{x} = 8 - 10 = -2\)</li>
+            <li>\(x_3 - \bar{x} = 10 - 10 = 0\)</li>
+            <li>\(x_4 - \bar{x} = 12 - 10 = 2\)</li>
+            <li>\(x_5 - \bar{x} = 15 - 10 = 5\)</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Elevar al cuadrado cada desviación:
+          <ul>
+            <li>\((-5)^2 = 25\)</li>
+            <li>\((-2)^2 = 4\)</li>
+            <li>\(0^2 = 0\)</li>
+            <li>\(2^2 = 4\)</li>
+            <li>\(5^2 = 25\)</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Sumar los cuadrados:<br>
+          \(\sum (x_i - \bar{x})^2 = 25 + 4 + 0 + 4 + 25 = 58\)
+        </div>
+        <div class="paso">
+          <strong>Paso 4:</strong> Dividir entre el número de datos:<br>
+          \(S^2 = \frac{58}{5} = 11.6\)
+        </div>
+        <p><strong>Resultado:</strong> \(S^2 = 11.6\)</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 1.3:</strong> Calcula la desviación típica de los datos anteriores</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución paso a paso:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Recordamos la varianza calculada: \(S^2 = 11.6\)
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Aplicar la fórmula de la desviación típica:<br>
+          \(S = \sqrt{S^2} = \sqrt{11.6} = 3.41\)
+        </div>
+        <p><strong>Resultado:</strong> \(S = 3.41\)</p>
+        <p><strong>Interpretación:</strong> En promedio, los datos se desvían 3.41 unidades respecto a la media (10).</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>📖 Bloque 2: Consolidación (20 min)</h2>
+  
+  <div class="bloque-consolidacion">
+    <h3>Trabajo Guiado: Variables Bidimensionales con Ejemplos de Ciencias Sociales</h3>
+    
+    <p><strong>Ejercicio 2.1:</strong> Clasifica las siguientes variables bidimensionales según su tipo:</p>
+    <ol type="a">
+      <li>(Paro, Delincuencia) en diferentes regiones</li>
+      <li>(Edad, Preferencia de voto)</li>
+      <li>(Temperatura media, Consumo de energía)</li>
+      <li>(Nivel socioeconómico, Acceso a sanidad)</li>
+      <li>(Horas de formación, Productividad laboral)</li>
+    </ol>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Clasificación:</strong></p>
+        <ol type="a">
+          <li><strong>(Paro, Delincuencia):</strong> Cuantitativa-Cuantitativa (ambas se miden en porcentajes o tasas numéricas)</li>
+          <li><strong>(Edad, Preferencia de voto):</strong> Cuantitativa-Cualitativa (edad es numérica, preferencia es categórica)</li>
+          <li><strong>(Temperatura, Consumo energía):</strong> Cuantitativa-Cuantitativa (ambas son continuas y numéricas)</li>
+          <li><strong>(Nivel socioeconómico, Acceso sanidad):</strong> Cualitativa-Cualitativa (si se categoriza como "Alto/Medio/Bajo" y "Bueno/Regular/Malo") o Cuantitativa-Cuantitativa si se miden numéricamente (renta, nº consultas)</li>
+          <li><strong>(Horas formación, Productividad):</strong> Cuantitativa-Cuantitativa (ambas medibles numéricamente)</li>
+        </ol>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.2:</strong> Construye una tabla de doble entrada con los siguientes datos de 10 estudiantes: Horas de estudio semanal (X) y Calificación en el último examen (Y):</p>
+    <p>Estudiante 1: (5, 6.5), Estudiante 2: (8, 8.0), Estudiante 3: (3, 5.0), Estudiante 4: (10, 9.0), Estudiante 5: (6, 7.0), Estudiante 6: (4, 5.5), Estudiante 7: (7, 7.5), Estudiante 8: (9, 8.5), Estudiante 9: (2, 4.5), Estudiante 10: (6, 7.0)</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Tabla de doble entrada correctamente organizada:</strong></p>
+        <table>
+          <thead>
+            <tr>
+              <th>Estudiante (i)</th>
+              <th>Horas estudio (X)</th>
+              <th>Calificación (Y)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>5</td><td>6.5</td></tr>
+            <tr><td>2</td><td>8</td><td>8.0</td></tr>
+            <tr><td>3</td><td>3</td><td>5.0</td></tr>
+            <tr><td>4</td><td>10</td><td>9.0</td></tr>
+            <tr><td>5</td><td>6</td><td>7.0</td></tr>
+            <tr><td>6</td><td>4</td><td>5.5</td></tr>
+            <tr><td>7</td><td>7</td><td>7.5</td></tr>
+            <tr><td>8</td><td>9</td><td>8.5</td></tr>
+            <tr><td>9</td><td>2</td><td>4.5</td></tr>
+            <tr><td>10</td><td>6</td><td>7.0</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Observación inicial:</strong> A simple vista, parece existir una relación positiva: a más horas de estudio, mayor calificación.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.3:</strong> Con los datos del ejercicio anterior, elabora un diagrama de dispersión en papel milimetrado (o describe cómo lo harías paso a paso).</p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Proceso de construcción del diagrama de dispersión:</strong></p>
+        <div class="paso">
+          <strong>Paso 1:</strong> Preparar los ejes
+          <ul>
+            <li>Eje X (horizontal): Horas de estudio - Rango de 0 a 12 horas</li>
+            <li>Eje Y (vertical): Calificación - Rango de 0 a 10 puntos</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 2:</strong> Establecer escalas uniformes
+          <ul>
+            <li>Eje X: cada cuadrícula = 1 hora</li>
+            <li>Eje Y: cada cuadrícula = 1 punto</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 3:</strong> Representar cada par de valores
+          <ul>
+            <li>Punto 1: (5, 6.5) → ubicar en X=5, Y=6.5</li>
+            <li>Punto 2: (8, 8.0) → ubicar en X=8, Y=8.0</li>
+            <li>Y así sucesivamente con los 10 pares...</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Paso 4:</strong> Etiquetar el gráfico
+          <ul>
+            <li>Título: "Relación entre Horas de Estudio y Calificaciones"</li>
+            <li>Eje X: "Horas de Estudio Semanal"</li>
+            <li>Eje Y: "Calificación en el Examen"</li>
+          </ul>
+        </div>
+        
+        <img src="graficos/s1_horas_estudio_notas.svg" alt="Diagrama de dispersión: Horas de estudio vs Calificaciones">
+        
+        <p><strong>Interpretación visual:</strong> Se observa una tendencia ascendente clara, lo que indica una correlación positiva entre las variables.</p>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 2.4:</strong> Interpreta el siguiente diagrama de dispersión. ¿Qué tipo de relación observas entre las variables? ¿Es fuerte o débil?</p>
+    <p><em>(Imagina un diagrama donde los puntos forman una nube descendente muy compacta desde (0,20) hasta (10,5))</em></p>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Interpretación:</strong></p>
+        <div class="paso">
+          <strong>Tipo de relación:</strong> Correlación <strong>negativa</strong> (o inversa)
+          <ul>
+            <li>Cuando X aumenta, Y disminuye sistemáticamente</li>
+            <li>La nube de puntos tiene pendiente descendente</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Intensidad:</strong> Correlación <strong>fuerte</strong>
+          <ul>
+            <li>Los puntos están muy agrupados cerca de una línea imaginaria</li>
+            <li>Hay poca dispersión vertical respecto a la tendencia</li>
+          </ul>
+        </div>
+        <div class="paso">
+          <strong>Ejemplo de contexto:</strong> Podría representar:
+          <ul>
+            <li>(Precio de un producto, Demanda) → a mayor precio, menor demanda</li>
+            <li>(Temperatura exterior, Consumo de calefacción)</li>
+            <li>(Años fumando, Capacidad pulmonar)</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <h2>🔬 Bloque 3: Afianzamiento (20 min)</h2>
+  
+  <div class="bloque-afianzamiento">
+    <h3>Práctica Autónoma en Parejas con Hoja de Cálculo</h3>
+    
+    <p><strong>Ejercicio 3.1 (Contexto Vigo):</strong> Analizar datos reales de temperatura media mensual y turistas en las Islas Cíes.</p>
+    
+    <p><strong>Datos proporcionados</strong> (archivo: <code>datos/temperatura_turistas_cies.csv</code>):</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Temperatura Media (°C)</th>
+          <th>Turistas (miles)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Enero</td><td>11.2</td><td>1.8</td></tr>
+        <tr><td>Febrero</td><td>11.8</td><td>2.1</td></tr>
+        <tr><td>Marzo</td><td>13.5</td><td>3.5</td></tr>
+        <tr><td>Abril</td><td>14.9</td><td>6.2</td></tr>
+        <tr><td>Mayo</td><td>16.8</td><td>8.9</td></tr>
+        <tr><td>Junio</td><td>19.3</td><td>15.4</td></tr>
+        <tr><td>Julio</td><td>21.5</td><td>22.8</td></tr>
+        <tr><td>Agosto</td><td>21.8</td><td>24.5</td></tr>
+        <tr><td>Septiembre</td><td>20.2</td><td>14.6</td></tr>
+        <tr><td>Octubre</td><td>17.1</td><td>7.3</td></tr>
+        <tr><td>Noviembre</td><td>14.2</td><td>3.2</td></tr>
+        <tr><td>Diciembre</td><td>12.1</td><td>2.0</td></tr>
+      </tbody>
+    </table>
+    
+    <p><strong>Tareas:</strong></p>
+    <ol>
+      <li>Construir la tabla de doble entrada en Excel/Google Sheets</li>
+      <li>Elaborar un diagrama de dispersión (Insertar > Gráfico > Dispersión)</li>
+      <li>Interpretar visualmente la relación entre temperatura y afluencia turística</li>
+    </ol>
+    
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Solución y análisis:</strong></p>
+        
+        <div class="paso">
+          <strong>Paso 1:</strong> Importación de datos en Excel/Sheets
+          <ul>
+            <li>Crear tres columnas: Mes, Temperatura (°C), Turistas (miles)</li>
+            <li>Introducir los 12 pares de valores</li>
+          </ul>
+        </div>
+        
+        <div class="paso">
+          <strong>Paso 2:</strong> Construcción del diagrama de dispersión
+          <ul>
+            <li>Seleccionar las columnas de Temperatura y Turistas</li>
+            <li>Insertar > Gráfico de dispersión (XY)</li>
+            <li>Eje X: Temperatura media (°C)</li>
+            <li>Eje Y: Turistas (miles)</li>
+          </ul>
+        </div>
+        
+        <img src="graficos/s1_temperatura_turistas_cies.svg" alt="Diagrama de dispersión: Temperatura vs Turistas Islas Cíes">
+        
+        <div class="paso">
+          <strong>Paso 3:</strong> Interpretación visual
+          <ul>
+            <li><strong>Tipo de correlación:</strong> Positiva muy fuerte</li>
+            <li><strong>Tendencia:</strong> A mayor temperatura, mayor afluencia turística</li>
+            <li><strong>Dispersión:</strong> Los puntos se agrupan de forma muy compacta en torno a una tendencia lineal ascendente</li>
+            <li><strong>Observaciones:</strong>
+              <ul>
+                <li>Mínimo turístico: meses fríos (Enero-Febrero)</li>
+                <li>Máximo turístico: Julio-Agosto (verano)</li>
+                <li>La relación parece casi lineal</li>
+              </ul>
+            </li>
+            <li><strong>Contexto:</strong> La temperatura es un factor determinante en el turismo de playa en las Islas Cíes</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <p><strong>Ejercicio 3.2:</strong> Estudio sobre horas de estudio semanal y calificaciones en Matemáticas (15 alumnos).</p>
+    
+    <p><strong>Datos:</strong></p>
+    <p>(2, 4.5), (3, 5.0), (5, 6.5), (4, 5.5), (6, 7.0), (7, 7.5), (8, 8.0), (5, 6.0), (6, 7.0), (7, 7.5), (9, 8.5), (8, 8.0), (10, 9.0), (9, 8.5), (11, 9.5)</p>
+    
+    <p><strong>Tareas:</strong></p>
+    <ol>
+      <li>Introducir datos en hoja de cálculo</li>
+      <li>Crear diagrama de dispersión</li>
+      <li>Añadir títulos y etiquetas a los ejes</li>
+      <li>Describir la relación observada</li>
+    </ol>
+    
+    <details>
+      <summary>Ver solución y orientación</summary>
+      <div class="solucion">
+        <p><strong>Orientación para el trabajo autónomo:</strong></p>
+        
+        <div class="paso">
+          <strong>Configuración en Excel/Sheets:</strong>
+          <ul>
+            <li>Columna A: Alumno (1 a 15)</li>
+            <li>Columna B: Horas de estudio semanal</li>
+            <li>Columna C: Calificación</li>
+          </ul>
+        </div>
+        
+        <div class="paso">
+          <strong>Creación del gráfico:</strong>
+          <ul>
+            <li>Seleccionar columnas B y C</li>
+            <li>Insertar > Gráfico de dispersión</li>
+            <li>Personalizar: Título "Horas de Estudio vs Calificaciones"</li>
+            <li>Etiqueta X: "Horas de Estudio Semanal"</li>
+            <li>Etiqueta Y: "Calificación en Matemáticas"</li>
+          </ul>
+        </div>
+        
+        <div class="paso">
+          <strong>Análisis esperado:</strong>
+          <ul>
+            <li><strong>Correlación positiva fuerte:</strong> Mayor dedicación → mejores calificaciones</li>
+            <li><strong>Linealidad:</strong> La relación es aproximadamente lineal</li>
+            <li><strong>Valores extremos:</strong> Estudiante con 11 horas tiene la nota más alta (9.5)</li>
+            <li><strong>Consistencia:</strong> No se observan casos atípicos (estudiantes con muchas horas y nota baja, o viceversa)</li>
+          </ul>
+        </div>
+        
+        <p><strong>Conclusión pedagógica:</strong> Los datos refuerzan la importancia del esfuerzo constante en el estudio para lograr buenos resultados académicos.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>🚀 Bloque 4: Ampliación (5 min)</h2>
+  
+  <div class="bloque-ampliacion">
+    <h3>Debate: Interpretación Visual Preliminar</h3>
+    
+    <p><strong>Pregunta de reflexión:</strong> Observando los diagramas de dispersión que habéis construido, ¿qué tipo de relación creéis que existe entre las variables? ¿Podéis adelantar si hay dependencia entre ellas?</p>
+    
+    <details>
+      <summary>Ver guía para el debate</summary>
+      <div class="solucion">
+        <p><strong>Puntos clave para la discusión:</strong></p>
+        
+        <div class="paso">
+          <strong>1. Identificación visual de patrones:</strong>
+          <ul>
+            <li>¿Los puntos forman alguna tendencia clara?</li>
+            <li>¿La nube es ascendente, descendente o no tiene dirección?</li>
+            <li>¿Los puntos están agrupados o muy dispersos?</li>
+          </ul>
+        </div>
+        
+        <div class="paso">
+          <strong>2. Hipótesis sobre dependencia:</strong>
+          <ul>
+            <li><strong>Temperatura-Turismo (Cíes):</strong> Parece haber dependencia fuerte → La temperatura influye directamente en la decisión de visitar las islas</li>
+            <li><strong>Horas estudio-Notas:</strong> Relación clara → El esfuerzo se traduce en mejores resultados</li>
+          </ul>
+        </div>
+        
+        <div class="paso">
+          <strong>3. Limitaciones de la interpretación visual:</strong>
+          <ul>
+            <li>No podemos <strong>cuantificar</strong> la fuerza de la relación solo mirando</li>
+            <li>Necesitamos herramientas numéricas (correlación) para medir objetivamente</li>
+            <li><strong>Correlación no implica causalidad</strong> (lo veremos más adelante)</li>
+          </ul>
+        </div>
+        
+        <p><strong>Avance de próximas sesiones:</strong> En las siguientes clases aprenderemos a medir numéricamente estas relaciones mediante la covarianza y el coeficiente de correlación, y a modelizarlas con ecuaciones de regresión.</p>
+      </div>
+    </details>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+
+  <h2>📊 Resumen de la Sesión</h2>
+  
+  <ul>
+    <li>✅ Hemos comprendido qué es una variable bidimensional y su importancia en ciencias sociales</li>
+    <li>✅ Sabemos clasificar variables bidimensionales (cuantitativa-cuantitativa, etc.)</li>
+    <li>✅ Podemos organizar datos en tablas de doble entrada</li>
+    <li>✅ Sabemos construir e interpretar visualmente diagramas de dispersión</li>
+    <li>✅ Identificamos visualmente correlaciones positivas, negativas y ausencia de correlación</li>
+  </ul>
+
+  <h2>📝 Para la Próxima Sesión</h2>
+  
+  <p>En la <strong>Sesión 2</strong> estudiaremos:</p>
+  <ul>
+    <li>Distribuciones marginales y condicionadas</li>
+    <li>Cálculo de parámetros estadísticos en distribuciones bidimensionales</li>
+    <li>Análisis de dependencia mediante tablas de contingencia</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p><strong>1º Bachillerato - Matemáticas Aplicadas a las Ciencias Sociales I</strong></p>
+    <p>Bloque 4: Sentido Estocástico | Estadística y Probabilidad</p>
+    <p>IES Teis - Vigo | Curso 2025-2026</p>
+  </footer>
+
+</body>
+</html>

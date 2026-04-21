@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Solucionario Sesión 8</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; }
+    h2 { color: #2a5298; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem; margin: .8rem 0; }
+    #btn-contraste { position: fixed; top: 20px; right: 20px; background: #1a3a6e; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; z-index: 1000; }
+    body.alto-contraste { background: #000 !important; color: #ffff00 !important; }
+    body.alto-contraste h1, body.alto-contraste h2 { color: #ffff00 !important; }
+    body.alto-contraste .solucion { background: #1a1a1a !important; color: #ffff00 !important; }
+    body.alto-contraste #btn-contraste { background: #ffff00 !important; color: #000 !important; }
+  </style>
+</head>
+<body>
+  <button id="btn-contraste" onclick="toggleContraste()">👁️ Alto Contraste</button>
+  <h1>✅ Solucionario Sesión 8 - Evaluación Final</h1>
+
+  <div class="solucion">
+    <h2>🔄 Bloque 1: Repaso</h2>
+    <ol>
+      <li>"El doble de un número más 3 es 11" → \( 2x + 3 = 11 \) → \( 2x = 8 \) → \( x = 4 \)</li>
+      <li>\( x + 7 = 15 \) → \( x = 8 \)</li>
+      <li>\( 3x = 12 \) → \( x = 4 \)</li>
+    </ol>
+  </div>
+
+  <div class="solucion">
+    <h2>🎯 Bloque 2: Problemas guiados</h2>
+    <ol>
+      <li><strong>Cromos:</strong><br>
+      Juan tiene \( x \) cromos, María tiene \( 3x \) cromos<br>
+      Ecuación: \( x + 3x = 40 \) → \( 4x = 40 \) → \( x = 10 \)<br>
+      <strong>Respuesta:</strong> Juan tiene 10 cromos, María tiene 30 cromos
+      </li>
+
+      <li><strong>Edades:</strong><br>
+      Hermano: \( x \) años, Ana: \( x + 5 \) años<br>
+      Ecuación: \( x + (x + 5) = 23 \) → \( 2x + 5 = 23 \) → \( 2x = 18 \) → \( x = 9 \)<br>
+      <strong>Respuesta:</strong> El hermano tiene 9 años, Ana tiene 14 años
+      </li>
+
+      <li><strong>Compras:</strong><br>
+      Ecuación: \( 2x = 14 \) → \( x = 7 \)<br>
+      <strong>Respuesta:</strong> Compré 7 kg de naranjas
+      </li>
+    </ol>
+  </div>
+
+  <div class="solucion">
+    <h2>💪 Bloque 3: Evaluación individual</h2>
+    <ol>
+      <li><strong>Ahorro:</strong><br>
+      Ecuación: \( 4x = 60 \)<br>
+      Resolución: \( x = 60 : 4 = 15 \)<br>
+      Comprobación: \( 4 \times 15 = 60 \) ✓<br>
+      <strong>Respuesta:</strong> Ahorro 15 euros cada semana
+      </li>
+
+      <li><strong>Autobús:</strong><br>
+      Ecuación: \( x - 12 = 18 \)<br>
+      Resolución: \( x = 18 + 12 = 30 \)<br>
+      <strong>Respuesta:</strong> Viajaban 30 personas
+      </li>
+
+      <li><strong>Pensamiento numérico:</strong><br>
+      Ecuación: \( 2x - 5 = 15 \)<br>
+      Resolución: \( 2x = 15 + 5 = 20 \) → \( x = 10 \)<br>
+      <strong>Respuesta:</strong> El número es 10
+      </li>
+    </ol>
+  </div>
+
+  <div class="solucion">
+    <h2>🚀 Bloque 4: Desafío</h2>
+    <p><strong>Celta de Vigo:</strong></p>
+    <p>Entradas adulto: \( x \) → Precio: \( 30x \)<br>
+    Entradas infantiles: \( 2x \) → Precio: \( 15 \times 2x = 30x \)<br>
+    Ecuación: \( 30x + 30x = 900 \) → \( 60x = 900 \) → \( x = 15 \)<br>
+    <strong>Respuesta:</strong> Vendió 15 entradas de adulto (y 30 infantiles)
+    </p>
+  </div>
+
+  <footer style="margin-top: 3rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: .9em; color: #666;">
+    <p>📁 ESO 1 - Soluciones Evaluación Final | IES Teis - Vigo</p>
+  </footer>
+
+  <script>
+    function toggleContraste() {
+      document.body.classList.toggle('alto-contraste');
+      document.getElementById('btn-contraste').textContent = 
+        document.body.classList.contains('alto-contraste') ? '👁️ Normal' : '👁️ Alto Contraste';
+    }
+  </script>
+</body>
+</html>

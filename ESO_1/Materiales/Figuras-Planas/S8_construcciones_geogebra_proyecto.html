@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 8: Construcciones con GeoGebra y proyecto final</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; }
+    h2 { color: #2a5298; }
+    .objetivos, .bloque-refuerzo, .bloque-consolidacion, .bloque-afianzamiento, .bloque-ampliacion, .ejemplo { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 6px; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2196F3; }
+    .bloque-refuerzo { background: #fff9e6; border-left: 4px solid #f9a825; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .bloque-ampliacion { background: #fce4ec; border-left: 4px solid #c2185b; }
+    .ejemplo { background: #f9f9f9; border: 1px solid #ddd; }
+    .contraste-btn { position: fixed; top: 20px; right: 20px; padding: 10px 15px; background: #1a3a6e; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
+    body.alto-contraste { background-color: #000; color: #ffff00; }
+    body.alto-contraste h1, body.alto-contraste h2 { color: #ffff00; }
+    body.alto-contraste .objetivos, body.alto-contraste .bloque-refuerzo, body.alto-contraste .bloque-consolidacion, body.alto-contraste .bloque-afianzamiento, body.alto-contraste .bloque-ampliacion, body.alto-contraste .ejemplo { background-color: #000; color: #ffff00; border-color: #ffff00; }
+  </style>
+</head>
+<body>
+  <button class="contraste-btn" onclick="document.body.classList.toggle('alto-contraste')">Alto Contraste</button>
+
+  <h1>Sesión 8: Construcciones con GeoGebra y proyecto final</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Construir figuras planas con precisión usando GeoGebra</li>
+      <li>Calcular perímetros y áreas con herramientas digitales</li>
+      <li>Integrar todos los conocimientos en un proyecto creativo</li>
+      <li>Comunicar resultados matemáticos de forma clara</li>
+    </ul>
+  </div>
+
+  <h2>📚 Herramientas de GeoGebra</h2>
+  <h3>Básicas</h3>
+  <ul>
+    <li><strong>Punto</strong>: Crear puntos en el plano</li>
+    <li><strong>Segmento</strong>: Unir dos puntos</li>
+    <li><strong>Polígono</strong>: Crear triángulos, cuadriláteros... conectando puntos</li>
+    <li><strong>Polígono regular</strong>: Crear polígonos regulares (especifica nº de lados)</li>
+    <li><strong>Círculo (centro-radio)</strong>: Dibujar círculos</li>
+  </ul>
+
+  <h3>De medición</h3>
+  <ul>
+    <li><strong>Distancia</strong>: Medir longitud de segmentos</li>
+    <li><strong>Ángulo</strong>: Medir ángulos</li>
+    <li><strong>Área</strong>: Calcular automáticamente el área de una figura</li>
+    <li><strong>Perímetro</strong>: Calcular el perímetro</li>
+  </ul>
+
+  <div class="bloque-refuerzo">
+    <h2>🔄 Refuerzo (10 min)</h2>
+    <h3>Tutorial guiado de GeoGebra</h3>
+    <p><strong>Ejercicio 1: Crear un triángulo</strong></p>
+    <ol>
+      <li>Abre GeoGebra (web: www.geogebra.org/calculator)</li>
+      <li>Selecciona la herramienta "Polígono"</li>
+      <li>Haz clic en 3 puntos del plano → se crea un triángulo</li>
+      <li>Usa "Distancia" para medir los 3 lados</li>
+      <li>Usa "Ángulo" para medir los 3 ángulos</li>
+      <li>Verifica que los ángulos suman 180°</li>
+    </ol>
+
+    <p><strong>Ejercicio 2: Crear un cuadrado</strong></p>
+    <ol>
+      <li>Selecciona "Polígono regular"</li>
+      <li>Haz clic en 2 puntos (definen un lado)</li>
+      <li>Escribe "4" (número de lados)</li>
+      <li>Usa "Distancia" en los 4 lados → ¿son iguales?</li>
+      <li>Usa "Ángulo" → ¿son todos 90°?</li>
+    </ol>
+  </div>
+
+  <div class="bloque-consolidacion">
+    <h2>📖 Consolidación (15 min)</h2>
+    <h3>Construcciones con verificación</h3>
+
+    <p><strong>Construcción 1: Triángulo equilátero de lado 5 cm</strong></p>
+    <ol>
+      <li>Usa "Polígono regular" con 3 lados</li>
+      <li>Ajusta para que el lado mida 5 cm (mide con "Distancia")</li>
+      <li>Mide los 3 ángulos → ¿Todos 60°? ✓</li>
+      <li>Calcula el perímetro: P = 3 × 5 = 15 cm</li>
+      <li>Usa la herramienta "Perímetro" → ¿coincide?</li>
+    </ol>
+
+    <p><strong>Construcción 2: Cuadrado de lado 4 cm</strong></p>
+    <ol>
+      <li>Crea un cuadrado de 4 cm de lado</li>
+      <li>Calcula mentalmente: P = 4 × 4 = 16 cm, A = 4² = 16 cm²</li>
+      <li>Usa "Perímetro" → ¿Da 16 cm? ✓</li>
+      <li>Usa "Área" → ¿Da 16 cm²? ✓</li>
+    </ol>
+
+    <p><strong>Construcción 3: Círculo de radio 3 cm</strong></p>
+    <ol>
+      <li>Usa "Círculo (centro-radio)"</li>
+      <li>Ajusta radio = 3 cm</li>
+      <li>Calcula mentalmente: L = 2 × 3,14 × 3 ≈ 18,84 cm, A = 3,14 × 3² ≈ 28,26 cm²</li>
+      <li>Usa "Perímetro" y "Área" → ¿Coincide?</li>
+    </ol>
+
+    <p><strong>Construcción 4: Rectángulo 6 cm × 4 cm con círculo inscrito</strong></p>
+    <ol>
+      <li>Crea rectángulo 6×4</li>
+      <li>Crea círculo de radio 2 cm en el centro</li>
+      <li>Calcula: A_rect = 24 cm², A_círculo ≈ 12,56 cm²</li>
+      <li>Área restante ≈ 11,44 cm²</li>
+      <li>Verifica con GeoGebra</li>
+    </ol>
+  </div>
+
+  <div class="bloque-afianzamiento">
+    <h2>💪 Afianzamiento (15 min)</h2>
+    <h3>🎨 Proyecto individual: "Diseña un espacio urbano para Vigo"</h3>
+
+    <div class="ejemplo">
+      <h4>Instrucciones del proyecto</h4>
+      <p>Vas a diseñar un <strong>parque, plaza o zona recreativa</strong> para Vigo usando GeoGebra.</p>
+      
+      <p><strong>Requisitos mínimos:</strong></p>
+      <ul>
+        <li>Usar al menos <strong>4 figuras geométricas diferentes</strong></li>
+        <li>Incluir obligatoriamente:
+          <ul>
+            <li>1 zona rectangular (ej: pista deportiva, jardín)</li>
+            <li>1 zona circular (ej: fuente, rotonda, área de juegos)</li>
+            <li>1 zona triangular (ej: zona de sombra, parterre)</li>
+            <li>1 figura más de tu elección (cuadrado, pentágono, rombo...)</li>
+          </ul>
+        </li>
+        <li>Calcular el <strong>área total</strong> del espacio</li>
+        <li>Calcular <strong>perímetros</strong> de al menos 2 zonas</li>
+        <li>Etiquetar claramente cada zona (ej: "Pista de baloncesto", "Fuente central")</li>
+      </ul>
+
+      <p><strong>Opcional (para nota extra):</strong></p>
+      <ul>
+        <li>Añadir caminos (segmentos con su longitud)</li>
+        <li>Usar colores diferentes para cada zona</li>
+        <li>Incluir bancos (puntos o pequeños rectángulos)</li>
+        <li>Diseñar zonas verdes vs pavimentadas</li>
+      </ul>
+    </div>
+
+    <h3>Pasos del proyecto</h3>
+    <ol>
+      <li><strong>Planifica</strong> (2 min): Dibuja un boceto en papel primero</li>
+      <li><strong>Construye</strong> (8 min): Crea todas las figuras en GeoGebra</li>
+      <li><strong>Mide y calcula</strong> (3 min): Usa las herramientas de medición</li>
+      <li><strong>Documenta</strong> (2 min): Anota tus resultados:
+        <ul>
+          <li>Áreas de cada zona</li>
+          <li>Área total del espacio</li>
+          <li>Perímetros importantes</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Ejemplo de diseño</h3>
+    <div class="ejemplo">
+      <p><strong>Parque de Barrio en Teis</strong></p>
+      <ul>
+        <li>Pista de baloncesto rectangular: 28 m × 15 m → A = 420 m²</li>
+        <li>Fuente circular: r = 5 m → A ≈ 78,5 m²</li>
+        <li>Zona de picnic triangular: base 20 m, altura 10 m → A = 100 m²</li>
+        <li>Jardín cuadrado: lado 15 m → A = 225 m²</li>
+        <li><strong>Área total</strong>: 823,5 m²</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bloque-ampliacion">
+    <h2>🚀 Ampliación (10 min)</h2>
+    <h3>Presentaciones breves del proyecto</h3>
+    
+    <p>4-5 voluntarios presentan su diseño (1-2 min cada uno):</p>
+    
+    <h4>Guion de presentación</h4>
+    <ol>
+      <li><strong>Nombre del espacio</strong>: "Mi diseño se llama..."</li>
+      <li><strong>Ubicación en Vigo</strong>: "Lo situaría en..."</li>
+      <li><strong>Figuras usadas</strong>: "He usado un rectángulo para..., un círculo para..., un triángulo para..."</li>
+      <li><strong>Cálculos realizados</strong>: "El área total es... m²"</li>
+      <li><strong>Justificación</strong>: "Elegí estas formas porque..."</li>
+    </ol>
+
+    <h3>Reflexión grupal</h3>
+    <div class="ejemplo">
+      <h4>Preguntas para debate:</h4>
+      <ol>
+        <li>¿Qué figuras son más frecuentes en diseño urbano? ¿Por qué?</li>
+        <li>¿Por qué muchos parques tienen zonas circulares (fuentes, rotondas)?</li>
+        <li>¿Qué ventajas tiene usar rectángulos en pistas deportivas?</li>
+        <li>¿Habéis visto triángulos en espacios urbanos de Vigo? ¿Dónde?</li>
+        <li>Si tuvierais que construir realmente vuestro diseño, ¿qué dificultades habría?</li>
+      </ol>
+    </div>
+
+    <h3>Inspiración en Vigo</h3>
+    <p>Espacios urbanos reales de Vigo que podéis analizar o rediseñar:</p>
+    <ul>
+      <li>Parque de Castrelos</li>
+      <li>Plaza de la Constitución</li>
+      <li>Plaza de España</li>
+      <li>Parque de Beiramar</li>
+      <li>Zona verde del barrio de Teis</li>
+      <li>Patio del IES Teis</li>
+    </ul>
+  </div>
+
+  <hr style="margin: 2rem 0;">
+  
+  <h2>📊 Evaluación del proyecto</h2>
+  <p>Tu diseño se evaluará según:</p>
+  <table border="1" style="width:100%; border-collapse: collapse;">
+    <tr style="background: #f0f4fc;">
+      <th>Criterio</th>
+      <th>Puntos</th>
+    </tr>
+    <tr>
+      <td>Uso correcto de GeoGebra (construcciones precisas)</td>
+      <td>3 puntos</td>
+    </tr>
+    <tr>
+      <td>Cumple requisitos mínimos (4 figuras, 1 rect + 1 circ + 1 tri)</td>
+      <td>2 puntos</td>
+    </tr>
+    <tr>
+      <td>Cálculos correctos de áreas y perímetros</td>
+      <td>3 puntos</td>
+    </tr>
+    <tr>
+      <td>Creatividad y diseño (etiquetas, colores, sentido funcional)</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Presentación oral (si corresponde)</td>
+      <td>1 punto</td>
+    </tr>
+    <tr style="background: #e8f5e9; font-weight: bold;">
+      <td>TOTAL</td>
+      <td>10 puntos</td>
+    </tr>
+  </table>
+
+  <h2>📝 Para guardar tu trabajo</h2>
+  <ol>
+    <li>En GeoGebra, ve a Menú → Descargar</li>
+    <li>Guarda como: <code>Proyecto_FigurasPlanas_TuNombre.ggb</code></li>
+    <li>También puedes hacer captura de pantalla del diseño</li>
+    <li>Anota en tu cuaderno todos los cálculos realizados</li>
+  </ol>
+
+  <h2>🎉 ¡Enhorabuena!</h2>
+  <p>Has completado el tema de <strong>Figuras Planas</strong>. Ahora sabes:</p>
+  <ul>
+    <li>✅ Clasificar triángulos y cuadriláteros</li>
+    <li>✅ Calcular perímetros de polígonos y círculos</li>
+    <li>✅ Calcular áreas de figuras básicas y compuestas</li>
+    <li>✅ Usar GeoGebra para construcciones geométricas</li>
+    <li>✅ Aplicar la geometría a problemas reales de Vigo</li>
+  </ul>
+
+  <p style="text-align: center; color: #666; margin-top: 3rem;">
+    <small>Sesión 8 (FINAL) - Figuras Planas - 1º ESO</small>
+  </p>
+</body>
+</html>

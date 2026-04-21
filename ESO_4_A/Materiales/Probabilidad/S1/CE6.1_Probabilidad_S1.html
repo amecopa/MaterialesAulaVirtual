@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1: Experimentos Aleatorios y Sucesos</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .previo {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 1: Experimentos Aleatorios, Espacio Muestral y Sucesos</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | CE1: Razonar matemáticamente</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Experimentos Aleatorios vs Deterministas</h3>
+        <p>Un <strong>experimento determinista</strong> produce siempre el mismo resultado bajo las mismas condiciones (ej: sumar 2+3).</p>
+        <p>Un <strong>experimento aleatorio</strong> puede dar distintos resultados aunque se repita en condiciones idénticas (ej: lanzar un dado, extraer una carta).</p>
+        
+        <h3>Espacio Muestral \(\Omega\)</h3>
+        <p>El <strong>espacio muestral</strong> \(\Omega\) es el conjunto de todos los posibles resultados de un experimento aleatorio.</p>
+        <p><strong>Ejemplos:</strong></p>
+        <ul>
+            <li>Dado: \(\Omega = \{1, 2, 3, 4, 5, 6\}\)</li>
+            <li>Moneda: \(\Omega = \{\text{Cara}, \text{Cruz}\}\)</li>
+            <li>Género de un recién nacido: \(\Omega = \{\text{M}, \text{F}\}\)</li>
+        </ul>
+
+        <h3>Sucesos</h3>
+        <p>Un <strong>suceso</strong> es cualquier subconjunto del espacio muestral \(\Omega\).</p>
+        <ul>
+            <li><strong>Suceso elemental:</strong> formado por un solo resultado. Ej: "sacar un 5" = \(\{5\}\)</li>
+            <li><strong>Suceso compuesto:</strong> formado por varios resultados. Ej: "sacar par" = \(\{2, 4, 6\}\)</li>
+            <li><strong>Suceso seguro \(\Omega\):</strong> siempre ocurre (todos los resultados posibles)</li>
+            <li><strong>Suceso imposible \(\emptyset\):</strong> nunca ocurre (conjunto vacío)</li>
+        </ul>
+
+        <h3>Operaciones con Sucesos</h3>
+        <p>Dados dos sucesos \(A\) y \(B\):</p>
+        <ul>
+            <li><strong>Unión \(A \cup B\):</strong> Ocurre \(A\) o \(B\) (o ambos)</li>
+            <li><strong>Intersección \(A \cap B\):</strong> Ocurren \(A\) y \(B\) simultáneamente</li>
+            <li><strong>Complementario \(A^c\) o \(\overline{A}\):</strong> No ocurre \(A\)</li>
+            <li><strong>Diferencia \(A - B\):</strong> Ocurre \(A\) pero no \(B\)</li>
+        </ul>
+        <p><strong>Sucesos incompatibles o mutuamente excluyentes:</strong> \(A \cap B = \emptyset\)  (no pueden ocurrir a la vez)</p>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🔥 Bloque 1: Refuerzo (Activación) — 10 min</h2>
+        
+        <div class="previo">
+            <strong>Pregunta disparadora (gran grupo):</strong><br>
+            En la ría de Vigo se detectan dos contaminantes A y B en muestras de agua. ¿Cuántas combinaciones posibles hay? ¿Cuál sería el suceso "ningún contaminante"?
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>📖 Bloque 2: Consolidación — 15 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra - Docente): Lanzamiento de un dado</div>
+            <p>Experimento: lanzar un dado de 6 caras.</p>
+            <p><strong>a)</strong> Escribe el espacio muestral \(\Omega\)</p>
+            <p><strong>b)</strong> Define los siguientes sucesos:</p>
+            <ul>
+                <li>\(A\) = "Sacar un número par"</li>
+                <li>\(B\) = "Sacar un número mayor que 4"</li>
+                <li>\(C\) = "Sacar un 7"</li>
+            </ul>
+            <p><strong>c)</strong> Calcula \(A \cup B\), \(A \cap B\) y \(A^c\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución paso a paso:</strong><br><br>
+                <strong>a)</strong> \(\Omega = \{1, 2, 3, 4, 5, 6\}\)<br><br>
+                
+                <strong>b)</strong> 
+                $$A = \{2, 4, 6\}$$
+                $$B = \{5, 6\}$$
+                $$C = \emptyset \text{ (suceso imposible)}$$
+                <br>
+                
+                <strong>c)</strong> 
+                $$A \cup B = \{2, 4, 5, 6\} \text{ (par O mayor que 4)}$$
+                $$A \cap B = \{6\} \text{ (par Y mayor que 4)}$$
+                $$A^c = \{1, 3, 5\} \text{ (no par, es decir, impar)}$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Trabajo colectivo): Baraja española</div>
+            <p>Se extrae una carta de la baraja española (40 cartas: oros, copas, espadas, bastos; valores 1 al 7, sota, caballo, rey).</p>
+            <p>Define los sucesos \(D\) = "figura" (sota/caballo/rey) y \(E\) = "oros". Calcula \(D \cap E\).</p>
+            
+            <details class="solution">
+                <summary></summary>
+                $$D = \{\text{sota oros, caballo oros, rey oros, sota copas, ..., rey bastos}\} \text{ (12 cartas)}$$
+                $$E = \{\text{1 oros, 2 oros, ..., rey oros}\} \text{ (10 cartas)}$$
+                $$D \cap E = \{\text{sota oros, caballo oros, rey oros}\} \text{ (3 cartas)}$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 3 (Dirigido): Puerto de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En el Puerto de Vigo llegan en un día 3 barcos pesqueros \([A, B, C]\). El espacio muestral son los barcos con incidencia técnica. </p>
+            <p><strong>a)</strong> Construye \(\Omega\)</p>
+            <p><strong>b)</strong> Define 3 sucesos distintos</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> 
+                $$\Omega = \{\emptyset, \{A\}, \{B\}, \{C\}, \{A,B\}, \{A,C\}, \{B,C\}, \{A,B,C\}\}$$
+                <em>Nota: Incluimos el caso de que ningún barco tenga incidencia (\(\emptyset\)) y todas las combinaciones posibles.</em>
+                <br><br>
+                
+                <strong>b)</strong> Ejemplos de sucesos:
+                $$S_1 = \text{"Al menos un barco con incidencia"} = \Omega - \{\emptyset\}$$
+                $$S_2 = \text{"Exactamente dos barcos"} = \{\{A,B\}, \{A,C\}, \{B,C\}\}$$
+                $$S_3 = \text{"El barco A tiene incidencia"} = \{\{A\}, \{A,B\}, \{A,C\}, \{A,B,C\}\}$$
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>✏️ Bloque 3: Afianzamiento (Parejas) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Operaciones con sucesos</div>
+            <p>Dados los sucesos \(A = \{1, 2, 3, 4\}\) y \(B = \{3, 4, 5, 6\}\) dentro del espacio \(\Omega = \{1, 2, 3, 4, 5, 6, 7, 8\}\), calcula:</p>
+            <p><strong>a)</strong> \(A \cup B\) &nbsp; <strong>b)</strong> \(A \cap B\) &nbsp; <strong>c)</strong> \(A^c\) &nbsp; <strong>d)</strong> \(B^c\) &nbsp; <strong>e)</strong> \((A \cup B)^c\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución paso a paso:</strong><br>
+                <strong>a)</strong> \(A \cup B = \{1, 2, 3, 4, 5, 6\}\)<br>
+                <strong>b)</strong> \(A \cap B = \{3, 4\}\)<br>
+                <strong>c)</strong> \(A^c = \{5, 6, 7, 8\}\)<br>
+                <strong>d)</strong> \(B^c = \{1, 2, 7, 8\}\)<br>
+                <strong>e)</strong> \((A \cup B)^c = \{7, 8\}\) — <em>Lo que no está ni en A ni en B</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: PSA Citroën Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En la cadena de montaje de PSA Citroën Vigo se extraen 2 piezas consecutivas. Cada pieza puede ser defectuosa (D) o correcta (C).</p>
+            <p><strong>a)</strong> Escribe el espacio muestral \(\Omega\)</p>
+            <p><strong>b)</strong> Define el suceso \(M\) = "al menos una defectuosa"</p>
+            <p><strong>c)</strong> Define el suceso \(N\) = "ninguna defectuosa"</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> \(\Omega = \{CC, CD, DC, DD\}\) — <em>4 resultados posibles</em><br>
+                <img src="espacio_muestral_psa.png" alt="Espacio muestral PSA" class="img-centered" />
+                <br>
+                <strong>b)</strong> \(M = \{CD, DC, DD\}\)<br><br>
+                <strong>c)</strong> \(N = \{CC\}\) — <em>Observa que \(M^c = N\)</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Sucesos incompatibles</div>
+            <p>Determina si los siguientes pares de sucesos son mutuamente excluyentes (incompatibles) en el lanzamiento de un dado:</p>
+            <p><strong>a)</strong> \(A\) = "par", \(B\) = "múltiplo de 3"</p>
+            <p><strong>b)</strong> \(C\) = "menor que 3", \(D\) = "mayor que 4"</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> \(A = \{2, 4, 6\}\), \(B = \{3, 6\}\) → \(A \cap B = \{6\} \neq \emptyset\) → <strong>NO son incompatibles</strong><br><br>
+                <strong>b)</strong> \(C = \{1, 2\}\), \(D = \{5, 6\}\) → \(C \cap D = \emptyset\) → <strong>SÍ son incompatibles</strong>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4: Diagrama de Venn</div>
+            <p>Dibuja un diagrama de Venn para representar los sucesos \(A\), \(B\) y \(A \cap B\) cuando \(\Omega = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}\), \(A = \{2, 4, 6, 8\}\) y \(B = \{6, 7, 8, 9\}\).</p>
+            <p>Identifica las regiones: \(A\) solo, \(B\) solo, \(A \cap B\), y fuera de ambos.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Diagrama conceptual:</strong><br>
+                - <strong>\(A\) solo:</strong> \(\{2, 4\}\)<br>
+                - <strong>\(B\) solo:</strong> \(\{7, 9\}\)<br>
+                - <strong>\(A \cap B\):</strong> \(\{6, 8\}\)<br>
+                - <strong>Fuera de ambos (\((A \cup B)^c\)):</strong> \(\{1, 3, 5, 10\}\)<br><br>
+                <img src="diagrama_venn_ej4.png" alt="Diagrama de Venn" style="max-width:400px; display:block; margin:10px auto;" />
+                <em>Nota: El diagrama puede dibujarse a mano o generarse con Python (ver archivo generador_graficos_S1.py)</em>
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🚀 Bloque 4: Ampliación (Individual) — 10 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Vitrasa — Línea 12-A <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Vitrasa registra los retrasos de sus líneas. Se toman al azar 2 servicios consecutivos de la línea 12-A. Cada servicio puede llegar a tiempo (T) o con retraso (R).</p>
+            <p><strong>a)</strong> Define el espacio muestral \(\Omega\)</p>
+            <p><strong>b)</strong> Construye un diagrama de Venn que represente los sucesos:</p>
+            <ul>
+                <li>\(P\) = "el primer servicio llega tarde"</li>
+                <li>\(Q\) = "el segundo servicio llega tarde"</li>
+            </ul>
+            <p><strong>c)</strong> ¿Son \(P\) y \(Q\) mutuamente excluyentes? Justifica.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> \(\Omega = \{TT, TR, RT, RR\}\)<br><br>
+                
+                <strong>b)</strong> 
+                $$P = \{RT, RR\}$$
+                $$Q = \{TR, RR\}$$
+                $$P \cap Q = \{RR\} \text{ (ambos con retraso)}$$
+                <img src="diagrama_vitrasa.png" alt="Diagrama Vitrasa" class="img-centered" />
+                <br>
+                
+                <strong>c)</strong> <strong>NO</strong> son mutuamente excluyentes porque \(P \cap Q = \{RR\} \neq \emptyset\). Es posible que ambos servicios lleguen tarde.
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Axiomática de Kolmogorov y enfoques de la probabilidad</p>
+    </footer>
+
+</body>
+</html>

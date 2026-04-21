@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1: Razones Trigonométricas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 1: Fundamentos. Razones Trigonométricas en el Triángulo Rectángulo</h1>
+        <p class="competency">CE asociado: CE1.1. Interpretar y replantear problemas matemáticos.</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>Apuntes Teóricos</h2>
+        <p>Para trabajar con razones trigonométricas, necesitamos dominar el <strong>Teorema de Pitágoras</strong> y saber identificar correctamente los lados de un triángulo rectángulo en relación a un ángulo agudo \(\alpha\):</p>
+        <ul>
+            <li><strong>Hipotenusa:</strong> El lado más largo, opuesto al ángulo recto (\(90^\circ\)).</li>
+            <li><strong>Cateto Opuesto:</strong> El lado que está "enfrente" del ángulo \(\alpha\).</li>
+            <li><strong>Cateto Contiguo (o Adyacente):</strong> El lado que forma parte del ángulo \(\alpha\) junto con la hipotenusa.</li>
+        </ul>
+        <p>Las tres razones trigonométricas fundamentales son:</p>
+        <p>
+            $$ \sin(\alpha) = \frac{\text{Cateto Opuesto}}{\text{Hipotenusa}} $$
+            $$ \cos(\alpha) = \frac{\text{Cateto Contiguo}}{\text{Hipotenusa}} $$
+            $$ \tan(\alpha) = \frac{\text{Cateto Opuesto}}{\text{Cateto Contiguo}} $$
+        </p>
+        <p><strong>Recuerda el Teorema de Pitágoras:</strong> \(a^2 + b^2 = c^2\), donde \(c\) es la hipotenusa y \(a, b\) son los catetos.</p>
+    </section>
+
+    <section class="exercise-box">
+        <h2>Bloque Práctico</h2>
+
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1 (Modelado - Pizarra): Construcción</div>
+            <p>Una escalera de \(5 \text{ m}\) está apoyada contra una pared vertical. La base de la escalera está a \(3 \text{ m}\) de la pared. Calcula el seno, coseno y tangente del ángulo que forma la escalera con el suelo.</p>
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución:</strong><br>
+                1. <strong>Identificación:</strong> La escalera es la hipotenusa (\(h = 5 \text{ m}\)). La distancia de la base a la pared es el cateto contiguo al ángulo del suelo (\(c.c = 3 \text{ m}\)).<br>
+                2. <strong>Pitágoras:</strong> Calculamos la altura de la pared (cateto opuesto, \(c.o\)).
+                $$ c.o^2 + 3^2 = 5^2 \implies c.o^2 + 9 = 25 \implies c.o^2 = 16 \implies c.o = 4 \text{ m} $$
+                3. <strong>Razones Trigonométricas:</strong>
+                $$ \sin(\alpha) = \frac{4}{5} = 0.8 $$
+                $$ \cos(\alpha) = \frac{3}{5} = 0.6 $$
+                $$ \tan(\alpha) = \frac{4}{3} \approx 1.33 $$
+                <em>Nota del profesor: Cuidado con confundir el cateto opuesto (la pared) con el contiguo (el suelo).</em>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2 (Práctica guiada): Accesibilidad</div>
+            <p>Para construir una rampa para sillas de ruedas, la normativa exige que para salvar un desnivel de \(1.2 \text{ m}\), la longitud de la rampa sea de \(15 \text{ m}\). Calcula las tres razones trigonométricas del ángulo de inclinación de la rampa.</p>
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución:</strong><br>
+                1. <strong>Identificación:</strong> La longitud de la rampa es la hipotenusa (\(h = 15 \text{ m}\)). El desnivel es la altura, es decir, el cateto opuesto (\(c.o = 1.2 \text{ m}\)).<br>
+                2. <strong>Pitágoras:</strong> Calculamos la base de la rampa (cateto contiguo, \(c.c\)).
+                $$ 1.2^2 + c.c^2 = 15^2 \implies 1.44 + c.c^2 = 225 \implies c.c^2 = 223.56 \implies c.c \approx 14.95 \text{ m} $$
+                3. <strong>Razones Trigonométricas:</strong>
+                $$ \sin(\alpha) = \frac{1.2}{15} = 0.08 $$
+                $$ \cos(\alpha) = \frac{14.95}{15} \approx 0.997 $$
+                $$ \tan(\alpha) = \frac{1.2}{14.95} \approx 0.080 $$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3 (Práctica independiente): Arquitectura</div>
+            <p>La sombra de un obelisco mide \(20 \text{ m}\). Si sabemos que la distancia desde la punta de la sombra hasta la cúspide del obelisco es de \(29 \text{ m}\), halla las razones trigonométricas del ángulo de elevación del sol.</p>
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución:</strong><br>
+                1. <strong>Identificación:</strong> La distancia desde la punta de la sombra a la cúspide es la hipotenusa (\(h = 29 \text{ m}\)). La sombra proyectada en el suelo es el cateto contiguo (\(c.c = 20 \text{ m}\)).<br>
+                2. <strong>Pitágoras:</strong> Calculamos la altura del obelisco (cateto opuesto, \(c.o\)).
+                $$ c.o^2 + 20^2 = 29^2 \implies c.o^2 + 400 = 841 \implies c.o^2 = 441 \implies c.o = 21 \text{ m} $$
+                3. <strong>Razones Trigonométricas:</strong>
+                $$ \sin(\alpha) = \frac{21}{29} \approx 0.724 $$
+                $$ \cos(\alpha) = \frac{20}{29} \approx 0.690 $$
+                $$ \tan(\alpha) = \frac{21}{20} = 1.05 $$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4 (Práctica independiente avanzada)</div>
+            <p>En un triángulo rectángulo, el seno de uno de sus ángulos agudos \(\alpha\) es \(0.6\). Si la hipotenusa mide \(10 \text{ cm}\), calcula la longitud de los dos catetos y la tangente de \(\alpha\).</p>
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución:</strong><br>
+                1. <strong>Identificación:</strong> Sabemos que \(\sin(\alpha) = 0.6\) y que \(h = 10 \text{ cm}\).<br>
+                2. <strong>Cálculo del Cateto Opuesto:</strong> Por definición, \(\sin(\alpha) = \frac{c.o}{h}\).
+                $$ 0.6 = \frac{c.o}{10} \implies c.o = 0.6 \times 10 = 6 \text{ cm} $$
+                3. <strong>Pitágoras:</strong> Calculamos el cateto contiguo (\(c.c\)).
+                $$ 6^2 + c.c^2 = 10^2 \implies 36 + c.c^2 = 100 \implies c.c^2 = 64 \implies c.c = 8 \text{ cm} $$
+                4. <strong>Cálculo de la Tangente:</strong>
+                $$ \tan(\alpha) = \frac{c.o}{c.c} = \frac{6}{8} = 0.75 $$
+            </details>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det) {
+            det.addEventListener('toggle', function() {
+                if (det.open && window.MathJax) {
+                    MathJax.typesetPromise([det]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

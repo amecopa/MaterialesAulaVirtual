@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Solucionario Sesión 5</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    #btn-contraste { position: fixed; top: 20px; right: 20px; background: #1a3a6e; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; z-index: 1000; }
+    body.alto-contraste { background: #000 !important; color: #ffff00 !important; }
+    body.alto-contraste h1, body.alto-contraste h2 { color: #ffff00 !important; }
+    body.alto-contraste .solucion { background: #1a1a1a !important; color: #ffff00 !important; }
+    body.alto-contraste #btn-contraste { background: #ffff00 !important; color: #000 !important; }
+  </style>
+</head>
+<body>
+  <button id="btn-contraste" onclick="toggleContraste()">👁️ Alto Contraste</button>
+  <h1>✅ Solucionario Sesión 5</h1>
+  
+  <h2>🔄 Bloque 1</h2>
+  <div class="solucion">
+    <ol>
+      <li>\( 7 + 5 = 12 \) → \( 5 = 12 - 7 = 5 \)</li>
+      <li>\( 15 - 7 = 8 \) → \( 7 = 15 - 8 = 7 \)</li>
+      <li>\( 4 + 6 = 10 \) → \( 4 = 10 - 6 = 4 \)</li>
+    </ol>
+  </div>
+
+  <h2>🎯 Bloque 2</h2>
+  <div class="solucion">
+    <ol>
+      <li>\( x + 3 = 10 \) → \( x = 10 - 3 = 7 \) | Comprobación: \( 7 + 3 = 10 \) ✓</li>
+      <li>\( x + 7 = 15 \) → \( x = 15 - 7 = 8 \) | Comprobación: \( 8 + 7 = 15 \) ✓</li>
+      <li>\( x - 4 = 5 \) → \( x = 5 + 4 = 9 \) | Comprobación: \( 9 - 4 = 5 \) ✓</li>
+      <li>\( x - 2 = 8 \) → \( x = 8 + 2 = 10 \) | Comprobación: \( 10 - 2 = 8 \) ✓</li>
+      <li>\( x + 12 = 20 \) → \( x = 20 - 12 = 8 \) | Comprobación: \( 8 + 12 = 20 \) ✓</li>
+    </ol>
+  </div>
+
+  <h2>💪 Bloque 3</h2>
+  <div class="solucion">
+    <ol>
+      <li>\( x = 14 - 8 = 6 \)</li>
+      <li>\( x = 7 + 5 = 12 \)</li>
+      <li>\( x = 23 - 15 = 8 \)</li>
+      <li>\( x = 4 + 9 = 13 \)</li>
+      <li>\( x = 11 - 6 = 5 \)</li>
+    </ol>
+  </div>
+
+  <h2>🚀 Bloque 4</h2>
+  <div class="solucion">
+    <ol>
+      <li>\( x - 5 = 12 \) → \( x = 17 \) euros</li>
+      <li>\( x + 8 = 25 \) → \( x = 17 \) personas</li>
+    </ol>
+  </div>
+
+  <script>
+    function toggleContraste() {
+      document.body.classList.toggle('alto-contraste');
+      document.getElementById('btn-contraste').textContent = 
+        document.body.classList.contains('alto-contraste') ? '👁️ Normal' : '👁️ Alto Contraste';
+    }
+  </script>
+</body>
+</html>

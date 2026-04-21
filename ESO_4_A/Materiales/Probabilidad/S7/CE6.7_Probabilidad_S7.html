@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 7: Teorema de Bayes e Interpretación</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+        h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+        h2 { color: #2a5298; margin-top: 2rem; }
+        h3 { color: #3a6bc4; }
+        header { background-color: #1a3a6e; color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        header h1 { color: white; margin: 0; border: none; }
+        .competency { font-size: 0.9em; color: #cce0ff; font-style: italic; margin-top: 0.5rem; }
+        .theory-box { background: #f9fafb; border-left: 4px solid #1a3a6e; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .ejercicios { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+        .solucion  { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+        .exercise-title { font-weight: bold; color: #d9534f; margin-bottom: 10px; }
+        .theorem-box {
+            background-color: #fff9e6;
+            border: 2px solid #ffc107;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .theorem-box strong { color: #d68000; }
+        .warning-box {
+            background-color: #ffe6e6;
+            border-left: 4px solid #d32f2f;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .warning-box strong { color: #c62828; }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+        details.solucion summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #2a8a2a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solucion summary::-webkit-details-marker { display: none; }
+        details.solucion summary::marker { display: none; }
+        details.solucion:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solucion[open] summary::before { content: "▼  Ocultar resolución"; }
+        ol li, ul li { margin-bottom: .5rem; }
+        img { max-width: 100%; display: block; margin: 1rem auto; }
+        .concept-box {
+            background: #e8f4f8;
+            border-left: 4px solid #0277bd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 7: Teorema de Bayes e Interpretación</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | CE1: Razonar matemáticamente</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>El problema de la "inversión" de probabilidades</h3>
+        <p>Muchas veces conocemos \(P(B|A)\) pero necesitamos calcular \(P(A|B)\). Por ejemplo:</p>
+        <ul>
+            <li>Conocemos \(P(\text{test positivo}|\text{enfermo})\), pero queremos \(P(\text{enfermo}|\text{test positivo})\).</li>
+            <li>Conocemos \(P(\text{defecto}|\text{fábrica A})\), pero queremos \(P(\text{fábrica A}|\text{defecto})\).</li>
+        </ul>
+        
+        <div class="warning-box">
+            <strong>⚠️ ERROR COMÚN:</strong> \(P(A|B) \neq P(B|A)\)<br>
+            La probabilidad de que llueva dado que hay nubes NO es lo mismo que la probabilidad de que haya nubes dado que llueve.
+        </div>
+
+        <h3>Derivación del Teorema de Bayes</h3>
+        <p>Sabemos que:</p>
+        $$P(A \cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)$$
+        <p>Despejando \(P(A|B)\):</p>
+        $$P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)}$$
+        <p>Y usando el teorema de la probabilidad total para \(P(B)\):</p>
+
+        <div class="theorem-box">
+            <h3>Teorema de Bayes (versión para dos hipótesis)</h3>
+            <p>Si \(\{A, A^c\}\) es una partición de \(\Omega\), entonces:</p>
+            $$P(A|B) = \frac{P(A) \cdot P(B|A)}{P(A) \cdot P(B|A) + P(A^c) \cdot P(B|A^c)}$$
+        </div>
+
+        <div class="theorem-box">
+            <h3>Teorema de Bayes (versión general)</h3>
+            <p>Si \(\{A_1, A_2, \ldots, A_n\}\) es una partición de \(\Omega\), entonces:</p>
+            $$P(A_i|B) = \frac{P(A_i) \cdot P(B|A_i)}{P(A_1) \cdot P(B|A_1) + P(A_2) \cdot P(B|A_2) + \cdots + P(A_n) \cdot P(B|A_n)}$$
+        </div>
+
+        <h3>Interpretación: Actualización de creencias</h3>
+        <div class="concept-box">
+            <p><strong>Probabilidad a priori:</strong> \(P(A_i)\) — Lo que sabemos antes de observar el evento \(B\).</p>
+            <p><strong>Verosimilitud:</strong> \(P(B|A_i)\) — Cuán probable es observar \(B\) bajo cada hipótesis.</p>
+            <p><strong>Probabilidad a posteriori:</strong> \(P(A_i|B)\) — Creencia actualizada después de observar \(B\).</p>
+        </div>
+        <p>El teorema de Bayes nos dice <strong>cómo actualizar nuestras creencias cuando recibimos nueva información</strong>.</p>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🔥 Bloque 1: Refuerzo — 8 min</h2>
+        
+        <p><strong>Situación disparadora:</strong></p>
+        <p>Un test de control de calidad en PSA Vigo detecta el 95 % de las piezas defectuosas (sensibilidad). Pero también da falsos positivos el 3 % de las veces en piezas correctas.</p>
+        <p><strong>Pregunta:</strong> Si una pieza da positivo en el test, ¿tiene necesariamente un defecto?</p>
+        
+        <details class="solucion">
+            <summary></summary>
+            <strong>Debate:</strong><br>
+            — No necesariamente. El test puede dar positivo en piezas correctas (falso positivo).<br>
+            — Para saber la probabilidad real de defecto dado que el test es positivo, necesitamos:<br>
+            &nbsp;&nbsp;• La prevalencia de defectos en la producción (probabilidad a priori).<br>
+            &nbsp;&nbsp;• Las tasas de acierto del test (sensibilidad y especificidad).<br>
+            <br>
+            <strong>Conexión:</strong> Este tipo de problema se resuelve con el <strong>Teorema de Bayes</strong>, que veremos a continuación.
+        </details>
+    </section>
+
+    <section class="ejercicios">
+        <h2>📖 Bloque 2: Consolidación — 17 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra): Control de calidad PSA Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Retomamos el problema anterior con datos completos:</p>
+            <ul>
+                <li>El 2 % de las piezas producidas son defectuosas.</li>
+                <li>El test detecta correctamente el 95 % de las defectuosas.</li>
+                <li>El test da falso positivo en el 3 % de las piezas correctas.</li>
+            </ul>
+            <p><strong>Si una pieza da positivo en el test, ¿cuál es la probabilidad de que realmente sea defectuosa?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Paso 1:</strong> Definir eventos y datos<br>
+                \(D\) = "pieza defectuosa", &nbsp; \(T^+\) = "test positivo"<br>
+                \(P(D) = 0{,}02\), &nbsp; \(P(D^c) = 0{,}98\)<br>
+                \(P(T^+|D) = 0{,}95\) (sensibilidad)<br>
+                \(P(T^+|D^c) = 0{,}03\) (tasa de falsos positivos)
+                <br><br>
+                
+                <strong>Paso 2:</strong> Construir diagrama de árbol
+                <pre>
+                        0,95 → T+     [0,02 × 0,95 = 0,019]
+            0,02 → D
+                        0,05 → T-     [0,02 × 0,05 = 0,001]
+                        
+                        0,03 → T+     [0,98 × 0,03 = 0,0294]
+            0,98 → Dc
+                        0,97 → T-     [0,98 × 0,97 = 0,9506]
+                </pre>
+                <img src="S7/arbol_bayes_test.png" alt="Diagrama de árbol Bayes test PSA" class="img-centered" />
+                <br>
+                
+                <strong>Paso 3:</strong> Calcular \(P(T^+)\) (probabilidad total)
+                $$P(T^+) = P(D) \cdot P(T^+|D) + P(D^c) \cdot P(T^+|D^c)$$
+                $$P(T^+) = 0{,}02 \times 0{,}95 + 0{,}98 \times 0{,}03 = 0{,}019 + 0{,}0294 = 0{,}0484$$
+                <br>
+                
+                <strong>Paso 4:</strong> Aplicar Bayes para calcular \(P(D|T^+)\)
+                $$P(D|T^+) = \frac{P(D) \cdot P(T^+|D)}{P(T^+)} = \frac{0{,}019}{0{,}0484} \approx 0{,}3926 = 39{,}26\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> Solo el 39 % de las piezas con test positivo son realmente defectuosas.<br>
+                <strong>Interpretación:</strong> Aunque el test es muy bueno (95 % de sensibilidad), como los defectos son raros (2 %), la mayoría de los positivos son falsos positivos. ¡El contexto importa!
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Trabajo colectivo): Conservas de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Retomamos el problema de las dos fábricas de conservas (Sesión 6):</p>
+            <ul>
+                <li>Fábrica A produce el 60 % de las latas, con tasa de defecto del 2 %.</li>
+                <li>Fábrica B produce el 40 % de las latas, con tasa de defecto del 5 %.</li>
+            </ul>
+            <p><strong>Dado que una lata es defectuosa, ¿cuál es la probabilidad de que proceda de la fábrica B?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos previos (de S6):</strong><br>
+                \(P(A) = 0{,}60\), \(P(D|A) = 0{,}02\)<br>
+                \(P(B) = 0{,}40\), \(P(D|B) = 0{,}05\)<br>
+                Ya calculamos: \(P(D) = 0{,}032\)
+                <br><br>
+                
+                <strong>Queremos:</strong> \(P(B|D)\) (probabilidad de que venga de B dado que es defectuosa)
+                <br><br>
+                
+                <strong>Aplicamos Bayes:</strong>
+                $$P(B|D) = \frac{P(B) \cdot P(D|B)}{P(D)} = \frac{0{,}40 \times 0{,}05}{0{,}032} = \frac{0{,}020}{0{,}032} = 0{,}625 = 62{,}5\%$$
+                <br>
+                
+                <strong>Verificación:</strong>
+                $$P(A|D) = \frac{0{,}60 \times 0{,}02}{0{,}032} = \frac{0{,}012}{0{,}032} = 0{,}375 = 37{,}5\%$$
+                $$P(A|D) + P(B|D) = 37{,}5\% + 62{,}5\% = 100\% \quad \checkmark$$
+                <br>
+                
+                <strong>Respuesta:</strong> Hay un 62,5 % de probabilidad de que la lata defectuosa venga de la fábrica B.<br>
+                <strong>Interpretación:</strong> Aunque B produce menos latas (40 %), tiene mayor tasa de defecto (5 % vs 2 %), por eso es más probable que un defecto venga de B.
+            </details>
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>✏️ Bloque 3: Afianzamiento (Parejas) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Tres proveedores de PSA Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>Retomamos el ejemplo de los tres proveedores (Sesión 6):</p>
+            <ul>
+                <li>Proveedor A: 50 % de las piezas, tasa de defecto 2 %.</li>
+                <li>Proveedor B: 30 % de las piezas, tasa de defecto 3 %.</li>
+                <li>Proveedor C: 20 % de las piezas, tasa de defecto 5 %.</li>
+            </ul>
+            <p>Ya sabemos que \(P(D) = 0{,}029 = 2{,}9\%\).</p>
+            <p><strong>Dado que una pieza es defectuosa, ¿cuál es el proveedor más probable?</strong></p>
+            <p>Calcula \(P(A|D)\), \(P(B|D)\) y \(P(C|D)\).</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Aplicamos Bayes a cada proveedor:</strong><br><br>
+                
+                $$P(A|D) = \frac{P(A) \cdot P(D|A)}{P(D)} = \frac{0{,}50 \times 0{,}02}{0{,}029} = \frac{0{,}010}{0{,}029} \approx 0{,}3448 = 34{,}48\%$$
+                <br>
+                
+                $$P(B|D) = \frac{P(B) \cdot P(D|B)}{P(D)} = \frac{0{,}30 \times 0{,}03}{0{,}029} = \frac{0{,}009}{0{,}029} \approx 0{,}3103 = 31{,}03\%$$
+                <br>
+                
+                $$P(C|D) = \frac{P(C) \cdot P(D|C)}{P(D)} = \frac{0{,}20 \times 0{,}05}{0{,}029} = \frac{0{,}010}{0{,}029} \approx 0{,}3448 = 34{,}48\%$$
+                <br>
+                
+                <strong>Verificación:</strong> \(34{,}48\% + 31{,}03\% + 34{,}48\% \approx 100\%\) ✓
+                <br><br>
+                
+                <strong>Respuesta:</strong> Los proveedores A y C son igualmente probables (34,48 % cada uno). El proveedor B es ligeramente menos probable (31 %).
+                <br><br>
+                
+                <strong>Interpretación:</strong> Aunque A suministra más piezas, C tiene mayor tasa de defecto, compensándose. B está en término medio.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Diagnóstico médico simplificado</div>
+            <p>Una enfermedad tiene una prevalencia del 1 % en la población. Un test de diagnóstico tiene:</p>
+            <ul>
+                <li><strong>Sensibilidad:</strong> 99 % (detecta correctamente el 99 % de los enfermos).</li>
+                <li><strong>Especificidad:</strong> 95 % (da negativo en el 95 % de los sanos, o sea, 5 % de falsos positivos).</li>
+            </ul>
+            <p><strong>Si una persona da positivo, ¿cuál es la probabilidad de que realmente esté enferma?</strong></p>
+            <p><em>Reflexión: ¿Te sorprende el resultado?</em></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos:</strong><br>
+                \(E\) = "enfermo", \(T^+\) = "test positivo"<br>
+                \(P(E) = 0{,}01\), &nbsp; \(P(E^c) = 0{,}99\)<br>
+                \(P(T^+|E) = 0{,}99\) (sensibilidad)<br>
+                \(P(T^+|E^c) = 0{,}05\) (1 - especificidad)
+                <br><br>
+                
+                <strong>Paso 1:</strong> Calcular \(P(T^+)\)
+                $$P(T^+) = P(E) \cdot P(T^+|E) + P(E^c) \cdot P(T^+|E^c)$$
+                $$P(T^+) = 0{,}01 \times 0{,}99 + 0{,}99 \times 0{,}05 = 0{,}0099 + 0{,}0495 = 0{,}0594$$
+                <br>
+                
+                <strong>Paso 2:</strong> Aplicar Bayes
+                $$P(E|T^+) = \frac{P(E) \cdot P(T^+|E)}{P(T^+)} = \frac{0{,}0099}{0{,}0594} \approx 0{,}1667 = 16{,}67\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> Solo el 16,67 % de las personas con test positivo están realmente enfermas.
+                <br><br>
+                
+                <strong>Reflexión:</strong> 🤯 Aunque el test es muy bueno (99 % de sensibilidad, 95 % de especificidad), como la enfermedad es rara (1 %), la mayoría de los positivos son falsos positivos. Esto es la <strong>paradoja de las pruebas diagnósticas</strong>.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Control en el Puerto de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En el control de acceso al Puerto de Vigo, un escáner detecta materiales prohibidos:</p>
+            <ul>
+                <li>Detecta correctamente el 98 % de los contenedores con material prohibido.</li>
+                <li>Da falsa alarma en el 2 % de los contenedores limpios.</li>
+                <li>Se sabe que el 0,1 % de los contenedores llevan material prohibido.</li>
+            </ul>
+            <p><strong>Si el escáner da alarma, ¿cuál es la probabilidad de que sea real?</strong></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Datos:</strong><br>
+                \(M\) = "material prohibido", \(A\) = "alarma"<br>
+                \(P(M) = 0{,}001\), &nbsp; \(P(M^c) = 0{,}999\)<br>
+                \(P(A|M) = 0{,}98\), &nbsp; \(P(A|M^c) = 0{,}02\)
+                <br><br>
+                
+                <strong>Paso 1:</strong> Probabilidad total de alarma
+                $$P(A) = 0{,}001 \times 0{,}98 + 0{,}999 \times 0{,}02$$
+                $$P(A) = 0{,}00098 + 0{,}01998 = 0{,}02096$$
+                <br>
+                
+                <strong>Paso 2:</strong> Bayes
+                $$P(M|A) = \frac{0{,}001 \times 0{,}98}{0{,}02096} = \frac{0{,}00098}{0{,}02096} \approx 0{,}0467 = 4{,}67\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> Solo el 4,67 % de las alarmas son reales. El 95,33 % son falsas alarmas.
+                <br><br>
+                
+                <strong>Reflexión:</strong> Aunque el escáner es muy preciso, el material prohibido es tan raro que la mayoría de alarmas son falsas. Por eso el Puerto necesita inspección humana adicional.
+            </details>
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🚀 Bloque 4: Ampliación — 10 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Detector de bulos sobre eventos de Vigo</div>
+            <p>El 5 % de los mensajes que circulan sobre eventos de Vigo son bulos. Un detector automático identifica:</p>
+            <ul>
+                <li>El 90 % de los bulos reales como bulos.</li>
+                <li>El 8 % de los mensajes verdaderos como bulos (falso positivo).</li>
+            </ul>
+            <p><strong>a)</strong> Si el detector señala un mensaje como bulo, ¿cuál es la probabilidad de que lo sea realmente?</p>
+            <p><strong>b)</strong> Reflexión: ¿Qué implicaciones éticas tiene usar sistemas automáticos de detección de bulos?</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a) Cálculo matemático:</strong><br>
+                \(B\) = "bulo", \(D^+\) = "detector dice bulo"<br>
+                \(P(B) = 0{,}05\), &nbsp; \(P(B^c) = 0{,}95\)<br>
+                \(P(D^+|B) = 0{,}90\), &nbsp; \(P(D^+|B^c) = 0{,}08\)
+                <br><br>
+                
+                $$P(D^+) = 0{,}05 \times 0{,}90 + 0{,}95 \times 0{,}08 = 0{,}045 + 0{,}076 = 0{,}121$$
+                <br>
+                
+                $$P(B|D^+) = \frac{0{,}05 \times 0{,}90}{0{,}121} = \frac{0{,}045}{0{,}121} \approx 0{,}3719 = 37{,}19\%$$
+                <br>
+                
+                <strong>Respuesta:</strong> Solo el 37 % de los mensajes marcados como bulos lo son realmente. El 63 % son mensajes verdaderos marcados incorrectamente.
+                <br><br>
+                
+                <strong>b) Reflexión ética:</strong><br>
+                — <strong>Censura de información veraz:</strong> El 63 % de mensajes bloqueados son verdaderos.<br>
+                — <strong>Confianza excesiva:</strong> Si las personas confían ciegamente en el detector, se perpetúan errores.<br>
+                — <strong>Transparencia:</strong> Los sistemas deben informar de sus tasas de error.<br>
+                — <strong>Supervisión humana:</strong> Decisiones importantes (como bloquear contenido) deberían tener revisión humana.<br>
+                — <strong>Sesgos algorítmicos:</strong> ¿Quién decide qué es bulo? ¿El algoritmo puede tener sesgos ideológicos?
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Problemas aplicados integradores</p>
+    </footer>
+
+</body>
+</html>

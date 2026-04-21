@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2 · La regla del juego (Reglas de Derivación)</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        h2,h3 { color:var(--primary); }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .solution { background:#eef7e9; border-left:4px solid #5cb85c; padding:12px; border-radius:0 8px 8px 0; margin-top:10px; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+        .objetivo { background:#fff3cd; border-left:4px solid #ffc107; padding:12px; border-radius:0 8px 8px 0; margin-bottom:20px; }
+        .regla { background:#e7f3ff; border-left:4px solid #0056b3; padding:10px; margin:10px 0; border-radius:0 6px 6px 0; }
+        table { width:100%; border-collapse:collapse; margin:15px 0; }
+        th, td { border:1px solid #ddd; padding:10px; text-align:left; }
+        th { background-color:#0056b3; color:white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 2 · La regla del juego</h1>
+        <p class="meta">CE 1.3 y 1.4 · Matemáticas Aplicadas a las CCSS I · Análisis: Reglas de Derivación</p>
+    </header>
+
+    <div class="objetivo">
+        <strong>Objetivo de la sesión:</strong> Dominar la mecánica de derivación de funciones elementales y compuestas mediante reglas algebraicas.
+    </div>
+
+    <section class="box">
+        <h2>📚 Saberes previos</h2>
+        <ul>
+            <li>Concepto de derivada como TVI (Sesión 1).</li>
+            <li>Operaciones con funciones: suma, producto, cociente y composición.</li>
+            <li>Funciones elementales: polinómicas, exponenciales y logarítmicas.</li>
+            <li>Propiedades de potencias y logaritmos.</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>📖 Teoría: Reglas de Derivación</h2>
+        
+        <h3>Reglas básicas</h3>
+        <table>
+            <tr>
+                <th>Función</th>
+                <th>Derivada</th>
+            </tr>
+            <tr>
+                <td>\(f(x) = k\) (constante)</td>
+                <td>\(f'(x) = 0\)</td>
+            </tr>
+            <tr>
+                <td>\(f(x) = x^n\)</td>
+                <td>\(f'(x) = n \cdot x^{n-1}\)</td>
+            </tr>
+            <tr>
+                <td>\(f(x) = e^x\)</td>
+                <td>\(f'(x) = e^x\)</td>
+            </tr>
+            <tr>
+                <td>\(f(x) = a^x\)</td>
+                <td>\(f'(x) = a^x \cdot \ln(a)\)</td>
+            </tr>
+            <tr>
+                <td>\(f(x) = \ln(x)\)</td>
+                <td>\(f'(x) = \frac{1}{x}\)</td>
+            </tr>
+            <tr>
+                <td>\(f(x) = \log_a(x)\)</td>
+                <td>\(f'(x) = \frac{1}{x \cdot \ln(a)}\)</td>
+            </tr>
+        </table>
+
+        <h3>Reglas de operaciones</h3>
+        <div class="regla">
+            <strong>Suma y resta:</strong> \([f(x) \pm g(x)]' = f'(x) \pm g'(x)\)
+        </div>
+        <div class="regla">
+            <strong>Producto por constante:</strong> \([k \cdot f(x)]' = k \cdot f'(x)\)
+        </div>
+        <div class="regla">
+            <strong>Producto (regla de Leibniz):</strong> \([f(x) \cdot g(x)]' = f'(x) \cdot g(x) + f(x) \cdot g'(x)\)
+        </div>
+        <div class="regla">
+            <strong>Cociente:</strong> \[\left[\frac{f(x)}{g(x)}\right]' = \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{[g(x)]^2}\]
+        </div>
+        <div class="regla">
+            <strong>Regla de la cadena:</strong> Si \(h(x) = f(g(x))\), entonces \(h'(x) = f'(g(x)) \cdot g'(x)\)
+        </div>
+    </section>
+
+    <section class="box">
+        <h2>🔧 Bloque de Refuerzo (10 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 1: Derivada de funciones constantes y polinómicas</p>
+        <p>Calcula la derivada de:</p>
+        <p>a) \(f(x) = 7\)<br>
+        b) \(g(x) = 5x^3\)<br>
+        c) \(h(x) = 2x^4 - 3x^2 + 5x - 1\)</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(f'(x) = 0\) (la derivada de una constante es cero porque no hay cambio)</p>
+            <p>b) \(g'(x) = 5 \cdot 3x^2 = 15x^2\)</p>
+            <p>c) \(h'(x) = 8x^3 - 6x + 5\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2: Interpretación del crecimiento nulo</p>
+        <p>Una empresa de conservas tiene unos costes fijos mensuales de 12.000€, independientemente de la producción. Si \(C_F(x) = 12000\), ¿cuál es \(C_F'(x)\)? ¿Qué significa este resultado?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(C_F'(x) = 0\)</p>
+            <p><strong>Interpretación:</strong> Los costes fijos no varían con la cantidad producida, por eso su tasa de variación (derivada) es cero.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3: Crecimiento lineal vs cuadrático</p>
+        <p>Compara las derivadas de \(f(x) = 100x\) (ingresos lineales) y \(g(x) = 5x^2\) (ingresos cuadráticos). ¿Qué indica la diferencia?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(f'(x) = 100\) (constante) → El ritmo de crecimiento es siempre el mismo.</p>
+            <p>\(g'(x) = 10x\) (variable) → El ritmo de crecimiento aumenta proporcionalmente con \(x\).</p>
+            <p><strong>Conclusión:</strong> En un modelo cuadrático, cada unidad adicional producida genera mayor ingreso marginal.</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>💪 Bloque de Consolidación (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 4: Costes totales de una pyme de conservas</p>
+        <p>Los costes totales (en euros) de una conservera vienen dados por \(C(x) = 0{,}5x^2 + 30x + 5000\), donde \(x\) es el número de latas producidas.</p>
+        <p>a) Calcula la función de coste marginal \(C'(x)\).<br>
+        b) ¿Cuál es el coste marginal cuando se producen 100 latas?<br>
+        c) Interpreta este resultado.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(C'(x) = x + 30\)</p>
+            <p>b) \(C'(100) = 100 + 30 = 130\) €/lata</p>
+            <p>c) Producir la lata número 101 cuesta aproximadamente 130€ adicionales. El coste marginal aumenta con la producción.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 5: Beneficio de una empresa</p>
+        <p>El beneficio de una empresa viene dado por \(B(x) = -2x^3 + 45x^2 - 100x + 200\).</p>
+        <p>a) Calcula \(B'(x)\).<br>
+        b) Evalúa \(B'(10)\) e interpreta el resultado.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(B'(x) = -6x^2 + 90x - 100\)</p>
+            <p>b) \(B'(10) = -6(100) + 90(10) - 100 = -600 + 900 - 100 = 200\)</p>
+            <p><strong>Interpretación:</strong> Cuando \(x=10\), el beneficio crece a razón de 200 unidades monetarias por cada unidad adicional producida/vendida.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 6: Regla del producto</p>
+        <p>Calcula la derivada de \(f(x) = (2x^2 + 3)(4x - 1)\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Usando la regla del producto: \([u \cdot v]' = u' \cdot v + u \cdot v'\)</p>
+            <p>\(u = 2x^2 + 3 \Rightarrow u' = 4x\)</p>
+            <p>\(v = 4x - 1 \Rightarrow v' = 4\)</p>
+            <p>\(f'(x) = 4x(4x-1) + (2x^2+3)(4) = 16x^2 - 4x + 8x^2 + 12 = 24x^2 - 4x + 12\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 7: Regla del cociente</p>
+        <p>Calcula la derivada de \(g(x) = \frac{3x^2 + 1}{x - 2}\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(u = 3x^2 + 1 \Rightarrow u' = 6x\)</p>
+            <p>\(v = x - 2 \Rightarrow v' = 1\)</p>
+            <p>\[g'(x) = \frac{6x(x-2) - (3x^2+1)(1)}{(x-2)^2} = \frac{6x^2 - 12x - 3x^2 - 1}{(x-2)^2} = \frac{3x^2 - 12x - 1}{(x-2)^2}\]</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>🚀 Bloque de Ampliación (15 min)</h2>
+        
+        <p class="exercise-title">Ejercicio 8: Interés compuesto en productos bancarios</p>
+        <p>El capital acumulado en una cuenta con interés compuesto continuo es \(C(t) = 5000 \cdot e^{0{,}04t}\), donde \(t\) es el tiempo en años.</p>
+        <p>a) Calcula \(C'(t)\).<br>
+        b) ¿A qué ritmo crece el capital en \(t=5\) años?<br>
+        c) Compara con un modelo de interés simple \(S(t) = 5000 + 200t\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(C'(t) = 5000 \cdot e^{0{,}04t} \cdot 0{,}04 = 200e^{0{,}04t}\)</p>
+            <p>b) \(C'(5) = 200e^{0{,}2} \approx 200 \cdot 1{,}221 = 244{,}2\) €/año</p>
+            <p>c) En interés simple: \(S'(t) = 200\) €/año (constante).</p>
+            <p><strong>Conclusión:</strong> En el modelo compuesto, el ritmo de crecimiento aumenta con el tiempo (efecto del interés sobre interés).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 9: Derivada de funciones logarítmicas</p>
+        <p>Calcula la derivada de:</p>
+        <p>a) \(f(x) = \ln(2x)\)<br>
+        b) \(g(x) = 3\ln(x) + x^2\)</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) Usando la regla de la cadena: \(f'(x) = \frac{1}{2x} \cdot 2 = \frac{1}{x}\)</p>
+            <p><em>Nota: \(\ln(2x) = \ln(2) + \ln(x)\), luego \([\ln(2x)]' = [\ln(x)]' = \frac{1}{x}\)</em></p>
+            <p>b) \(g'(x) = \frac{3}{x} + 2x\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 10: Regla de la cadena</p>
+        <p>Calcula la derivada de \(h(x) = (3x^2 - 5)^4\).</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(u = 3x^2 - 5\), entonces \(h(x) = u^4\)</p>
+            <p>\(h'(x) = 4u^3 \cdot u' = 4(3x^2-5)^3 \cdot 6x = 24x(3x^2-5)^3\)</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>⚙️ Trabajo Activo: Manual de mantenimiento de la derivada</h2>
+        <p><strong>Contexto:</strong> El consumo eléctrico (en kW) de las luces de Navidad de Vigo se modela mediante funciones que combinan diferentes tipos de iluminación.</p>
+        
+        <p class="exercise-title">Tarea 1: Guía de supervivencia</p>
+        <p>Por parejas, creéis una tabla resumen con las principales reglas de derivación y un ejemplo aplicado al consumo eléctrico. Incluir al menos:</p>
+        <ul>
+            <li>Derivada de polinomios</li>
+            <li>Derivada de exponenciales</li>
+            <li>Regla del producto</li>
+            <li>Regla del cociente</li>
+            <li>Regla de la cadena</li>
+        </ul>
+
+        <p class="exercise-title">Tarea 2: Consumo total de las luces</p>
+        <p>El consumo eléctrico viene dado por \(E(t) = 100 + 50t - 2t^2 + 0{,}1t^3\), donde \(t\) son las horas desde el encendido (18:00).</p>
+        <p>a) Calcula \(E'(t)\) (la tasa de variación del consumo).<br>
+        b) ¿A qué hora el consumo crece más rápidamente (máximo de \(E'(t)\))?<br>
+        c) Calcula \(E'(4)\) e interpreta el resultado.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(E'(t) = 50 - 4t + 0{,}3t^2\)</p>
+            <p>b) Para hallar el máximo de \(E'(t)\), derivamos de nuevo: \(E''(t) = -4 + 0{,}6t = 0 \Rightarrow t = \frac{4}{0{,}6} \approx 6{,}67\) horas</p>
+            <p>Comprobamos que es máximo evaluando antes y después, o usando el criterio de la segunda derivada.</p>
+            <p>c) \(E'(4) = 50 - 16 + 4{,}8 = 38{,}8\) kW/h</p>
+            <p><strong>Interpretación:</strong> A las 22:00 (4 horas después de encender), el consumo aumenta a razón de 38,8 kW por hora.</p>
+        </div></details>
+
+        <p class="exercise-title">Tarea 3: Eficiencia energética</p>
+        <p>La eficiencia luminosa es \(L(t) = \frac{500t}{10 + t^2}\) (lúmenes/kW). Calcula \(L'(t)\) y determina en qué momento la eficiencia deja de crecer.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Usando la regla del cociente:</p>
+            <p>\(L'(t) = \frac{500(10+t^2) - 500t(2t)}{(10+t^2)^2} = \frac{5000 + 500t^2 - 1000t^2}{(10+t^2)^2} = \frac{5000 - 500t^2}{(10+t^2)^2}\)</p>
+            <p>La eficiencia deja de crecer cuando \(L'(t) = 0\):</p>
+            <p>\(5000 - 500t^2 = 0 \Rightarrow t^2 = 10 \Rightarrow t = \sqrt{10} \approx 3{,}16\) horas</p>
+            <p>A las 21:10 aproximadamente, la eficiencia alcanza su máximo.</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>📝 Ejercicios para casa</h2>
+        
+        <p class="exercise-title">Ejercicio 11</p>
+        <p>Deriva las siguientes funciones:</p>
+        <p>a) \(f(x) = 5x^4 - 3x^3 + 7x - 2\)<br>
+        b) \(g(x) = (x^2 + 1)(x^3 - 4)\)<br>
+        c) \(h(x) = \frac{x^2 - 1}{x + 3}\)</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(f'(x) = 20x^3 - 9x^2 + 7\)</p>
+            <p>b) \(g'(x) = 2x(x^3-4) + (x^2+1)(3x^2) = 2x^4 - 8x + 3x^4 + 3x^2 = 5x^4 + 3x^2 - 8x\)</p>
+            <p>c) \(h'(x) = \frac{2x(x+3) - (x^2-1)(1)}{(x+3)^2} = \frac{2x^2 + 6x - x^2 + 1}{(x+3)^2} = \frac{x^2 + 6x + 1}{(x+3)^2}\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 12</p>
+        <p>Una población de bacterias crece según \(P(t) = 1000 \cdot 2^{0{,}3t}\), donde \(t\) está en horas.</p>
+        <p>a) Calcula \(P'(t)\).<br>
+        b) ¿A qué ritmo crece la población en \(t=5\) horas?</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>a) \(P'(t) = 1000 \cdot 2^{0{,}3t} \cdot \ln(2) \cdot 0{,}3 = 300\ln(2) \cdot 2^{0{,}3t}\)</p>
+            <p>b) \(P'(5) = 300\ln(2) \cdot 2^{1{,}5} \approx 300 \cdot 0{,}693 \cdot 2{,}828 \approx 588\) bacterias/hora</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 13</p>
+        <p>El pH de una solución química depende de la concentración de iones \([H^+]\) según \(pH = -\log_{10}[H^+]\).</p>
+        <p>Si \([H^+](t) = 10^{-4-0{,}5t}\), calcula la derivada de \(pH(t)\) respecto al tiempo.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>\(pH(t) = -\log_{10}(10^{-4-0{,}5t}) = -(-4-0{,}5t) = 4 + 0{,}5t\)</p>
+            <p>\(pH'(t) = 0{,}5\)</p>
+            <p><strong>Interpretación:</strong> El pH aumenta a razón constante de 0,5 unidades por unidad de tiempo.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 14</p>
+        <p>Calcula la derivada de \(f(x) = e^{x^2 + 3x}\) usando la regla de la cadena.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Sea \(u = x^2 + 3x\), entonces \(f(x) = e^u\)</p>
+            <p>\(f'(x) = e^u \cdot u' = e^{x^2+3x} \cdot (2x+3)\)</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 15</p>
+        <p>El coste medio por unidad producida es \(C_m(x) = \frac{100 + 50x + x^2}{x}\). Simplifica y deriva.</p>
+        <details class="solution"><summary></summary><div class="solution">
+            <p>Simplificando: \(C_m(x) = \frac{100}{x} + 50 + x = 100x^{-1} + 50 + x\)</p>
+            <p>\(C_m'(x) = -100x^{-2} + 1 = 1 - \frac{100}{x^2}\)</p>
+        </div></details>
+    </section>
+
+    <footer style="text-align:center; margin-top:40px; padding:20px; color:#777; font-size:0.9em;">
+        <p>Matemáticas Aplicadas a las CCSS I · 1º Bachillerato LOMLOE · IES de Teis</p>
+    </footer>
+</body>
+</html>

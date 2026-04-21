@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2: Navegación y Alturas – Resolución de Triángulos Rectángulos</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .error-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin-top: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .step {
+            margin: 8px 0;
+        }
+        .step strong {
+            color: #0056b3;
+        }
+        .previo {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            font-size: 0.78em;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .exercise-img {
+            display: block;
+            max-width: 100%;
+            width: 700px;
+            margin: 14px auto 6px auto;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 2: Navegación y Alturas – Resolución de Triángulos Rectángulos</h1>
+        <p class="competency">
+            <span>CE 1.2: Resolver problemas matemáticos utilizando diferentes estrategias.</span><br>
+            <span>CE 5.2: Utilizar software geométrico o herramientas de medida para resolver problemas de topografía.</span>
+        </p>
+    </header>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE TEÓRICO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Apuntes Teóricos</h2>
+
+        <div class="previo">
+            <strong>Conocimientos previos necesarios:</strong> Razones trigonométricas (Seno, Coseno, Tangente) y despeje de ecuaciones de primer grado.
+        </div>
+
+        <h3>1. El ángulo de elevación y el ángulo de depresión</h3>
+        <p>
+            Cuando observamos un objeto desde un punto, el <strong>ángulo de elevación</strong> es el ángulo que forma la línea visual con la horizontal hacia <em>arriba</em>.
+            El <strong>ángulo de depresión</strong> es el ángulo que forma la línea visual con la horizontal hacia <em>abajo</em>.
+        </p>
+        <p>
+            Una propiedad clave por ángulos alternos internos (rectas paralelas cortadas por una transversal):
+        </p>
+        <p>
+            $$\text{Ángulo de depresión desde } A = \text{Ángulo de elevación desde } B$$
+        </p>
+        <p>Esto nos permite siempre trabajar con el ángulo <em>dentro</em> del triángulo rectángulo.</p>
+
+        <h3>2. Estrategia de resolución (S·C·T)</h3>
+        <p>Para cada problema, identifica los tres elementos y selecciona la razón adecuada:</p>
+        <ul>
+            <li>¿Tengo el ángulo, el <em>cateto opuesto</em> y la <em>hipotenusa</em>? → Usa el <strong>Seno</strong>.</li>
+            <li>¿Tengo el ángulo, el <em>cateto contiguo</em> y la <em>hipotenusa</em>? → Usa el <strong>Coseno</strong>.</li>
+            <li>¿Tengo el ángulo, el <em>cateto opuesto</em> y el <em>cateto contiguo</em>? → Usa la <strong>Tangente</strong>.</li>
+        </ul>
+        <p>
+            $$\sin(\alpha) = \frac{\text{C. Opuesto}}{\text{Hipotenusa}} \qquad
+              \cos(\alpha) = \frac{\text{C. Contiguo}}{\text{Hipotenusa}} \qquad
+              \tan(\alpha) = \frac{\text{C. Opuesto}}{\text{C. Contiguo}}$$
+        </p>
+        <p>Para despejar la incógnita según su posición:</p>
+        <p>
+            $$\text{Si } \tan(\alpha) = \frac{h}{d} \implies d = \frac{h}{\tan(\alpha)}$$
+        </p>
+        <p>
+            $$\text{Si } \sin(\alpha) = \frac{h}{L} \implies h = L \cdot \sin(\alpha)$$
+        </p>
+        <p>
+            $$\text{Si } \cos(\alpha) = \frac{d}{L} \implies d = L \cdot \cos(\alpha)$$
+        </p>
+        <p>
+            $$\text{Si los catetos son conocidos: } \alpha = \arctan\!\left(\frac{h}{d}\right)$$
+        </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE PRÁCTICO
+    ══════════════════════════════════════════════ -->
+    <section class="exercise-box">
+        <h2>Bloque Práctico: Contexto Naval y Topográfico</h2>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 1 – Faro de Alcabre
+        ────────────────────────────── -->
+        <div class="exercise">
+            <div class="exercise-title">
+                <span class="badge">Modelado</span>
+                Ejercicio 1 – El Faro de Alcabre
+            </div>
+            <p>
+                Desde la linterna del Faro de Alcabre, situada a <strong>25 metros</strong> sobre el nivel del mar,
+                se observa una batea de mejillones con un <strong>ángulo de depresión de 12°</strong>.
+                ¿A qué distancia de la base del faro se encuentra la batea?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S2_Ej1_Faro_Alcabre.png" alt="Diagrama Ejercicio 1 – Faro de Alcabre" class="exercise-img">
+                <strong>Resolución paso a paso:</strong>
+
+                <div class="step">
+                    <strong>Paso 1 – Dibujar el triángulo rectángulo.</strong><br>
+                    El faro forma el cateto vertical (\(h = 25\text{ m}\)).
+                    La distancia horizontal al faro (\(d\)) es el cateto horizontal (la incógnita).
+                    La línea visual al observador es la hipotenusa.
+                </div>
+
+                <div class="step">
+                    <strong>Paso 2 – Identificar el ángulo correcto.</strong><br>
+                    El ángulo de depresión (12°) es igual al ángulo de elevación desde la batea,
+                    por ángulos alternos internos entre la línea horizontal del faro y la horizontal de la batea (ambas paralelas).
+                    Por tanto, trabajamos con <strong>12°</strong> <em>dentro</em> del triángulo.
+                </div>
+
+                <div class="step">
+                    <strong>Paso 3 – Seleccionar la razón trigonométrica.</strong><br>
+                    Conocemos: ángulo (12°) y cateto opuesto (25 m). Buscamos: cateto contiguo (\(d\)).
+                    → Usamos la <strong>Tangente</strong>.
+                </div>
+
+                <div class="step">
+                    <strong>Paso 4 – Plantear y resolver la ecuación.</strong>
+                    $$\tan(12°) = \frac{25}{d} \implies d = \frac{25}{\tan(12°)} = \frac{25}{0{,}212} \approx \mathbf{117{,}9 \text{ m}}$$
+                </div>
+
+                <div class="error-box">
+                    ⚠️ <strong>Error común:</strong> Colocar el ángulo de 12° en la posición del ángulo recto del triángulo,
+                    o restarle 90° pensando que hay que complementarlo. El ángulo de trabajo es directamente 12°
+                    gracias a los alternos internos.
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 2 – Torre de Valadares
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 2 – Torre de alta tensión en Valadares
+            </div>
+            <p>
+                Un técnico de mantenimiento sube a una torre de alta tensión en el polígono de Valadares.
+                Sujeta un cable de seguridad de <strong>30 metros</strong> al suelo,
+                formando un ángulo de <strong>60° con la horizontal</strong>.
+                ¿A qué altura se encuentra el técnico?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S2_Ej2_Torre_Valadares.png" alt="Diagrama Ejercicio 2 – Torre de Valadares" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Identificación:</strong> El cable es la hipotenusa (\(L = 30\text{ m}\)),
+                    el ángulo es 60°, la incógnita es la altura (\(h\), cateto opuesto).
+                </div>
+
+                <div class="step">
+                    <strong>Razón seleccionada:</strong> Seno (cateto opuesto / hipotenusa).
+                    $$\sin(60°) = \frac{h}{30} \implies h = 30 \cdot \sin(60°) = 30 \cdot 0{,}866 \approx \mathbf{25{,}98 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 3 – Grúa de Navantia
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 3 – Grúa en los astilleros de Navantia / Barreras
+            </div>
+            <p>
+                En los astilleros de Navantia o Barreras, una pieza de un casco de barco se levanta con una grúa.
+                Si el brazo de la grúa mide <strong>50 metros</strong> y forma un ángulo de <strong>45° con la horizontal</strong>,
+                ¿cuál es la distancia horizontal desde la base de la grúa hasta la vertical de la pieza?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S2_Ej3_Grua_Navantia.png" alt="Diagrama Ejercicio 3 – Grúa Navantia" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Identificación:</strong> El brazo es la hipotenusa (\(L = 50\text{ m}\)),
+                    el ángulo es 45°, la incógnita es la distancia horizontal (\(d\), cateto contiguo).
+                </div>
+
+                <div class="step">
+                    <strong>Razón seleccionada:</strong> Coseno (cateto contiguo / hipotenusa).
+                    $$\cos(45°) = \frac{d}{50} \implies d = 50 \cdot \cos(45°) = 50 \cdot 0{,}707 \approx \mathbf{35{,}35 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 4 – Avión de Peinador
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica independiente</span>
+                Ejercicio 4 – Despegue en el aeropuerto de Peinador
+            </div>
+            <p>
+                Un avión que despega de Peinador alcanza una altitud de <strong>1.200 metros</strong>
+                tras haber recorrido una distancia horizontal de <strong>4.500 metros</strong>.
+                ¿Cuál es el ángulo de ascenso medio del avión?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S2_Ej4_Avion_Peinador.png" alt="Diagrama Ejercicio 4 – Avión Peinador" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Identificación:</strong> Se conocen el cateto opuesto (\(h = 1\,200\text{ m}\)) y el cateto contiguo (\(d = 4\,500\text{ m}\)).
+                    La incógnita es el ángulo \(\alpha\).
+                </div>
+
+                <div class="step">
+                    <strong>Razón seleccionada:</strong> Tangente. Como buscamos el ángulo, usamos la tangente inversa.
+                    $$\tan(\alpha) = \frac{1200}{4500} = 0{,}2\overline{6} \implies \alpha = \arctan(0{,}266) \approx \mathbf{14{,}93°}$$
+                </div>
+            </details>
+        </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SOLUCIONARIO RÁPIDO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Solucionario – Resultados finales</h2>
+        <ol>
+            <li>
+                \(\tan(12°) = 25 / d \;\rightarrow\; d = 25 \,/\, 0{,}212 \approx \mathbf{117{,}9 \text{ m}}\)
+            </li>
+            <li>
+                \(\sin(60°) = h / 30 \;\rightarrow\; h = 30 \cdot 0{,}866 \approx \mathbf{25{,}98 \text{ m}}\)
+            </li>
+            <li>
+                \(\cos(45°) = d / 50 \;\rightarrow\; d = 50 \cdot 0{,}707 \approx \mathbf{35{,}35 \text{ m}}\)
+            </li>
+            <li>
+                \(\tan(\alpha) = 1200 / 4500 \;\rightarrow\; \alpha = \arctan(0{,}266) \approx \mathbf{14{,}93°}\)
+            </li>
+        </ol>
+    </section>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det) {
+            det.addEventListener('toggle', function() {
+                if (det.open && window.MathJax) {
+                    MathJax.typesetPromise([det]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

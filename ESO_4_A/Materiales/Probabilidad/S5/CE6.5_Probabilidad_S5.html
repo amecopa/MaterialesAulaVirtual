@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 5: Diagramas de Árbol y Tablas de Contingencia</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .formula-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+        table.contingencia {
+            border-collapse: collapse;
+            margin: 15px auto;
+            background: white;
+        }
+        table.contingencia th, table.contingencia td {
+            border: 2px solid #0056b3;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        table.contingencia th {
+            background-color: #0056b3;
+            color: white;
+        }
+        table.contingencia td.total {
+            background-color: #e8f0fe;
+            font-weight: bold;
+        }
+        .img-centered {
+            display: block;
+            max-width: 90%;
+            margin: 20px auto;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 5: Diagramas de Árbol y Tablas de Contingencia</h1>
+        <p class="competency">CE6: Gestionar incertidumbre con herramientas visuales | CE1: Representación matemática</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Diagrama de Árbol</h3>
+        <p>Un <strong>diagrama de árbol</strong> es una representación gráfica de experimentos compuestos que se desarrollan en <strong>etapas sucesivas</strong>.</p>
+        
+        <p><strong>Elementos:</strong></p>
+        <ul>
+            <li><strong>Nodos:</strong> Representan estados o resultados</li>
+            <li><strong>Ramas:</strong> Representan las posibles opciones en cada etapa</li>
+            <li><strong>Probabilidades en ramas:</strong> \(P(\text{resultado de etapa 2} | \text{resultado de etapa 1})\)</li>
+        </ul>
+
+        <div class="formula-box">
+            <strong>Regla fundamental:</strong><br>
+            La probabilidad de un resultado final se calcula <strong>multiplicando las probabilidades a lo largo de cada rama</strong>.
+            $$P(\text{camino completo}) = P(\text{rama 1}) \times P(\text{rama 2}) \times ...$$
+        </div>
+
+        <p><strong>Cuándo usarlo:</strong> Experimentos en varias etapas (con/sin reposición, situaciones secuenciales)</p>
+
+        <h3>Tabla de Contingencia</h3>
+        <p>Una <strong>tabla de contingencia</strong> (o tabla de doble entrada) organiza datos bivariados en filas y columnas.</p>
+        
+        <p><strong>Estructura:</strong></p>
+        <ul>
+            <li>Filas: valores de una variable (ej: género)</li>
+            <li>Columnas: valores de otra variable (ej: práctica deporte)</li>
+            <li>Celdas: frecuencias absolutas o relativas</li>
+            <li>Totales marginales: suma de cada fila/columna</li>
+        </ul>
+
+        <p><strong>Ventajas:</strong> Permite calcular probabilidades marginales, conjuntas y condicionadas fácilmente.</p>
+
+        <h3>Relación entre ambos</h3>
+        <p>Cualquier árbol se puede convertir en tabla y viceversa. El árbol es mejor para ver la <strong>secuencia</strong>, la tabla para ver las <strong>relaciones cruzadas</strong>.</p>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🔥 Bloque 1: Refuerzo — 8 min</h2>
+        
+        <p><strong>Mini-quiz oral (3 preguntas de verdadero/falso):</strong></p>
+        <ol>
+            <li>En un árbol de probabilidad, la suma de probabilidades de todas las ramas que salen de un nodo siempre debe ser 1. <em>(V)</em></li>
+            <li>\(P(A|B)\) siempre es igual a \(P(B|A)\). <em>(F)</em></li>
+            <li>Si dos sucesos son independientes, \(P(A \cap B) = 0\). <em>(F)</em></li>
+        </ol>
+    </section>
+
+    <section class="exercise-box">
+        <h2>📖 Bloque 2: Consolidación — 17 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Construcción colectiva): Mercado del Berbés <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En el Mercado del Berbés de Vigo, el 60 % del pescado es fresco y el 40 % congelado. Del fresco, el 90 % supera el control de calidad; del congelado, el 70 %.</p>
+            <p><strong>Construye el diagrama de árbol y calcula todas las probabilidades finales.</strong></p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Diagrama de árbol:</strong><br>
+                <img src="S5/arbol_berbes.png" alt="Árbol del Berbés" class="img-centered" />
+                <br>
+                
+                <strong>Cálculos paso a paso:</strong>
+                <ol style="line-height:1.8;">
+                    <li><strong>Fresco Y pasa control:</strong> \(0,6 \times 0,9 = 0,54 = 54\%\)</li>
+                    <li><strong>Fresco Y NO pasa:</strong> \(0,6 \times 0,1 = 0,06 = 6\%\)</li>
+                    <li><strong>Congelado Y pasa:</strong> \(0,4 \times 0,7 = 0,28 = 28\%\)</li>
+                    <li><strong>Congelado Y NO pasa:</strong> \(0,4 \times 0,3 = 0,12 = 12\%\)</li>
+                </ol>
+                
+                <strong>Verificación:</strong> \(0,54 + 0,06 + 0,28 + 0,12 = 1,00 \, \checkmark\)
+                <br><br>
+                
+                <em>Pregunta adicional: ¿Cuál es la probabilidad de que un pescado pase el control?</em><br>
+                \(P(\text{pasa}) = 0,54 + 0,28 = 0,82 = 82\%\) → <em>Esto anticipa la probabilidad total (próxima sesión)</em>
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>✏️ Bloque 3: Afianzamiento (Grupos de 3) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Completar árbol incompleto</div>
+            <p>Completa el siguiente árbol y calcula 4 probabilidades finales:</p>
+            <p><em>(Se proporciona un árbol parcial en la pizarra con ramas por completar)</em></p>
+            <p><strong>Contexto:</strong> Extracción de 2 bolas de una urna con 4 rojas y 3 azules, sin reposición.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Árbol:</strong>
+                <ul>
+                    <li>Primera extracción: \(P(R_1) = \frac{4}{7}\), \(P(A_1) = \frac{3}{7}\)</li>
+                    <li>Si \(R_1\): \(P(R_2|R_1) = \frac{3}{6} = \frac{1}{2}\), \(P(A_2|R_1) = \frac{3}{6} = \frac{1}{2}\)</li>
+                    <li>Si \(A_1\): \(P(R_2|A_1) = \frac{4}{6} = \frac{2}{3}\), \(P(A_2|A_1) = \frac{2}{6} = \frac{1}{3}\)</li>
+                </ul>
+                
+                <strong>Probabilidades finales:</strong>
+                <ul>
+                    <li>\(P(RR) = \frac{4}{7} \times \frac{1}{2} = \frac{2}{7} \approx 0,286\)</li>
+                    <li>\(P(RA) = \frac{4}{7} \times \frac{1}{2} = \frac{2}{7} \approx 0,286\)</li>
+                    <li>\(P(AR) = \frac{3}{7} \times \frac{2}{3} = \frac{2}{7} \approx 0,286\)</li>
+                    <li>\(P(AA) = \frac{3}{7} \times \frac{1}{3} = \frac{1}{7} \approx 0,143\)</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Tabla de contingencia — IES Teis <span class="badge">CONTEXTO VIGO</span></div>
+            <p>300 estudiantes del IES Teis:</p>
+            <table class="contingencia">
+                <tr>
+                    <th></th>
+                    <th>Deporte Sí</th>
+                    <th>Deporte No</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <th>Hombre</th>
+                    <td>120</td>
+                    <td>60</td>
+                    <td class="total">180</td>
+                </tr>
+                <tr>
+                    <th>Mujer</th>
+                    <td>70</td>
+                    <td>50</td>
+                    <td class="total">120</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td class="total">190</td>
+                    <td class="total">110</td>
+                    <td class="total">300</td>
+                </tr>
+            </table>
+            <p>Calcula: <strong>a)</strong> \(P(\text{deporte}|\text{mujer})\) &nbsp; <strong>b)</strong> \(P(\text{hombre}|\text{no deporte})\) &nbsp; <strong>c)</strong> \(P(\text{deporte})\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> 
+                $$P(\text{deporte}|\text{mujer}) = \frac{70}{120} = \frac{7}{12} \approx 0,583 = 58,3\%$$
+                <br>
+                
+                <strong>b)</strong> 
+                $$P(\text{hombre}|\text{no deporte}) = \frac{60}{110} = \frac{6}{11} \approx 0,545 = 54,5\%$$
+                <br>
+                
+                <strong>c)</strong> 
+                $$P(\text{deporte}) = \frac{190}{300} = \frac{19}{30} \approx 0,633 = 63,3\%$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Luces de Navidad de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>El 80 % de las luces de Navidad de Vigo son LED. El 5 % de las luces LED fallan; el 15 % de las no-LED fallan.</p>
+            <p><strong>a)</strong> Construye el diagrama de árbol</p>
+            <p><strong>b)</strong> ¿Cuál es la probabilidad de que una luz falle?</p>
+            <p><strong>c)</strong> Construye la tabla de contingencia equivalente para 10 000 luces</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> Diagrama de árbol: <em>(Se puede dibujar a mano o ver imagen generada)</em>
+                <br><br>
+                
+                <strong>b)</strong> Probabilidad de fallo:
+                $$P(\text{falla}) = P(\text{LED}) \cdot P(\text{falla}|\text{LED}) + P(\text{NoLED}) \cdot P(\text{falla}|\text{NoLED})$$
+                $$= 0,8 \times 0,05 + 0,2 \times 0,15 = 0,04 + 0,03 = 0,07 = 7\%$$
+                <br>
+                
+                <strong>c)</strong> Tabla de contingencia:
+                <table class="contingencia">
+                    <tr>
+                        <th></th>
+                        <th>Falla</th>
+                        <th>No falla</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <th>LED</th>
+                        <td>400</td>
+                        <td>7 600</td>
+                        <td class="total">8 000</td>
+                    </tr>
+                    <tr>
+                        <th>No-LED</th>
+                        <td>300</td>
+                        <td>1 700</td>
+                        <td class="total">2 000</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td class="total">700</td>
+                        <td class="total">9 300</td>
+                        <td class="total">10 000</td>
+                    </tr>
+                </table>
+                <img src="S5/tabla_luces_navidad.png" alt="Tabla" class="img-centered" />
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🚀 Bloque 4: Ampliación — 10 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Reflexión: Tabla vs Árbol</div>
+            <p>Construye la tabla de contingencia equivalente al problema de las Luces de Navidad (ejercicio 3) para 10 000 luces.</p>
+            <p><strong>¿Qué ventajas ofrece la tabla frente al árbol en este caso?</strong></p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Ventajas de la tabla:</strong>
+                <ul>
+                    <li>Permite ver de un vistazo todas las combinaciones y sus frecuencias</li>
+                    <li>Facilita el cálculo de probabilidades marginales directamente</li>
+                    <li>Útil cuando no hay secuencia temporal clara</li>
+                </ul>
+                
+                <strong>Ventajas del árbol:</strong>
+                <ul>
+                    <li>Refleja la estructura secuencial del experimento</li>
+                    <li>Visualiza probabilidades condicionadas de forma natural</li>
+                    <li>Útil cuando hay más de 2 etapas</li>
+                </ul>
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Teorema de la probabilidad total</p>
+        <p style="margin-top:8px; font-size:0.9em; color:#888;"><em>Ejecuta <code>python generador_graficos_maestro.py</code> para generar las gráficas de esta sesión</em></p>
+    </footer>
+
+</body>
+</html>

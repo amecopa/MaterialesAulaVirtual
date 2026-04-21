@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1 · Funciones elementales</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary:#0056b3; --bg:#f8f9fa; --text:#333; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.6; color:var(--text); background:var(--bg); max-width:900px; margin:0 auto; padding:20px; }
+        header { background:var(--primary); color:white; padding:20px; border-radius:8px; margin-bottom:24px; }
+        header h1 { margin:0; color:white; }
+        h2,h3 { color:var(--primary); }
+        .box { background:white; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+        .exercise-title { font-weight:700; color:#d9534f; }
+        details.solution summary { cursor:pointer; font-weight:700; color:#3a8a3a; list-style:none; user-select:none; }
+        details.solution summary::-webkit-details-marker { display:none; }
+        details.solution:not([open]) summary::before { content:"▶ Ver resolución"; }
+        details.solution[open] summary::before { content:"▼ Ocultar resolución"; }
+        .solution { background:#eef7e9; border-left:4px solid #5cb85c; padding:12px; border-radius:0 8px 8px 0; margin-top:10px; }
+        img { max-width:100%; border-radius:6px; border:1px solid #d9e2ec; }
+        .meta { font-size:.95em; color:#e9f2ff; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sesión 1 · Modelización con funciones elementales</h1>
+        <p class="meta">CE 5.1 y 5.3 · Matemáticas Aplicadas a las CCSS I</p>
+    </header>
+
+    <section class="box">
+        <h2>Saberes y conceptos previos</h2>
+        <ul>
+            <li>Funciones lineales y cuadráticas: pendiente, ordenada en el origen y vértice.</li>
+            <li>Dominio y recorrido en contextos reales.</li>
+            <li>Previos: ecuaciones de 1º y 2º grado, plano cartesiano, variables dependiente e independiente.</li>
+        </ul>
+        <img src="imgs/s1_modelizacion_lineal_cuadratica.png" alt="Gráfica lineal y cuadrática para modelización">
+    </section>
+
+    <section class="box">
+        <h2>Resumen de teoría utilizada</h2>
+        <ul>
+            <li><strong>Función lineal:</strong> modelo de la forma \(f(x)=mx+n\), donde \(m\) es la pendiente (tasa de variación) y \(n\) el valor inicial.</li>
+            <li><strong>Función cuadrática:</strong> modelo \(ax^2+bx+c\). Si \(a&lt;0\), tiene máximo en el vértice; si \(a&gt;0\), tiene mínimo.</li>
+            <li><strong>Vértice:</strong> se localiza en \(x=\frac{-b}{2a}\) y permite interpretar el momento de máximo o mínimo en contexto real.</li>
+            <li><strong>Dominio:</strong> conjunto de valores de \(x\) permitidos por la expresión (evitando divisiones entre 0 y raíces de números negativos).</li>
+            <li><strong>Modelización:</strong> se traduce un enunciado a función identificando variable independiente, variable dependiente y significado de parámetros.</li>
+        </ul>
+    </section>
+
+    <section class="box">
+        <h2>Bloque práctico</h2>
+
+        <p class="exercise-title">Ejercicio 1 (Modelado)</p>
+        <p>Una empresa de transporte cobra una base fija de 5€ más 1,20€ por cada kilómetro recorrido.</p>
+        <p>a) Escribe la función que relaciona el coste con la distancia.<br>b) Representa la función y explica qué significa la pendiente.</p>
+        <details class="solution"><summary></summary><div>
+            <p><strong>Solución:</strong> \(f(x)=1{,}20x+5\). La pendiente \(1{,}20\) representa el coste adicional por cada km.</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 2 (Práctica)</p>
+        <p>\(B(x)=-x^2+10x-21\), donde \(x\) es el número de años desde la apertura.</p>
+        <p>Determina en qué año el beneficio es máximo y cuál es.</p>
+        <details class="solution"><summary></summary><div>
+            <p>Vértice: \(x=\frac{-b}{2a}=\frac{-10}{2(-1)}=5\).<br>\(B(5)=-25+50-21=4\), es decir, \(400€\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 3 (Práctica)</p>
+        <p>Calcula el dominio de \(f(x)=\frac{2x}{x-4}\) y \(g(x)=\sqrt{x-5}\).</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(Dom(f)=\mathbb{R}\setminus\{4\}\), \(Dom(g)=[5,+\infty)\).</p>
+        </div></details>
+
+        <p class="exercise-title">Ejercicio 4 (Práctica)</p>
+        <p>Si se plantan 30 manzanos/ha, cada árbol produce 500 manzanas. Por cada árbol extra, la producción por árbol baja en 10 manzanas.</p>
+        <p>Escribe la producción total \(P(x)\), siendo \(x\) el número de árboles extra.</p>
+        <details class="solution"><summary></summary><div>
+            <p>\(P(x)=(30+x)(500-10x)=-10x^2+200x+15000\).</p>
+        </div></details>
+    </section>
+
+    <section class="box">
+        <h2>Uso en GeoGebra (copiar/pegar)</h2>
+        <ul>
+            <li>Coste transporte: <code>f(x)=1.2x+5</code></li>
+            <li>Beneficio tienda: <code>B(x)=-x^2+10x-21</code></li>
+            <li>Producción manzanos: <code>P(x)=(30+x)(500-10x)</code></li>
+            <li>Dominio de radical: <code>g(x)=sqrt(x-5)</code></li>
+        </ul>
+    </section>
+
+    <p><a href="index.html">← Volver al índice</a></p>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det){
+            det.addEventListener('toggle', function(){ if(det.open && window.MathJax){ MathJax.typesetPromise([det]); } });
+        });
+    </script>
+</body>
+</html>

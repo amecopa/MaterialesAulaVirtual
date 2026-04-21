@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2: Axiomática de Kolmogorov y Enfoques de la Probabilidad</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .axiom-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 2: Axiomática de Kolmogorov y Enfoques de la Probabilidad</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | CE1: Razonar matemáticamente</p>
+    </header>
+
+    <section class="theory-box">
+        <h2>📚 Apuntes Teóricos</h2>
+        
+        <h3>Axiomas de Kolmogorov (1933)</h3>
+        <p>La probabilidad es una función \(P\) que asigna a cada suceso \(A\) un número real \(P(A)\) que cumple:</p>
+        
+        <div class="axiom-box">
+            <strong>Axioma 1 (No negatividad):</strong> 
+            $$P(A) \geq 0 \quad \text{para todo suceso } A$$
+        </div>
+        
+        <div class="axiom-box">
+            <strong>Axioma 2 (Certeza):</strong> 
+            $$P(\Omega) = 1$$
+            El suceso seguro (todo el espacio muestral) tiene probabilidad 1.
+        </div>
+        
+        <div class="axiom-box">
+            <strong>Axioma 3 (Aditividad):</strong> 
+            Si \(A\) y \(B\) son sucesos incompatibles (\(A \cap B = \emptyset\)), entonces:
+            $$P(A \cup B) = P(A) + P(B)$$
+        </div>
+
+        <h3>Propiedades derivadas</h3>
+        <ul>
+            <li>\(0 \leq P(A) \leq 1\) para todo suceso \(A\)</li>
+            <li>\(P(\emptyset) = 0\) (suceso imposible)</li>
+            <li>\(P(A^c) = 1 - P(A)\) (complementario)</li>
+            <li>Si \(A \subset B\), entonces \(P(A) \leq P(B)\)</li>
+            <li><strong>Regla general de la suma:</strong> 
+                $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+            </li>
+        </ul>
+
+        <h3>Regla de Laplace (Casos favorables / Casos posibles)</h3>
+        <p>Cuando todos los resultados del espacio muestral son <strong>equiprobables</strong>:</p>
+        $$P(A) = \frac{\text{Casos favorables a } A}{\text{Total de casos posibles}} = \frac{|A|}{|\Omega|}$$
+        <p><strong>Ejemplo:</strong> En un dado, \(P(\text{par}) = \frac{3}{6} = 0,5\)</p>
+
+        <h3>Interpretaciones de la Probabilidad</h3>
+        <ul>
+            <li><strong>Clásica (Laplace):</strong> Casos favorables / casos posibles (equiprobables)</li>
+            <li><strong>Frecuentista:</strong> Cuando repetimos el experimento muchas veces, la frecuencia relativa se acerca a la probabilidad (ley de los grandes números)</li>
+            <li><strong>Subjetiva:</strong> Grado de creencia personal basado en la información disponible</li>
+        </ul>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🔥 Bloque 1: Refuerzo — 8 min</h2>
+        
+        <p><strong>Corrección rápida de dudas de la sesión anterior</strong></p>
+        <p><strong>Pregunta oral:</strong> ¿Puede la probabilidad de un suceso ser 1,3? ¿Y negativa? ¿Y exactamente 1?</p>
+    </section>
+
+    <section class="exercise-box">
+        <h2>📖 Bloque 2: Consolidación — 17 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo 1 (Pizarra): Lotería de Navidad</div>
+            <p>Una urna contiene 100 bolas numeradas del 00 al 99. Se extrae una al azar. Calcula:</p>
+            <p><strong>a)</strong> \(P(\text{salir el 13})\)</p>
+            <p><strong>b)</strong> \(P(\text{número par})\)</p>
+            <p><strong>c)</strong> \(P(\text{número mayor que 95})\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Resolución paso a paso:</strong><br><br>
+                Espacio muestral: \(\Omega = \{00, 01, 02, ..., 99\}\) → \(|\Omega| = 100\)
+                <br><br>
+                <strong>a)</strong> Casos favorables: 1 (solo el 13)
+                $$P(\text{13}) = \frac{1}{100} = 0,01 = 1\%$$
+                
+                <strong>b)</strong> Pares: {00, 02, 04, ..., 98} → 50 casos
+                $$P(\text{par}) = \frac{50}{100} = 0,5 = 50\%$$
+                
+                <strong>c)</strong> Mayores que 95: {96, 97, 98, 99} → 4 casos
+                $$P(>95) = \frac{4}{100} = 0,04 = 4\%$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 2 (Pizarra): Lonja de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En la lonja de Vigo hay 200 cajas de mejillón: 80 son talla extra, 60 talla primera, el resto rechazo. Se elige una caja al azar.</p>
+            <p>Calcula: <strong>a)</strong> \(P(\text{extra})\) &nbsp; <strong>b)</strong> \(P(\text{no rechazo})\) &nbsp; <strong>c)</strong> \(P(\text{extra o primera})\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong> Total = 200 cajas | Extra = 80 | Primera = 60 | Rechazo = 200 - 80 - 60 = 60
+                <br><br>
+                
+                <strong>a)</strong> 
+                $$P(\text{extra}) = \frac{80}{200} = 0,4 = 40\%$$
+                
+                <strong>b)</strong> No rechazo = Extra + Primera = 80 + 60 = 140
+                $$P(\text{no rechazo}) = \frac{140}{200} = 0,7 = 70\%$$
+                <em>También: \(P(\text{no rechazo}) = 1 - P(\text{rechazo}) = 1 - \frac{60}{200} = 0,7\)</em>
+                
+                <strong>c)</strong> Como son sucesos incompatibles (una caja no puede ser extra Y primera a la vez):
+                $$P(\text{extra} \cup \text{primera}) = P(\text{extra}) + P(\text{primera}) = 0,4 + 0,3 = 0,7$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo 3 (Trabajo colectivo): Propiedades de los axiomas</div>
+            <p>Dados \(P(A) = 0,4\) y \(P(B) = 0,5\), con \(A\) y \(B\) mutuamente excluyentes, calcula:</p>
+            <p><strong>a)</strong> \(P(A \cup B)\) &nbsp; <strong>b)</strong> \(P((A \cup B)^c)\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> Como \(A \cap B = \emptyset\) (incompatibles), por el Axioma 3:
+                $$P(A \cup B) = P(A) + P(B) = 0,4 + 0,5 = 0,9$$
+                
+                <strong>b)</strong> Por la propiedad del complementario:
+                $$P((A \cup B)^c) = 1 - P(A \cup B) = 1 - 0,9 = 0,1$$
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>✏️ Bloque 3: Afianzamiento (Individual) — 20 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejercicio 1: Verificación de axiomas</div>
+            <p>¿Cuáles de las siguientes asignaciones de probabilidades cumplen los axiomas de Kolmogorov?</p>
+            <p><strong>a)</strong> \(P(A) = 0,6\), \(P(B) = 0,3\), \(P(A \cup B) = 0,9\), \(A \cap B = \emptyset\)</p>
+            <p><strong>b)</strong> \(P(C) = -0,2\), \(P(D) = 1,2\)</p>
+            <p><strong>c)</strong> \(P(E) = 0,7\), \(P(E^c) = 0,4\)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> ✅ <strong>SÍ cumple.</strong> \(P(A), P(B) \geq 0\). Como son incompatibles, \(P(A \cup B) = 0,6 + 0,3 = 0,9\). Correcto.
+                <br><br>
+                <strong>b)</strong> ❌ <strong>NO cumple.</strong> Viola el Axioma 1: las probabilidades no pueden ser negativas ni mayores que 1.
+                <br><br>
+                <strong>c)</strong> ❌ <strong>NO cumple.</strong> \(P(E) + P(E^c)\) debe ser 1, pero \(0,7 + 0,4 = 1,1 \neq 1\).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 2: Regla de la suma</div>
+            <p>Se sabe que \(P(A) = 0,6\), \(P(B) = 0,5\) y \(P(A \cap B) = 0,2\). Calcula:</p>
+            <p><strong>a)</strong> \(P(A \cup B)\)</p>
+            <p><strong>b)</strong> \(P(A^c)\)</p>
+            <p><strong>c)</strong> \(P(A^c \cap B^c)\) (pista: Leyes de De Morgan)</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> Regla general de la suma:
+                $$P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0,6 + 0,5 - 0,2 = 0,9$$
+                
+                <strong>b)</strong> 
+                $$P(A^c) = 1 - P(A) = 1 - 0,6 = 0,4$$
+                
+                <strong>c)</strong> Por De Morgan: \(A^c \cap B^c = (A \cup B)^c\)
+                $$P(A^c \cap B^c) = P((A \cup B)^c) = 1 - P(A \cup B) = 1 - 0,9 = 0,1$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 3: Fábrica PSA Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En la fábrica PSA Vigo, el 3 % de los vehículos requiere revisión menor y el 1 % revisión mayor. Un vehículo no puede necesitar ambas a la vez.</p>
+            <p><strong>a)</strong> ¿Cuál es la probabilidad de que un vehículo requiera algún tipo de revisión?</p>
+            <p><strong>b)</strong> ¿Y de que no requiera ninguna?</p>
+            <p><strong>c)</strong> Justifica si los sucesos son compatibles o incompatibles.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong> \(P(\text{menor}) = 0,03\), \(P(\text{mayor}) = 0,01\), incompatibles
+                <br><br>
+                
+                <strong>a)</strong> Por el Axioma 3:
+                $$P(\text{alguna}) = P(\text{menor} \cup \text{mayor}) = 0,03 + 0,01 = 0,04 = 4\%$$
+                
+                <strong>b)</strong> 
+                $$P(\text{ninguna}) = 1 - P(\text{alguna}) = 1 - 0,04 = 0,96 = 96\%$$
+                
+                <strong>c)</strong> <strong>Incompatibles (mutuamente excluyentes)</strong> porque el enunciado dice que un vehículo no puede necesitar ambas a la vez, es decir, \((\text{menor} \cap \text{mayor}) = \emptyset\).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 4: Interpretación de un titular</div>
+            <p>Un periódico de Vigo publica: <em>"1 de cada 5 vehículos del Puerto supera las emisiones permitidas"</em>.</p>
+            <p><strong>a)</strong> ¿Qué probabilidad representa?</p>
+            <p><strong>b)</strong> ¿Es una interpretación clásica, frecuentista o subjetiva? Justifica.</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>a)</strong> 
+                $$P(\text{superar emisiones}) = \frac{1}{5} = 0,2 = 20\%$$
+                
+                <strong>b)</strong> <strong>Frecuentista.</strong> Se basa en datos empíricos: de una muestra de vehículos inspeccionados, aproximadamente 1 de cada 5 superó el límite. No es clásica (no hay casos equiprobables definidos a priori) ni subjetiva (se basa en mediciones reales, no en opinión).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejercicio 5: Probabilidad de la unión (no excluyentes)</div>
+            <p>En una clase del IES Teis, el 60 % del alumnado practica deporte y el 40 % toca un instrumento musical. Se sabe que el 20 % practica deporte Y toca un instrumento.</p>
+            <p>¿Cuál es la probabilidad de que un alumno elegido al azar practique deporte O toque un instrumento (o ambos)?</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong> \(P(D) = 0,6\), \(P(M) = 0,4\), \(P(D \cap M) = 0,2\)
+                <br><br>
+                Regla general de la suma:
+                $$P(D \cup M) = P(D) + P(M) - P(D \cap M) = 0,6 + 0,4 - 0,2 = 0,8 = 80\%$$
+                <br>
+                <em>Interpretación: El 80 % del alumnado practica deporte, toca un instrumento, o ambas cosas.</em>
+            </details>
+        </div>
+    </section>
+
+    <section class="exercise-box">
+        <h2>🚀 Bloque 4: Ampliación — 10 min</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema: Astilleros de Vigo <span class="badge">CONTEXTO VIGO</span></div>
+            <p>En los astilleros de Barreras, el 5 % de las soldaduras presenta micro-fisuras y el 3 % oxidación prematura. El 1 % presenta ambos problemas.</p>
+            <p><strong>a)</strong> ¿Cuál es la probabilidad de que una soldadura presente al menos uno de los dos problemas?</p>
+            <p><strong>b)</strong> ¿Cuál es la probabilidad de que no presente ningún problema?</p>
+            <p><strong>c)</strong> ¿Cuál es la probabilidad de que tenga fisuras pero no oxidación?</p>
+            
+            <details class="solution">
+                <summary></summary>
+                <strong>Datos:</strong> \(P(F) = 0,05\), \(P(O) = 0,03\), \(P(F \cap O) = 0,01\)
+                <br><br>
+                
+                <strong>a)</strong> 
+                $$P(F \cup O) = P(F) + P(O) - P(F \cap O) = 0,05 + 0,03 - 0,01 = 0,07 = 7\%$$
+                
+                <strong>b)</strong> 
+                $$P(\text{ningún problema}) = P((F \cup O)^c) = 1 - 0,07 = 0,93 = 93\%$$
+                
+                <strong>c)</strong> Fisuras pero no oxidación: \(F \cap O^c = F - (F \cap O)\)
+                $$P(F \cap O^c) = P(F) - P(F \cap O) = 0,05 - 0,01 = 0,04 = 4\%$$
+            </details>
+        </div>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#e9ecef; border-radius:8px; text-align:center;">
+        <p style="margin:0; color:#666;">📌 <strong>Próxima sesión:</strong> Probabilidad condicionada</p>
+    </footer>
+
+</body>
+</html>

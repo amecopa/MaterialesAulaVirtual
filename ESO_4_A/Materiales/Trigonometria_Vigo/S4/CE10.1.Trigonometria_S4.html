@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 4: El Desafío Final – Geometría y Entorno</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 { color: var(--primary-color); }
+        header h1 { color: white; margin: 0; }
+        .theory-box, .exercise-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .solution {
+            background-color: #eef7e9;
+            border-left: 4px solid #5cb85c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        details.solution summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #3a8a3a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solution summary::-webkit-details-marker { display: none; }
+        details.solution summary::marker { display: none; }
+        details.solution:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solution[open] summary::before { content: "▼  Ocultar resolución"; }
+        .error-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin-top: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        .competency {
+            font-size: 0.9em;
+            color: #cce0ff;
+            font-style: italic;
+        }
+        .step { margin: 8px 0; }
+        .step strong { color: #0056b3; }
+        .previo {
+            background-color: #e8f0fe;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            font-size: 0.78em;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .badge-desafio {
+            background-color: #d9534f;
+        }
+        .exercise-img {
+            display: block;
+            max-width: 100%;
+            width: 700px;
+            margin: 14px auto 6px auto;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 4: El Desafío Final – Geometría y Entorno</h1>
+        <p class="competency">
+            <span>CE 10.1: Reconocer las matemáticas en situaciones de la vida cotidiana y profesional.</span><br>
+            <span>CE 1.3: Obtener soluciones de un problema, comprobando su validez.</span>
+        </p>
+    </header>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE TEÓRICO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Apuntes Teóricos</h2>
+
+        <div class="previo">
+            <strong>Conocimientos previos necesarios:</strong> Áreas de polígonos regulares, trigonometría general,
+            resolución de triángulos no rectángulos (mediante descomposición en rectángulos).
+        </div>
+
+        <h3>1. Lado de un polígono regular inscrito en una circunferencia</h3>
+        <p>
+            Un polígono regular de \(n\) lados inscrito en un círculo de radio \(r\) se divide en
+            \(n\) triángulos isósceles con ángulo central \(\frac{360°}{n}\).
+            Cada triángulo isósceles se puede dividir en dos triángulos rectángulos con
+            ángulo en el centro \(\frac{180°}{n}\):
+        </p>
+        <p>
+            $$\sin\!\left(\frac{180°}{n}\right) = \frac{L/2}{r} \implies L = 2r \cdot \sin\!\left(\frac{180°}{n}\right)$$
+        </p>
+
+        <h3>2. Área de un triángulo con dos lados y el ángulo comprendido</h3>
+        <p>
+            Si conocemos dos lados \(a\) y \(b\) y el ángulo \(\gamma\) entre ellos,
+            trazamos la altura \(h = a \cdot \sin(\gamma)\) sobre el lado \(b\):
+        </p>
+        <p>
+            $$\text{Área} = \frac{1}{2} \cdot b \cdot h = \frac{1}{2} \cdot b \cdot a \cdot \sin(\gamma)$$
+        </p>
+
+        <h3>3. Distancia entre dos puntos con ángulo (Ley del Coseno)</h3>
+        <p>
+            Para un triángulo con lados \(a\), \(b\) y ángulo \(\gamma\) entre ellos:
+        </p>
+        <p>
+            $$c^2 = a^2 + b^2 - 2ab\cos(\gamma)$$
+        </p>
+        <p>
+            También resoluble descomponiendo en triángulos rectángulos mediante la altura
+            \(h = a \cdot \sin(\gamma)\) y las proyecciones sobre el lado \(b\).
+        </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         BLOQUE PRÁCTICO
+    ══════════════════════════════════════════════ -->
+    <section class="exercise-box">
+        <h2>Bloque Práctico: Luces de Navidad y Grandes Estructuras</h2>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 1 – Noria de Vigo
+        ────────────────────────────── -->
+        <div class="exercise">
+            <div class="exercise-title">
+                <span class="badge">Modelado</span>
+                Ejercicio 1 – La Gran Noria de Vigo (calle Areal)
+            </div>
+            <p>
+                La noria instalada en la calle Areal es un polígono regular de <strong>32 lados</strong> (góndolas).
+                Si el radio de la noria es de <strong>31 metros</strong>, calcula la distancia lineal
+                entre dos góndolas consecutivas (el lado del polígono).
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S4_Ej1_Noria_Vigo.png" alt="Diagrama Ejercicio 1 – Noria de Vigo" class="exercise-img">
+                <strong>Resolución paso a paso:</strong>
+
+                <div class="step">
+                    <strong>Paso 1 – Ángulo central.</strong><br>
+                    32 triángulos isósceles → ángulo central = \(360° / 32 = 11{,}25°\).
+                </div>
+                <div class="step">
+                    <strong>Paso 2 – Triángulo rectángulo mitad.</strong><br>
+                    Dividimos cada isósceles por la bisectriz → triángulo rectángulo con ángulo \(11{,}25° / 2 = 5{,}625°\),
+                    hipotenusa \(r = 31\text{ m}\) y cateto opuesto \(L/2\).
+                </div>
+                <div class="step">
+                    <strong>Paso 3 – Aplicar seno.</strong>
+                    $$\sin(5{,}625°) = \frac{L/2}{31} \implies \frac{L}{2} = 31 \cdot \sin(5{,}625°) = 31 \cdot 0{,}0980 = 3{,}038 \text{ m}$$
+                    $$L = 2 \cdot 3{,}038 \approx \mathbf{6{,}07 \text{ m}}$$
+                </div>
+                <div class="error-box">
+                    ⚠️ <strong>Error común:</strong> Usar el ángulo central completo (11,25°) en un triángulo que NO es
+                    rectángulo. Hay que dividirlo a la mitad (5,625°) para trabajar con el triángulo rectángulo.
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 2 – Cables Navidad
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 2 – Cables de las figuras luminosas de Navidad
+            </div>
+            <p>
+                Para instalar una figura luminosa de Navidad, se necesitan tres cables que parten del
+                mismo punto en un poste a <strong>10 metros</strong> de altura y se anclan al suelo
+                formando ángulos de <strong>30°, 45° y 60°</strong> con el suelo.
+                Calcula la <strong>longitud total de cable</strong> necesaria.
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S4_Ej2_Cables_Navidad.png" alt="Diagrama Ejercicio 2 – Cables Navidad" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Cable 1 (ángulo 30°):</strong>
+                    $$\sin(30°) = \frac{10}{L_1} \implies L_1 = \frac{10}{0{,}5} = \mathbf{20 \text{ m}}$$
+                </div>
+                <div class="step">
+                    <strong>Cable 2 (ángulo 45°):</strong>
+                    $$\sin(45°) = \frac{10}{L_2} \implies L_2 = \frac{10}{0{,}707} \approx \mathbf{14{,}14 \text{ m}}$$
+                </div>
+                <div class="step">
+                    <strong>Cable 3 (ángulo 60°):</strong>
+                    $$\sin(60°) = \frac{10}{L_3} \implies L_3 = \frac{10}{0{,}866} \approx \mathbf{11{,}55 \text{ m}}$$
+                </div>
+                <div class="step">
+                    <strong>Total:</strong>
+                    $$L_{\text{total}} = 20 + 14{,}14 + 11{,}55 \approx \mathbf{45{,}69 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 3 – Parcela IFEVI
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica guiada</span>
+                Ejercicio 3 – Parcela triangular en el IFEVI
+            </div>
+            <p>
+                Calcula el área de una parcela triangular en el IFEVI (Instituto Feiral de Vigo)
+                cuyos lados miden <strong>120 m</strong> y <strong>150 m</strong>,
+                y el ángulo comprendido entre ellos es de <strong>40°</strong>.
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S4_Ej3_Parcela_IFEVI.png" alt="Diagrama Ejercicio 3 – Parcela IFEVI" class="exercise-img">
+                <strong>Resolución:</strong>
+
+                <div class="step">
+                    <strong>Trazamos la altura sobre el lado de 150 m.</strong><br>
+                    La altura desde el vértice opuesto:
+                    $$h = 120 \cdot \sin(40°) = 120 \cdot 0{,}643 = 77{,}13 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Área del triángulo:</strong>
+                    $$\text{Área} = \frac{1}{2} \cdot \text{base} \cdot h = \frac{150 \cdot 77{,}13}{2} \approx \mathbf{5784{,}75 \text{ m}^2}$$
+                </div>
+            </details>
+        </div>
+
+        <!-- ──────────────────────────────
+             EJERCICIO 4 – Boyas en la Ría
+        ────────────────────────────── -->
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">
+                <span class="badge">Práctica independiente</span>
+                <span class="badge badge-desafio">Desafío</span>
+                Ejercicio 4 – Distancia entre boyas (Paseo de Alfonso XII)
+            </div>
+            <p>
+                Un topógrafo en el Paseo de Alfonso XII quiere medir la distancia entre dos boyas en la ría.
+                Mide la distancia desde su posición a la <strong>Boya A (400 m)</strong> y a la
+                <strong>Boya B (600 m)</strong>. El ángulo entre las dos visuales es de <strong>35°</strong>.
+                ¿Qué distancia separa las boyas?
+            </p>
+
+            <details class="solution">
+                <summary></summary>
+                <img src="S4_Ej4_Boyas_Ria.png" alt="Diagrama Ejercicio 4 – Boyas en la Ría" class="exercise-img">
+                <strong>Resolución (descomposición en triángulos rectángulos):</strong>
+
+                <div class="step">
+                    <strong>Altura del triángulo principal (perpendicular desde A al lado OB):</strong>
+                    $$h = 400 \cdot \sin(35°) = 400 \cdot 0{,}574 = 229{,}4 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Proyección de OA sobre OB:</strong>
+                    $$\text{base}_1 = 400 \cdot \cos(35°) = 400 \cdot 0{,}819 = 327{,}6 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Segmento restante hasta B:</strong>
+                    $$\text{base}_2 = 600 - 327{,}6 = 272{,}4 \text{ m}$$
+                </div>
+                <div class="step">
+                    <strong>Distancia AB (Pitágoras en el triángulo rectángulo formado):</strong>
+                    $$AB = \sqrt{229{,}4^2 + 272{,}4^2} = \sqrt{52624 + 74202} = \sqrt{126826} \approx \mathbf{356{,}1 \text{ m}}$$
+                </div>
+            </details>
+        </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SOLUCIONARIO RÁPIDO
+    ══════════════════════════════════════════════ -->
+    <section class="theory-box">
+        <h2>Solucionario – Resultados finales</h2>
+        <ol>
+            <li>\(\sin(5{,}625°) = (L/2)/31 \rightarrow L/2 = 3{,}038 \rightarrow L \approx \mathbf{6{,}07 \text{ m}}\)</li>
+            <li>\(L_1 = 20 \text{ m};\; L_2 \approx 14{,}14 \text{ m};\; L_3 \approx 11{,}55 \text{ m}.\; \text{Total} \approx \mathbf{45{,}69 \text{ m}}\)</li>
+            <li>\(h = 120 \cdot \sin(40°) = 77{,}13 \text{ m};\; \text{Área} \approx \mathbf{5784{,}75 \text{ m}^2}\)</li>
+            <li>\(AB = \sqrt{229{,}4^2 + 272{,}4^2} \approx \mathbf{356{,}1 \text{ m}}\)</li>
+        </ol>
+    </section>
+
+    <script>
+        document.querySelectorAll('details.solution').forEach(function(det) {
+            det.addEventListener('toggle', function() {
+                if (det.open && window.MathJax) {
+                    MathJax.typesetPromise([det]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

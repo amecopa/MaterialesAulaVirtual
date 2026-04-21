@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 12: Regla de Laplace y Combinatoria</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-consolidacion { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 95%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 12: Regla de Laplace y Combinatoria</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Aplicar la Regla de Laplace en problemas complejos</li>
+      <li>Usar técnicas de recuento: variaciones, permutaciones, combinaciones</li>
+      <li>Distinguir cuándo importa el orden y cuándo no</li>
+      <li>Resolver problemas de probabilidad que requieren combinatoria</li>
+    </ul>
+  </div>
+
+  <h2>📚 Recuerdo: Regla de Laplace</h2>
+  
+  <div class="definicion">
+    \[ P(A) = \frac{\text{Casos favorables a } A}{\text{Casos posibles}} \]
+    <br>
+    <strong>Clave:</strong> Para contar casos favorables y posibles, usamos <strong>combinatoria</strong>.
+  </div>
+
+  <h2>🔢 Técnicas de Recuento</h2>
+  
+  <table>
+    <tr><th>Técnica</th><th>Fórmula</th><th>¿Importa orden?</th><th>¿Repetición?</th></tr>
+    <tr>
+      <td><strong>Variaciones</strong></td>
+      <td>\(V_n^m = \frac{n!}{(n-m)!}\)</td>
+      <td>✓ SÍ</td>
+      <td>✗ NO</td>
+    </tr>
+    <tr>
+      <td><strong>Permutaciones</strong></td>
+      <td>\(P_n = n!\)</td>
+      <td>✓ SÍ</td>
+      <td>Caso especial: m=n</td>
+    </tr>
+    <tr>
+      <td><strong>Combinaciones</strong></td>
+      <td>\(C_n^m = \binom{n}{m} = \frac{n!}{m!(n-m)!}\)</td>
+      <td>✗ NO</td>
+      <td>✗ NO</td>
+    </tr>
+    <tr>
+      <td><strong>Variaciones con repetición</strong></td>
+      <td>\(VR_n^m = n^m\)</td>
+      <td>✓ SÍ</td>
+      <td>✓ SÍ</td>
+    </tr>
+  </table>
+
+  <img src="graficos/s12_combinatoria.svg" alt="Esquema de técnicas de recuento">
+
+  <h2>💡 Cómo Elegir la Técnica</h2>
+  <ol>
+    <li><strong>¿Importa el orden?</strong>
+      <ul>
+        <li>SÍ → Variaciones o Permuaciones</li>
+        <li>NO → Combinaciones</li>
+      </ul>
+    </li>
+    <li><strong>¿Elementos con o sin repetición?</strong>
+      <ul>
+        <li>SIN repetición → fórmulas estándar</li>
+        <li>CON repetición → VR o CR</li>
+      </ul>
+    </li>
+    <li><strong>¿Usamos todos los elementos (m=n)?</strong>
+      <ul>
+        <li>SÍ → Permutaciones</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="bloque-consolidacion">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Urna con 10 bolas numeradas 1-10. Extraemos 3 bolas sin reposición. ¿Probabilidad de que las 3 sean pares?</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Análisis:</strong></p>
+        <ul>
+          <li>¿Importa orden de extracción? <strong>NO</strong> → Combinaciones</li>
+          <li>Bolas pares: {2, 4, 6, 8, 10} = 5 bolas</li>
+        </ul>
+        
+        <p><strong>Casos POSIBLES (extraer 3 de 10):</strong></p>
+        <div class="paso">\[ |\Omega| = C_{10}^3 = \binom{10}{3} = \frac{10!}{3! \cdot 7!} = \frac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = \frac{720}{6} = 120 \]</div>
+        
+        <p><strong>Casos FAVORABLES (3 pares de las 5 disponibles):</strong></p>
+        <div class="paso">\[ |A| = C_5^3 = \binom{5}{3} = \frac{5!}{3! \cdot 2!} = \frac{5 \cdot 4}{2 \cdot 1} = 10 \]</div>
+        
+        <p><strong>Probabilidad:</strong></p>
+        <div class="paso">\[ P(A) = \frac{10}{120} = \frac{1}{12} \approx 0.083 = 8.3\% \]</div>
+        
+        <p><strong>Interpretación:</strong> Solo 8.3% de probabilidad de sacar 3 pares.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2:</strong> ¿De cuántas formas se pueden sentar 5 personas en fila? Si siempre sentamos a Ana y Luis juntos, ¿cuántas formas hay?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>a) Sin restricciones (importa orden, todos los elementos):</strong></p>
+        <div class="paso">\[ P_5 = 5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120 \text{ formas} \]</div>
+        
+        <p><strong>b) Ana y Luis juntos:</strong></p>
+        <ul>
+          <li><strong>Truco:</strong> Considerar {Ana-Luis} como UNA unidad</li>
+          <li>Ahora tenemos 4 "unidades" para ordenar: {Ana-Luis}, Persona3, Persona4, Persona5</li>
+        </ul>
+        <div class="paso">Formas de ordenar 4 unidades = \(4! = 24\)</div>
+        
+        <p>Pero ¡Ana y Luis pueden estar en orden Ana-Luis o Luis-Ana!</p>
+        <div class="paso">Dentro de su "unidad": \(2! = 2\) formas</div>
+        
+        <p><strong>Total:</strong></p>
+        <div class="paso">\[ 4! \cdot 2! = 24 \cdot 2 = 48 \text{ formas} \]</div>
+      </div>
+    </details>
+
+    <p><strong>Ej 3:</strong> Lotería: Elegir 6 números de 49. ¿Probabilidad de acertar los 6?</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Análisis:</strong></p>
+        <ul>
+          <li>¿Importa orden? <strong>NO</strong> (da igual si marco 3-7-12 o 12-3-7)</li>
+          <li>→ Combinaciones</li>
+        </ul>
+        
+        <p><strong>Casos POSIBLES (todas las combinaciones de 6 de 49):</strong></p>
+        <div class="paso">\[ |\Omega| = C_{49}^6 = \binom{49}{6} = \frac{49!}{6! \cdot 43!} \]</div>
+        <div class="paso">\[ = \frac{49 \cdot 48 \cdot 47 \cdot 46 \cdot 45 \cdot 44}{6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1} = \frac{10,068,347,520}{720} = 13,983,816 \]</div>
+        
+        <p><strong>Casos FAVORABLES (solo UNA combinación ganadora):</strong></p>
+        <div class="paso">|A| = 1</div>
+        
+        <p><strong>Probabilidad:</strong></p>
+        <div class="paso">\[ P(\text{acertar 6}) = \frac{1}{13,983,816} \approx 0.000000071 = 0.0000071\% \]</div>
+        
+        <p><strong>Interpretación:</strong> Menos de 1 entre 14 millones. ¡Extremadamente improbable!</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 4 (Contexto Vigo):</strong> Comité estudiantil del IES Teis: 8 de Bach, 6 de 4º ESO. Formar comité de 5 personas con AL MENOS 3 de Bach. ¿Cuántas formas? ¿Probabilidad de que sea exactamente 3 de Bach?</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Total estudiantes:</strong> 8 + 6 = 14</p>
+        
+        <p><strong>Casos "al menos 3 de Bach":</strong></p>
+        <ul>
+          <li><strong>Caso 1:</strong> 3 Bach + 2 ESO</li>
+          <li><strong>Caso 2:</strong> 4 Bach + 1 ESO</li>
+          <li><strong>Caso 3:</strong> 5 Bach + 0 ESO</li>
+        </ul>
+        
+        <p><strong>Caso 1 (3+2):</strong></p>
+        <div class="paso">\[ C_8^3 \cdot C_6^2 = \binom{8}{3} \cdot \binom{6}{2} = 56 \cdot 15 = 840 \]</div>
+        
+        <p><strong>Caso 2 (4+1):</strong></p>
+        <div class="paso">\[ C_8^4 \cdot C_6^1 = \binom{8}{4} \cdot \binom{6}{1} = 70 \cdot 6 = 420 \]</div>
+        
+        <p><strong>Caso 3 (5+0):</strong></p>
+        <div class="paso">\[ C_8^5 \cdot C_6^0 = \binom{8}{5} \cdot 1 = 56 \cdot 1 = 56 \]</div>
+        
+        <p><strong>Total formas:</strong></p>
+        <div class="paso">840 + 420 + 56 = <strong>1316 formas</strong></div>
+        
+        <hr>
+        
+        <p><strong>Probabilidad de EXACTAMENTE 3 de Bach:</strong></p>
+        <p>Total de comités posibles de 5 de 14:</p>
+        <div class="paso">\[ |\Omega| = C_{14}^5 = \binom{14}{5} = 2002 \]</div>
+        
+        <p>Casos favorables (ya calculamos): 840</p>
+        <div class="paso">\[ P(\text{exactamente 3 Bach}) = \frac{840}{2002} \approx 0.420 = 42\% \]</div>
+      </div>
+    </details>
+  </div>
+
+  <h2>⚠️ errores Comunes</h2>
+  <ul>
+    <li><strong>❌ Confundir C y V:</strong> En cartas/urnas normalmente NO importa orden → Combinaciones</li>
+    <li><strong>❌ Olvidar dividir por k! en C:</strong> \(C_n^k \neq \frac{n!}{(n-k)!}\) (eso es V, no C)</li>
+    <li><strong>✓ Preguntarse siempre:</strong> "¿{A,B,C} es diferente de {C,A,B}?"</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

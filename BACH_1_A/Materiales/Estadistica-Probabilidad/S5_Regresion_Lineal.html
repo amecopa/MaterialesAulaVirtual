@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 5: Regresión Lineal - Ajuste por Mínimos Cuadrados</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-consolidacion, .bloque-afianzamiento { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #333; padding: 0.6rem; text-align: center; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 5: Regresión Lineal - Ajuste por Mínimos Cuadrados</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Comprender el método de mínimos cuadrados para ajuste lineal</li>
+      <li>Calcular la recta de regresión de Y sobre X</li>
+      <li>Interpretar pendiente y ordenada en el origen</li>
+      <li>Utilizar la recta para predicciones</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="definicion">
+    <strong>Recta de Regresión:</strong> Modelo lineal que mejor se ajusta a una nube de puntos, minimizando la suma de cuadrados de residuos.
+    <br><br>
+    <strong>Ecuación:</strong> \[ y = a + bx \]
+    <br>
+    Donde:<br>
+    - <strong>b (pendiente):</strong> \( b = \frac{S_{xy}}{S_x^2} \)<br>
+    - <strong>a (ordenada en origen):</strong> \( a = \bar{y} - b\bar{x} \)
+  </div>
+
+  <p><strong>Propiedades importantes:</strong></p>
+  <ul>
+    <li>La recta SIEMPRE pasa por el punto \((\bar{x}, \bar{y})\)</li>
+    <li>Minimiza el error cuadrático medio</li>
+    <li>La pendiente tiene el mismo signo que la covarianza</li>
+  </ul>
+
+  <img src="graficos/s5_regresion_viviendas_vigo.svg" alt="Regresión lineal viviendas Vigo">
+
+  <div class="bloque-consolidacion">
+    <h3>Bloque 2: Consolidación (23 min)</h3>
+    
+    <p><strong>Ej 2.1:</strong> Calcular recta de regresión para: (1,3), (2,5), (3,6), (4,9), (5,10)</p>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <div class="paso"><strong>Paso 1:</strong> Medias: \(\bar{x} = 3\), \(\bar{y} = 6.6\)</div>
+        <div class="paso"><strong>Paso 2:</strong> Covarianza S<sub>xy</sub> = 5.2</div>
+        <div class="paso"><strong>Paso 3:</strong> Varianza S<sub>x</sub>² = 2</div>
+        <div class="paso"><strong>Paso 4:</strong> Pendiente: \(b = \frac{5.2}{2} = 2.6\)</div>
+        <div class="paso"><strong>Paso 5:</strong> Ordenada: \(a = 6.6 - 2.6(3) = 6.6 - 7.8 = -1.2\)</div>
+        <p><strong>Recta de regresión:</strong> \(y = -1.2 + 2.6x\)</p>
+        <p><strong>Interpretación:</strong> Por cada unidad que aumenta X, Y aumenta 2.6 unidades en promedio</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2.2 (Contexto Vigo):</strong> Precio viviendas vs Distancia al centro</p>
+    <p>Usando datos de precio_viviendas_vigo.csv:</p>
+    <table>
+      <tr><th>Barrio</th><th>Distancia (km)</th><th>Precio (€/m²)</th></tr>
+      <tr><td>Centro</td><td>0.5</td><td>2850</td></tr>
+      <tr><td>Casco Vello</td><td>0.8</td><td>2620</td></tr>
+      <tr><td>Bouzas</td><td>3.2</td><td>1890</td></tr>
+      <tr><td>Teis</td><td>4.5</td><td>1680</td></tr>
+      <tr><td>Castrelos</td><td>2.8</td><td>2150</td></tr>
+      <tr><td>Samil</td><td>5.6</td><td>1520</td></tr>
+      <tr><td>Canido</td><td>6.2</td><td>1420</td></tr>
+      <tr><td>Coruxo</td><td>7.8</td><td>1280</td></tr>
+    </table>
+    
+    <details>
+      <summary>Ver solución y predicción</summary>
+      <div class="solucion">
+        <div class="paso"><strong>Cálculos:</strong>
+          <ul>
+            <li>\(\bar{x}\) = 3.93 km</li>
+            <li>\(\bar{y}\) = 1926.25 €/m²</li>
+            <li>S<sub>xy</sub> = -1683.15</li>
+            <li>S<sub>x</sub>² = 6.24</li>
+            <li>b = -269.8 €/m² por km</li>
+            <li>a = 2986.5 €/m²</li>
+          </ul>
+        </div>
+        <p><strong>Recta:</strong> \(y = 2986.5 - 269.8x\)</p>
+        <p><strong>Predicción para 5 km:</strong> y = 2986.5 - 269.8(5) = <strong>1637.5 €/m²</strong></p>
+        <p><strong>Interpretación:</strong> Cada km de distancia al centro reduce el precio en ~270 €/m²</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="bloque-afianzamiento">
+    <h3>Bloque 3: Afianzamiento (20 min)</h3>
+    <p><strong>Diferencia entre interpolación y extrapolación:</strong></p>
+    <ul>
+      <li><strong>Interpolación:</strong> Predicción dentro del rango de datos observados (más fiable)</li>
+      <li><strong>Extrapolación:</strong> Predicción fuera del rango (menos fiable, puede ser incorrecta)</li>
+    </ul>
+    <p><strong>Ejemplo:</strong> Si tenemos datos de distancias 0.5-7.8 km, predecir para 15 km es extrapolación arriesgada.</p>
+  </div>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

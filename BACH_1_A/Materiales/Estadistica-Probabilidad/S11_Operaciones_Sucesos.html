@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 11: Operaciones con Sucesos</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-afianzamiento { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-afianzamiento { background: #e8f5e9; border-left: 4px solid #388e3c; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 95%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; }
+    th { background-color: #388e3c; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 11: Operaciones con Sucesos</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Operar con sucesos: unión, intersección, complementario, diferencia</li>
+      <li>Calcular probabilidades usando operaciones conjuntistas</li>
+      <li>Aplicar propiedades: leyes de De Morgan, distributiva, etc.</li>
+      <li>Identificar sucesos incompatibles</li>
+    </ul>
+  </div>
+
+  <h2>📚 Teoría</h2>
+  
+  <div class="definicion">
+    <strong>Operaciones entre sucesos:</strong>
+    <table style="width: 100%; margin-top: 1rem;">
+      <tr><th>Operación</th><th>Notación</th><th>Significado</th></tr>
+      <tr><td><strong>UNIÓN</strong></td><td>A ∪ B</td><td>"A o B" (al menos uno ocurre)</td></tr>
+      <tr><td><strong>INTERSECCIÓN</strong></td><td>A ∩ B</td><td>"A y B" (ambos ocurren)</td></tr>
+      <tr><td><strong>COMPLEMENTARIO</strong></td><td>Ā o A<sup>c</sup></td><td>"No A"</td></tr>
+      <tr><td><strong>DIFERENCIA</strong></td><td>A − B</td><td>"A pero no B"</td></tr>
+    </table>
+  </div>
+
+  <div class="definicion">
+    <strong>Sucesos INCOMPATIBLES (o disjuntos):</strong>
+    <br>A y B son incompatibles si NO pueden ocurrir simultáneamente:
+    \[ A \cap B = \emptyset \]
+    <br>
+    <strong>Ejemplo:</strong> En un dado, A="par" y B="impar" son incompatibles.
+  </div>
+
+  <img src="graficos/s11_operaciones_sucesos.svg" alt="Diagramas de Venn de operaciones">
+
+  <h2>📐 Propiedades Importantes</h2>
+  <table>
+    <tr><th>Propiedad</th><th>Fórmula</th></tr>
+    <tr><td>Complementario</td><td>\(P(\overline{A}) = 1 - P(A)\)</td></tr>
+    <tr><td>Unión (general)</td><td>\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</td></tr>
+    <tr><td>Unión (incompatibles)</td><td>Si \(A \cap B = \emptyset\): \(P(A \cup B) = P(A) + P(B)\)</td></tr>
+    <tr><td>De Morgan 1</td><td>\(\overline{A \cup B} = \overline{A} \cap \overline{B}\)</td></tr>
+    <tr><td>De Morgan 2</td><td>\(\overline{A \cap B} = \overline{A} \cup \overline{B}\)</td></tr>
+  </table>
+
+  <div class="bloque-afianzamiento">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Dado equilibrado. Sean A="par", B="múltiplo de 3". Calcular:</p>
+    <ul>
+      <li>a) P(A ∪ B)</li>
+      <li>b) P(A ∩ B)</li>
+      <li>c) ¿Son A y B incompatibles?</li>
+    </ul>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Identificación de sucesos:</strong></p>
+        <div class="paso">Ω = {1, 2, 3, 4, 5, 6}</div>
+        <div class="paso">A = {2, 4, 6} → P(A) = 3/6 = 1/2</div>
+        <div class="paso">B = {3, 6} → P(B) = 2/6 = 1/3</div>
+        
+        <p><strong>a) P(A ∪ B) = "Par o múltiplo de 3":</strong></p>
+        <div class="paso">A ∪ B = {2, 3, 4, 6} → 4 elementos</div>
+        <div class="paso">\[ P(A \cup B) = \frac{4}{6} = \frac{2}{3} \approx 0.667 \]</div>
+        
+        <p><strong>Verificación con fórmula:</strong></p>
+        <div class="paso">A ∩ B = {6} → P(A ∩ B) = 1/6</div>
+        <div class="paso">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{3 + 2 - 1}{6} = \frac{4}{6} = \frac{2}{3} \] ✓</div>
+        
+        <p><strong>b) P(A ∩ B) = "Par Y múltiplo de 3":</strong></p>
+        <div class="paso">A ∩ B = {6} → 6 es el único múltiplo de 6</div>
+        <div class="paso">\[ P(A \cap B) = \frac{1}{6} \approx 0.167 \]</div>
+        
+        <p><strong>c) ¿Incompatibles?</strong></p>
+        <div class="paso"><strong>NO son incompatibles</strong> porque A ∩ B ≠ ∅</div>
+        <p>SÍ pueden ocurrir simultáneamente (el 6 cumple ambas condiciones).</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2:</strong> Baraja española (40 cartas). Extraer una carta al azar. Sean:</p>
+    <ul>
+      <li>A = "Oros"</li>
+      <li>B = "Figura" (sota, caballo, rey)</li>
+    </ul>
+    <p>Calcular P(A ∪ B).</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Análisis:</strong></p>
+        <div class="paso">P(A) = 10/40 = 1/4 (10 cartas de oros)</div>
+        <div class="paso">P(B) = 12/40 = 3/10 (3 figuras × 4 palos = 12)</div>
+        <div class="paso">P(A ∩ B) = 3/40 (figuras de oros: sota, caballo, rey de oros)</div>
+        
+        <p><strong>Fórmula de la unión:</strong></p>
+        <div class="paso">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]</div>
+        <div class="paso">\[ P(A \cup B) = \frac{10}{40} + \frac{12}{40} - \frac{3}{40} = \frac{19}{40} = 0.475 \]</div>
+        
+        <p><strong>Interpretación:</strong> 47.5% de probabilidad de sacar oros o figura (o ambas).</p>
+        
+        <p><strong>Verificación contando directamente:</strong></p>
+        <ul>
+          <li>Oros no figuras: 7 cartas</li>
+          <li>Figuras de oros: 3 cartas</li>
+          <li>Figuras de otros palos: 9 cartas</li>
+          <li><strong>Total:</strong> 7 + 3 + 9 = 19 cartas ✓</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 3:</strong> Si P(A) = 0.6 y P(B) = 0.3, ¿cuál es el rango de valores posibles para P(A ∩ B)?</p>
+    <details>
+      <summary>Ver razonamiento</summary>
+      <div class="solucion">
+        <p><strong>Restricción 1: Cota inferior</strong></p>
+        <div class="paso">A ∩ B ⊂ A y A ∩ B ⊂ B → P(A ∩ B) ≤ mín{P(A), P(B)}</div>
+        <div class="paso">P(A ∩ B) ≤ 0.3</div>
+        
+        <p><strong>Restricción 2: Cota superior</strong></p>
+        <p>Sabemos que: \(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</p>
+        <p>Como \(P(A \cup B) \leq 1\):</p>
+        <div class="paso">\(P(A) + P(B) - P(A \cap B) \leq 1\)</div>
+        <div class="paso">\(0.6 + 0.3 - P(A \cap B) \leq 1\)</div>
+        <div class="paso">\(0.9 - P(A \cap B) \leq 1\)</div>
+        <div class="paso">\(-P(A \cap B) \leq 0.1\)</div>
+        <div class="paso">\(P(A \cap B) \geq -0.1\)</div>
+        
+        <p>Pero como P ≥ 0 siempre, la cota real es:</p>
+        <div class="paso">\(P(A \cap B) \geq \max\{0, P(A) + P(B) - 1\} = \max\{0, 0.6 + 0.3 - 1\} = 0\)</div>
+        
+        <p><strong>Conclusión:</strong></p>
+        <div class="paso" style="font-weight: bold; font-size: 1.1em;">\[ 0 \leq P (A \cap B) \leq 0.3 \]</div>
+        
+        <p><strong>Casos extremos:</strong></p>
+        <ul>
+          <li><strong>P(A ∩ B) = 0:</strong> A y B incompatibles</li>
+          <li><strong>P(A ∩ B) = 0.3:</strong> B ⊂ A (B está contenido en A)</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Ej 4 (Contexto Vigo):</strong> En un grupo de estudiantes del IES Teis:</p>
+    <ul>
+      <li>60% habla gallego habitualmente (G)</li>
+      <li>35% hace deporte federado (D)</li>
+      <li>20% cumple ambas condiciones</li>
+    </ul>
+    <p>Calcular probabilidad de que un estudiante elegido al azar: a) Hable gallego o haga deporte, b) No hable gallego ni haga deporte.</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong></p>
+        <div class="paso">P(G) = 0.60</div>
+        <div class="paso">P(D) = 0.35</div>
+        <div class="paso">P(G ∩ D) = 0.20</div>
+        
+        <p><strong>a) P(G ∪ D) = "Gallego o deporte":</strong></p>
+        <div class="paso">\[ P(G \cup D) = P(G) + P(D) - P(G \cap D) \]</div>
+        <div class="paso">\[ P(G \cup D) = 0.60 + 0.35 - 0.20 = 0.75 \]</div>
+        <p><strong>75% de estudiantes</strong> habla gallego o hace deporte (o ambos).</p>
+        
+        <p><strong>b) P("Ni gallego ni deporte") = \(P(\overline{G \cup D})\):</strong></p>
+        <p>Por De Morgan: \(\overline{G \cup D} = \overline{G} \cap \overline{D}\)</p>
+        <div class="paso">\[ P(\overline{G \cup D}) = 1 - P(G \cup D) = 1 - 0.75 = 0.25 \]</div>
+        <p><strong>25% de estudiantes</strong> ni habla gallego ni hace deporte federado.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Errores Comunes</h2>
+  <ul>
+    <li><strong>❌ P(A ∪ B) = P(A) + P(B):</strong> Solo si incompatibles. En general, hay que restar P(A ∩ B)</li>
+    <li><strong>❌ Confundir "o" con "o exclusivo":</strong> A ∪ B incluye el caso "ambos"</li>
+    <li><strong>✓ Usar diagramas de Venn</strong> para visualizar operaciones</li>
+  </ul>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

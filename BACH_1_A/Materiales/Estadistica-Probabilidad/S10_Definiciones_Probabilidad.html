@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sesión 10: Definiciones de Probabilidad</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+    h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+    h2 { color: #2a5298; margin-top: 2rem; }
+    .objetivos, .bloque-consolidacion { padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .objetivos { background: #e8f4f8; border-left: 4px solid #2a5298; }
+    .bloque-consolidacion { background: #f0f4fc; border-left: 4px solid #2a5298; }
+    .solucion { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+    .definicion { background: #fffbea; border-left: 3px solid #f9a825; padding: 0.8rem 1.2rem; margin: 1rem 0; }
+    img { max-width: 100%; display: block; margin: 1rem auto; }
+    table { border-collapse: collapse; margin: 1rem auto; width: 95%; }
+    th, td { border: 1px solid #333; padding: 0.6rem; }
+    th { background-color: #2a5298; color: white; }
+    details { margin: 1rem 0; }
+    summary { cursor: pointer; font-weight: bold; color: #2a5298; padding: 0.5rem; background: #f0f4fc; border-radius: 4px; }
+    .paso { margin: 0.8rem 0; padding-left: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Sesión 10: Definiciones de Probabilidad</h1>
+  
+  <div class="objetivos">
+    <h3>🎯 Objetivos</h3>
+    <ul>
+      <li>Conocer las tres definiciones de probabilidad: clásica, frecuencial y subjetiva</li>
+      <li>Comprender cuándo usar cada definición según el contexto</li>
+      <li>Calcular probabilidades usando la definición de Laplace</li>
+      <li>Interpretar frecuencias relativas como aproximaciones a probabilidades</li>
+    </ul>
+  </div>
+
+  <h2>📚 Las Tres Definiciones</h2>
+  
+  <div class="definicion">
+    <strong>1. DEFINICIÓN CLÁSICA (Laplace):</strong>
+    \[ P(A) = \frac{\text{Casos favorables a } A}{\text{Casos posibles totales}} = \frac{|A|}{|\Omega|} \]
+    <br>
+    <strong>Requisito:</strong> Todos los resultados deben ser EQUIPROBABLES (igualmente probables).
+    <br>
+    <strong>Cuándo usarla:</strong> Experimentos simétricos (dados, monedas, cartas, etc.)
+  </div>
+
+  <div class="definicion">
+    <strong>2. DEFINICIÓN FRECUENCIAL (Von Mises):</strong>
+    \[ P(A) = \lim_{n \to \infty} \frac{n(A)}{n} \]
+    Donde n(A) = veces que ocurre A, n = número total de experimentos.
+    <br><br>
+    <strong>Cuándo usarla:</strong> Cuando NO hay simetría pero podemos repetir el experimento muchas veces.
+    <br>
+    <strong>Ejemplos:</strong> Probabilidad de lluvia, tasa de defectos en producción.
+  </div>
+
+  <div class="definicion">
+    <strong>3. DEFINICIÓN SUBJETIVA (Bayesiana):</strong>
+    <br>
+    P(A) = Grado de creencia racional sobre la ocurrencia de A, basado en información disponible.
+    <br><br>
+    <strong>Cuándo usarla:</strong> Eventos únicos no repetibles.
+    <br>
+    <strong>Ejemplos:</strong> Probabilidad de victoria electoral, de terremoto en zona concreta.
+  </div>
+
+  <img src="graficos/s10_tres_definiciones.svg" alt="Comparación visual de las tres definiciones">
+
+  <h2>📊 Comparación</h2>
+  <table>
+    <tr><th>Definición</th><th>Ventajas</th><th>Limitaciones</th><th>Ejemplo</th></tr>
+    <tr>
+      <td><strong>Clásica</strong></td>
+      <td>Cálculo exacto sin experimentos</td>
+      <td>Solo si resultados equiprobables</td>
+      <td>P(par) en dado = 3/6</td>
+    </tr>
+    <tr>
+      <td><strong>Frecuencial</strong></td>
+      <td>Aplicable a fenómenos reales</td>
+      <td>Necesita muchos datos</td>
+      <td>P(lluvia mañana) ≈ 30%</td>
+    </tr>
+    <tr>
+      <td><strong>Subjetiva</strong></td>
+      <td>Funciona con eventos únicos</td>
+      <td>Depende de información del experto</td>
+      <td>P(vida en Marte) = 0.15</td>
+    </tr>
+  </table>
+
+  <div class="bloque-consolidacion">
+    <h3>Ejercicios</h3>
+    
+    <p><strong>Ej 1:</strong> Dado equilibrado. Calcular P(A) siendo A = "Obtener múltiplo de 3".</p>
+    <details>
+      <summary>Ver solución</summary>
+      <div class="solucion">
+        <p><strong>Método:</strong> Definición CLÁSICA (dado equilibrado → equiprobable)</p>
+        
+        <div class="paso">Ω = {1, 2, 3, 4, 5, 6} → |Ω| = 6</div>
+        <div class="paso">A = {3, 6} → |A| = 2</div>
+        <div class="paso">\[ P(A) = \frac{|A|}{|\Omega|} = \frac{2}{6} = \frac{1}{3} \approx 0.333 \]</div>
+        
+        <p><strong>Interpretación:</strong> En cada lanzamiento, hay un 33.3% de probabilidad de obtener múltiplo de 3.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 2 (Contexto Vigo):</strong> Según datos meteorológicos de 2000-2025, en Vigo llovió 148 días de 365 en promedio anual. Estimar P("Lluvia mañana aleatorio").</p>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Método:</strong> Definición FRECUENCIAL (fenómeno natural sin equiprobabilidad)</p>
+        
+        <div class="paso">\[ P(\text{Lluvia}) \approx \frac{148}{365} \approx 0.405 = 40.5\% \]</div>
+        
+        <p><strong>Interpretación:</strong></p>
+        <ul>
+          <li>En un día cualquiera, hay ~40% de probabilidad de lluvia en Vigo</li>
+          <li>Es una <strong>estimación</strong> basada en frecuencias históricas</li>
+          <li>La probabilidad real varía según: estación del año, predicción meteorológica, cambio climático...</li>
+        </ul>
+        
+        <p><strong>Limitación:</strong> Esta es probabilidad "a priori" sin contexto. Si sabemos que estamos en agosto, la probabilidad real baja significativamente.</p>
+      </div>
+    </details>
+
+    <p><strong>Ej 3:</strong> Urna con 5 bolas rojas, 3 azules, 2 verdes. Extraer una al azar. Calcular:</p>
+    <ul>
+      <li>a) P(Roja)</li>
+      <li>b) P(No verde)</li>
+      <li>c) P(Roja o azul)</li>
+    </ul>
+    <details>
+      <summary>Ver solución completa</summary>
+      <div class="solucion">
+        <p><strong>Datos:</strong> Total bolas = 5 + 3 + 2 = 10</p>
+        <p><strong>Método:</strong> Clásica (extracción al azar → equiprobable)</p>
+        
+        <p><strong>a) P(Roja):</strong></p>
+        <div class="paso">\[ P(R) = \frac{5}{10} = \frac{1}{2} = 0.5 \]</div>
+        
+        <p><strong>b) P(No verde):</strong></p>
+        <div class="paso">Bolas no verdes = 5 + 3 = 8</div>
+        <div class="paso">\[ P(\overline{V}) = \frac{8}{10} = \frac{4}{5} = 0.8 \]</div>
+        <p><em>Alternativa:</em> \(P(\overline{V}) = 1 - P(V) = 1 - \frac{2}{10} = 0.8\)</p>
+        
+        <p><strong>c) P(Roja o azul):</strong></p>
+        <div class="paso">Bolas rojas o azules = 5 + 3 = 8</div>
+        <div class="paso">\[ P(R \cup A) = \frac{8}{10} = 0.8 \]</div>
+      </div>
+    </details>
+
+    <p><strong>Ej 4:</strong> Se lanza un dado 600 veces y se obtiene:¿Qué probabilidad FRECUENCIAL asignarías a cada cara? ¿Parece el dado equilibrado?</p>
+    <table style="width: 60%;">
+      <tr><th>Cara</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+      <tr><td><strong>Frecuencia</strong></td><td>98</td><td>102</td><td>105</td><td>95</td><td>118</td><td>82</td></tr>
+    </table>
+    <details>
+      <summary>Ver análisis</summary>
+      <div class="solucion">
+        <p><strong>Probabilidades frecuenciales (n = 600):</strong></p>
+        <div class="paso">P(1) ≈ 98/600 = 0.163</div>
+        <div class="paso">P(2) ≈ 102/600 = 0.170</div>
+        <div class="paso">P(3) ≈ 105/600 = 0.175</div>
+        <div class="paso">P(4) ≈ 95/600 = 0.158</div>
+        <div class="paso">P(5) ≈ 118/600 = 0.197</div>
+        <div class="paso">P(6) ≈ 82/600 = 0.137</div>
+        
+        <p><strong>Análisis de equilibrio:</strong></p>
+        <ul>
+          <li>Si dado equilibrado → P(teórica) = 1/6 ≈ 0.167 para todas</li>
+          <li><strong>El 5 aparece más:</strong> 0.197 vs 0.167 esperado (+18%)</li>
+          <li><strong>El 6 aparece menos:</strong> 0.137 vs 0.167 esperado (-18%)</li>
+        </ul>
+        
+        <p><strong>Conclusión:</strong> Hay <strong>indicios de desequilibrio</strong>, especialmente en caras 5 y 6. Para confirmarlo, haría falta:</p>
+        <ul>
+          <li>Test estadístico (chi-cuadrado)</li>
+          <li>Más lanzamientos (1000+)</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <h2>💡 Propiedades Básicas (válidas para TODAS las definiciones)</h2>
+  <ol>
+    <li>\(0 \leq P(A) \leq 1\) (La probabilidad es un número entre 0 y 1)</li>
+    <li>\(P(\Omega) = 1\) (El suceso seguro tiene probabilidad 1)</li>
+    <li>\(P(\emptyset) = 0\) (El suceso imposible tiene probabilidad 0)</li>
+    <li>\(P(\overline{A}) = 1 - P(A)\) (Complementario)</li>
+  </ol>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666;">
+    <p>1º Bach MACS | IES Teis - Vigo</p>
+  </footer>
+</body>
+</html>

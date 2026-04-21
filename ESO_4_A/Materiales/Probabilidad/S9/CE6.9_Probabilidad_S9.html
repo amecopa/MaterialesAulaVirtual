@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 9: Repaso Global y Preparación de la Prueba</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; line-height: 1.7; color: #222; }
+        h1 { color: #1a3a6e; border-bottom: 2px solid #1a3a6e; padding-bottom: .4rem; }
+        h2 { color: #2a5298; margin-top: 2rem; }
+        h3 { color: #3a6bc4; }
+        header { background-color: #1a3a6e; color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        header h1 { color: white; margin: 0; border: none; }
+        .competency { font-size: 0.9em; color: #cce0ff; font-style: italic; margin-top: 0.5rem; }
+        .ejercicios { background: #f0f4fc; border-left: 4px solid #2a5298; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+        .solucion  { background: #f4fcf0; border-left: 4px solid #2a8a2a; padding: 1rem 1.5rem; margin: .8rem 0; border-radius: 0 6px 6px 0; }
+        .exercise-title { font-weight: bold; color: #d9534f; margin-bottom: 10px; }
+        .badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+        }
+        details.solucion summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #2a8a2a;
+            list-style: none;
+            padding: 4px 0 8px 0;
+            user-select: none;
+        }
+        details.solucion summary::-webkit-details-marker { display: none; }
+        details.solucion summary::marker { display: none; }
+        details.solucion:not([open]) summary::before { content: "▶  Ver resolución"; }
+        details.solucion[open] summary::before { content: "▼  Ocultar resolución"; }
+        ol li, ul li { margin-bottom: .5rem; }
+        .diario-errores {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .diario-errores table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .diario-errores th {
+            background: #ffc107;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+        .diario-errores td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: white;
+        }
+        .resumen-box {
+            background: #e8f4f8;
+            border-left: 4px solid #0277bd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .simulacro {
+            background: #ffe6e6;
+            border: 2px solid #d32f2f;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sesión 9: Repaso Global y Preparación de la Prueba</h1>
+        <p class="competency">CE6: Interpretar y gestionar la incertidumbre | Autoevaluación y metacognición</p>
+    </header>
+
+    <section class="resumen-box">
+        <h2>🎯 Objetivos de la sesión</h2>
+        <ul>
+            <li>Identificar y subsanar errores propios mediante autoevaluación.</li>
+            <li>Practicar bajo condiciones similares a las de la prueba escrita.</li>
+            <li>Consolidar la seguridad y autonomía en la resolución.</li>
+        </ul>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🔥 Bloque 1: Refuerzo — 15 min</h2>
+        
+        <h3>Devolución de evidencias de evaluación formativa</h3>
+        <p>Recibirás las correcciones de los ejercicios de las sesiones 6, 7 y 8 con comentarios individuales del docente.</p>
+        
+        <div class="diario-errores">
+            <h3>📓 Diario de Errores Personal</h3>
+            <p><strong>Instrucciones:</strong> Revisa tus ejercicios corregidos y completa la siguiente tabla con tus 3 errores más significativos.</p>
+            
+            <table>
+                <tr>
+                    <th style="width:30%;">¿Qué error cometí?</th>
+                    <th style="width:35%;">¿Por qué fallé?</th>
+                    <th style="width:35%;">¿Cómo lo hago ahora?</th>
+                </tr>
+                <tr>
+                    <td><em>Ejemplo: Confundí P(A|B) con P(B|A)</em></td>
+                    <td><em>No leí bien el enunciado</em></td>
+                    <td><em>Identifico primero qué es la condición y qué el suceso</em></td>
+                </tr>
+                <tr>
+                    <td style="height:60px;"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height:60px;"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height:60px;"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="ejercicios">
+        <h2>📖 Bloque 2: Consolidación — 15 min</h2>
+        
+        <h3>Resolución en pizarra de problemas tipo examen</h3>
+        <p><strong>El docente resuelve 2 problemas de tipología similar a la prueba escrita, elegidos según los errores más frecuentes detectados.</strong></p>
+        
+        <div class="exercise">
+            <div class="exercise-title">Ejemplo resuelto 1: Tabla de contingencia y probabilidad condicionada</div>
+            <p>En el IES Teis hay 200 estudiantes de 4º ESO. Se clasifican según practican deporte (S/N) y según género (H/M):</p>
+            <table style="margin:1rem 0; border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid #ccc; padding:8px;"></th>
+                    <th style="border:1px solid #ccc; padding:8px;">Deporte</th>
+                    <th style="border:1px solid #ccc; padding:8px;">No deporte</th>
+                    <th style="border:1px solid #ccc; padding:8px;">Total</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #ccc; padding:8px;"><strong>Hombres</strong></td>
+                    <td style="border:1px solid #ccc; padding:8px;">70</td>
+                    <td style="border:1px solid #ccc; padding:8px;">30</td>
+                    <td style="border:1px solid #ccc; padding:8px;">100</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #ccc; padding:8px;"><strong>Mujeres</strong></td>
+                    <td style="border:1px solid #ccc; padding:8px;">50</td>
+                    <td style="border:1px solid #ccc; padding:8px;">50</td>
+                    <td style="border:1px solid #ccc; padding:8px;">100</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #ccc; padding:8px;"><strong>Total</strong></td>
+                    <td style="border:1px solid #ccc; padding:8px;">120</td>
+                    <td style="border:1px solid #ccc; padding:8px;">80</td>
+                    <td style="border:1px solid #ccc; padding:8px;">200</td>
+                </tr>
+            </table>
+            <p><strong>Calcula:</strong></p>
+            <p><strong>a)</strong> \(P(\text{deporte}|\text{mujer})\)</p>
+            <p><strong>b)</strong> \(P(\text{mujer}|\text{no deporte})\)</p>
+            <p><strong>c)</strong> ¿Son independientes "ser mujer" y "practicar deporte"? Justifica.</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a)</strong> Probabilidad de practicar deporte sabiendo que es mujer:
+                $$P(\text{deporte}|\text{mujer}) = \frac{\text{mujeres que practican deporte}}{\text{total mujeres}} = \frac{50}{100} = 0{,}5 = 50\%$$
+                <br>
+                
+                <strong>b)</strong> Probabilidad de ser mujer sabiendo que no practica deporte:
+                $$P(\text{mujer}|\text{no deporte}) = \frac{\text{mujeres que no practican}}{\text{total que no practican}} = \frac{50}{80} = 0{,}625 = 62{,}5\%$$
+                <br>
+                
+                <strong>c)</strong> Para verificar independencia, comprobamos si \(P(\text{deporte}|\text{mujer}) = P(\text{deporte})\):
+                $$P(\text{deporte}) = \frac{120}{200} = 0{,}6 = 60\%$$
+                $$P(\text{deporte}|\text{mujer}) = 50\% \neq 60\%$$
+                <br>
+                
+                <strong>Conclusión:</strong> ❌ NO son independientes. El hecho de ser mujer afecta a la probabilidad de practicar deporte (baja del 60 % global al 50 %).
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Ejemplo resuelto 2: Diagrama de árbol y Bayes</div>
+            <p>En una empresa de Vigo, el 70 % del personal tiene contrato indefinido y el 30 % temporal. El 5 % de los indefinidos y el 20 % de los temporales están en situación de baja médica.</p>
+            <p><strong>a)</strong> Construye el diagrama de árbol.</p>
+            <p><strong>b)</strong> ¿Cuál es la probabilidad de que una persona elegida al azar esté de baja?</p>
+            <p><strong>c)</strong> Si alguien está de baja, ¿cuál es la probabilidad de que tenga contrato temporal?</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a) Diagrama de árbol:</strong>
+                <pre>
+                        0,05 → Baja     [0,70 × 0,05 = 0,035]
+            0,70 → Indef.
+                        0,95 → No baja  [0,70 × 0,95 = 0,665]
+                        
+                        0,20 → Baja     [0,30 × 0,20 = 0,060]
+            0,30 → Temp.
+                        0,80 → No baja  [0,30 × 0,80 = 0,240]
+                </pre>
+                
+                <strong>b) Probabilidad total de baja:</strong>
+                $$P(B) = 0{,}70 \times 0{,}05 + 0{,}30 \times 0{,}20 = 0{,}035 + 0{,}060 = 0{,}095 = 9{,}5\%$$
+                <br>
+                
+                <strong>c) Bayes para calcular \(P(\text{temporal}|\text{baja})\):</strong>
+                $$P(\text{Temp}|B) = \frac{P(\text{Temp}) \cdot P(B|\text{Temp})}{P(B)} = \frac{0{,}30 \times 0{,}20}{0{,}095}$$
+                $$= \frac{0{,}060}{0{,}095} \approx 0{,}6316 = 63{,}16\%$$
+                <br>
+                
+                <strong>Respuesta c):</strong> Hay un 63,16 % de probabilidad de que la persona de baja tenga contrato temporal, aunque solo el 30 % del personal es temporal (su tasa de baja es mucho mayor).
+            </details>
+        </div>
+    </section>
+
+    <section class="simulacro">
+        <h2>✏️ Bloque 3: Afianzamiento — Mini-Simulacro Individual (20 min)</h2>
+        
+        <p><strong>⏱️ Condiciones de examen:</strong> Trabajo individual en silencio. Tiempo: 20 minutos. Puedes usar calculadora.</p>
+        
+        <div class="exercise">
+            <div class="exercise-title">Problema 1: Operaciones con probabilidad (4 puntos)</div>
+            <p>Dados los sucesos \(A\) y \(B\) con \(P(A) = 0{,}5\), \(P(B) = 0{,}4\) y \(P(A \cap B) = 0{,}15\), calcula:</p>
+            <p><strong>a)</strong> \(P(A \cup B)\) (1 punto)</p>
+            <p><strong>b)</strong> \(P(A^c \cap B^c)\) (2 puntos — pista: De Morgan)</p>
+            <p><strong>c)</strong> ¿Son \(A\) y \(B\) independientes? Justifica. (1 punto)</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a)</strong> Regla de la suma:
+                $$P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0{,}5 + 0{,}4 - 0{,}15 = 0{,}75$$
+                <br>
+                
+                <strong>b)</strong> Por De Morgan: \(A^c \cap B^c = (A \cup B)^c\)
+                $$P(A^c \cap B^c) = 1 - P(A \cup B) = 1 - 0{,}75 = 0{,}25$$
+                <br>
+                
+                <strong>c)</strong> Para independencia, debe cumplirse \(P(A \cap B) = P(A) \times P(B)\):
+                $$P(A) \times P(B) = 0{,}5 \times 0{,}4 = 0{,}20$$
+                $$P(A \cap B) = 0{,}15 \neq 0{,}20$$
+                <br>
+                
+                <strong>Conclusión:</strong> NO son independientes.
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Problema 2: Tabla de contingencia (3 puntos)</div>
+            <p>En la Lonja de Vigo se inspeccionan 300 cajas de pescado. Se clasifican por tipo y calidad:</p>
+            <table style="margin:1rem 0; border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid #ccc; padding:8px;"></th>
+                    <th style="border:1px solid #ccc; padding:8px;">Extra</th>
+                    <th style="border:1px solid #ccc; padding:8px;">Primera</th>
+                    <th style="border:1px solid #ccc; padding:8px;">Rechazo</th>
+                    <th style="border:1px solid #ccc; padding:8px;">Total</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #ccc; padding:8px;"><strong>Fresco</strong></td>
+                    <td style="border:1px solid #ccc; padding:8px;">80</td>
+                    <td style="border:1px solid #ccc; padding:8px;">60</td>
+                    <td style="border:1px solid #ccc; padding:8px;">10</td>
+                    <td style="border:1px solid #ccc; padding:8px;">150</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #ccc; padding:8px;"><strong>Congelado</strong></td>
+                    <td style="border:1px solid #ccc; padding:8px;">50</td>
+                    <td style="border:1px solid #ccc; padding:8px;">70</td>
+                    <td style="border:1px solid #ccc; padding:8px;">30</td>
+                    <td style="border:1px solid #ccc; padding:8px;">150</td>
+                </tr>
+            </table>
+            <p><strong>a)</strong> \(P(\text{extra}|\text{fresco})\) (1 punto)</p>
+            <p><strong>b)</strong> \(P(\text{congelado}|\text{rechazo})\) (2 puntos)</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a)</strong>
+                $$P(\text{extra}|\text{fresco}) = \frac{80}{150} = \frac{8}{15} \approx 0{,}533 = 53{,}3\%$$
+                <br>
+                
+                <strong>b)</strong> Total rechazos = 10 + 30 = 40
+                $$P(\text{congelado}|\text{rechazo}) = \frac{30}{40} = \frac{3}{4} = 0{,}75 = 75\%$$
+            </details>
+        </div>
+
+        <div class="exercise" style="margin-top:30px;">
+            <div class="exercise-title">Problema 3: Árbol, Probabilidad Total y Bayes (3 puntos)</div>
+            <p>Vitrasa opera dos rutas hacia el centro de Vigo:</p>
+            <ul>
+                <li>Ruta A: usada el 60 % de los días, puntualidad 80 %.</li>
+                <li>Ruta B: usada el 40 % de los días, puntualidad 90 %.</li>
+            </ul>
+            <p><strong>a)</strong> ¿Probabilidad de llegar puntual un día cualquiera? (1,5 puntos)</p>
+            <p><strong>b)</strong> Si llegó puntual, ¿cuál es la probabilidad de que fuera ruta B? (1,5 puntos)</p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>a) Probabilidad total:</strong>
+                $$P(P) = 0{,}60 \times 0{,}80 + 0{,}40 \times 0{,}90 = 0{,}48 + 0{,}36 = 0{,}84 = 84\%$$
+                <br>
+                
+                <strong>b) Bayes:</strong>
+                $$P(B|P) = \frac{0{,}40 \times 0{,}90}{0{,}84} = \frac{0{,}36}{0{,}84} \approx 0{,}4286 = 42{,}86\%$$
+            </details>
+        </div>
+
+        <p style="margin-top:20px;"><strong>📢 Corrección colectiva proyectada al finalizar los 20 minutos.</strong></p>
+    </section>
+
+    <section class="ejercicios">
+        <h2>🚀 Bloque 4: Ampliación — Reflexión (5 min)</h2>
+        
+        <div class="exercise">
+            <div class="exercise-title">Pregunta abierta de reflexión</div>
+            <p><strong>Da un ejemplo de la vida cotidiana de Vigo donde aplicar el teorema de Bayes cambiaría una decisión importante.</strong></p>
+            <p><em>Respuesta escrita breve (3-5 líneas). No se evalúa formalmente, se usa para motivación y reflexión.</em></p>
+            
+            <details class="solucion">
+                <summary></summary>
+                <strong>Ejemplos posibles del alumnado:</strong><br>
+                — "Decidir si un test COVID positivo realmente significa que estoy enfermo (prevalencia baja + falsos positivos)."<br>
+                — "Evaluar si un sistema de detección de fraude en el Puerto es fiable antes de bloquear contenedores."<br>
+                — "Interpretar encuestas electorales locales sabiendo que tienen margen de error."<br>
+                — "Decidir si vale la pena repetir un test médico cuando el primero da positivo pero la enfermedad es rara."
+            </details>
+        </div>
+    </section>
+
+    <section class="resumen-box" style="margin-top:40px;">
+        <h2>📋 Resumen de Conceptos Clave para la Prueba UD9</h2>
+        <ul>
+            <li><strong>Axiomas de Kolmogorov:</strong> \(P(A) \geq 0\), \(P(\Omega) = 1\), aditividad.</li>
+            <li><strong>Regla de Laplace:</strong> \(P(A) = \frac{\text{casos favorables}}{\text{casos posibles}}\) (solo si equiprobables).</li>
+            <li><strong>Probabilidad condicionada:</strong> \(P(A|B) = \frac{P(A \cap B)}{P(B)}\)</li>
+            <li><strong>Independencia:</strong> \(P(A \cap B) = P(A) \times P(B)\) o \(P(A|B) = P(A)\)</li>
+            <li><strong>Teorema de la P. Total:</strong> \(P(B) = \sum P(A_i) \cdot P(B|A_i)\) (suma de ramas del árbol)</li>
+            <li><strong>Teorema de Bayes:</strong> \(P(A_i|B) = \frac{P(A_i) \cdot P(B|A_i)}{P(B)}\) (inversión de probabilidades)</li>
+            <li><strong>Herramientas:</strong> Diagramas de árbol (experimentos secuenciales), tablas de contingencia (doble clasificación).</li>
+        </ul>
+    </section>
+
+    <footer style="margin-top:40px; padding:20px; background-color:#193a6e; color:white; border-radius:8px; text-align:center;">
+        <h3 style="color:white; margin-top:0;">🎯 Próxima Sesión: PRUEBA UD9 — Probabilidad</h3>
+        <p style="margin:0;">¡Repasa tu diario de errores y los ejemplos resueltos! 💪</p>
+    </footer>
+
+</body>
+</html>
